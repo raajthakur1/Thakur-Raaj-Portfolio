@@ -1,0 +1,44 @@
+site_name: Raaj's AP Networking Portfolio
+nav:
+- Home: index.md
+- Courses & Projects: 
+  - Engineering I:
+    - Overview: courses/engineering_1/index.md
+    - Writing in Engineering: courses/engineering_1/writing_in_engineering.md
+    - Thinking Out of the Box: courses/engineering_1/box.md
+    - Easily Suede: courses/engineering_1/keychain.md
+    - Plane and Simple: courses/engineering_1/3d_printing.md
+    - The Ohm Depot: courses/engineering_1/ohm_depot.md
+    - A Cold Solder: courses/engineering_1/cold_solder.md
+    - Grab a Byte: courses/engineering_1/grab_a_byte.md
+    - Final Project: courses/engineering_1/final_project.md
+  - Engineering II: 
+    - Overview: courses/engineering_2/index.md
+    - Deep Dive into Fusion 360: courses/engineering_2/fusion360.md
+    - Milling About: courses/engineering_2/milling_about.md
+    - Pressing Charges: courses/engineering_2/pressing_charges.md
+    - Board to be Wild: courses/engineering_2/cutting_board.md
+    - Final Project: courses/engineering_2/final_project.md
+  - Civil Engineering: 
+    - Overview: courses/civil_engineering/index.md
+    - Bridge Building and Testing: courses/civil_engineering/bridge_building_and_testing.md
+    - Windmill Design and Optimization: courses/civil_engineering/windmill_optimization.md
+    - Water Turbidity Testing
+  - Honors Data Analytics: 
+    - Overview: courses/data_analytics/index.md
+    - Excel: courses/data_analytics/excel.md
+    - Python: courses/data_analytics/python.md
+    - Data Cleaning: courses/data_analytics/python.md
+    - Bootstrapping: courses/data_analytics/bootstrapping.md
+    - ANOVA: courses/data_analytics/anova.md
+    - Machine Learning: courses/data_analytics/machine_learning.md
+  - AP Networking:
+    - Overview: courses/ap_networking/index.md
+    - Component Cards & Software Slips:  courses/ap_networking/component-cards-and-software-slips.md
+    - Map the Maze: courses/ap_networking/map-the-maze.md
+  - Honors Senior Engineering: 
+    - Overview: courses/ap_networking/index.md
+- About: about.md
+theme:
+  name: dracula
+  logo: null
