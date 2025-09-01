@@ -4,7 +4,6 @@ nav:
 - Courses & Projects: 
   - Engineering I:
     - Overview: courses/engineering_1/index.md
-    - Writing in Engineering: courses/engineering_1/writing_in_engineering.md
     - Thinking Out of the Box: courses/engineering_1/box.md
     - Easily Suede: courses/engineering_1/keychain.md
     - Plane and Simple: courses/engineering_1/3d_printing.md
@@ -23,12 +22,12 @@ nav:
     - Overview: courses/civil_engineering/index.md
     - Bridge Building and Testing: courses/civil_engineering/bridge_building_and_testing.md
     - Windmill Design and Optimization: courses/civil_engineering/windmill_optimization.md
-    - Water Turbidity Testing
+    - Water Turbidity Testing: courses/civil_engineering/water_turbidity.md
   - Honors Data Analytics: 
     - Overview: courses/data_analytics/index.md
     - Excel: courses/data_analytics/excel.md
     - Python: courses/data_analytics/python.md
-    - Data Cleaning: courses/data_analytics/python.md
+    - Data Cleaning: courses/data_analytics/data_cleaning.md
     - Bootstrapping: courses/data_analytics/bootstrapping.md
     - ANOVA: courses/data_analytics/anova.md
     - Machine Learning: courses/data_analytics/machine_learning.md
