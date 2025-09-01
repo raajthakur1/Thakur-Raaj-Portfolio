@@ -1,6 +1,6 @@
 # AP Networking & Engineering Portfolio — Raaj Thakur
 This repository hosts my Honors Engineering/Computer Science portfolio for **2025-2026** at **Charlotte Latin School**.
-- **Live site (GitHub Pages):** <https://raajthakur1.github.io/Thakur-Raaj-AP_Networking_Portfolio/>
+- **Live site (GitHub Pages):** <https://raajthakur1.github.io/Thakur-Raaj-Portfolio/>
 - **Instructor access:** Barbara Morrow added as collaborator.
 
 ## About Me
