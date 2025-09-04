@@ -1,0 +1,12 @@
+/* Hide the Dracula "Made with Dracula Theme for MkDocs" footer */
+.d-flex.flex-sm-row.justify-content-between.py-2.border-top.drac-text-black.drac-bg-cyan-green {
+    display: none !important;
+}
+
+h1 {
+    color: #9ED6D9; /* teal */
+}
+
+h2, h3, h4, h5, h6 {
+    color: #9ED6D9; /* teal */
+}
