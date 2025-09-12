@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Montserrat:wght@600;700&display=swap');
+/* Sidebar/nav bar color and font override */
+.sidebar, .md-sidebar, .md-nav, .md-nav__list, .md-nav__container {
+    background-color: #202A3C !important;
+}
+.sidebar, .md-sidebar, .md-nav, .md-nav__title, .md-nav__item, .md-nav__link {
+    color: ivory !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Montserrat:wght@600;700&display=swap');
+/* Top bar color override */
+.navbar.drac-bg-purple {
+    background-color: #202A3C !important;
+    color: ivory !important;
+    border-color: ivory !important;
+}
+.navbar.drac-bg-purple .nav-link,
+.navbar.drac-bg-purple .navbar-nav .nav-link,
+.navbar.drac-bg-purple .navbar-brand,
+.navbar.drac-bg-purple .btn,
+.navbar.drac-bg-purple .navbar-toggler {
+    color: ivory !important;
+}
+.navbar.drac-bg-purple .navbar-toggler-icon {
+    background-image: none !important;
+    border: 1.5px solid ivory !important;
+}
+.navbar.drac-bg-purple .navbar-toggler-icon:after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: ivory;
+    margin: 5px 0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Montserrat:wght@600;700&display=swap');
+/* --- FONT FIX: Import and apply Montserrat for headings/nav/sidebar, Lora for body --- */
+body, .md-content, .md-main, .md-typeset, .content, .section-content, .article {
+    font-family: 'Lora', serif !important;
+}
+h1, h2, h3, h4, h5, h6, .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6,
+.navbar, .navbar-nav, .nav-link, .navbar-brand, .sidebar, .md-nav, .md-nav__title, .md-nav__item, .md-nav__link, .sidebar .logo {
+    font-family: 'Montserrat', sans-serif !important;
+}
+/* --- FONT FIX: Force Montserrat for headings and Lora for body everywhere --- */
+body, .md-content, .md-main, .md-typeset, .content, .section-content, .article, .md-nav, .md-sidebar, .sidebar, .navbar, .navbar-nav, .nav-link, .navbar-brand, .drac-text, .drac-anchor, .drac-box, .drac-box-ternary, .drac-list, .drac-list-none, .drac-text-center, .drac-line-height {
+    font-family: 'Lora', serif !important;
+}
+h1, h2, h3, h4, h5, h6, .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6, .navbar .navbar-brand, .navbar .nav-link, .navbar .navbar-nav, .sidebar .logo, .md-nav__title, .md-nav__item, .md-nav__link {
+    font-family: 'Montserrat', sans-serif !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Montserrat:wght@600;700&display=swap');
+
+/* Set backgrounds */
+body,
+.md-main,
+.md-content,
+.md-typeset {
+    background-color: #202A3C !important;
+    color: ivory !important;
+}
+
+/* Sidebar background */
+.md-sidebar, .md-nav, .md-nav__list, .md-nav__container {
+    background-color: #202A3C !important;
+}
+
+/* Divider between sidebar and top bar */
+.md-header, .md-header__inner, .md-header__divider, .md-tabs {
+    border-bottom: 2px solid ivory !important;
+}
+
+/* Headings and titles: Montserrat, ivory */
+h1, h2, h3, h4, h5, h6, .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
+    font-family: 'Montserrat', sans-serif !important;
+    color: ivory !important;
+}
+
+/* Body text: Lora, ivory */
+body, .md-typeset, .md-content, .md-main {
+    color: ivory !important;
+}
+
+/* Ensure nav links and sidebar text are ivory */
+.md-nav__link, .md-nav__title, .md-nav__item {
+    color: ivory !important;
+}
+
+/* Remove Dracula theme footer */
+.d-flex.flex-sm-row.justify-content-between.py-2.border-top.drac-text-black.drac-bg-cyan-green {
+    display: none !important;
+}
+
+/* Divider between sidebar and main content */
+/* Divider between sidebar and main content */
+.divider, nav.divider {
+    background: #FFFFF0 !important; /* Ivory */
+    background-image: none !important;
+    border: none !important;
+    min-width: 22px;
+    width: 22px;
+    max-width: 22px;
+    min-height: 100vh;
+    height: auto;
+    box-shadow: none !important;
+    margin: 0 0.5rem 0 0;
+}
+nav.divider {
+    box-shadow: 1px 0 4px 0 rgba(32,42,60,0.08);
+}
+
+/* Sidebar collapse button: ivory background, navy icon */
+.custom-menu .btn,
+#sidebarCollapse.btn,
+#sidebarCollapse.btn.btn-primary {
+    background: #FFFFF0 !important;
+    border: none !important;
+    color: #202A3C !important;
+    box-shadow: none !important;
+}
+
+#sidebarCollapse .fa-bars,
+.custom-menu .fa-bars {
+    color: #202A3C !important;
+}
+
+

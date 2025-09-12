@@ -1,0 +1,24 @@
+/* Remove the diamond/gradient around the sidebar collapse button by overlaying a solid ivory diamond using a pseudo-element. */
+.custom-menu .btn::before, #sidebarCollapse.btn::before, #sidebarCollapse.btn.btn-primary::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70px;
+  height: 70px;
+  background: #FFFFF0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 0;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.custom-menu .btn, #sidebarCollapse.btn, #sidebarCollapse.btn.btn-primary {
+  position: relative;
+  z-index: 1;
+}
+
+.custom-menu .fa-bars, #sidebarCollapse .fa-bars {
+  position: relative;
+  z-index: 2;
+}
