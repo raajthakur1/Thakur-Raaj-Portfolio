@@ -11,12 +11,12 @@ The goal of this porfolio is to:
 - Share my progress with the community
 
 ## Courses
-- [Engineering I](courses/engineering_1/index.md)
-- [Engineering II](courses/engineering_2/index.md)
-- [Civil Engineering](courses/civil_engineering/index.md)
-- [Data Analytics (Honors)](courses/data_analytics/index.md)
-- [Networking (AP)](courses/ap_networking/index.md)
-- [Advanced Topics in Engineering (Honors)](courses/senior_engineering/index.md)
+- **[Engineering I](courses/engineering_1/index.md)**
+- **[Engineering II](courses/engineering_2/index.md)**
+- **[Civil Engineering](courses/civil_engineering/index.md)**
+- **[Data Analytics (Honors)](courses/data_analytics/index.md)**
+- **[Networking (AP)](courses/ap_networking/index.md)**
+- **[Advanced Topics in Engineering (Honors)](courses/senior_engineering/index.md)**
 
 ---
 
