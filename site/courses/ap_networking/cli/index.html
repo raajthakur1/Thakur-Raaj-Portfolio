@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+        <title>Command Line Interface - Raaj's AP Networking Portfolio</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        
+        
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../../../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../../../assets/css/mkdocs.min.css">
+            <link href="../../../stylesheets/extra.css" rel="stylesheet">
+            <link href="../../../stylesheets/sidebar-collapse-diamond-fix.css" rel="stylesheet">
+
+        
+            <link  rel="icon" type="image/x-icon" href="../../../media/headshot.png">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../../../media/headshot.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">Raaj's AP Networking Portfolio</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider" />
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href="../../.."
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Home
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../../.."
+                    class=" active 
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#courses-&-projects-collapse" aria-expanded="false">
+                    Courses & Projects
+                </a>
+                <div class="collapse" id="courses-&-projects-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#ap-networking-(2025-2026)-collapse" aria-expanded="false">
+            AP Networking (2025-2026)
+        </a>
+
+        <div class="collapse" id="ap-networking-(2025-2026)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../component-cards-and-software-slips/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Component Cards & Software Slips
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Command Line Interface
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#honors-advanced-topics-in-engineering-(2025-2026)-collapse" aria-expanded="false">
+            Honors Advanced Topics in Engineering (2025-2026)
+        </a>
+
+        <div class="collapse" id="honors-advanced-topics-in-engineering-(2025-2026)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/daily_log/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Daily Log
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#honors-data-analytics-(2025)-collapse" aria-expanded="false">
+            Honors Data Analytics (2025)
+        </a>
+
+        <div class="collapse" id="honors-data-analytics-(2025)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/excel/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Excel
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/python/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Python
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/data_cleaning/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Data Cleaning
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/bootstrapping/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Bootstrapping
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/anova/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            ANOVA
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/machine_learning/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Machine Learning
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#civil-engineering-(2024)-collapse" aria-expanded="false">
+            Civil Engineering (2024)
+        </a>
+
+        <div class="collapse" id="civil-engineering-(2024)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/bridge_building_and_testing/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Bridge Building and Testing
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/windmill_optimization/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Windmill Design and Optimization
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/water_turbidity/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Water Turbidity Testing
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#engineering-i-(2022)-collapse" aria-expanded="false">
+            Engineering I (2022)
+        </a>
+
+        <div class="collapse" id="engineering-i-(2022)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/box/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Thinking Out of the Box
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/keychain/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Easily Suede
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/3d_printing/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Plane and Simple
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/ohm_depot/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            The Ohm Depot
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/cold_solder/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            A Cold Solder
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/grab_a_byte/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Grab a Byte
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/final_project/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Final Project
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#engineering-ii-(2023)-collapse" aria-expanded="false">
+            Engineering II (2023)
+        </a>
+
+        <div class="collapse" id="engineering-ii-(2023)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/fusion360/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Deep Dive into Fusion 360
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/milling_about/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Milling About
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/pressing_charges/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Pressing Charges
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/cutting_board/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Board to be Wild
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/final_project/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Final Project
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="../../../about/"
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    About
+                </a>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+                aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../component-cards-and-software-slips/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../../senior_engineering/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
+		placeholder="Search docs" title="Type search term here" />
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p><h1 id="command-line-interface">Command Line Interface</h1>
+<h2 id="project-introduction">Project Introduction</h2>
+<p>This project was focused on learning the command line interface of Linux and MacOS. Since Linux is the backbone of networks, IoT systems, and most servers, a strong understanding of the CLI is essential for working with networks. </p>
+<p>The project included various small activities to teach the class about the CLI, including:</p>
+<ul>
+<li>Map the Maze Part I</li>
+<li>Map the Maze Part II</li>
+<li>House Activity </li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>In order to run Ubuntu, a very common Linux distribution used in servers and for personal use, on the M1 Mac minis in the computer lab, UTM was used to run it in a virtual machine (VM). </p>
+<h2 id="map-the-maze-part-i">Map the Maze Part I</h2>
+<p>This assignment was an introduction to the file system of a computer. Important terms include:</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Root Directory</td>
+<td>Very top of the file system</td>
+</tr>
+<tr>
+<td>Folder/Directory</td>
+<td>Container used to organize files and other folders</td>
+</tr>
+<tr>
+<td>File</td>
+<td>Single digital object that holds data in various formats; contains a name and an extension</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>"Address" of a file or folder inside the file system; either an absolute or relative path</td>
+</tr>
+<tr>
+<td>Absolute Path</td>
+<td>Complete address of a file or directory (starting from root)</td>
+</tr>
+<tr>
+<td>Relative Path</td>
+<td>Location of a file or directory starting from the working directory</td>
+</tr>
+</tbody>
+</table>
+<h3 id="drawing-a-filesystem">Drawing a Filesystem</h3></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;"
+            class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '../../..';</script>
+        <script src="../../../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../../../assets/js/mkdocs.js"></script>
+			<script src="../../../search/main.js" defer></script>
+
+</body>
+
+</html>
