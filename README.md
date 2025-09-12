@@ -1,7 +1,7 @@
 # CS & Engineering Portfolio — Raaj Thakur
 This repository hosts my Engineering/Computer Science portfolio from **2022-2026** at **Charlotte Latin School**.
 - **Live site (GitHub Pages):** <https://raajthakur1.github.io/Thakur-Raaj-Portfolio/>
-- **Instructor access:** Barbara Morrow added as collaborator.
+- **Instructor access:** Barbara Morrow and Tom Dubick added as collaborators.
 
 ## About Me
 I am **Raaj Thakur**, a senior at Charlotte Latin School focusing on engineering.
