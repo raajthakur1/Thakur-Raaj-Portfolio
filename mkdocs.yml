@@ -41,4 +41,11 @@ nav:
 - About: about.md
 theme:
   name: dracula
-  logo: null
+  logo: media/headshot.png
+  favicon: media/headshot.png
+extra:
+  social:
+    - image: media/headshot.png
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/sidebar-collapse-diamond-fix.css
