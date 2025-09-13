@@ -495,6 +495,14 @@
 </ul>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>In order to run Ubuntu, a very common Linux distribution used in servers and for personal use, on the M1 Mac minis in the computer lab, UTM was used to run it in a virtual machine (VM). </p>
+<p>Also, MKDocs had to be installed on the Mac minis in order to build documentation and push it to GitHub. Unfortunately, simply running <strong>pip3 install mkdocs</strong> installed the mkdocs package installed it at ~/Library/Python/3.12, the user-specific folder that hosts packages tied to the system-wide python. However, by default, ZSH does not know about this folder, so the ZSH configuration profile had to be edited to point to this folder. Anytime mkdocs needed to be run, <strong>python3 -m mkdocs</strong> had to be specified rather than just being able to run <strong>mkdocs</strong>. To fix this issue, the process was:</p>
+<ul>
+<li>Type <strong>find ~/Library/Python -name mkdocs</strong>  to find the specific path where mkdocs is installed. It should return <strong>/Users/<em>username</em>/Library/Python/3.xx/bin/mkdocs</strong></li>
+<li>Open the ZSH configuration file with <strong>nano ~/.zshrc</strong>, then add this line: <strong>export PATH="$HOME/Library/Python/3.xx/bin:$PATH"</strong></li>
+<li>Refresh the ZSH profile with <strong>source ~/.zshrc</strong></li>
+<li>Run <strong>mkdocs --version</strong> to confirm it works. It should return something like <strong>mkdocs, version 1.6.1 from /Users/<em>username</em>/Library/Python/3.xx/lib/python/site-packages/mkdocs (Python 3.xx)</strong></li>
+<li>Now, mkdocs commands can be directly run without typing <strong>python3 -m mkdocs</strong>.</li>
+</ul>
 <h2 id="map-the-maze-part-i-">Map the Maze Part I -</h2>
 <p>This assignment was an introduction to the file system of a computer. Important terms include:</p>
 <table>
