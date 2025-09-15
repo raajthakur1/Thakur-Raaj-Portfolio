@@ -12,7 +12,7 @@ The project included various small activities to teach the class about the CLI, 
 
 - [**Map the Maze Part II:** Technical exploration of using CLI commands in Ubuntu, MacOS, and how to share files between a host and VM](#map-the-maze-part-ii)
 
-- [**House Activity:** Practice using CLI commands to navigate a "house" through the terminal to execute tasks using `cd`, `rm`, `ls`, and more.](#house-activity)
+- [**House Activity:** Practice using CLI commands to navigate a "house" through the terminal to execute tasks using `cd`, `rm`, `ls`, and more.](#house-sitting-activity)
 
 - [**Reflection**](#reflection)
 
@@ -66,7 +66,7 @@ After learning about the file system, we learned about essential MacOS/Linux com
 |`ls`|Lists files and directories within the current directory|
 |`cd`|Changes working directory to specified directory|
 |`mkdir`|Makes a new directory within the current working directory|
-|`touch`v|Makes a new file in the current working directory or an|
+|`touch``|Makes a new file in the current working directory or an|
 |`cp`|Copies specified files to a specified directory|
 |`mv`|Moves specified files to a specified directory|
 |`open`|Opens any file or folder within the directory if just a file/folder name is given, or any file on the computer if an absolute path is specified|
