@@ -1,6 +1,6 @@
 # Component Cards & Software Slips
 
-## Project introduction
+## Project Introduction
 
 Component Cards and Software Slips was the first project of the year, and was designed to teach us about the various hardware and software components of a PC, and to teach us about how they all worked together. 
 
@@ -10,7 +10,7 @@ The project included various small activities to help us learn, including:
 - Metal to Magic
 - A Component Song
 
-## Silent Signals
+## Silent Signals {.collapsible}
 
 Silent Signals was the first part of the project. In this activity, my partner and I each received a 3D printed card with a white side and a blue side, and our goal was to communicate various messages with each other solely with the cards, and without any kind of gesturing or speaking. From the start, we knew that we needed to establish some kind of standardized method of communication with each other. We mutually decided that to communicate numbers, we should use the card to tap the desk to represent the quantity of the number, and for boolean questions (yes/no, A/B, etc.) that we needed to assign one color to option 1 and the other color to option 2. Unfortunately, we couldn't talk, so we ended up picking different colors than each other.
 
@@ -30,7 +30,7 @@ My plan for this was to:
 
 The purpose of "Silent Signals" was to highlight the importance of a shared communication protocol. Similarly to how my partner and I were able to communicate more easily when we had a mutual understanding of what each others' signals meant, in order for machines to communicate effectively, they need to understand each others' protocols. 
 
-## Component Song
+## Component Song {.collapsible}
 
 The next part of Component Cards and Software Slips was the Component Song. Using ChatGPT, I generated song lyrics that described the multiple hardware and software components of a computer, and I then used Suno in order to have AI-generated vocals and instrumentals for the song. 
 
@@ -40,7 +40,7 @@ The next part of Component Cards and Software Slips was the Component Song. Usin
 
 Creating the Component Song was a fun way to learn about the different parts of a computer, and helped me learn about what exactly each part does. 
 
-## Metal to Magic
+## Metal to Magic {.collapsible}
 
 Metal to Magic was the main component of this project. In Metal to Magic, we formally learned about the many different hardware and software components of a PC, such as:
 
@@ -73,25 +73,25 @@ Metal to Magic was the main component of this project. In Metal to Magic, we for
 
  <br><br>
 
-### Hardware and Software Flowcharts
+### Hardware and Software Flowcharts 
 
 After learning about what each component of a PC did, we needed to learn about how they all worked together. So, with a partner, I took cards with hardware and software components and arranged them to represent how individual components all interact with each other to get tasks done. We started off with keeping the hardware and software flowcharts separate, then at the end, trying to combine both hardware and software cards to visualize what exactly a computer does when printing out an essay.
 
 #### Hardware Flowchart
 
-![Hardware Component Cards](media/Hardware.jpeg)
+![Hardware Component Cards](media/component_cards_and_software_slips/Hardware.jpeg)
 
 Here, I tried to emphasize how virtually everything communicates through the motherboard, which is why I had the motherboard at the center and all of the components connected individually to the board. 
 
 #### Software Flowchart
 
-![Software Component Cards](media/Software.jpeg)
+![Software Component Cards](media/component_cards_and_software_slips/Software.jpeg)
 
 Making the software component flowchart was a bit easier, since with software, there is a clearer hierarchy of the different layers, with the UEFI being at the lowest level and the runtimes and apps being at the highest level.
 
 #### Printing an Essay Flowchart (Hardware + Software)
 
-![Hardware+Software Flowchart](media/Both.jpeg)
+![Hardware+Software Flowchart](media/component_cards_and_software_slips/Both.jpeg)
 
 Before designing this flowchart, I thought through what exactly happened on my computer when I hit print, and did my best to represent that in my flowchart.
 
@@ -131,7 +131,7 @@ With this knowledge about what the hardware and software components of a PC do a
  <br><br>
 **What we Decided to Do**
 
-Before deciding anything immediately, my partner an I reflected on what exactly a video editing workflow demanded the most. We decided that the biggest limiting factor in our current PC build was the 8GB of RAM, since video editing consumes a lot of RAM. Although 32GB RAM would have been nice, we only had the budget to increase to 16GB, which is still enough for 4K editing (total spent: $150). Next, we upgraded the cooling system, since video editing often requires long exports, which often take multiple hours. This would inevitably generate a lot of heat, so maximum cooling was necessary to ensure that the sustained performance of the system was good. We went with the enhanced air cooling system along with extra case fans (total spent: $300). Next, we upgraded the GPU, since our current build only had a very weak integrated graphics chip. Video editing leans a lot on the GPU, and the current integrated graphics would make 4K video editing a nightmare. We went with the mid-range graphics card, since we didn't have the budget for a high-end graphics card (total: $550). After that, we upgraded the CPU to the high-end 8 core processor, because along with using the GPU a lot, video editing requires a CPU with strong multithreaded performance, so we went with the highest core-count CPU available (total: $850). Finally, with the remaining $150, we upograded to the 512GB SSD, since video files take up a lot of storage. More storage would have been nice, but we didn't have the budget for anything else, and we figured that the editor could always use a NAS or cloud storage for storing older files (total: $1000).
+Before deciding anything immediately, my partner an I reflected on what exactly a video editing workflow demanded the most. We decided that the biggest limiting factor in our current PC build was the 8GB of RAM, since video editing consumes a lot of RAM. Although 32GB RAM would have been nice, we only had the budget to increase to 16GB, which is still enough for 4K editing (total spent: $150). Next, we upgraded the cooling system, since video editing often requires long exports, which often take multiple hours. This would inevitably generate a lot of heat, so maximum cooling was necessary to ensure that the sustained performance of the system was good. We went with the enhanced air cooling system along with extra case fans (total spent: $300). Next, we upgraded the GPU, since our current build only had a very weak integrated graphics chip. Video editing leans a lot on the GPU, and the current integrated graphics would make 4K video editing a nightmare. We went with the mid-range graphics card, since we didn't have the budget for a high-end graphics card (total: $550). After that, we upgraded the CPU to the high-end 8 core processor, because along with using the GPU a lot, video editing requires a CPU with strong multithreaded performance, so we went with the highest core-count CPU available (total: $850). Finally, with the remaining $150, we upgraded to the 512GB SSD, since video files take up a lot of storage. More storage would have been nice, but we didn't have the budget for anything else, and we figured that the editor could always use a NAS or cloud storage for storing older files (total: $1000).
 
 ### Metal to Magic Reflection
 

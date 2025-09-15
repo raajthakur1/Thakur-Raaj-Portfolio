@@ -151,3 +151,55 @@ nav.divider {
 .custom-menu .fa-bars {
     color: #202A3C !important;
 }
+
+/* Inline code: gold color */
+code, .md-typeset code, .md-typeset .code, .md-typeset code:not(.hljs), .md-typeset pre code:not(.hljs) {
+  color: #D9A441 !important;
+  background: #202A3C !important;
+  border-radius: 4px;
+  padding: 0.1em 0.3em;
+  font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 0.95em;
+}
+
+/* Copied feedback for inline code */
+code.copied, .md-typeset code.copied {
+  background: #D9A441 !important;
+  color: #202A3C !important;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Nav bar active/focus/selected: gold, no box, no purple */
+.navbar .nav-link:focus,
+.navbar .nav-link:active,
+.navbar .nav-link[aria-current="page"],
+.navbar .nav-link[aria-selected="true"],
+.navbar .nav-link.active {
+  color: #D9A441 !important;
+  background: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Custom scrollbar: ivory thumb, navy track, thicker, force override */
+::-webkit-scrollbar {
+  width: 18px !important;
+  background: #202A3C !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFFFF0 !important;
+  border-radius: 9px !important;
+  border: 4px solid #202A3C !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D9A441 !important;
+}
+::-webkit-scrollbar-corner {
+  background: #202A3C !important;
+}
+
+/* Firefox scrollbar: thicker, force override */
+html {
+  scrollbar-color: #FFFFF0 #202A3C !important;
+  scrollbar-width: auto !important;
+}

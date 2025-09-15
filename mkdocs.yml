@@ -1,4 +1,4 @@
-site_name: Raaj's AP Networking Portfolio
+site_name: Raaj's Engineering & CS Portfolio
 nav:
 - Home: index.md
 - Courses & Projects: 
@@ -46,6 +46,11 @@ theme:
 extra:
   social:
     - image: media/headshot.png
+extra_javascript:
+  - js/collapse-headers.js
 extra_css:
   - stylesheets/extra.css
   - stylesheets/sidebar-collapse-diamond-fix.css
+  - stylesheets/collapse-headers.css
+markdown_extensions:
+  - attr_list
