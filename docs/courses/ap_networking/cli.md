@@ -46,16 +46,17 @@ This assignment was an introduction to the file system of a computer. Important 
 |Relative Path|Location of a file or directory starting from the working directory|
 
 ### Drawing a Filesystem
+
 The first activity in this assignment was to draw out a file system with the root at the top, a home folder, 3 sub-folders, and 2 sample files. 
 
-<img src="/courses/ap_networking/media/cli/filesystem_tree.jpg" width="400px">
+<img src="media/cli/filesystem_tree.jpg" width="400px">
 
 This section of the assignment was a simple introduction to the file system on a computer and helped in visualizing how a file system works.
 
 ### Text-Based Filesystem & Partner Activity
 The next activity was to type up a file system similar to the one that was drawn earlier then to trade file systems with a partner and ask them how they would find specific files in the file system. 
 
-<img src="/courses/ap_networking/media/cli/text_filesystem.png" width="400px">
+<img src="media/cli/text_filesystem.png" width="400px">
 
 ### MacOS Terminal Commands
 After learning about the file system, we learned about essential MacOS/Linux commands and their purposes for the CLI, such as:
@@ -92,8 +93,8 @@ The instructions for the activity were:
 - Add "Congratulations! You found the first clue." to clue1.txt with `nano clue1.txt`
 
 <figure>
-  <img src='/courses/ap_networking/media/cli/nano.jpeg' width='500px'>
-  <figcaption>Screenshot of the nano text editor for clue1.txt in the Ubuntu VM.</figcaption>
+    <img src="media/cli/nano.jpeg" width="500px">
+    <figcaption>Screenshot of the nano text editor for clue1.txt in the Ubuntu VM.</figcaption>
 </figure>
 
 - Share a file with the host by copying clue1.txt to ~/hostshare/ with `cp clue1.txt ~/hostshare/`
@@ -102,14 +103,14 @@ On the first attempt, clue1.txt did not show up on the Mac anywhere after puttin
 
 - Make a folder anywhere on the Mac, then go into UTM settings and set that folder as the shared directory for the VM
 <figure>
-    <img src="/courses/ap_networking/media/cli/shared_dir.jpeg" width="8000px">
+    <img src="media/cli/shared_dir.jpeg" width="8000px">
     <figcaption></figcaption>
 </figure>
 
 - In the VM, type `sudo mount -t davfs http://127.0.0.1:9843/ ~/hostshare/` in order to set ~/hostshare as a shared directory between the host (M1 Mac mini) and the VM
 
 - Restart the VM, then mount the shared disk inside UTM by selecting a shared folder
-<img src="/courses/ap_networking/media/cli/utm_disk.jpeg" width="1000px">
+<img src="media/cli/utm_disk.jpeg" width="1000px">
 
 Once these steps were completed, files were able to be shared between the host and VM through ~/hostshare in the VM and the folder on the Mac that was selected as a shared directory in UTM's settings.
 
