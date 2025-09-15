@@ -26,7 +26,7 @@ Also, MKDocs had to be installed on the Mac minis in order to build documentatio
 
 - Open the ZSH configuration file with `nano ~/.zshrc`, then add this line: `export PATH="$HOME/Library/Python/3.xx/bin:$PATH"`
 
-- Refresh the ZSH profile with **source ~/.zshrc**
+- Refresh the ZSH profile with `source ~/.zshrc`
 
 - Run `mkdocs --version` to confirm it works. It should return something like `mkdocs, version 1.6.1 from /Users/*username*/Library/Python/3.xx/lib/python/site-packages/mkdocs (Python 3.xx)`
 
