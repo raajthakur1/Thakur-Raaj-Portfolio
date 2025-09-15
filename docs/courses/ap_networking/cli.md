@@ -74,7 +74,9 @@ After learning about the file system, we learned about essential MacOS/Linux com
 |`rmdir`|Permanently removes specified directories|
 
 ## Ubuntu CLI Tutorial {.collapsible}
+After learning about essential Linux & MacOS CLI commands, we practiced using them in an Ubuntu VM to get familiar with both the commands and using Ubuntu. 
 
+Following [this Ubuntu tutorial made by Canonical](https://ubuntu.com/tutorials/command-line-for-beginners#4-creating-folders-and-files), I practiced using the command line in Ubuntu. I used commands like `ls`, `cd`, `rm`, `touch`, `cp`, and a couple more. 
 
 ## Map the Maze Part II {.collapsible}
 This activity was completed mostly within the Ubuntu VM and involved creating files and directories, editing them with `nano`, and transferring files between the host and VM. 
