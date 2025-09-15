@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="../../../assets/css/mkdocs.min.css">
             <link href="../../../stylesheets/extra.css" rel="stylesheet">
             <link href="../../../stylesheets/sidebar-collapse-diamond-fix.css" rel="stylesheet">
+            <link href="../../../stylesheets/collapse-headers.css" rel="stylesheet">
 
         
             <link  rel="icon" type="image/x-icon" href="../../../media/headshot.png">
@@ -489,22 +490,42 @@
 <p>This project was focused on learning the command line interface of Linux and MacOS. Since Linux is the backbone of networks, IoT systems, and most servers, a strong understanding of the CLI is essential for working with networks. </p>
 <p>The project included various small activities to teach the class about the CLI, including:</p>
 <ul>
-<li>Map the Maze Part I: Conceptual overview of file system and introduction to CLI commands.</li>
-<li>Map the Maze Part II: </li>
-<li>House Activity </li>
+<li>
+<p><a href="#map-the-maze-part-i"><strong>Map the Maze Part I:</strong> Conceptual overview of file system and introduction to CLI commands.</a></p>
+</li>
+<li>
+<p><a href="#ubuntu-cli-tutorial"><strong>Ubuntu CLI Tutorial:</strong> Practice with using CLI commands in an Ubuntu VM</a></p>
+</li>
+<li>
+<p><a href="#map-the-maze-part-ii"><strong>Map the Maze Part II:</strong> Technical exploration of using CLI commands in Ubuntu, MacOS, and how to share files between a host and VM</a></p>
+</li>
+<li>
+<p><a href="#house-activity"><strong>House Activity:</strong> Practice using CLI commands to navigate a "house" through the terminal to execute tasks using <code>cd</code>, <code>rm</code>, <code>ls</code>, and more.</a></p>
+</li>
+<li>
+<p><a href="#reflection"><strong>Reflection</strong></a></p>
+</li>
 </ul>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>In order to run Ubuntu, a very common Linux distribution used in servers and for personal use, on the M1 Mac minis in the computer lab, UTM was used to run it in a virtual machine (VM). </p>
-<p>Also, MKDocs had to be installed on the Mac minis in order to build documentation and push it to GitHub. Unfortunately, simply running <strong>pip3 install mkdocs</strong> installed the mkdocs package installed it at ~/Library/Python/3.12, the user-specific folder that hosts packages tied to the system-wide python. However, by default, ZSH does not know about this folder, so the ZSH configuration profile had to be edited to point to this folder. Anytime mkdocs needed to be run, <strong>python3 -m mkdocs</strong> had to be specified rather than just being able to run <strong>mkdocs</strong>. To fix this issue, the process was:</p>
+<p>In order to run Ubuntu on the M1 Mac minis in the computer lab, UTM was installed and Ubuntu was run inside a VM using Ubuntu with UTM, QEMU, and Apple Hypervisor for Apple Silicon.</p>
+<p>Also, MKDocs had to be installed on the Mac minis in order to build documentation and push it to GitHub. Unfortunately, simply running <code>pip3 install mkdocs</code> installed the mkdocs package installed it at ~/Library/Python/3.12, the user-specific folder that hosts packages tied to the system-wide python. However, by default, ZSH does not know about this folder, so the ZSH configuration profile had to be edited to point to this folder. Anytime mkdocs needed to be run, <code>python3 -m mkdocs</code> had to be specified rather than just being able to run <code>mkdocs</code>. To fix this issue, the process was:</p>
 <ul>
-<li>Type <strong>find ~/Library/Python -name mkdocs</strong>  to find the specific path where mkdocs is installed. It should return <strong>/Users/<em>username</em>/Library/Python/3.xx/bin/mkdocs</strong></li>
-<li>Open the ZSH configuration file with <strong>nano ~/.zshrc</strong>, then add this line: <strong>export PATH="$HOME/Library/Python/3.xx/bin:$PATH"</strong></li>
-<li>Refresh the ZSH profile with <strong>source ~/.zshrc</strong></li>
-<li>Run <strong>mkdocs --version</strong> to confirm it works. It should return something like <strong>mkdocs, version 1.6.1 from /Users/<em>username</em>/Library/Python/3.xx/lib/python/site-packages/mkdocs (Python 3.xx)</strong></li>
-<li>Now, mkdocs commands can be directly run without typing <strong>python3 -m mkdocs</strong>.</li>
+<li>
+<p>Type <code>find ~/Library/Python -name mkdocs</code>  to find the specific path where mkdocs is installed. It should return <code>/Users/*username*/Library/Python/3.xx/bin/mkdocs</code></p>
+</li>
+<li>
+<p>Open the ZSH configuration file with <code>nano ~/.zshrc</code>, then add this line: <code>export PATH="$HOME/Library/Python/3.xx/bin:$PATH"</code></p>
+</li>
+<li>
+<p>Refresh the ZSH profile with <strong>source ~/.zshrc</strong></p>
+</li>
+<li>
+<p>Run <code>mkdocs --version</code> to confirm it works. It should return something like <code>mkdocs, version 1.6.1 from /Users/*username*/Library/Python/3.xx/lib/python/site-packages/mkdocs (Python 3.xx)</code></p>
+</li>
 </ul>
-<h2 id="map-the-maze-part-i-">Map the Maze Part I -</h2>
-<p>This assignment was an introduction to the file system of a computer. Important terms include:</p>
+<p>After completing these steps, MKDocs commands should be able to run by simply specifying <code>mkdocs</code> + command (build, serve, gh-deploy, etc.) rather than writing out <code>python3 -m mkdocs</code>. Although functionality remains unchanged, MKDocs is much easier and more convenient to work with after making these changes.</p>
+<h2 class="collapsible" id="map-the-maze-part-i">Map the Maze Part I</h2>
+<p>This assignment was an introduction to the file system of a computer. Important terms learned in this assignment include:</p>
 <table>
 <thead>
 <tr>
@@ -540,7 +561,204 @@
 </tbody>
 </table>
 <h3 id="drawing-a-filesystem">Drawing a Filesystem</h3>
-<p>The first activity in this assignment was to draw out a file system with the root at the top, a home folder, 3 sub-folders, and 2 sample files. </p></p>
+<p>The first activity in this assignment was to draw out a file system with the root at the top, a home folder, 3 sub-folders, and 2 sample files. </p>
+<p><img src="/courses/ap_networking/media/cli/filesystem_tree.jpg" width="400px"></p>
+<p>This section of the assignment was a simple introduction to the file system on a computer and helped in visualizing how a file system works.</p>
+<h3 id="text-based-filesystem-partner-activity">Text-Based Filesystem &amp; Partner Activity</h3>
+<p>The next activity was to type up a file system similar to the one that was drawn earlier then to trade file systems with a partner and ask them how they would find specific files in the file system. </p>
+<p><img src="/courses/ap_networking/media/cli/text_filesystem.png" width="400px"></p>
+<h3 id="macos-terminal-commands">MacOS Terminal Commands</h3>
+<p>After learning about the file system, we learned about essential MacOS/Linux commands and their purposes for the CLI, such as:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwd</code></td>
+<td>Prints working directory (absolute path)</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>Lists files and directories within the current directory</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>Changes working directory to specified directory</td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>Makes a new directory within the current working directory</td>
+</tr>
+<tr>
+<td><code>touch</code>v</td>
+<td>Makes a new file in the current working directory or an</td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>Copies specified files to a specified directory</td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>Moves specified files to a specified directory</td>
+</tr>
+<tr>
+<td><code>open</code></td>
+<td>Opens any file or folder within the directory if just a file/folder name is given, or any file on the computer if an absolute path is specified</td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>Permanently removes specified files</td>
+</tr>
+<tr>
+<td><code>rmdir</code></td>
+<td>Permanently removes specified directories</td>
+</tr>
+</tbody>
+</table>
+<h2 class="collapsible" id="ubuntu-cli-tutorial">Ubuntu CLI Tutorial</h2>
+<h2 class="collapsible" id="map-the-maze-part-ii">Map the Maze Part II</h2>
+<p>This activity was completed mostly within the Ubuntu VM and involved creating files and directories, editing them with <code>nano</code>, and transferring files between the host and VM. </p>
+<p>The instructions for the activity were:</p>
+<ul>
+<li>Run <code>pwd</code> to show current directory<ul>
+<li>Outputs <code>/home/ubuntu</code> (username is ubuntu in the VM)</li>
+</ul>
+</li>
+<li>Use <code>cd Documents</code> to enter the documents folder and run <code>pwd</code> to show path<ul>
+<li>Outputs <code>/home/ubuntu/Documents</code></li>
+</ul>
+</li>
+<li>Make a folder titled MazeGame in Documents and enter it with <code>mkdir MazeGame</code> and <code>cd MazeGame</code></li>
+<li>Create 3 clue files with <code>touch clue1.txt clue2.txt clue3.txt</code></li>
+<li>Add "Congratulations! You found the first clue." to clue1.txt with <code>nano clue1.txt</code></li>
+</ul>
+<figure>
+  <img src='/courses/ap_networking/media/cli/nano.jpeg' width='500px'>
+  <figcaption>Screenshot of the nano text editor for clue1.txt in the Ubuntu VM.</figcaption>
+</figure>
+
+<ul>
+<li>Share a file with the host by copying clue1.txt to ~/hostshare/ with <code>cp clue1.txt ~/hostshare/</code></li>
+</ul>
+<p>On the first attempt, clue1.txt did not show up on the Mac anywhere after putting in in the hostshare folder in the VM. In order to enable file sharing between the host and VM, I needed to follow the following steps:</p>
+<ul>
+<li>Make a folder anywhere on the Mac, then go into UTM settings and set that folder as the shared directory for the VM</li>
+</ul>
+<figure>
+    <img src="/courses/ap_networking/media/cli/shared_dir.jpeg" width="8000px">
+    <figcaption></figcaption>
+</figure>
+
+<ul>
+<li>
+<p>In the VM, type <code>sudo mount -t davfs http://127.0.0.1:9843/ ~/hostshare/</code> in order to set ~/hostshare as a shared directory between the host (M1 Mac mini) and the VM</p>
+</li>
+<li>
+<p>Restart the VM, then mount the shared disk inside UTM by selecting a shared folder
+<img src="/courses/ap_networking/media/cli/utm_disk.jpeg" width="1000px"></p>
+</li>
+</ul>
+<p>Once these steps were completed, files were able to be shared between the host and VM through ~/hostshare in the VM and the folder on the Mac that was selected as a shared directory in UTM's settings.</p>
+<h2 class="collapsible" id="house-sitting-activity">House Sitting Activity</h2>
+<p>The final activity in this project was the House Sitting Activity, where CLI commands were used to execute tasks within a "house" in the file system.</p>
+<h3 id="prerequisites_1">Prerequisites</h3>
+<p>Before starting, open terminal, change directories to Downloads with <code>cd Downloads</code>, then clone the project by typing <code>sudo git clone https://github.com/thewangclass/CK-Building-Content-Knowledge-Workshop</code>. Once this is completed, the house can be explored by following the instructions.</p>
+<h3 id="procedure">Procedure</h3>
+<ol>
+<li>Walk to the house and go inside.<ul>
+<li>Use <code>cd house</code></li>
+</ul>
+</li>
+<li>Where can we go?<ul>
+<li><code>ls</code> returns bedroom1, bedroom2, garage, kitchen, and main_entrance</li>
+</ul>
+</li>
+<li>Go inside the main entrance<ul>
+<li>Use <code>cd main_entrance</code></li>
+</ul>
+</li>
+<li>See if there is anything around in the main entrance, such as instructions.<ul>
+<li><code>ls</code> returns instructions.txt, unopened_mail1.txt, unopened_mail2.txt, unopened_mail3.txt, and shoerack</li>
+</ul>
+</li>
+<li>Open the instructions.<ul>
+<li>Use <code>cat instructions.txt</code> to display the contents in the terminal.</li>
+</ul>
+</li>
+<li>Leave the main entrance and go back to the house level.<ul>
+<li>Use <code>cd ..</code> to go up one level in the file system in order to access other rooms</li>
+</ul>
+</li>
+<li>Go inside the kitchen<ul>
+<li>Use <code>cd kitchen</code></li>
+</ul>
+</li>
+<li>Check out what's inside the kitchen.<ul>
+<li><code>ls</code> returns apple, banana, cereal, crackers, donut, milk, orange</li>
+</ul>
+</li>
+<li>"Eat" 2 items of food by removing them.<ul>
+<li>Use <code>rm -r apple donut</code> to remove them. The <code>-r</code> argument after <code>rm</code> tells the <code>rm</code> command to act recursively and remove all of the arguments, not just the first one.</li>
+</ul>
+</li>
+<li>You smell something, but you cannot see it. Find out what it is.<ul>
+<li>Use <code>ls -a</code> in order to list all files, including hidden ones. This reveals everything from just writing <code>ls</code>, but also includes .rotten_bananas, a hidden file (files beginning with a period are hidden).</li>
+</ul>
+</li>
+<li>Throw away the bananas.<ul>
+<li>Use <code>rm .rotten_bananas</code> to delete the file</li>
+</ul>
+</li>
+<li>Check the bedrooms to make sure everything is okay.<ul>
+<li>Use <code>cd ..</code> to move up one level, then use <code>cd bedroom1</code> to enter bedroom 1.</li>
+</ul>
+</li>
+<li>Conduct a thorough search to look for anything unusual.<ul>
+<li>Use <code>ls -a</code> to reveal everything, including hidden files. There's a hidden file titled .secret_diary.txt. Reveal the contents using <code>cat .secret_diary.txt</code></li>
+</ul>
+</li>
+<li>Now, enter bedroom 2 and explore it<ul>
+<li>Use <code>cd ..</code> to move up one level then <code>cd bedroom2</code> to enter the 2nd bedroom.</li>
+<li>Then, use <code>ls -a</code> to reveal all files. There was only regular items such as a chair, desk, and messy bed. </li>
+<li>Explore each item with <code>ls -a [name]</code> in order to list out the contents of each item. Desk should have a file titled search_desk.txt.</li>
+</ul>
+</li>
+<li>The lights just went out and you are lost. Figure out where you currently are.<ul>
+<li>Use <code>pwd</code> to print your location (directory)</li>
+</ul>
+</li>
+<li>Navigate to the garage to figure out what is wrong with the lights.<ul>
+<li>Use <code>cd ..</code> then <code>cd garage</code> to go to the garage.</li>
+</ul>
+</li>
+<li>The lights suddenly come back. What is in the garage?<ul>
+<li>Use <code>ls -a</code> to list the garage's contents. There are 3 cardboard boxes, 4 garbage bags, and a hose in the garage.</li>
+</ul>
+</li>
+<li>Remove all of the garbage as a favor to your friend. <ul>
+<li>Use <code>rm -r garbage1 garbage2 garbage3</code> to get rid of all the garbage bags. Then, <code>cd</code> into each cardboard box and see which ones have garbage in them. Use <code>rm -r</code> on whichever boxes have garbage in them to delete them.</li>
+</ul>
+</li>
+<li>Return to the main entrance.<ul>
+<li>Use <code>cd ../..</code> to go up 2 levels, then use <code>cd main_entrance</code> to enter the main entrance.</li>
+</ul>
+</li>
+<li>Leave a note for your friend.<ul>
+<li>Use <code>touch goodbye_note.txt</code> to create a file, then use <code>nano goodbye_note.txt</code> to add a message.</li>
+</ul>
+</li>
+<li>There may be a hidden room in the house that was not previously explored. Look for it. <ul>
+<li>Use <code>cd ..</code> to go up one level, then use <code>ls -a</code> to reveal all files/directories. It should reveal .hidden_basement.</li>
+<li>Enter the hidden basement with <code>cd .hidden_basement</code>, then list all files/directories with <code>ls -a</code>. This should reveal .hidden_stash.</li>
+</ul>
+</li>
+</ol>
+<h2 class="collapsible" id="reflection">Reflection</h2>
+<p>This project was a thorough introduction and exploration of the CLI for MacOS and Linux, and taught important commands such as <code>cd</code>, <code>ls</code>, and many more. The CLI is essential in networking environments since servers never have any kind of GUI to interact with. Instead, people interact with servers solely throught the CLI. Therefore, in order to work with IoT devices, servers, and basically anything related to networking, a strong grasp of how to use the CLI effectively is imperative. While working with a CLI was a bit intimidating at first, it was easy enough to get familiar with the commands and effectively carry out tasks.</p></p>
     </article>
 </section>
             <!-- endblock -->
@@ -563,6 +781,7 @@
         <script src="../../../assets/js/jquery-3.3.1.slim.min.js"></script>
         <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
         <script src="../../../assets/js/mkdocs.js"></script>
+			<script src="../../../js/collapse-headers.js" defer></script>
 			<script src="../../../search/main.js" defer></script>
 
 </body>
