@@ -4,15 +4,7 @@ This repository hosts my Engineering/Computer Science portfolio from **2022-2026
 - **Instructor access:** Barbara Morrow and Tom Dubick added as collaborators.
 
 ## About Me
-I am **Raaj Thakur**, a senior at Charlotte Latin School focusing on engineering.
-I enjoy tennis, 3D printing, and lifting weights, and plan to pursue mechanical engineering and business.
-
-## Contents
-- `/index.md` — Website landing page
-- `/senior-engineering.md` — Honors Senior Engineering portfolio
-- `/ap-networking.md` — AP Networking portfolio
-- `/engineering-projects.md` — General engineering builds and write-ups
-- `/extracurriculars.md` — Clubs, teams, and leadership
+I am **Raaj Thakur**, a senior at Charlotte Latin School focusing on engineering and business.
 
 ## How to Navigate
 Visit the **Pages site** (link above) for a clean, reader-friendly version.
