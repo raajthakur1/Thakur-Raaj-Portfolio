@@ -1,10 +1,10 @@
-# Raaj's Porfolio
+# Raaj's Portfolio
 
 Welcome to my documentation for my engineering/CS courses. 
 This site contains documentation for all of my assignments and projects. 
 
 ## Purpose
-The goal of this porfolio is to:
+The goal of this portfolio is to:
 
 - Document my assignments and projects for this course
 - Provide resources and information to future AP Networking students
@@ -16,8 +16,8 @@ The goal of this porfolio is to:
 - **[Civil Engineering](courses/civil_engineering/index.md)**
 - **[Data Analytics (Honors)](courses/data_analytics/index.md)**
 - **[Networking (AP)](courses/ap_networking/index.md)**
-- **[Advanced Topics in Engineering (Honors)](courses/senior_engineering/index.md)**
+- **[Honors Senior Engineering](courses/senior_engineering/index.md)**
 
 ---
 
-Thank you for visiting my porfolio!
+Thank you for visiting my portfolio!

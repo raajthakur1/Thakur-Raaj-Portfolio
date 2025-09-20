@@ -5,6 +5,7 @@ Welcome to my documentation for the AP Networking course for the '25 - '26 schoo
 
 - [Component Cards & Software Slips](component-cards-and-software-slips.md)
 - [Command Line Interface](cli.md)
+- [Troubleshooting](troubleshooting.md)
 
 ## Course Overview
 
