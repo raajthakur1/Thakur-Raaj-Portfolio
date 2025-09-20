@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Troubleshooting - Raaj's Engineering & CS Portfolio</title>
+        <title>Network Troubleshooting - Raaj's Engineering & CS Portfolio</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,7 +79,7 @@
             </li>
             <li class="drac-box">
                 <a href="../../.."
-                    class="
+                    class=" active 
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#courses-&-projects-collapse" aria-expanded="false">
                     Courses & Projects
@@ -120,6 +120,14 @@
             Command Line Interface
         </a>
     </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Network Troubleshooting
+        </a>
+    </li>
             </ul>
         </div>
     </li>
@@ -143,10 +151,26 @@
     </li>
                     
     <li class="drac-box-ternary">
+        <a href="../../senior_engineering/capstone/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Capstone Project
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
         <a href="../../senior_engineering/daily_log/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Daily Log
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/pen/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Pen
         </a>
     </li>
             </ul>
@@ -439,6 +463,22 @@
                     <!-- block preview -->
                     <li class="nav-item">
                             
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../cli/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../../senior_engineering/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
                     </li>
                     <!--  endblock -->
 
@@ -472,7 +512,7 @@
         <p><h1 id="troubleshooting">Troubleshooting</h1>
 <h2 id="project-introduction">Project Introduction</h2>
 <p>This project was focused on troubleshooting various aspects of networks through CLI commands. Both MacOS and Ubuntu in a VM were used. </p>
-<h2 id="important-terminology">Important Terminology</h2>
+<h2 class="collapsible" id="important-terminology">Important Terminology</h2>
 <table>
 <thead>
 <tr>
@@ -519,39 +559,93 @@
 </tr>
 </tbody>
 </table>
-<h2 id="4-step-troubleshooting-workflow">4 Step Troubleshooting Workflow</h2>
+<h2 class="collapsible" id="four-step-troubleshooting-workflow">Four Step Troubleshooting Workflow</h2>
 <ol>
-<li>
-<p>Test the Physical Connection</p>
-<ul>
+<li><strong>Test the Physical Connection</strong><ul>
 <li>Check if Wi-Fi is turned on or if Ethernet is plugged in</li>
 <li>Check Wi-Fi/Ethernet settings in MacOS/Windows/Linux</li>
 </ul>
 </li>
-<li>
-<p>Check the IP Address</p>
-<ul>
+<li><strong>Check the IP Address</strong><ul>
 <li>MacOS: Run <code>ifconfig</code>, then look for en0/en1 and make sure that at least one of them lists <code>inet: 192.168.x.x or 10.x.x.x</code></li>
 <li>Linux: Run <code>ip addr</code>, then look for en0/en1 (or enp0s if inside a VM) and make sure that at least one of them lists <code>inet: 192.168.x.x or 10.x.x.x</code></li>
 <li>If it lists 169.254.x.x, that means that the device has a <strong>self-assigned IP address</strong>, meaning it likely can't connect to the internet</li>
 </ul>
 </li>
-<li>
-<p>Test Basic Reachability</p>
-<ul>
+<li><strong>Test Basic Reachability</strong><ul>
 <li>Ping a public server from Google or Cloudflare with <code>ping -c 4 8.8.8.8</code> or <code>ping -c 4 1.1.1.1</code>, respectively, to make sure that the computer can communicate with them</li>
 <li>If this works, then the computer can connect to the internet</li>
 </ul>
 </li>
-<li>
-<p>Test the DNS</p>
-<ul>
+<li><strong>Test the DNS</strong><ul>
 <li>After confirming that <code>ping -c 4 8.8.8.8</code> works, check the DNS with <code>ping -c 4 google.com</code>. 8.8.8.8 is Google's public DNS, meaning that when you connect to 8.8.8.8, you connect to google.com, and vice versa. </li>
-<li>If the computer can connect to the IP address (8.8.8.8) but not the domain name (google.com), then there is a DNS issue</li>
+<li>If the computer can connect to the IP address (8.8.8.8) but not the domain name (google.com), then there is a DNS issue
+<br></li>
 </ul>
-<h2 id="_1"></h2>
 </li>
-</ol></p>
+</ol>
+<h2 class="collapsible" id="ip-range-meaning">IP Range Meaning</h2>
+<p>The type of IP address that is assigned to a device has a specific meaning. Below are common private IP address ranges and what they mean.</p>
+<table>
+<thead>
+<tr>
+<th><strong>IP Range</strong></th>
+<th><strong>What it Means</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.x.x</td>
+<td>Private IP common in home/school network; assigned by router/DHCP</td>
+<td>Common on Wi-Fi networks</td>
+</tr>
+<tr>
+<td>10.x.x.x</td>
+<td>Private IP common in large organizations and VMs</td>
+<td>Ubuntu VM in Bridged mode</td>
+</tr>
+<tr>
+<td>172.16-31.x.x</td>
+<td>Less common private IP</td>
+<td>Pretty rare, usually is assigned when there are a very large amount of devices on a network</td>
+</tr>
+<tr>
+<td>169.254.x.x</td>
+<td>Self-assigned IP (device could not get IP from router)</td>
+<td>Happens if Wi-Fi is on but router is unresponsive or if computer cannot communicate with router for any reason</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 class="collapsible" id="network-troubleshooting-from-macos-cli">Network Troubleshooting from MacOS CLI</h2>
+<p>When troubleshooting networks on a Mac, vital commands to know are:
+- <code>ifconfig</code>: reveals IP address and other network information
+- <code>ping</code>: tests connection
+- <code>route -n get default</code>: outputs default gateway (router) information</p>
+<h2 class="collapsible" id="network-troubleshooting-from-linux-cli">Network Troubleshooting from Linux CLI</h2>
+<p>When troubleshooting networks on Linux, vital commands to know are:
+- <code>ip addr</code>: reveals IP address and other network information
+- <code>ping</code>: tests connection
+- <code>netstat -rn</code> &amp; <code>ip route</code>: outputs default gateway (router) information</p>
+<h2 class="collapsible" id="shared-vs-bridged-network-in-utm-ubuntu">Shared vs Bridged Network in UTM (Ubuntu)</h2>
+<p>In UTM, the two major network modes are <strong>Shared</strong> and <strong>Bridged</strong>. While Shared mode <em>shares</em> the host device's IP address and appears as the host on the network, Bridged mode acts as its own separate computer with a unique IP address.</p>
+<h3 id="shared-mode-exploration">Shared Mode Exploration</h3>
+<p>I started the exploration with Shared mode. Running <code>ip addr</code> returned an IP address of <strong>192.168.64.6</strong> under enp0s1, which is standard behavior for a VM. </p>
+<p><img alt="Shared Networking Example" src="../media/troubleshooting/shared.jpeg" width="400" /></p>
+<p>The network adapter is circled in red, the IP address in blue, and the MAC address in green.</p>
+<h3 id="bridged-mode-exploration">Bridged Mode Exploration</h3>
+<p>After exploring Shared mode, I powered down the VM, edited the VM's network settings from UTM, and set network mode to Bridged and selected Emulated Network to be en1 (since the Mac mini was on Wi-Fi, not Ethernet).</p>
+<p>Running <code>ip addr</code> in the Bridged VM returned an IP address of <strong>192.168.1.132</strong> under enp0s1, which is standard behavior for a VM. Notably, the IP address was different than it was under Shared mode, exhibiting how Bridged mode makes the router think that the VM is an individual computer.</p>
+<p>After testing the IP address, basic reachability needed to be tested. This was done with <code>ping -c 4 8.8.8.8</code> (pings the Google public server 4 times). This did not work at first, but this was due to a firewall issue in Ubuntu. Running <code>sudo ufw disable</code> stopped the firewall and allowed Ubuntu to ping Google's server.</p>
+<p>Additionally, the VM in Bridged mode could ping the Mac mini's IP address, since they act as 2 separate computers. The latency between the Mac mini and the VM was considerably lower than between the VM and Google (0.838 ms vs 12.694 ms), which makes sense since the Mac mini is on the same local network as the VM.</p>
+<p>Next, the DNS needed to be tested. Running <code>ping -c 4 google.com</code> returned virtually the exact same output as <code>ping -c 4 8.8.8.8</code> (there was a very slight difference in average latency within margin of error), meaning that the DNS worked. </p>
+<h2 class="collapsible" id="reflection">Reflection</h2>
+<p>This assignment provided a strong overview of how to troubleshoot networks from MacOS and Linux. Learning CLI tools to diagnose networks is extremely important in many settings, since virtually all networking equipment is accessible solely through a CLI. The 4 step workflow is used by virtually all professionals in their industry to troubleshoot networks, so learning those skills now is very valuable.</p></p>
     </article>
 </section>
             <!-- endblock -->
