@@ -656,9 +656,17 @@
 </ul>
 <p><img alt="UFW inactive" src="../media/security-controls/ufw_off.jpeg" width="400" /> <img alt="UFW active" src="../media/security-controls/ufw_on.jpeg" width="400" /></p>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
-<p>tests
-explain risks of outdated software and open ports</p>
-<h2 class="collapsible" id="reflection">Reflection</h2></p>
+<h3 id="testing-for-disk-encryption-in-ubuntu-and-macos">Testing for Disk Encryption in Ubuntu and macOS</h3>
+<p>Disk encryption is a common method of securing devices. It makes data on the SSD/HDD unreadable by anything other than the computer that has the encryption key for the drive. Both Linux and macOS have their own encryption services: LUKS and FileVault, respectively.</p>
+<h4 id="testing-encryption-on-linux">Testing Encryption on Linux</h4>
+<p><code>lsblk -f</code> can be run to see if the disk is encrypted in Ubuntu. If the output mentions drives formatted as ext4 or vfat, that means that LUKS is off, and if it returns the type of drive as crypto_LUKS, then the drive is encrypted. My system was not encrypted, indicated by the ext4 and vfat at the bottom of the output.</p>
+<p><img alt="lsblk -f output" src="../media/security-controls/encryption.jpeg" width="400" /></p>
+<h4 id="testing-encryption-on-macos">Testing Encryption on macOS</h4>
+<p>To check FileVault (disk encryption) status on macOS, run <code>fdesetup status</code>, which either returns "FileVault is On" or "FileVault is Off". </p>
+<p><img alt="fdesetup output" src="../media/security-controls/mac_encryption.jpeg" width="400" /></p>
+<p>Without encryption, someone could physically access a device's data by removing the SSD/HDD and plugging it into their own computer (this can't be done on modern Macs since their SSDs are soldered to the board).</p>
+<h2 class="collapsible" id="reflection">Reflection</h2>
+<p>This project taught me about the many types of vulnerabilities in computers, how to secure devices, different types of social engineering attacks, and more. Through completing this project, I learned how to use the CLI to secure devices on both Linux and macOS, and about how to work with many different elements such as ports, firewalls, encryption, and more. I learned a lot about the dangers of having outdated software, and about CVE. Overall, this project provided a thorough overview of how to determine security controls for devices.</p></p>
     </article>
 </section>
             <!-- endblock -->

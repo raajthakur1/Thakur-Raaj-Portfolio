@@ -113,7 +113,23 @@ On Linux, a commonly used firewall is UFW (Uncomplicated Firewall). A firewall i
 
 ## Testing and Evaluation {.collapsible}
 
-tests
-explain risks of outdated software and open ports
+### Testing for Disk Encryption in Ubuntu and macOS
+
+Disk encryption is a common method of securing devices. It makes data on the SSD/HDD unreadable by anything other than the computer that has the encryption key for the drive. Both Linux and macOS have their own encryption services: LUKS and FileVault, respectively.
+
+#### Testing Encryption on Linux
+
+`lsblk -f` can be run to see if the disk is encrypted in Ubuntu. If the output mentions drives formatted as ext4 or vfat, that means that LUKS is off, and if it returns the type of drive as crypto_LUKS, then the drive is encrypted. My system was not encrypted, indicated by the ext4 and vfat at the bottom of the output.
+
+![lsblk -f output](media/security-controls/encryption.jpeg){ width=400 }
+
+#### Testing Encryption on macOS
+
+To check FileVault (disk encryption) status on macOS, run `fdesetup status`, which either returns "FileVault is On" or "FileVault is Off". 
+
+![fdesetup output](media/security-controls/mac_encryption.jpeg){ width=400 }
+
+Without encryption, someone could physically access a device's data by removing the SSD/HDD and plugging it into their own computer (this can't be done on modern Macs since their SSDs are soldered to the board).
 
 ## Reflection {.collapsible}
+This project taught me about the many types of vulnerabilities in computers, how to secure devices, different types of social engineering attacks, and more. Through completing this project, I learned how to use the CLI to secure devices on both Linux and macOS, and about how to work with many different elements such as ports, firewalls, encryption, and more. I learned a lot about the dangers of having outdated software, and about CVE. Overall, this project provided a thorough overview of how to determine security controls for devices.
