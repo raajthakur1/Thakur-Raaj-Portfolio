@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Bridge Building and Testing - Raaj's Engineering & CS Portfolio</title>
+        <title>Determining Security Controls for Devices - Raaj's Engineering & CS Portfolio</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,7 +98,7 @@
             <ul class="mb-5 drac-list drac-list-none">
                     
     <li class="drac-box-ternary">
-        <a href="../../ap_networking/"
+        <a href="../"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Overview
@@ -106,7 +106,7 @@
     </li>
                     
     <li class="drac-box-ternary">
-        <a href="../../ap_networking/component-cards-and-software-slips/"
+        <a href="../component-cards-and-software-slips/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Component Cards & Software Slips
@@ -114,7 +114,7 @@
     </li>
                     
     <li class="drac-box-ternary">
-        <a href="../../ap_networking/cli/"
+        <a href="../cli/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Command Line Interface
@@ -122,7 +122,7 @@
     </li>
                     
     <li class="drac-box-ternary">
-        <a href="../../ap_networking/troubleshooting/"
+        <a href="../troubleshooting/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Network Troubleshooting
@@ -130,8 +130,8 @@
     </li>
                     
     <li class="drac-box-ternary">
-        <a href="../../ap_networking/security-controls/"
-            class="
+        <a href="./"
+            class=" active 
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Determining Security Controls for Devices
         </a>
@@ -265,7 +265,7 @@
             <ul class="mb-5 drac-list drac-list-none">
                     
     <li class="drac-box-ternary">
-        <a href="../"
+        <a href="../../civil_engineering/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Overview
@@ -273,15 +273,15 @@
     </li>
                     
     <li class="drac-box-ternary">
-        <a href="./"
-            class=" active 
+        <a href="../../civil_engineering/bridge_building_and_testing/"
+            class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Bridge Building and Testing
         </a>
     </li>
                     
     <li class="drac-box-ternary">
-        <a href="../windmill_optimization/"
+        <a href="../../civil_engineering/windmill_optimization/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Windmill Design and Optimization
@@ -289,7 +289,7 @@
     </li>
                     
     <li class="drac-box-ternary">
-        <a href="../water_turbidity/"
+        <a href="../../civil_engineering/water_turbidity/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Water Turbidity Testing
@@ -474,13 +474,13 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a href="../"
+                    <a href="../troubleshooting/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a href="../windmill_optimization/"
+                    <a href="../../senior_engineering/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
@@ -517,7 +517,148 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p></p>
+        <p><h1 id="determining-security-controls-for-devices">Determining Security Controls for Devices</h1>
+<h2 id="project-introduction">Project Introduction</h2>
+<p>This project was focused on securing physical devices, specifically, patching vulnerabilities, recognizing examples of phishing, and other similar skills. Hackers and other malicious actors are constantly trying to break into devices, therefore knowing how to secure a device is vital for both personal devices and in commercial settings.</p>
+<ul>
+<li><a href="#planning-and-design"><strong>Planning and Design</strong></a></li>
+<li><a href="#technical-development"><strong>Technical Development</strong></a></li>
+<li><a href="#testing-and-evaluation"><strong>Testing and Evaluation</strong></a></li>
+<li><a href="#reflection"><strong>Reflection</strong></a></li>
+</ul>
+<h2 class="collapsible" id="planning-and-design">Planning and Design</h2>
+<p>The main objectives for this project were to identify types of attacks and recommend security controls for devices.</p>
+<h3 id="cybersecurity-basics">Cybersecurity Basics</h3>
+<p>The main purpose of cybersecurity can be represented by the CIA triad:</p>
+<ul>
+<li><strong>C</strong>onfidentiality: keeping information secret from malicious actors</li>
+<li><strong>I</strong>ntegrity: keeping information trustworthy, uncorrupted, accurate, and ensuring it hasn't been tampered with</li>
+<li><strong>A</strong>vailability: making sure that information and systems are available when needed</li>
+</ul>
+<h3 id="checking-ubuntu-in-utm">Checking Ubuntu in UTM</h3>
+<p>To ensure that Ubuntu is secure, it is vital to be on the latest release. To check the version, the command <code>uname -a</code> can be used, and should output an example similar to <code>Linux ubuntu 5.15.0-87-generic #97-Ubuntu SMP Tue Oct 3 09:52:42 UTC 2023 aarch64 aarch64 aarch64 GNU/Linux</code>. This output means that the system is running Ubuntu on a 64-bit ARM processor (makes sense since M1 is an ARM chip) with Linux Kernel Version 5.15 which was built on October 3, 2023.</p>
+<h3 id="checking-macos">Checking MacOS</h3>
+<p>A similar process can be applied to macOS, albeit, with a slightly different command. <code>system_profiler SPSoftwareDataType</code> can be used to output data such as the macOS version, kernel version, and the build number. On my M1 Pro MacBook Pro, it outputted  </p>
+<p>System Version: macOS 26.1 (25B5042k)
+      Kernel Version: Darwin 25.1.0
+      Boot Volume: Macintosh HD
+      Boot Mode: Normal
+      Computer Name: Raaj's MacBook Pro
+      User Name: Raaj Thakur (raajthakur)
+      Secure Virtual Memory: Enabled
+      System Integrity Protection: Enabled
+      Time since boot: 2 days, 12 hours, 44 minutes</p>
+<p>The main takeaways from these data is that the computer is running macOS 26.1 with Darwin 25.1.0 (Darwin is the kernel of Apple software (such as macOS, VisionOS, iOS, etc.)).</p>
+<h3 id="common-device-vulnerabilities">Common Device Vulnerabilities</h3>
+<p>Devices are very complex, and therefore have many different aspects that could be vulnerable if ignored. Common vulnerabilities include:</p>
+<ul>
+<li>
+<p><strong>Outdated OS:</strong> Outdated operating systems almost always have vulnerabilities which can be exploited by malicious actors. </p>
+</li>
+<li>
+<p><strong>Weak Passwords:</strong> Weak passwords can easily be guessed, allowing malicious actors to access sensitive data such as financial information, medical records, and more.</p>
+</li>
+<li>
+<p><strong>Open Ports:</strong> Ports are "doors" that let data in and out of a computer. More open ports are more access points that malicious actors can exploit to access data on a computer. Therefore, only ports required for functionality should be open, and unused ports should be closed. Common ports include:</p>
+<ul>
+<li>Port 80 = HTTP (hyper text transfer protocol)</li>
+<li>Port 443 = HTTPS (secure hyper text transfer protocol)</li>
+<li>Port 22 = SSH (secure shell)</li>
+<li>Port 25 = SMTP (simple mail transfer protocol)</li>
+<li>Port 110 = POP3 (retrieve mail)</li>
+<li>Port 143 = IMAP (mail on server)</li>
+<li>Port 3389 = RDP (remote desktop protocol)</li>
+<li>Port 53 = DNS (domain name system)</li>
+<li>Port 67 = DHCP (dynamic host configuration protocol)</li>
+</ul>
+</li>
+<li>
+<p><strong>Unpatched Software:</strong> Unpatched software is similar to outdated operating systems, as older versions of software often have vulnerabilities which malicious actors can use to do bad things.</p>
+</li>
+</ul>
+<h3 id="vulnerability-tracking-cve">Vulnerability Tracking (CVE)</h3>
+<p>Vulnerabilities are in virtually every software, and it is essential that these vulnerabilities are discovered and patched before hackers can exploit them. They are tracked using CVE, a standardized system for identifying and naming known vulnerabilities. Each vulnerability is assigned a unique CVE ID.</p>
+<h3 id="social-engineering-attacks">Social Engineering Attacks</h3>
+<p>Humans are usually the weakest link of the security of a device. Millions of people are targeted every day by social engineering attacks, attacks by hackers that exploit human behavior to trick them into installing malware, giving away information, or allowing hackers to directly control a system.</p>
+<p>Types of attacks include:</p>
+<ul>
+<li><strong>Phishing:</strong> Broad attacks where malicious actors send mass emails, texts, or other similar things to trick users into clicking a fraudulent link.</li>
+<li><strong>Spear Phishing:</strong> More targeted version of phishing that targets a specific group or organization.</li>
+<li><strong>Pretexting:</strong> When an attacker invents a story or identity to trick a victim to sending them money, sharing sensitive information, or granting access to a device.</li>
+<li><strong>Baiting:</strong> Offering a prize to trick a victim into doing something that installs malware or sharing sensitive information.</li>
+<li><strong>Tailgating:</strong> A physical tactic where a malicious actor follows an authorized person into a secure location, giving them access to sensitive data.</li>
+</ul>
+<h2 class="collapsible" id="technical-development">Technical Development</h2>
+<h3 id="recognizing-and-updating-outdated-software">Recognizing and Updating Outdated Software</h3>
+<p>In order to secure the VM, I checked the version of important softwares in Ubuntu, then either installed them if they weren't previously installed or updated them if they were outdated.</p>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Status</th>
+<th>What the Software Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenSSL</td>
+<td>Up to Date</td>
+<td>Encrypts network traffic</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>Up to Date</td>
+<td>Web browser</td>
+</tr>
+<tr>
+<td>LibreOffice</td>
+<td>Outdated</td>
+<td>Office software (text, spreadsheets, slideshows, etc.)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Up to Date</td>
+<td>Popular programming language that underpins many modern apps and programs</td>
+</tr>
+<tr>
+<td>Apache HTTP Server</td>
+<td>Not Installed</td>
+<td>HTTP server; important for hosting websites</td>
+</tr>
+<tr>
+<td>GIMP</td>
+<td>Not Installed</td>
+<td>Photo editing software</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>Not Installed</td>
+<td>Programming language that underpins many programs</td>
+</tr>
+<tr>
+<td>OpenSSH</td>
+<td>Up to Date</td>
+<td>Package for the SSH protocol, important for direct communication between 2 devices</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Checking and Updating OpenSSL" src="../media/security-controls/version_update.jpeg" width="400" /></p>
+<h3 id="checking-open-ports">Checking Open Ports</h3>
+<p>Open ports can be a vulnerability in a system and can easily be secured by closing them if the port is not necessary. The open ports can be checked on Linudx with <code>netstat -tuln</code>. <code>netstat</code> is a CLI tool that shows network connections, routing tables, and open ports, and the <code>-tuln</code> argument tells <code>netstat</code> to show <strong>T</strong>CP connections (<strong>t</strong>), <strong>U</strong>DP connections (<strong>u</strong>), only ports that are <strong>l</strong>istening (<strong>l</strong>), and show port <strong>n</strong>umbers instead of service names (<strong>n</strong>).</p>
+<p><img alt="Open Ports" src="../media/security-controls/ports.jpeg" width="400" /></p>
+<p>On my VM, ports 445, 139, 53, 22, 54, 9843, 631, 5353, 43433, 68, 137, 139, and 53918 were open.</p>
+<h3 id="setting-up-the-firewall-ufw">Setting up the Firewall (UFW)</h3>
+<p>On Linux, a commonly used firewall is UFW (Uncomplicated Firewall). A firewall is akin to a security guard for a computer: it decides which ports should stay open and which should be locked. To use UFW, follow the following steps:</p>
+<ul>
+<li>Install it with <code>sudo apt update &amp;&amp; sudo apt upgrade</code>, then <code>sudo apt install ufw -y</code></li>
+<li>Check UFW's status with <code>sudo ufw status</code></li>
+<li>If it returns <code>inactive</code>, then enable it with <code>sudo ufw enable</code>. At this point, UFW should be enabled</li>
+</ul>
+<p><img alt="UFW inactive" src="../media/security-controls/ufw_off.jpeg" width="400" /> <img alt="UFW active" src="../media/security-controls/ufw_on.jpeg" width="400" /></p>
+<h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
+<p>tests
+explain risks of outdated software and open ports</p>
+<h2 class="collapsible" id="reflection">Reflection</h2></p>
     </article>
 </section>
             <!-- endblock -->

@@ -128,6 +128,14 @@
             Network Troubleshooting
         </a>
     </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../ap_networking/security-controls/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Determining Security Controls for Devices
+        </a>
+    </li>
             </ul>
         </div>
     </li>
@@ -572,8 +580,29 @@
 <p>Today, I printed out two parts for my drone. Although I intend to make my final parts out of either PETG or ABS with 50-80% infill, I printed this part out of PLA since all of the printers in the lab are loaded with PLA, and since it is easier to work with. To save time, I used 15% infill, and to support overhangs, I used tree supports. </p>
 <p>After printing the parts out, I confirmed that my battery would fit in the space. The battery was a perfect fit for the space, although I was a little worried about not having enough clearance for screw heads. Although there is space in the CAD mockup, I may inset the screw heads to allow for more room. </p>
 <p>The main issues with the parts had to do with durability. The parts have long cylinders for screws to slot into and clamp down on the chassis. Although the screws will add a lot of support, the cylinders are brittle and break easily. To fix this issue, I will add fillets to the base of the cylinders. Also, the plates are pretty thin, so I will have to thicken them by 1-2 in order to reduce flexing. </p>
-<h3 id="09172025">09.17.2025</h3>
-<h2 id="october">October</h2>
+<h3 id="0917-09242025">09.17 - 09.24.2025</h3>
+<p>In this period of time, I continued work on the 3D CAD design of the drone chassis. I made significant changes in order to increase interior volume, reduce weight, increase strength, and cut down on parts.</p>
+<h3 id="0925-09292025">09.25 - 09.29.2025</h3>
+<p>I worked on a mini project to practice soldering. The project is an owl with LEDs which activate by touching a capacitive sensor on the front of the board. While the through hole components were very easy to solder, the 2 ICs on the board with small pin pitches were relatively difficult to solder.</p>
+<h3 id="09302025">09.30.2025</h3>
+<p>Today, I finished soldering all of the LEDs, then tested the board. Unfortunately, only the outside ring of lights turned on and the "eyes" did not work. This is due to an issue with an IC. I'm not sure exactly how I will fix it, but I will likely have to de-solder the chip, clean the IC, clean the pads with a solder wick and flux, then re-solder it. </p>
+<h2 class="collapsible" id="october">October</h2>
+<h3 id="10012025">10.01.2025</h3>
+<p>Today, I started setting up my Raspberry Pi 5 with the AI Hat+. I installed the latest release of Pi OS Bookworm onto a microSD card, then plugged the Pi into a monitor to configure it. I then followed <a href="https://www.raspberrypi.com/documentation/computers/ai.html">this guide</a> to set up the Pi. </p>
+<ul>
+<li>
+<p>I started off by setting up PCIe Gen 3.0 by typing <code>sudo raspi-config</code> to bring up the Raspi-Config CLI tool, then enabling PCIe Gen 3.0 speeds under Advanced Options.</p>
+</li>
+<li>
+<p>After that, I ran <code>sudo apt install hailo-all</code> in order to install the following:</p>
+<ul>
+<li>Hailo kernel device driver and firmware (allows Pi OS to communicate directly with the Hailo-8 NPU)</li>
+<li>HailoRT middleware software (runtime that handles tasks such as loading the AI model onto the chip and managing inference execution)</li>
+<li>Hailo Tappas core post-processing libraries (computer vision libraries that handle post-processing tasks such as decoding bounding boxes, converting raw data into masks, and mapping points onto human body parts)</li>
+<li><code>rpicam-apps</code> Hailo post-processing software demo stages (Pi OS's camera stack allowing for video recording, image capturing, live feeds, etc.)</li>
+</ul>
+</li>
+</ul>
 <h2 id="november">November</h2>
 <h2 id="december">December</h2>
 <h2 id="january">January</h2>

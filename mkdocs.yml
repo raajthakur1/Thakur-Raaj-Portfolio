@@ -7,6 +7,7 @@ nav:
     - Component Cards & Software Slips: courses/ap_networking/component-cards-and-software-slips.md
     - Command Line Interface: courses/ap_networking/cli.md
     - Network Troubleshooting: courses/ap_networking/troubleshooting.md
+    - Determining Security Controls for Devices: courses/ap_networking/security-controls.md
   - Honors Senior Engineering (2025-2026): 
     - Overview: courses/senior_engineering/index.md
     - Capstone Project: courses/senior_engineering/capstone.md

@@ -69,9 +69,29 @@ After printing the parts out, I confirmed that my battery would fit in the space
 
 The main issues with the parts had to do with durability. The parts have long cylinders for screws to slot into and clamp down on the chassis. Although the screws will add a lot of support, the cylinders are brittle and break easily. To fix this issue, I will add fillets to the base of the cylinders. Also, the plates are pretty thin, so I will have to thicken them by 1-2 in order to reduce flexing. 
 
-### 09.17.2025 
+### 09.17 - 09.24.2025
+In this period of time, I continued work on the 3D CAD design of the drone chassis. I made significant changes in order to increase interior volume, reduce weight, increase strength, and cut down on parts.
 
-## October
+### 09.25 - 09.29.2025
+I worked on a mini project to practice soldering. The project is an owl with LEDs which activate by touching a capacitive sensor on the front of the board. While the through hole components were very easy to solder, the 2 ICs on the board with small pin pitches were relatively difficult to solder.
+
+### 09.30.2025
+Today, I finished soldering all of the LEDs, then tested the board. Unfortunately, only the outside ring of lights turned on and the "eyes" did not work. This is due to an issue with an IC. I'm not sure exactly how I will fix it, but I will likely have to de-solder the chip, clean the IC, clean the pads with a solder wick and flux, then re-solder it. 
+
+## October {.collapsible}
+
+### 10.01.2025
+Today, I started setting up my Raspberry Pi 5 with the AI Hat+. I installed the latest release of Pi OS Bookworm onto a microSD card, then plugged the Pi into a monitor to configure it. I then followed [this guide](https://www.raspberrypi.com/documentation/computers/ai.html) to set up the Pi. 
+
+- I started off by setting up PCIe Gen 3.0 by typing `sudo raspi-config` to bring up the Raspi-Config CLI tool, then enabling PCIe Gen 3.0 speeds under Advanced Options.
+
+- After that, I ran `sudo apt install hailo-all` in order to install the following:
+    - Hailo kernel device driver and firmware (allows Pi OS to communicate directly with the Hailo-8 NPU)
+    - HailoRT middleware software (runtime that handles tasks such as loading the AI model onto the chip and managing inference execution)
+    - Hailo Tappas core post-processing libraries (computer vision libraries that handle post-processing tasks such as decoding bounding boxes, converting raw data into masks, and mapping points onto human body parts)
+    - `rpicam-apps` Hailo post-processing software demo stages (Pi OS's camera stack allowing for video recording, image capturing, live feeds, etc.)
+
+
 
 ## November
 
