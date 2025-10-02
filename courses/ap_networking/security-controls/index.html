@@ -79,7 +79,7 @@
             </li>
             <li class="drac-box">
                 <a href="../../.."
-                    class="
+                    class=" active 
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#courses-&-projects-collapse" aria-expanded="false">
                     Courses & Projects
@@ -130,8 +130,8 @@
     </li>
                     
     <li class="drac-box-ternary">
-        <a href="../security-controls.md"
-            class="
+        <a href="./"
+            class=" active 
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Determining Security Controls for Devices
         </a>
@@ -471,6 +471,22 @@
                     <!-- block preview -->
                     <li class="nav-item">
                             
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../troubleshooting/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../../senior_engineering/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
                     </li>
                     <!--  endblock -->
 
@@ -505,12 +521,42 @@
 <h2 id="project-introduction">Project Introduction</h2>
 <p>This project was focused on securing physical devices, specifically, patching vulnerabilities, recognizing examples of phishing, and other similar skills. Hackers and other malicious actors are constantly trying to break into devices, therefore knowing how to secure a device is vital for both personal devices and in commercial settings.</p>
 <ul>
-<li><a href="#planning-and-design"><strong>Planning and Design:</strong></a></li>
-<li><a href="#technical-development"><strong>Technical Development:</strong></a></li>
-<li><a href="#testing-and-evaluation"><strong>Testing and Evaluation:</strong></a></li>
-<li><a href="#reflection"><strong>Reflection:</strong></a></li>
+<li><a href="#planning-and-design"><strong>Planning and Design</strong></a></li>
+<li><a href="#technical-development"><strong>Technical Development</strong></a></li>
+<li><a href="#testing-and-evaluation"><strong>Testing and Evaluation</strong></a></li>
+<li><a href="#reflection"><strong>Reflection</strong></a></li>
 </ul>
 <h2 class="collapsible" id="planning-and-design">Planning and Design</h2>
+<p>The main objectives for this project were to identify types of attacks and recommend security controls for devices.</p>
+<h3 id="cybersecurity-basics">Cybersecurity Basics</h3>
+<p>The main purpose of cybersecurity can be represented by the CIA triad:</p>
+<ul>
+<li><strong>C</strong>onfidentiality: keeping information secret from malicious actors</li>
+<li><strong>I</strong>ntegrity: keeping information trustworthy, uncorrupted, accurate, and ensuring it hasn't been tampered with</li>
+<li><strong>A</strong>vailability: making sure that information and systems are available when needed</li>
+</ul>
+<h3 id="checking-ubuntu-in-utm">Checking Ubuntu in UTM</h3>
+<p>To ensure that Ubuntu is secure, it is vital to be on the latest release. To check the version, the command <code>uname -a</code> can be used, and should output an example similar to <code>Linux ubuntu 5.15.0-87-generic #97-Ubuntu SMP Tue Oct 3 09:52:42 UTC 2023 aarch64 aarch64 aarch64 GNU/Linux</code>. This output means that the system is running Ubuntu on a 64-bit ARM processor (makes sense since M1 is an ARM chip) with Linux Kernel Version 5.15 which was built on October 3, 2023.</p>
+<h3 id="checking-macos">Checking MacOS</h3>
+<p>A similar process can be applied to macOS, albeit, with a slightly different command. <code>system_profiler SPSoftwareDataType</code> can be used to output data such as the macOS version, kernel version, and the build number. On my M1 Pro MacBook Pro, it outputted  </p>
+<p>System Version: macOS 26.1 (25B5042k)
+      Kernel Version: Darwin 25.1.0
+      Boot Volume: Macintosh HD
+      Boot Mode: Normal
+      Computer Name: Raaj's MacBook Pro
+      User Name: Raaj Thakur (raajthakur)
+      Secure Virtual Memory: Enabled
+      System Integrity Protection: Enabled
+      Time since boot: 2 days, 12 hours, 44 minutes</p>
+<p>The main takeaways from these data is that the computer is running macOS 26.1 with Darwin 25.1.0 (Darwin is the kernel of Apple software (such as macOS, VisionOS, iOS, etc.)).</p>
+<h3 id="common-device-vulnerabilities">Common Device Vulnerabilities</h3>
+<p>Devices are very complex, and therefore have many different aspects that could be vulnerable if ignored. Common vulnerabilities include:</p>
+<ul>
+<li><strong>Outdated OS:</strong></li>
+<li><strong>Weak Passwords:</strong></li>
+<li><strong>Open Ports:</strong></li>
+<li><strong>Unpatched Software:</strong></li>
+</ul>
 <h2 class="collapsible" id="technical-development">Technical Development</h2>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
 <h2 class="collapsible" id="reflection">Reflection</h2></p>
