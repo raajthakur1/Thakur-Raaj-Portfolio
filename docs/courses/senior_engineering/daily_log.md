@@ -22,11 +22,12 @@ Today, I finished my pen. I started off by using the pen press to:
 - Press the ink chamber into the top end of the lower barrel
 - Press the clip assembly into the top end of the upper barrel
 
-<img src="courses/senior_engineering/media/pen/step1.jpeg" alt="Step 1" width="300"/> <img src="courses/senior_engineering/media/pen/step2.jpeg" alt="Step 2" width="300"/>
+![Step 1](media/pen/step1.jpeg){ width=400 } ![Open Ports](media/pen/step2.jpeg){ width=400 }
+
 
 Once I pressed these components, I could assemble the main sections together. I screwed the ink refill into the ink chamber, slid the ring onto the chamber above the lower barrel, and slid the upper barrel above the ring. Once I did that, my pen was done, and it wrote super well, along with looking very cool.
 
-<img src="courses/senior_engineering/media/pen/step3.jpeg" alt="Step 3" width="300"/> <img src="courses/senior_engineering/media/pen/step4.jpeg" alt="Step 4" width="300"/> <img src="courses/senior_engineering/media/pen/drawing.jpeg" alt="Drawing" width="300"/> 
+<img src="media/pen/step3.jpeg" alt="Step 3" width="300"/> <img src="media/pen/step4.jpeg" alt="Step 4" width="300"/> <img src="media/pen/drawing.jpeg" alt="Drawing" width="300"/> 
 
 ### 09.05.2025 
 
@@ -51,7 +52,7 @@ I made sure that they were all installed, but I was unclear as to what exactly t
 - arm-none-eabi-gcc: Compiles .c code into machine code for the ARM Cortex-M family of CPUs
 - arm-none-eabi-gcc: Compiles .cpp code into machine code for the ARM Cortex-M family of CPUs
 
-Together, these toolchains work together to compile the .c and .cpp files that make up the ArduPilot source code in order to create machine code for the ARM Cortex-M CPU (STM32F7).
+Together, these toolchains work together to compile the .c and .cpp files that make up the ArduPilot source code in order to create machine code for the ARM Cortex-M CPU that powers my flight controller (STM32F767ZIT6).
 
 ### 09.09.2025
 
@@ -91,6 +92,36 @@ Today, I started setting up my Raspberry Pi 5 with the AI Hat+. I installed the 
     - Hailo Tappas core post-processing libraries (computer vision libraries that handle post-processing tasks such as decoding bounding boxes, converting raw data into masks, and mapping points onto human body parts)
     - `rpicam-apps` Hailo post-processing software demo stages (Pi OS's camera stack allowing for video recording, image capturing, live feeds, etc.)
 
+### 10.06.2025
+### 10.07.2025
+
+printed base plate v1 and front top plate, installed raspberry pi:
+- holes too big for camera not gripping screws
+- stands too weak to support camera properly
+- npu chip slightly pressing on camera --> heating up connector as well as forcing the plate to bend very slightly
+- redesigned in cad to strengthen camera plate and recess pi mounts by 0.25 mm to get rid of flexing issue
+
+### 10.08.2025
+
+found .hef file for scrfd for hailo 8, created new json in pi os for post processing, moved hef file to /usr/bin/rpi-camera-assets folder and made json point to new path rather than hailo 8l file.
+
+printed new base plate, camera is more secure and no longer any flexing issues
+
+may add ribs to reduce overall flexing/lack of structural rigidity, but will wait to use petg since it will flex less in petg w/ 67% gyroid infill
+
+### 10.09.2025
+
+did some refining in Onshape to finish up the back top part (added standoffs to sit flush with base plate) as well as searched for models to use.
+
+### 10.10.2025
+
+printed back top part
+
+stress tested new models to test overheating/throttling/melting the chassis (it got hot, but not hot enough to cause damage) by running model the whole class (45 minutes) and periodically checking to see if it was still at 30fps or if it was dropping frames. it didn't drop frames and was able to run continuously mostly thanks to the active cooler turning on its fan and blowing out the hot air. And, when the drone is flying, the pi is at the very front and will get a lot of cool fresh air to cool it down, so even in the worst case scenario, it doesn't throttle.
+
+insert video here
+
+### 10.11.2025
 
 
 ## November
