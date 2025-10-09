@@ -550,9 +550,9 @@
 <li>Press the ink chamber into the top end of the lower barrel</li>
 <li>Press the clip assembly into the top end of the upper barrel</li>
 </ul>
-<p><img src="courses/senior_engineering/media/pen/step1.jpeg" alt="Step 1" width="300"/> <img src="courses/senior_engineering/media/pen/step2.jpeg" alt="Step 2" width="300"/></p>
+<p><img alt="Step 1" src="../media/pen/step1.jpeg" width="400" /> <img alt="Open Ports" src="../media/pen/step2.jpeg" width="400" /></p>
 <p>Once I pressed these components, I could assemble the main sections together. I screwed the ink refill into the ink chamber, slid the ring onto the chamber above the lower barrel, and slid the upper barrel above the ring. Once I did that, my pen was done, and it wrote super well, along with looking very cool.</p>
-<p><img src="courses/senior_engineering/media/pen/step3.jpeg" alt="Step 3" width="300"/> <img src="courses/senior_engineering/media/pen/step4.jpeg" alt="Step 4" width="300"/> <img src="courses/senior_engineering/media/pen/drawing.jpeg" alt="Drawing" width="300"/> </p>
+<p><img src="media/pen/step3.jpeg" alt="Step 3" width="300"/> <img src="media/pen/step4.jpeg" alt="Step 4" width="300"/> <img src="media/pen/drawing.jpeg" alt="Drawing" width="300"/> </p>
 <h3 id="09052025">09.05.2025</h3>
 <p>Today, I did some research and work on my capstone project. My goal is to assemble the board as soon as possible, so today, I practiced soldering random components to practice boards to prepare for soldering intricate components on the board.</p>
 <h3 id="09082025">09.08.2025</h3>
@@ -571,7 +571,7 @@
 <li>arm-none-eabi-gcc: Compiles .c code into machine code for the ARM Cortex-M family of CPUs</li>
 <li>arm-none-eabi-gcc: Compiles .cpp code into machine code for the ARM Cortex-M family of CPUs</li>
 </ul>
-<p>Together, these toolchains work together to compile the .c and .cpp files that make up the ArduPilot source code in order to create machine code for the ARM Cortex-M CPU (STM32F7).</p>
+<p>Together, these toolchains work together to compile the .c and .cpp files that make up the ArduPilot source code in order to create machine code for the ARM Cortex-M CPU that powers my flight controller (STM32F767ZIT6).</p>
 <h3 id="09092025">09.09.2025</h3>
 <p>Today, I did some more research on how to set up the software</p>
 <h3 id="09152025">09.15.2025</h3>
@@ -603,6 +603,24 @@
 </ul>
 </li>
 </ul>
+<h3 id="10062025">10.06.2025</h3>
+<h3 id="10072025">10.07.2025</h3>
+<p>printed base plate v1 and front top plate, installed raspberry pi:
+- holes too big for camera not gripping screws
+- stands too weak to support camera properly
+- npu chip slightly pressing on camera --&gt; heating up connector as well as forcing the plate to bend very slightly
+- redesigned in cad to strengthen camera plate and recess pi mounts by 0.25 mm to get rid of flexing issue</p>
+<h3 id="10082025">10.08.2025</h3>
+<p>found .hef file for scrfd for hailo 8, created new json in pi os for post processing, moved hef file to /usr/bin/rpi-camera-assets folder and made json point to new path rather than hailo 8l file.</p>
+<p>printed new base plate, camera is more secure and no longer any flexing issues</p>
+<p>may add ribs to reduce overall flexing/lack of structural rigidity, but will wait to use petg since it will flex less in petg w/ 67% gyroid infill</p>
+<h3 id="10092025">10.09.2025</h3>
+<p>did some refining in Onshape to finish up the back top part (added standoffs to sit flush with base plate) as well as searched for models to use.</p>
+<h3 id="10102025">10.10.2025</h3>
+<p>printed back top part</p>
+<p>stress tested new models to test overheating/throttling/melting the chassis (it got hot, but not hot enough to cause damage) by running model the whole class (45 minutes) and periodically checking to see if it was still at 30fps or if it was dropping frames. it didn't drop frames and was able to run continuously mostly thanks to the active cooler turning on its fan and blowing out the hot air. And, when the drone is flying, the pi is at the very front and will get a lot of cool fresh air to cool it down, so even in the worst case scenario, it doesn't throttle.</p>
+<p>insert video here</p>
+<h3 id="10112025">10.11.2025</h3>
 <h2 id="november">November</h2>
 <h2 id="december">December</h2>
 <h2 id="january">January</h2>
