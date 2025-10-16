@@ -39,6 +39,33 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-expanded', String(!nowCollapsed));
       btn.querySelector('.chev').textContent = nowCollapsed ? '▶' : '▼';
     });
+      // Auto-expand collapsible section when navigating via anchor links
+      function expandCollapsibleFromHash() {
+        // Remove auto-expanded from all sections
+        document.querySelectorAll('.collapsible-section__wrapper.auto-expanded').forEach(function(el) {
+          el.classList.remove('auto-expanded');
+        });
+
+        const hash = window.location.hash.replace('#', '');
+        if (!hash) return;
+        // Find the header with the matching id
+        const header = document.getElementById(hash);
+        if (header && header.classList.contains('collapsible')) {
+          const section = header.nextElementSibling;
+          if (section && section.classList.contains('collapsible-section__wrapper')) {
+            section.classList.remove('collapsed');
+            section.classList.add('auto-expanded');
+            // Update toggle button state if present
+            const btn = header.querySelector('.collapse-toggle');
+            if (btn) {
+              btn.setAttribute('aria-expanded', 'true');
+              btn.querySelector('.chev').textContent = '▼';
+            }
+          }
+        }
+      }
+      window.addEventListener('hashchange', expandCollapsibleFromHash);
+      expandCollapsibleFromHash();
 
     // Clicking the header toggles (not when clicking the button itself)
     header.style.cursor = 'pointer';

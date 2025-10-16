@@ -29,3 +29,24 @@ h2 .collapse-toggle {
 h2 {
   cursor: pointer;
 }
+
+/* Highlight auto-expanded section for anchor navigation */
+.collapsible-section__wrapper.auto-expanded {
+  box-shadow: 0 0 0 2px #0078d7;
+  background: #f0f8ff;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+
+/* Smooth expand/collapse animation */
+.collapsible-section__wrapper {
+  /* expanded: allow natural height so content isn't clipped */
+  max-height: none;
+  overflow: visible;
+  transition: background 0.3s;
+}
+.collapsible-section__wrapper.collapsed {
+  /* collapsed: animate height to zero and hide overflow */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
