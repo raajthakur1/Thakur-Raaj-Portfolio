@@ -1,4 +1,4 @@
-# Advanced Topics in Engineering (H) Daily Log
+# Honors Advanced Topics in Engineering Daily Log
 
 Welcome to my daily log for engineering! Here, I will outline what I do every day in class.
 
@@ -22,16 +22,18 @@ Today, I finished my pen. I started off by using the pen press to:
 - Press the ink chamber into the top end of the lower barrel
 - Press the clip assembly into the top end of the upper barrel
 
-![Step 1](media/pen/step1.jpeg){ width=400 } ![Open Ports](media/pen/step2.jpeg){ width=400 }
+![Step 1](media/pen/step1.jpeg){ width=400 } ![Step 2](media/pen/step2.jpeg){ width=400 }
 
 
 Once I pressed these components, I could assemble the main sections together. I screwed the ink refill into the ink chamber, slid the ring onto the chamber above the lower barrel, and slid the upper barrel above the ring. Once I did that, my pen was done, and it wrote super well, along with looking very cool.
 
-<img src="media/pen/step3.jpeg" alt="Step 3" width="300"/> <img src="media/pen/step4.jpeg" alt="Step 4" width="300"/> <img src="media/pen/drawing.jpeg" alt="Drawing" width="300"/> 
+![Step 3](media/pen/step3.jpeg){ width=400 } ![Step 4](media/pen/step4.jpeg){ width=400 }
 
 ### 09.05.2025 
 
 Today, I did some research and work on my capstone project. My goal is to assemble the board as soon as possible, so today, I practiced soldering random components to practice boards to prepare for soldering intricate components on the board.
+
+![Front](media/capstone/practice_board_front.JPG){width=400} ![Back](media/capstone/practice_board_back.JPG){width=400} 
 
 ### 09.08.2025 
 
@@ -54,9 +56,11 @@ I made sure that they were all installed, but I was unclear as to what exactly t
 
 Together, these toolchains work together to compile the .c and .cpp files that make up the ArduPilot source code in order to create machine code for the ARM Cortex-M CPU that powers my flight controller (STM32F767ZIT6).
 
+![Ardupilot Environment Validation](media/capstone/ardupilot_validation.JPG) { width=400 }
+
 ### 09.09.2025
 
-Today, I did some more research on how to set up the software
+Today, I did some more research on how to set up the software. I read the ArduPilot documentation, STMicroelectronics documentation on their various apps such as STM32CubeMX, STM32CubeIDE, etc. They have many apps, so it was confusing trying to figure out exactly what purpose each app had and whether or not I needed them. The only STMicroelectronics app that I will need is the STM32CubeProgrammer which will allow me to flash the ArduPilot software to the STM32 with an ST-Link via Serial Wire Debug. 
 
 ### 09.15.2025 
 
@@ -64,17 +68,21 @@ I dedicated today to working on my GitHub documentation. Mr. Dubick taught the c
 
 ### 09.16.2025 
 
-Today, I printed out two parts for my drone. Although I intend to make my final parts out of either PETG or ABS with 50-80% infill, I printed this part out of PLA since all of the printers in the lab are loaded with PLA, and since it is easier to work with. To save time, I used 15% infill, and to support overhangs, I used tree supports. 
+Today, I printed out the chassis for my drone. Although I intend to make my final parts out of either PETG or ABS with 50-80% infill, I printed this part out of PLA since all of the printers in the lab are loaded with PLA, and since it is easier to work with. To save time, I used 15% infill, and to support overhangs, I used tree supports. 
 
 After printing the parts out, I confirmed that my battery would fit in the space. The battery was a perfect fit for the space, although I was a little worried about not having enough clearance for screw heads. Although there is space in the CAD mockup, I may inset the screw heads to allow for more room. 
 
 The main issues with the parts had to do with durability. The parts have long cylinders for screws to slot into and clamp down on the chassis. Although the screws will add a lot of support, the cylinders are brittle and break easily. To fix this issue, I will add fillets to the base of the cylinders. Also, the plates are pretty thin, so I will have to thicken them by 1-2 in order to reduce flexing. 
 
+![Chassis V1 Test](media/capstone/chassis_v1_test.JPG){ width=400 }
+
 ### 09.17 - 09.24.2025
-In this period of time, I continued work on the 3D CAD design of the drone chassis. I made significant changes in order to increase interior volume, reduce weight, increase strength, and cut down on parts.
+In this period of time, I continued work on the 3D CAD design of the drone chassis. I made many small changes in order to increase interior volume, reduce weight, increase strength, and cut down on parts.
 
 ### 09.25 - 09.29.2025
 I worked on a mini project to practice soldering. The project is an owl with LEDs which activate by touching a capacitive sensor on the front of the board. While the through hole components were very easy to solder, the 2 ICs on the board with small pin pitches were relatively difficult to solder.
+
+![Step 1](media/capstone/owl_resistors.JPG){ width=300 } ![Step 2](media/capstone/owl_capacitors.JPG){ width=300 } ![Step 3](media/capstone/owl_leds.JPG){ width=300 }
 
 ### 09.30.2025
 Today, I finished soldering all of the LEDs, then tested the board. Unfortunately, only the outside ring of lights turned on and the "eyes" did not work. This is due to an issue with an IC. I'm not sure exactly how I will fix it, but I will likely have to de-solder the chip, clean the IC, clean the pads with a solder wick and flux, then re-solder it. 
@@ -103,7 +111,10 @@ printed base plate v1 and front top plate, installed raspberry pi:
 
 ### 10.08.2025
 
-found .hef file for scrfd for hailo 8, created new json in pi os for post processing, moved hef file to /usr/bin/rpi-camera-assets folder and made json point to new path rather than hailo 8l file.
+Today, I focused on getting the AI working on the Raspberry Pi. Up to this point, I was using the pre-existing hailo_inf_fl.json file in Raspberry Pi OS that uses 3 models: [yolov8](https://docs.ultralytics.com/models/yolov8/#key-features-of-yolov8) (object detection/classification), [yolov8 pose](https://docs.ultralytics.com/models/yolov8/#key-features-of-yolov8) (pose detection), and [scrfd](https://www.insightface.ai/research/scrfd) (facial tracking). While the yolov8 models were correctly compiled for the Hailo 8 (the NPU I am using), the scrfd model was compiled for the Hailo 8L NPU, the lower performance version of the Hailo 8. This returned a warning message that I will likely experience lower performance than expected, since the model was compiled for the incorrect architecture. I wanted to get rid of this error, so I looked at the [Hailo Model Zoo Github](https://github.com/hailo-ai/hailo_model_zoo/tree/update-to-version-2.17) and looked through the models until I found the link for scrfd compiled for the Hailo 8 NPU. 
+
+Once I found the correct .hef file, I looked at the hailo_inf_fl.json file to see where the current scrfd file is located. It was located at /usr/bin/rpi-camera-assets/scrfd_2.5g.hef, so I deleted it and copied the new scrfd_2.5g.hef file to the same location to ensure that the json file would work as expected and know where to locate the model. When I re-ran `rpicam-hello -t 0 --rotation 180 --post-process-file /usr/share/rpi-camera-assets/hailo_inf_fl.json`, I no longer got the warning that the model is compiled for the wrong NPU. Although it would have previously worked fine, I wanted to ensure that everything was as optimized as possible to ensure maximum performance and the lowest power consumption possible. 
+
 
 printed new base plate, camera is more secure and no longer any flexing issues
 
@@ -113,6 +124,8 @@ may add ribs to reduce overall flexing/lack of structural rigidity, but will wai
 
 did some refining in Onshape to finish up the back top part (added standoffs to sit flush with base plate) as well as searched for models to use.
 
+also fixed owl project by taking a fine tip solder and melting the solder of the ics and melting the excess solder paste that was likely bridging some pads on the small ic. doing this made the owl work perfectly
+
 ### 10.10.2025
 
 printed back top part
@@ -121,7 +134,14 @@ stress tested new models to test overheating/throttling/melting the chassis (it 
 
 insert video here
 
-### 10.11.2025
+### 10.13.2025
+
+Today, I started off with refining my original chassis design even more. However, I was not very happy with the level of complexity of the parts They were too weak, complicated, and I decided to start fresh by designing a brand new chassis from the ground up. While the original chassis was a heavily modified version of the Source One open-source drone chassis, the new design was my own from the start and was designed around my specific hardware.
+
+My overall goals for the new chassis were to increase structural rigidity, reduce the amount of parts, increase 
+
+### 10.16.2025
+
 
 
 ## November
