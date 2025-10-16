@@ -12,6 +12,7 @@ nav:
     - Overview: courses/senior_engineering/index.md
     - Capstone Project: courses/senior_engineering/capstone.md
     - Daily Log: courses/senior_engineering/daily_log.md
+    - Owl: courses/senior_engineering/owl.md
     - Pen: courses/senior_engineering/pen.md
   - Honors Data Analytics (2025): 
     - Overview: courses/data_analytics/index.md

@@ -82,7 +82,7 @@ In this period of time, I continued work on the 3D CAD design of the drone chass
 ### 09.25 - 09.29.2025
 I worked on a mini project to practice soldering. The project is an owl with LEDs which activate by touching a capacitive sensor on the front of the board. While the through hole components were very easy to solder, the 2 ICs on the board with small pin pitches were relatively difficult to solder.
 
-![Step 1](media/capstone/owl_resistors.JPG){ width=300 } ![Step 2](media/capstone/owl_capacitors.JPG){ width=300 } ![Step 3](media/capstone/owl_leds.JPG){ width=300 }
+![Step 1](media/owl/owl_resistors.JPG){ width=300 } ![Step 2](media/owl/owl_capacitors.JPG){ width=300 } ![Step 3](media/owl/owl_leds.JPG){ width=300 }
 
 ### 09.30.2025
 Today, I finished soldering all of the LEDs, then tested the board. Unfortunately, only the outside ring of lights turned on and the "eyes" did not work. This is due to an issue with an IC. I'm not sure exactly how I will fix it, but I will likely have to de-solder the chip, clean the IC, clean the pads with a solder wick and flux, then re-solder it. 
@@ -100,8 +100,9 @@ Today, I started setting up my Raspberry Pi 5 with the AI Hat+. I installed the 
     - Hailo Tappas core post-processing libraries (computer vision libraries that handle post-processing tasks such as decoding bounding boxes, converting raw data into masks, and mapping points onto human body parts)
     - `rpicam-apps` Hailo post-processing software demo stages (Pi OS's camera stack allowing for video recording, image capturing, live feeds, etc.)
 
-### 10.06.2025
 ### 10.07.2025
+
+Today, I printed out the bottom plate for my drone, which is where most of the electronics are mounted. 
 
 printed base plate v1 and front top plate, installed raspberry pi:
 - holes too big for camera not gripping screws
