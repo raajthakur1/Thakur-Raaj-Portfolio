@@ -1,5 +1,5 @@
-# Pen
-In this project, I created a custom pen with a pen kit and wood.
+# Custom Wooden Pen
+In this project, I created a custom pen with a pen kit and wood. I used tools such as a drill, lathe, and band saw to custom make the wood accents on the pen.
 
 ## Making the Wooden Barrels
 
