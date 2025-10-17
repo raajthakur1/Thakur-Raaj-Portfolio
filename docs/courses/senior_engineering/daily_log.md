@@ -77,7 +77,7 @@ The main issues with the parts had to do with durability. The parts have long cy
 ![Chassis V1 Test](media/capstone/chassis_v1_test.JPG){ width=400 }
 
 ### 09.17 - 09.24.2025
-In this period of time, I continued work on the 3D CAD design of the drone chassis. I made many small changes in order to increase interior volume, reduce weight, increase strength, and cut down on parts.
+In this period of time, I continued work on the 3D CAD design of the drone chassis. I made many small changes in order to increase interior volume, reduce weight, increase strength, and cut down on parts. However, I never printed it out since I was not happy with the final result (and eventually I made a new design from the ground up, more on this later).
 
 ### 09.25 - 09.29.2025
 I worked on a mini project to practice soldering. The project is an owl with LEDs which activate by touching a capacitive sensor on the front of the board. While the through hole components were very easy to solder, the 2 ICs on the board with small pin pitches were relatively difficult to solder.
