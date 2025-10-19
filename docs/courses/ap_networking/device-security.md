@@ -95,18 +95,48 @@ To do so, SSH to the VM with `ssh [username]@localhost` (note: replace [username
 
 The last step in increasing the security of Ubuntu was to patch outdated software. Every computer needs regular patches to stay secure, since they fix bugs, security holes, and performance issues. This was done with the following steps:
 
-1. Check for available updates.
+1. Check for available updates:
 To list out the packages that can be updated, `sudo apt list --upgradable` was run. On my specific VM, 1158 packages were outdated and had an upgrade available.
 
 ![Checking how many packages can be updated](media/device-security/upgrade_list.jpeg){ width=400 }
 
-2. Apply the updates (patches).
+2. Apply the updates (patches):
 To install the updates, `sudo apt upgrade` was run. This installs all the updates for the packages that were listed as "upgradable".
 
-3. Check the update history to verify that the update was installed.
+3. Check the update history to verify that the update was installed:
 To verify that the update was installed, open the log file for apt with `cat /var/log/apt/history.log`. It returns the date, time, and list of packages that were updated. However, it is difficult to see a specific update due to the quantity of information in this log.
 
-4. Searching the log for a specific update.
+4. Searching the log for a specific update to ensure a specific package has been updated:
 To search for updates on a specific date, the command `grep "yyyy-mm" /var/log/apt/history.log` can be used (replace yyyy-mm with a specific year and month) to show updates in a specific month. 
+![October Updates](media/device-security/october_updates.jpeg){ width=400 } ![September Updates](media/device-security/september_updates.jpeg){ width=400 }
+<br>
+
+To show every package, software, and dependency that is installed on the system, `grep "Install:" /var/log/apt/history.log` was run. An example output is: 
+
+Install: python3:amd64 (3.10.12-0ubuntu0.22.04.1, automatic)
+
+|Part                      |Meaning                                                                    |
+|--------------------------|---------------------------------------------------------------------------|
+|Install:                  |This line lists newly installed software packages                          |
+|python3:amd64             |The name of the package (Python 3 for 64-bit architecture                  |
+|(3.10.12-Oubuntu0.22.04.1)|The version number of the package                                          |
+|automatic                 |Means the package was installed as a dependency (another program needed it)|
+
+Example output from `grep "Install:" /var/log/apt/history.log`:
+![Install log](media/device-security/install_log.jpeg){ width=400 }
+
+The output is very long and unreadable. To search for a specific package, "Install" can be replaced with the package name (nano, firefox, etc.), meaning the command would like like this: `grep "firefox" /var/lig/apt/history.log`. 
+
+To show recent updates, the last lines of history.log can be shown with `tail -n 20 /var/log/apt/history.log` (note: 20 can be replaced with the desired amount of lines (10, 20, 32, 67, 102, etc.)).
+
+![Last 20 lines of history.log](media/device-security/tail.jpeg){ width=670 }
+<br>
+
+5. Ensuring that automatic updates have been applied:
+Ubuntu schedules automatic updates. The command `ls -l /var/lib/apt/periodic` can be run to see when Ubuntu last ran an automatic update.
+
+![Checking past automatic updates](media/device-security/auto_update.jpeg){ width=400 }
 
 ## Reflection {.collapsible}
+
+In modern times, securing devices is more important than ever. As our lives become more reliant on digital tools, keeping our digital lives safe from hackers is of the utmost importance. Having secure passwords for devices and online accounts is one of the easiest ways to be protected from hackers, and everybody should consider making secure passwords. However, just having a secure password often is not enough to be safe. This is why MFA is vital, since in combination with a secure password, it makes it exceptionally difficult for a hacker to break into a system or account. Since most enterprise servers and systems are Ubuntu-based, learning how to implement these changes in Ubuntu is very helpful in many careers.

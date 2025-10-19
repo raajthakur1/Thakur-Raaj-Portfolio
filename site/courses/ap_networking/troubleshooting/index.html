@@ -136,6 +136,14 @@
             Determining Security Controls for Devices
         </a>
     </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../device-security/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Implementing Security for Devices
+        </a>
+    </li>
             </ul>
         </div>
     </li>
@@ -563,7 +571,7 @@
 </tr>
 <tr>
 <td>Ping</td>
-<td>CLI command that test communication between devices</td>
+<td>CLI command that tests communication between devices</td>
 </tr>
 <tr>
 <td>NAT/Shared Networking</td>
@@ -584,7 +592,7 @@
 </li>
 <li><strong>Check the IP Address</strong><ul>
 <li>MacOS: Run <code>ifconfig</code>, then look for en0/en1 and make sure that at least one of them lists <code>inet: 192.168.x.x or 10.x.x.x</code></li>
-<li>Linux: Run <code>ip addr</code>, then look for en0/en1 (or enp0s if inside a VM) and make sure that at least one of them lists <code>inet: 192.168.x.x or 10.x.x.x</code></li>
+<li>Linux: Run <code>ip addr</code>, then look for interfaces named like <code>enpXsY</code> (for example, <code>enp0s3</code> or <code>enp0s1</code>), which are common on modern Linux systems, and make sure that at least one of them lists <code>inet: 192.168.x.x or 10.x.x.x</code></li>
 <li>If it lists 169.254.x.x, that means that the device has a <strong>self-assigned IP address</strong>, meaning it likely can't connect to the internet</li>
 </ul>
 </li>
@@ -622,7 +630,7 @@
 <td>Ubuntu VM in Bridged mode</td>
 </tr>
 <tr>
-<td>172.16-31.x.x</td>
+<td>172.16.x.x – 172.31.x.x</td>
 <td>Less common private IP</td>
 <td>Pretty rare, usually is assigned when there are a very large amount of devices on a network</td>
 </tr>
@@ -647,7 +655,8 @@
 <p>When troubleshooting networks on Linux, vital commands to know are:
 - <code>ip addr</code>: reveals IP address and other network information
 - <code>ping</code>: tests connection
-- <code>netstat -rn</code> &amp; <code>ip route</code>: outputs default gateway (router) information</p>
+- <code>ip route</code>: outputs default gateway (router) information (preferred modern command)
+- <code>netstat -rn</code>: also outputs routing information, but may not be installed by default on modern Linux distributions</p>
 <h2 class="collapsible" id="shared-vs-bridged-network-in-utm-ubuntu">Shared vs Bridged Network in UTM (Ubuntu)</h2>
 <p>In UTM, the two major network modes are <strong>Shared</strong> and <strong>Bridged</strong>. While Shared mode <em>shares</em> the host device's IP address and appears as the host on the network, Bridged mode acts as its own separate computer with a unique IP address.</p>
 <h3 id="shared-mode-exploration">Shared Mode Exploration</h3>
@@ -658,6 +667,9 @@
 <p>After exploring Shared mode, I powered down the VM, edited the VM's network settings from UTM, and set network mode to Bridged and selected Emulated Network to be en1 (since the Mac mini was on Wi-Fi, not Ethernet).</p>
 <p>Running <code>ip addr</code> in the Bridged VM returned an IP address of <strong>192.168.1.132</strong> under enp0s1, which is standard behavior for a VM. Notably, the IP address was different than it was under Shared mode, exhibiting how Bridged mode makes the router think that the VM is an individual computer.</p>
 <p>After testing the IP address, basic reachability needed to be tested. This was done with <code>ping -c 4 8.8.8.8</code> (pings the Google public server 4 times). This did not work at first, but this was due to a firewall issue in Ubuntu. Running <code>sudo ufw disable</code> stopped the firewall and allowed Ubuntu to ping Google's server.</p>
+<blockquote>
+<p><strong>Caution:</strong> Disabling the firewall with <code>sudo ufw disable</code> is not recommended in production environments, as it can expose your system to security risks. Only disable the firewall temporarily for troubleshooting, and re-enable it (<code>sudo ufw enable</code>) when finished.</p>
+</blockquote>
 <p>Additionally, the VM in Bridged mode could ping the Mac mini's IP address, since they act as 2 separate computers. The latency between the Mac mini and the VM was considerably lower than between the VM and Google (0.838 ms vs 12.694 ms), which makes sense since the Mac mini is on the same local network as the VM.</p>
 <p>Next, the DNS needed to be tested. Running <code>ping -c 4 google.com</code> returned virtually the exact same output as <code>ping -c 4 8.8.8.8</code> (there was a very slight difference in average latency within margin of error), meaning that the DNS worked. </p>
 <h2 class="collapsible" id="reflection">Reflection</h2>
