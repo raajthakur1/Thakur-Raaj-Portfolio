@@ -143,7 +143,11 @@ My overall goals for the new chassis were to increase structural rigidity, reduc
 
 ### 10.16.2025
 
+I dedicated today to working on my portfolio and catching up on my daily log. I also created pages for the smaller projects such as the pen and owl. 
 
+### 10.17.2025
+
+Today, Mr. Dubick taught us how to use Jekyll and GitHub pages. Although I currently use MKDocs for my portfolio, it's useful to know how to use Jekyll in case I want to 
 
 ## November
 

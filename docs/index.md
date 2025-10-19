@@ -14,8 +14,8 @@ The goal of this portfolio is to:
 - **[Engineering I](courses/engineering_1/index.md)**
 - **[Engineering II](courses/engineering_2/index.md)**
 - **[Civil Engineering](courses/civil_engineering/index.md)**
-- **[Data Analytics (Honors)](courses/data_analytics/index.md)**
-- **[Networking (AP)](courses/ap_networking/index.md)**
+- **[Honors Data Analytics](courses/data_analytics/index.md)**
+- **[AP Networking](courses/ap_networking/index.md)**
 - **[Honors Senior Engineering](courses/senior_engineering/index.md)**
 
 ---

@@ -7,6 +7,7 @@ Welcome to my documentation for the AP Networking course for the '25 - '26 schoo
 - [Command Line Interface](cli.md)
 - [Troubleshooting](troubleshooting.md)
 - [Determining Security Controls for Devices](security-controls.md)
+- [Implementing Security for Devices](device-security.md)
 
 ## Course Overview
 
