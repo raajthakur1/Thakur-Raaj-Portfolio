@@ -593,8 +593,20 @@
 <p><img alt="Step10" src="../media/pcb_milling/step10.png" width="300" /> <img alt="Step11" src="../media/pcb_milling/step11.png" width="300" /> <img alt="Step12" src="../media/pcb_milling/step12.png" width="300" /> <img alt="Step13" src="../media/pcb_milling/step13.png" width="300" /></p>
 <p>Once I created the 3 different toolpaths, I exported them to a <a href="../media/pcb_milling/Board.nc">.nc (GCode) file</a> so I could import it into the Carvera Controller application.</p>
 <p><img alt="Step14" src="../media/pcb_milling/step14.png" width="600" /></p>
-<h2 class="collapsible" id="milling-the-board-with-the-cnc-machine-using-carvera-controller">Milling the Board with the CNC Machine using Carvera Controller</h2>
-<p>After I successfully created a GCode file for the CNC machine, I had to mill the board out. To do so, I obtained a blank PCB that matched the dimensions I specified in Makera CAM (127mm x 101mm x 1.7mm), then I put it in the machine and clamped it down.</p></p>
+<h2 class="collapsible" id="milling-the-board-with-the-cnc-machine-using-carvera-controller-workflow">Milling the Board with the CNC Machine using Carvera Controller (Workflow)</h2>
+<p>After I successfully created a GCode file for the CNC machine, I had to mill the board out. To do so, I obtained a blank PCB that matched the dimensions I specified in Makera CAM (127mm x 101mm x 1.7mm), then I put it in the machine and clamped it down.</p>
+<p>After doing so, I used the Carvera Controller Software to load my GCode and start the job. To do so, I followed this workflow:</p>
+<ol>
+<li>Open Carvera Controller and connect to the CNC via USB</li>
+<li>Before doing anything, ensure that the probe is charged to at least 3.6V under "Tool Status and Control"</li>
+<li>In the top right corner, click "Switch to Display Manual Control Interface," then click the "Home" button</li>
+<li>In the bottom left corner, open the GCode file from the computer. </li>
+<li>To check that everything is correct, click "Switch to Display File Preview Interface" in order to preview the toolpath</li>
+<li>If everything looks as expected, click "Config and Run" and ensure that the options for "auto vacuum" and "auto leveling" are enabled.</li>
+<li>Once everything looks good, click "run."</li>
+</ol>
+<p>After following these steps, the machine took ~30 minutes to mill out my board. After it was done, all I had to do was break the 3 tabs that I set, and I was done!</p>
+<p><img alt="Finished Board" src="../media/pcb_milling/finished_board.png" /></p></p>
     </article>
 </section>
             <!-- endblock -->
