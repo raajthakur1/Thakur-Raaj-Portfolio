@@ -203,3 +203,19 @@ html {
   scrollbar-color: #FFFFF0 #202A3C !important;
   scrollbar-width: auto !important;
 }
+
+/* MacOS-style image styling */
+img {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 
+              0 0 1px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  margin: 8px 0 !important;
+}
+
+/* Optional: subtle hover effect */
+img:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2),
+              0 0 1px rgba(0, 0, 0, 0.1) !important;
+}
