@@ -549,6 +549,66 @@
 <li><a href="https://www.makera.com/pages/makera-cam"><strong>Makera CAM</strong></a>: Software to generate GCode from gerber and drill files</li>
 <li><a href="https://www.makera.com/pages/software#MakeraController"><strong>Carvera Controller</strong></a>: Software to control the CNC Machine</li>
 </ul>
+<h2 class="collapsible" id="workflow-for-milling-a-board-with-the-carvera-desktop-cnc-machine">Workflow for Milling a Board with the Carvera Desktop CNC Machine</h2>
+<ol>
+<li>
+<p>Open Makera CAM and open a 3-Axis project</p>
+</li>
+<li>
+<p>Edit the material settings to be a 127mm x 101mm x 1.7mm PCB</p>
+</li>
+<li>
+<p>Import the files with File &Rightarrow; Import PCB</p>
+</li>
+<li>
+<p>Select all of the imported vectors and click the letter M to move them. Set the origin to the bottom left corner and type in the coordinates (6,6) to move the bottom left corner of the vectors to (6,6) in the workspace.</p>
+</li>
+<li>
+<p>Create a 2D Pocket cut toolpath by selecting only the edge.cuts and f.cu vectors, then clicking 2D Path &Rightarrow; 2D Pocket.</p>
+</li>
+<li>
+<p>Edit the 2D Pocket settings with the following settings:</p>
+<ul>
+<li>End depth: 0.05mm</li>
+<li>Tools: 0.8mm Corn and 0.2mm*30° Engraving (metal)<ul>
+<li>Ensure that for these tools, the material selected is "PCB"</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Once these settings are applied, select "calculate," which should make a toolpath appear on the screen. If it looks right, then hide it. If not, re-do the process.</p>
+</li>
+<li>
+<p>Hide everything except for the .drl files. Then, select all of the holes and click 2D Path &Rightarrow; 2D Drilling. </p>
+</li>
+<li>
+<p>Edit the 2D Drilling settings with the following settings:</p>
+<ul>
+<li>End depth: 1.70mm</li>
+<li>Tools: 0.8mm Corn (ensure material is set to "PCB")</li>
+</ul>
+</li>
+<li>
+<p>Once these settings are applied, select "calculate," which should make a toolpath appear on the screen. If it looks right, then hide it. If not, re-do the process.</p>
+</li>
+<li>
+<p>Deselect everything, and hide all vectors except for the edge.cuts layer. Select only the inner line, then click 2D Path &Rightarrow; 2D Contour.</p>
+</li>
+<li>
+<p>Edit the 2D Contour settings with the following settings:</p>
+<ul>
+<li>End depth: 1.70mm</li>
+<li>Tools: 0.8mm Corn (ensure material is set to "PCB")</li>
+</ul>
+</li>
+<li>
+<p>Once these settings are applied, select "calculate," which should make a toolpath appear on the screen. If it looks right, then hide it. If not, re-do the process.</p>
+</li>
+<li>
+<p>Hide everything except for the 3 toolpaths. If everything looks correct, export them by clicking Export Toolpaths in the top right of the screen and selecting the 3 toolpaths. It should save a .nc file.</p>
+</li>
+</ol>
 <h2 class="collapsible" id="creating-gcode-in-makera-cam">Creating GCode in Makera CAM</h2>
 <p>At the start, Mr. Dubick provided the class with <a href="../media/pcb_milling/pcb_milling_files.zip">gerber files</a> to create the board from.</p>
 <p>Once I downloaded these files, I imported them into Makera CAM with File &Rightarrow; Import PCB. Before doing anything else, I changed the material settings to 127mm x 101mm x 1.7mm (L x W x H) since the blank PCB that I milled was that size.</p>
