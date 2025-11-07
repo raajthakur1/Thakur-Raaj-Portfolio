@@ -549,7 +549,92 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="networking-and-data-movement">Networking and Data Movement</h1></p>
+        <p><h1 id="data-movement-and-types-of-networks">Data Movement and Types of Networks</h1>
+<h2 id="project-introduction">Project Introduction</h2>
+<p>This project was focused on understanding how a LAN works, how data travels between devices on a LAN, and introducing binary, decimal, and hexadecimal numbers and their uses in networking applications.</p>
+<ul>
+<li><a href="#planning-and-design"><strong>Planning and Design</strong></a></li>
+<li><a href="#technical-development"><strong>Technical Development</strong></a></li>
+<li><a href="#testing-and-evaluation"><strong>Testing and Evaluation</strong></a></li>
+<li><a href="#reflection"><strong>Reflection</strong></a></li>
+</ul>
+<h2 class="collapsible" id="planning-and-design">Planning and Design</h2>
+<p>The main objectives for this project were to explore how Local Area Networks (LANs) enable communication between devices that are in the same environment (house, school, building, etc.), showcase how IP and MAC addresses are used to identify devices (as well as learning about their differences), and to learn to use ICMP tools to test connections and find details about devices on the LAN.</p>
+<h3 id="components-of-a-lan-and-representing-them-as-parts-of-a-city">Components of a LAN and Representing them as Parts of a City</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint Devices (Computers, Printers, Phones, etc.</td>
+<td>Endpoint Devices are devices that send or receive data across a network. They are the ones that use the network.</td>
+<td>Houses in the city who communicate with other houses</td>
+</tr>
+<tr>
+<td>Ethernet Cables and Wi-Fi</td>
+<td>The physical (Ethernet) or wireless (Wi-Fi) connections that allow data to move between devices on a network.</td>
+<td>Roads that interconnect everything</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>A device that connects multiple endpoint devices within the same network and directs</td>
+<td>Roundabout that guides traffic and ensures that everyone goes to the right location</td>
+</tr>
+<tr>
+<td>Router</td>
+<td></td>
+<td>Post office that decides which mail should stay local (within LAN) and should be mailed to other cities (Internet)</td>
+</tr>
+<tr>
+<td>Data</td>
+<td></td>
+<td>The letters and packages that people mail to each other within the city and outside the city</td>
+</tr>
+</tbody>
+</table>
+<h3 id="important-lan-terms">Important LAN Terms</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAN (Local Area Network)</td>
+<td>A network that connects endpoint devices within 1 building/campus and lets them share printers, files, and internet connections efficiently over the LAN</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>Any device (computer, printer, phone, etc.) that can send or receive data on the network. Each host has a unique IP address assigned by the router.</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>A device that connects multiple devices on the LAN. It works by learning the MAC address (hardware identifier unique to each NIC) of each device plugged in. When data comes in, the switch forwards it exclusively to the intended device.</td>
+</tr>
+<tr>
+<td>Router</td>
+<td>A device that connects the LAN to other networks and the Internet. It uses IP addresses to send incoming data to the intended device.</td>
+</tr>
+<tr>
+<td>Packet</td>
+<td>Segmented data that contains the sender's IP (return address), receiver's IP (destination), and the "payload" (the actual message/data). When packets arrive, the endpoint device reassembles it into complete data.</td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td>Unique identifier for endpoint devices on a network. Different IP address ranges mean different things (192.168.x.x and 10.x.x.x vs 169.254.x.x)</td>
+</tr>
+</tbody>
+</table>
+<h2 class="collapsible" id="technical-development">Technical Development</h2>
+<h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
+<h2 class="collapsible" id="reflection">Reflection</h2></p>
     </article>
 </section>
             <!-- endblock -->
