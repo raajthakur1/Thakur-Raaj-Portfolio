@@ -730,22 +730,77 @@
 <td>Physical and Data Link</td>
 </tr>
 <tr>
-<td class="collapsible">## Technical Development</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td class="collapsible">## Testing and Evaluation</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td class="collapsible">## Reflection</td>
-<td></td>
-<td></td>
+<td>--------------</td>
+<td>--------------------------------------------</td>
+<td>--------------------------</td>
 </tr>
 </tbody>
-</table></p>
+</table>
+<h3 id="representing-numbers-with-different-bases">Representing Numbers with Different Bases</h3>
+<p>To demonstrate how number bases work, cards representing base-10 (decimal), base-2 (binary), and base-5 were provided. The task was to represent different numerical values with the different bases.</p>
+<h4 id="base-10">Base 10</h4>
+<p>501 = 5 * 10<sup>2</sup> + 0 * 10<sup>1</sup> + 1 * 10<sup>0</sup>  = 500 + 0 + 1 = 401
+<img alt="501_B10" src="../media/networking_data_movement/501-b10.JPG" width="width" /></p>
+<p>473 = 4 * 10<sup>2</sup> + 7 * 10<sup>1</sup> + 3 * 10<sup>0</sup> = 400 + 70 + 3 = 473
+<img alt="473_B10" src="../media/networking_data_movement/473-b10.JPG" width="width" /></p>
+<p>324 = 3 * 10<sup>2</sup> + 2 * 10<sup>1</sup> + 4 * 10<sup>0</sup> = 300 + 20 + 4 = 324
+<img alt="324_B10" src="../media/networking_data_movement/324-b10.JPG" width="width" /></p>
+<h4 id="base-5">Base 5</h4>
+<p>84 (Decimal) = 3 * 5<sup>2</sup> + 1 * 5<sup>1</sup> + 4 * 5<sup>0</sup> = 300 + 50 + 4 = 314 (Base-5) = 84 (Base-10)
+<img alt="84_B5" src="../media/networking_data_movement/84-b5.JPG" width="width" /></p>
+<p>37 (Decimal) = 1 * 5² + 2 * 5¹ + 2 * 5⁰ = 25 + 10 + 2 = 122 (Base-5) = 37 (Base-10)
+<img alt="37_B5" src="../media/networking_data_movement/37-b5.JPG" width="width" /></p>
+<h2 class="collapsible" id="technical-development">Technical Development</h2>
+<p>In this section of the project, an Ubuntu VM was used to apply and verify networking concepts in the CLI. </p>
+<h3 id="using-ubuntu-to-convert-between-binary-and-decimal">Using Ubuntu to Convert Between Binary and Decimal</h3>
+<p>Converting between binary and decimal by hand is very difficult and tedious. Thankfully, the <code>bc</code> CLI tool can be used to perform the conversion. </p>
+<p>To convert from binary to decimal, the command <code>echo "obase=10; ibase=2; [Insert Binary Number]" | bc</code> and <code>echo "obase=2; 45" | bc</code> can be used to convert from binary to decimal and from decimal to binary, respectively. Below is a breakdown of these commands:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>echo</td>
+<td>Prints text</td>
+</tr>
+<tr>
+<td>"obase=10; ibase=2; 101101"</td>
+<td>The conversion formula — it tells the calculator what number base to use.</td>
+</tr>
+<tr>
+<td>obase</td>
+<td>“Output base” — the numbering system you want the result in.</td>
+</tr>
+<tr>
+<td>ibase</td>
+<td>“Input base” — the numbering system your starting number is in.</td>
+</tr>
+<tr>
+<td>bc</td>
+<td>The basic calculator program built into Ubuntu — it performs the conversion.</td>
+</tr>
+</tbody>
+</table>
+<p>Below is what these commands look like in the Ubuntu CLI:
+<img alt="BC" src="../media/networking_data_movement/bc.png" width="width" /></p>
+<h3 id="representing-network-information-as-hexadecimal-and-binary">Representing Network Information as Hexadecimal and Binary</h3>
+<p>Although decimal is easily readable by humans, computers process information in binary. Any time a computer works with decimal numbers, it first has to convert it to binary in order to do any operations with it. To see Ubuntu's IP address in binary, <code>ipcalc</code> must be installed with <code>sudo apt install ipcalc -y</code>. After installing it, run <code>ipcalc [IP address]</code> to display network information in binary.</p>
+<p><img alt="IPCalc" src="../media/networking_data_movement/ipcalc.png" width="width" /></p>
+<p>Since hexadecimal can represent up to the number 15 in each character, it can store more information in less space when compared with decimal and especially compared to binary. To view network information in hexadecimal form in Ubuntu, the command <code>printf '%02X%02X%02X%02X\n' 192 168 64 2</code>, where 192, 168, 64, and 2 should be replaced with the digits from your IP address (found with <code>ifconfig</code>).</p>
+<p>The output was C0A84002. Breaking this down:</p>
+<ul>
+<li>C0 = 192</li>
+<li>A8 = 168</li>
+<li>40 = 64</li>
+<li>02 = 2</li>
+</ul>
+<p><img alt="PrintF" src="../media/networking_data_movement/printf.png" width="width" /></p>
+<h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
+<h2 class="collapsible" id="reflection">Reflection</h2></p>
     </article>
 </section>
             <!-- endblock -->
