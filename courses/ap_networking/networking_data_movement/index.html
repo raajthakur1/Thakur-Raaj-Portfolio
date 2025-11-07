@@ -632,9 +632,120 @@
 </tr>
 </tbody>
 </table>
-<h2 class="collapsible" id="technical-development">Technical Development</h2>
-<h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
-<h2 class="collapsible" id="reflection">Reflection</h2></p>
+<h3 id="diagram-of-my-houses-lan">Diagram of My House's LAN</h3>
+<p><img alt="My House's LAN Setup" src="../media/networking_data_movement/house_lan_diagram.png" width="500" /></p>
+<p>In my house, almost everything is connected via Wi-Fi, except for the switch and Home Assistant Server that handles all of the smart home tasks in my house. Everything is directly connected to the router, which communicates with the internet and cloud services.</p>
+<h3 id="osi-model-the-seven-layers-of-networking">OSI Model - The Seven Layers of Networking</h3>
+<p>Networks are often represented by the OSI model, which consists of seven categories that encompass all networking-related tasks. They are:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Name</th>
+<th>Description</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Application</td>
+<td>An email client, web browser, or any internet-connected application (Spotify, Adobe Creative Cloud, Safari, etc.</td>
+<td>Human-computer interaction layer.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Presentation</td>
+<td>Translates data (encryption, compression)</td>
+<td>Ensures data is in a usable form.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Session</td>
+<td>Manages the connection</td>
+<td>Maintains connections and is responsible for controlling parts and sessions.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transport</td>
+<td>Breaks data into segments</td>
+<td>Transmits data using transmission protocols such as TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Network</td>
+<td>Routes packages using IP addresses</td>
+<td>Decides which physical path the data will take.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data Link</td>
+<td>Transfers frames via MAC (media access control) addresses</td>
+<td>Defines the format of data on the network.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Physical</td>
+<td>Wires, signals, routers, switches, Wi-Fi</td>
+<td>Transmits raw bit streams over the physical medium.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="osi-cards-diagram">OSI Cards Diagram</h4>
+<p>The following images showcase an activity about understanding how real-world examples are categorized into the OSI layers:</p>
+<h5 id="first-attempt">First Attempt</h5>
+<p><img alt="First Attempt at Organizing OSI Cards" src="../media/networking_data_movement/osi_att1.JPG" width="400" /> </p>
+<p>First attempt at matching OSI cards with example and ordering them correctly.</p>
+<h5 id="correct-organization">Correct Organization</h5>
+<p><img alt="Correct Organization of OSI Cards" src="../media/networking_data_movement/osi_attr.png" width="500" /></p>
+<p>Correct organization of OSI cards with their examples.</p>
+<h3 id="osi-vs-tcpip-model">OSI vs TCP/IP Model</h3>
+<table>
+<thead>
+<tr>
+<th>TCP/IP Layer</th>
+<th>Corresponding OSI Layers</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td>7 (Application), 6 (Presentation), 5 (Session)</td>
+<td>Apps, HTTP, FTP</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>4 (Transport)</td>
+<td>TCP/UDP, data segmentation</td>
+</tr>
+<tr>
+<td>Internet</td>
+<td>3 (Network)</td>
+<td>IP addressing, routing</td>
+</tr>
+<tr>
+<td>Network Access</td>
+<td>2 (Data Link), 1 (Physical)</td>
+<td>Physical and Data Link</td>
+</tr>
+<tr>
+<td class="collapsible">## Technical Development</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="collapsible">## Testing and Evaluation</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="collapsible">## Reflection</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></p>
     </article>
 </section>
             <!-- endblock -->
