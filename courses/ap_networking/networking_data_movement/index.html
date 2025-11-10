@@ -729,27 +729,22 @@
 <td>2 (Data Link), 1 (Physical)</td>
 <td>Physical and Data Link</td>
 </tr>
-<tr>
-<td>--------------</td>
-<td>--------------------------------------------</td>
-<td>--------------------------</td>
-</tr>
 </tbody>
 </table>
 <h3 id="representing-numbers-with-different-bases">Representing Numbers with Different Bases</h3>
 <p>To demonstrate how number bases work, cards representing base-10 (decimal), base-2 (binary), and base-5 were provided. The task was to represent different numerical values with the different bases.</p>
 <h4 id="base-10">Base 10</h4>
-<p>501 = 5 * 10<sup>2</sup> + 0 * 10<sup>1</sup> + 1 * 10<sup>0</sup>  = 500 + 0 + 1 = 401
-<img alt="501_B10" src="../media/networking_data_movement/501-b10.JPG" width="width" /></p>
-<p>473 = 4 * 10<sup>2</sup> + 7 * 10<sup>1</sup> + 3 * 10<sup>0</sup> = 400 + 70 + 3 = 473
-<img alt="473_B10" src="../media/networking_data_movement/473-b10.JPG" width="width" /></p>
-<p>324 = 3 * 10<sup>2</sup> + 2 * 10<sup>1</sup> + 4 * 10<sup>0</sup> = 300 + 20 + 4 = 324
-<img alt="324_B10" src="../media/networking_data_movement/324-b10.JPG" width="width" /></p>
+<p>501 = 5 * 10<sup>2</sup> + 0 * 10<sup>1</sup> + 1 * 10<sup>0</sup>  = 500 + 0 + 1 = 401</p>
+<p><img alt="501_B10" src="../media/networking_data_movement/501-b10.JPG" width="250" /></p>
+<p>473 = 4 * 10<sup>2</sup> + 7 * 10<sup>1</sup> + 3 * 10<sup>0</sup> = 400 + 70 + 3 = 473</p>
+<p><img alt="473_B10" src="../media/networking_data_movement/473-b10.JPG" width="250" /></p>
+<p>324 = 3 * 10<sup>2</sup> + 2 * 10<sup>1</sup> + 4 * 10<sup>0</sup> = 300 + 20 + 4 = 324</p>
+<p><img alt="324_B10" src="../media/networking_data_movement/324-b10.JPG" width="250" /></p>
 <h4 id="base-5">Base 5</h4>
-<p>84 (Decimal) = 3 * 5<sup>2</sup> + 1 * 5<sup>1</sup> + 4 * 5<sup>0</sup> = 300 + 50 + 4 = 314 (Base-5) = 84 (Base-10)
-<img alt="84_B5" src="../media/networking_data_movement/84-b5.JPG" width="width" /></p>
-<p>37 (Decimal) = 1 * 5² + 2 * 5¹ + 2 * 5⁰ = 25 + 10 + 2 = 122 (Base-5) = 37 (Base-10)
-<img alt="37_B5" src="../media/networking_data_movement/37-b5.JPG" width="width" /></p>
+<p>84 (Decimal) = 3 * 5<sup>2</sup> + 1 * 5<sup>1</sup> + 4 * 5<sup>0</sup> = 300 + 50 + 4 = 314 (Base-5) = 84 (Base-10)</p>
+<p><img alt="84_B5" src="../media/networking_data_movement/84-b5.JPG" width="250" /></p>
+<p>37 (Decimal) = 1 * 5² + 2 * 5¹ + 2 * 5⁰ = 25 + 10 + 2 = 122 (Base-5) = 37 (Base-10)</p>
+<p><img alt="37_B5" src="../media/networking_data_movement/37-b5.JPG" width="250" /></p>
 <h2 class="collapsible" id="technical-development">Technical Development</h2>
 <p>In this section of the project, an Ubuntu VM was used to apply and verify networking concepts in the CLI. </p>
 <h3 id="using-ubuntu-to-convert-between-binary-and-decimal">Using Ubuntu to Convert Between Binary and Decimal</h3>
@@ -785,6 +780,7 @@
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <p>Below is what these commands look like in the Ubuntu CLI:
 <img alt="BC" src="../media/networking_data_movement/bc.png" width="width" /></p>
 <h3 id="representing-network-information-as-hexadecimal-and-binary">Representing Network Information as Hexadecimal and Binary</h3>
@@ -799,8 +795,116 @@
 <li>02 = 2</li>
 </ul>
 <p><img alt="PrintF" src="../media/networking_data_movement/printf.png" width="width" /></p>
+<p>MAC addresses are also written in hexadecimal form; each pair of characters represents a byte of the device's hardware address. To find the MAC address in Ubuntu, run <code>ip addr show</code>. </p>
+<p><img alt="MAC Address in Ubuntu" src="../media/networking_data_movement/mac_address.png" width="500" /></p>
+<h3 id="exploring-lan-components-through-ubuntu">Exploring LAN Components through Ubuntu</h3>
+<p>Information about the LAN can be identified in Ubuntu through CLI commands such as <code>ifconfig</code>, <code>ping</code>, and <code>traceroute</code>. These three commands are essential for finding information about the LAN as well as troubleshooting. </p>
+<h4 id="what-each-command-does">What Each Command Does</h4>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 18%;">Command</th>
+      <th style="width: 42%;">Purpose</th>
+      <th style="width: 40%;">Example Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ifconfig</code></td>
+      <td>Shows a computer's IP address on the network</td>
+      <td>inet 192.168.1.202</td>
+    </tr>
+    <tr>
+      <td><code>ping</code></td>
+      <td>Tests if another computer or website is reachable within the LAN or over the internet</td>
+      <td>64 bytes from google.com ...</td>
+    </tr>
+    <tr>
+      <td><code>traceroute</code></td>
+      <td>Shows every step data takes to reach a destination</td>
+      <td>1 192.168.54.1 ⇒ 2 10.0.0.1 ⇒ 3 142.250.190.78, etc.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Before running any of these commands, they had to be installed on the computer with <code>sudo apt install net-tools -y</code> to install <code>ifconfig</code>, <code>sudo apt install iputils-ping -y</code> to install <code>ping</code>, and <code>sudo apt install traceroute -y</code> to install <code>traceroute</code>. </p>
+<p><code>ifconfig</code> is mainly used to display information relating how a computer connects to the LAN. It outputs information such as <strong>inet</strong>, the IP address assigned to the computer, <strong>netmask</strong>, which defines the portion of the IP address identifies the network and device, and <strong>broadcast</strong>, which is used to send messages to all devices on the same LAN. </p>
+<p><img alt="ifconfig" src="../media/networking_data_movement/ifconfig.png" width="300" /></p>
+<p>In the image above, inet, netmask, and broadcast are all outlined in red. Inet is the IP address of the computer (192.168.64.2). Netmask (255.255.255.0) defines which part of the IP address identifies the network, and which part identifies the device. When translated to binary, the netmask is 11111111.11111111.11111111.00000000. Each 1 means "network", and each 0 means "host", meaning that 192.168.64 identifies the network, and 2 identifies the device on the network. The range of valid IP addresses in the network would be anywhere from 192.168.64.1 - 192.168.64.254 (since 192.168.64.255 is the broadcast).</p>
+<p><code>ping</code> is mainly used to test internet connection and DNS. Pinging a public DNS server, such as 8.8.8.8 (Google's public DNS server) and 1.1.1.1 (Cloudflare's public DNS server), is a simple way to ensure that a computer can reach the internet. Once internet connection is verified, pinging a domain such as google.com or cloudflare.com can test the DNS. If 8.8.8.8 is reachable but google.com isn't, that means that there is an issue with the DNS. To run these commands in Ubuntu and macOS, run <code>ping -c 4 8.8.8.8</code> then <code>ping google.com</code>. In the image below, a ping was sent to google.com and other domains, but they didn't respond. So, the DNS was reset with <code>sudo resolvectl flush-caches</code>, which made google.com and cloudlfare.com reachable. After each ping, the system prints how long the data took to travel to the domain, which is a good indicator of internet speed. </p>
+<p><img alt="Ping" src="../media/networking_data_movement/ping.png" width="300" /></p>
+<p><code>traceroute</code> is used to show the route data takes to reach a destination. To test it with google.com (any domain will work), run <code>traceroute google.com</code>. This command will return a list of "hops" that show the path the data takes across routers to reach Google's server. When it was tested, the data took 23 "hops" and 55.121 ms to reach google.com. </p>
+<p><img alt="traceroute" src="../media/networking_data_movement/traceroute.png" width="300" /></p>
+<p>The data from traceroute can be confusing. Below is a table explaining what each part of the output means:</p>
+<p>|Part|What it Means|Example|
+|Hop #|The number on the left that shows how many "steps" away that device is from the computer|1, 2, 3, ...|
+|Hostname/IP Address|The name or IP of the router or device that handled the packet|10.12.16.1, 209.85.244.81, etc.|
+|ms (milliseconds)|The round-trip time (how long it took to reach that hop and come back)|209.85.244.81: 20.175 ms|
+|<em>|Stars represent a connection to a router or device that refuses to return information|</em> * *|</p>
+<p>In the example above:
+- Hop 1: *_gateway (192.168.64.1) is the local network gateway (what connects the LAN to the internet)
+- Hop 2-10: Local or ISP routers
+- Hop 11-20: Internet backbone routers (large, powerful routers moving data across regions or countries)
+- Hop 23: Google's server (64.233.176.113)</p>
+<h3 id="roadmap-representing-osi-layers">Roadmap Representing OSI Layers</h3>
+<p><img alt="Roadmap" src="../media/networking_data_movement/roadmap.png" /></p>
+<p>Reflection:
+This roadmap represents a data packet as a plane flying from an airport to another airport. It represents the different OSI layers as aspects of an airport, such as the runway being the physical layer. I think that the Transport layer is the most important since it ensures that everything arrives safely and in order. This project helped me understand how the TCP/IP model is a simplified version of the OSI model but both aim to describe how data is transferred.</p>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
-<h2 class="collapsible" id="reflection">Reflection</h2></p>
+<p>Throughout the activity, many labs were performed involving many different commands. Below, a table summarizes all of the commands used and their purpose.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Concept</strong></th>
+<th><strong>Test Performed</strong></th>
+<th><strong>Verification Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Network Path Mapping</strong></td>
+<td><code>traceroute google.com</code></td>
+<td>Successfully traced the route from the local router to Google’s servers, totaling 23 hops in roughly 3 seconds.</td>
+</tr>
+<tr>
+<td><strong>Data Exchange</strong></td>
+<td><code>netcat</code> between virtual machines</td>
+<td>Verified reliable message delivery over TCP between two VMs.</td>
+</tr>
+<tr>
+<td><strong>Binary and Decimal Conversion</strong></td>
+<td><code>bc</code> command</td>
+<td>Confirmed accurate conversions between binary and decimal formats.</td>
+</tr>
+<tr>
+<td><strong>Hexadecimal Output</strong></td>
+<td><code>printf</code> command</td>
+<td>Correctly formatted and displayed IP address as hexadecimal (e.g., <code>C0A84002</code>).</td>
+</tr>
+<tr>
+<td><strong>LAN Interface Details</strong></td>
+<td><code>ifconfig</code> command</td>
+<td>Displayed <code>inet</code>, <code>netmask</code>, and <code>broadcast</code> parameters for network interfaces.</td>
+</tr>
+<tr>
+<td><strong>Address and Range Calculation</strong></td>
+<td><code>ipcalc</code></td>
+<td>Produced valid network, broadcast, and usable host address ranges.</td>
+</tr>
+<tr>
+<td><strong>Open Port Detection</strong></td>
+<td><code>netstat</code></td>
+<td>Revealed listening ports and established TCP connections between devices.</td>
+</tr>
+<tr>
+<td><strong>Internet Reachability Test</strong></td>
+<td><code>ping google.com</code> and <code>ping 8.8.8.8</code></td>
+<td>Reported full packet reception with ~22 ms average response time.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="collapsible" id="reflection">Reflection</h2>
+<p>By working through the various labs exploring data movement, I learned how exactly data is transferred between devices, both over a LAN and through the internet. Learning about the OSI and TCP/IP models helped simplify and understand how data communication works. Designing a roadmap to visualize data transfer helped me understand OSI layers even better. Additionally, converting between binary, decimal, and hexadecimal helped me understand the different number systems and showed the different advantages of each system. By using <code>ipcalc</code>, I learned how IP addresses are represented in binary. Using <code>ping</code> and <code>traceroute</code> demonstrated the path that data takes to transfer from one system to another and demonstrated a real world application of the OSI layers.</p></p>
     </article>
 </section>
             <!-- endblock -->
