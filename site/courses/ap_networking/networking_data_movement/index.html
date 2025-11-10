@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+        <title>Networking and Data Movement - Raaj's Engineering & CS Portfolio</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        
+        
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../../../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../../../assets/css/mkdocs.min.css">
+            <link href="../../../stylesheets/extra.css" rel="stylesheet">
+            <link href="../../../stylesheets/sidebar-collapse-diamond-fix.css" rel="stylesheet">
+            <link href="../../../stylesheets/collapse-headers.css" rel="stylesheet">
+
+        
+            <link  rel="icon" type="image/x-icon" href="../../../media/headshot.png">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../../../media/headshot.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">Raaj's Engineering & CS Portfolio</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider" />
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href="../../.."
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Home
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../../.."
+                    class=" active 
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#courses-&-projects-collapse" aria-expanded="false">
+                    Courses & Projects
+                </a>
+                <div class="collapse" id="courses-&-projects-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#ap-networking-(2025-2026)-collapse" aria-expanded="false">
+            AP Networking (2025-2026)
+        </a>
+
+        <div class="collapse" id="ap-networking-(2025-2026)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../component-cards-and-software-slips/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Component Cards & Software Slips
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../cli/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Command Line Interface
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../troubleshooting/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Network Troubleshooting
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../security-controls/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Determining Security Controls for Devices
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../device-security/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Implementing Security for Devices
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Networking and Data Movement
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#honors-senior-engineering-(2025-2026)-collapse" aria-expanded="false">
+            Honors Senior Engineering (2025-2026)
+        </a>
+
+        <div class="collapse" id="honors-senior-engineering-(2025-2026)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/capstone/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Capstone Project
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/daily_log/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Daily Log
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/owl/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Owl
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/pen/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Pen
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/pcb_milling/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            PCB Milling
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#honors-data-analytics-(2025)-collapse" aria-expanded="false">
+            Honors Data Analytics (2025)
+        </a>
+
+        <div class="collapse" id="honors-data-analytics-(2025)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/excel/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Excel
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/python/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Python
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/data_cleaning/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Data Cleaning
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/bootstrapping/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Bootstrapping
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/anova/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            ANOVA
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/machine_learning/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Machine Learning
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#civil-engineering-(2024)-collapse" aria-expanded="false">
+            Civil Engineering (2024)
+        </a>
+
+        <div class="collapse" id="civil-engineering-(2024)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/bridge_building_and_testing/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Bridge Building and Testing
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/windmill_optimization/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Windmill Design and Optimization
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/water_turbidity/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Water Turbidity Testing
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#engineering-i-(2022)-collapse" aria-expanded="false">
+            Engineering I (2022)
+        </a>
+
+        <div class="collapse" id="engineering-i-(2022)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/box/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Thinking Out of the Box
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/keychain/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Easily Suede
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/3d_printing/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Plane and Simple
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/ohm_depot/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            The Ohm Depot
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/cold_solder/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            A Cold Solder
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/grab_a_byte/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Grab a Byte
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/final_project/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Final Project
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#engineering-ii-(2023)-collapse" aria-expanded="false">
+            Engineering II (2023)
+        </a>
+
+        <div class="collapse" id="engineering-ii-(2023)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/fusion360/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Deep Dive into Fusion 360
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/milling_about/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Milling About
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/pressing_charges/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Pressing Charges
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/cutting_board/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Board to be Wild
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/final_project/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Final Project
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="../../../about/"
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    About
+                </a>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+                aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../device-security/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../../senior_engineering/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
+		placeholder="Search docs" title="Type search term here" />
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p><h1 id="data-movement-and-types-of-networks">Data Movement and Types of Networks</h1>
+<h2 id="project-introduction">Project Introduction</h2>
+<p>This project was focused on understanding how a LAN works, how data travels between devices on a LAN, and introducing binary, decimal, and hexadecimal numbers and their uses in networking applications.</p>
+<ul>
+<li><a href="#planning-and-design"><strong>Planning and Design</strong></a></li>
+<li><a href="#technical-development"><strong>Technical Development</strong></a></li>
+<li><a href="#testing-and-evaluation"><strong>Testing and Evaluation</strong></a></li>
+<li><a href="#reflection"><strong>Reflection</strong></a></li>
+</ul>
+<h2 class="collapsible" id="planning-and-design">Planning and Design</h2>
+<p>The main objectives for this project were to explore how Local Area Networks (LANs) enable communication between devices that are in the same environment (house, school, building, etc.), showcase how IP and MAC addresses are used to identify devices (as well as learning about their differences), and to learn to use ICMP tools to test connections and find details about devices on the LAN.</p>
+<h3 id="components-of-a-lan-and-representing-them-as-parts-of-a-city">Components of a LAN and Representing them as Parts of a City</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint Devices (Computers, Printers, Phones, etc.</td>
+<td>Endpoint Devices are devices that send or receive data across a network. They are the ones that use the network.</td>
+<td>Houses in the city who communicate with other houses</td>
+</tr>
+<tr>
+<td>Ethernet Cables and Wi-Fi</td>
+<td>The physical (Ethernet) or wireless (Wi-Fi) connections that allow data to move between devices on a network.</td>
+<td>Roads that interconnect everything</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>A device that connects multiple endpoint devices within the same network and directs</td>
+<td>Roundabout that guides traffic and ensures that everyone goes to the right location</td>
+</tr>
+<tr>
+<td>Router</td>
+<td></td>
+<td>Post office that decides which mail should stay local (within LAN) and should be mailed to other cities (Internet)</td>
+</tr>
+<tr>
+<td>Data</td>
+<td></td>
+<td>The letters and packages that people mail to each other within the city and outside the city</td>
+</tr>
+</tbody>
+</table>
+<h3 id="important-lan-terms">Important LAN Terms</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAN (Local Area Network)</td>
+<td>A network that connects endpoint devices within 1 building/campus and lets them share printers, files, and internet connections efficiently over the LAN</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>Any device (computer, printer, phone, etc.) that can send or receive data on the network. Each host has a unique IP address assigned by the router.</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>A device that connects multiple devices on the LAN. It works by learning the MAC address (hardware identifier unique to each NIC) of each device plugged in. When data comes in, the switch forwards it exclusively to the intended device.</td>
+</tr>
+<tr>
+<td>Router</td>
+<td>A device that connects the LAN to other networks and the Internet. It uses IP addresses to send incoming data to the intended device.</td>
+</tr>
+<tr>
+<td>Packet</td>
+<td>Segmented data that contains the sender's IP (return address), receiver's IP (destination), and the "payload" (the actual message/data). When packets arrive, the endpoint device reassembles it into complete data.</td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td>Unique identifier for endpoint devices on a network. Different IP address ranges mean different things (192.168.x.x and 10.x.x.x vs 169.254.x.x)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagram-of-my-houses-lan">Diagram of My House's LAN</h3>
+<p><img alt="My House's LAN Setup" src="../media/networking_data_movement/house_lan_diagram.png" width="500" /></p>
+<p>In my house, almost everything is connected via Wi-Fi, except for the switch and Home Assistant Server that handles all of the smart home tasks in my house. Everything is directly connected to the router, which communicates with the internet and cloud services.</p>
+<h3 id="osi-model-the-seven-layers-of-networking">OSI Model - The Seven Layers of Networking</h3>
+<p>Networks are often represented by the OSI model, which consists of seven categories that encompass all networking-related tasks. They are:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Name</th>
+<th>Description</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Application</td>
+<td>An email client, web browser, or any internet-connected application (Spotify, Adobe Creative Cloud, Safari, etc.</td>
+<td>Human-computer interaction layer.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Presentation</td>
+<td>Translates data (encryption, compression)</td>
+<td>Ensures data is in a usable form.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Session</td>
+<td>Manages the connection</td>
+<td>Maintains connections and is responsible for controlling parts and sessions.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transport</td>
+<td>Breaks data into segments</td>
+<td>Transmits data using transmission protocols such as TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Network</td>
+<td>Routes packages using IP addresses</td>
+<td>Decides which physical path the data will take.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data Link</td>
+<td>Transfers frames via MAC (media access control) addresses</td>
+<td>Defines the format of data on the network.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Physical</td>
+<td>Wires, signals, routers, switches, Wi-Fi</td>
+<td>Transmits raw bit streams over the physical medium.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="osi-cards-diagram">OSI Cards Diagram</h4>
+<p>The following images showcase an activity about understanding how real-world examples are categorized into the OSI layers:</p>
+<h5 id="first-attempt">First Attempt</h5>
+<p><img alt="First Attempt at Organizing OSI Cards" src="../media/networking_data_movement/osi_att1.JPG" width="400" /> </p>
+<p>First attempt at matching OSI cards with example and ordering them correctly.</p>
+<h5 id="correct-organization">Correct Organization</h5>
+<p><img alt="Correct Organization of OSI Cards" src="../media/networking_data_movement/osi_attr.png" width="500" /></p>
+<p>Correct organization of OSI cards with their examples.</p>
+<h3 id="osi-vs-tcpip-model">OSI vs TCP/IP Model</h3>
+<table>
+<thead>
+<tr>
+<th>TCP/IP Layer</th>
+<th>Corresponding OSI Layers</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td>7 (Application), 6 (Presentation), 5 (Session)</td>
+<td>Apps, HTTP, FTP</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>4 (Transport)</td>
+<td>TCP/UDP, data segmentation</td>
+</tr>
+<tr>
+<td>Internet</td>
+<td>3 (Network)</td>
+<td>IP addressing, routing</td>
+</tr>
+<tr>
+<td>Network Access</td>
+<td>2 (Data Link), 1 (Physical)</td>
+<td>Physical and Data Link</td>
+</tr>
+</tbody>
+</table>
+<h3 id="representing-numbers-with-different-bases">Representing Numbers with Different Bases</h3>
+<p>To demonstrate how number bases work, cards representing base-10 (decimal), base-2 (binary), and base-5 were provided. The task was to represent different numerical values with the different bases.</p>
+<h4 id="base-10">Base 10</h4>
+<p>501 = 5 * 10<sup>2</sup> + 0 * 10<sup>1</sup> + 1 * 10<sup>0</sup>  = 500 + 0 + 1 = 401</p>
+<p><img alt="501_B10" src="../media/networking_data_movement/501-b10.JPG" width="250" /></p>
+<p>473 = 4 * 10<sup>2</sup> + 7 * 10<sup>1</sup> + 3 * 10<sup>0</sup> = 400 + 70 + 3 = 473</p>
+<p><img alt="473_B10" src="../media/networking_data_movement/473-b10.JPG" width="250" /></p>
+<p>324 = 3 * 10<sup>2</sup> + 2 * 10<sup>1</sup> + 4 * 10<sup>0</sup> = 300 + 20 + 4 = 324</p>
+<p><img alt="324_B10" src="../media/networking_data_movement/324-b10.JPG" width="250" /></p>
+<h4 id="base-5">Base 5</h4>
+<p>84 (Decimal) = 3 * 5<sup>2</sup> + 1 * 5<sup>1</sup> + 4 * 5<sup>0</sup> = 300 + 50 + 4 = 314 (Base-5) = 84 (Base-10)</p>
+<p><img alt="84_B5" src="../media/networking_data_movement/84-b5.JPG" width="250" /></p>
+<p>37 (Decimal) = 1 * 5² + 2 * 5¹ + 2 * 5⁰ = 25 + 10 + 2 = 122 (Base-5) = 37 (Base-10)</p>
+<p><img alt="37_B5" src="../media/networking_data_movement/37-b5.JPG" width="250" /></p>
+<h2 class="collapsible" id="technical-development">Technical Development</h2>
+<p>In this section of the project, an Ubuntu VM was used to apply and verify networking concepts in the CLI. </p>
+<h3 id="using-ubuntu-to-convert-between-binary-and-decimal">Using Ubuntu to Convert Between Binary and Decimal</h3>
+<p>Converting between binary and decimal by hand is very difficult and tedious. Thankfully, the <code>bc</code> CLI tool can be used to perform the conversion. </p>
+<p>To convert from binary to decimal, the command <code>echo "obase=10; ibase=2; [Insert Binary Number]" | bc</code> and <code>echo "obase=2; 45" | bc</code> can be used to convert from binary to decimal and from decimal to binary, respectively. Below is a breakdown of these commands:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>echo</td>
+<td>Prints text</td>
+</tr>
+<tr>
+<td>"obase=10; ibase=2; 101101"</td>
+<td>The conversion formula — it tells the calculator what number base to use.</td>
+</tr>
+<tr>
+<td>obase</td>
+<td>“Output base” — the numbering system you want the result in.</td>
+</tr>
+<tr>
+<td>ibase</td>
+<td>“Input base” — the numbering system your starting number is in.</td>
+</tr>
+<tr>
+<td>bc</td>
+<td>The basic calculator program built into Ubuntu — it performs the conversion.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Below is what these commands look like in the Ubuntu CLI:
+<img alt="BC" src="../media/networking_data_movement/bc.png" width="width" /></p>
+<h3 id="representing-network-information-as-hexadecimal-and-binary">Representing Network Information as Hexadecimal and Binary</h3>
+<p>Although decimal is easily readable by humans, computers process information in binary. Any time a computer works with decimal numbers, it first has to convert it to binary in order to do any operations with it. To see Ubuntu's IP address in binary, <code>ipcalc</code> must be installed with <code>sudo apt install ipcalc -y</code>. After installing it, run <code>ipcalc [IP address]</code> to display network information in binary.</p>
+<p><img alt="IPCalc" src="../media/networking_data_movement/ipcalc.png" width="width" /></p>
+<p>Since hexadecimal can represent up to the number 15 in each character, it can store more information in less space when compared with decimal and especially compared to binary. To view network information in hexadecimal form in Ubuntu, the command <code>printf '%02X%02X%02X%02X\n' 192 168 64 2</code>, where 192, 168, 64, and 2 should be replaced with the digits from your IP address (found with <code>ifconfig</code>).</p>
+<p>The output was C0A84002. Breaking this down:</p>
+<ul>
+<li>C0 = 192</li>
+<li>A8 = 168</li>
+<li>40 = 64</li>
+<li>02 = 2</li>
+</ul>
+<p><img alt="PrintF" src="../media/networking_data_movement/printf.png" width="width" /></p>
+<p>MAC addresses are also written in hexadecimal form; each pair of characters represents a byte of the device's hardware address. To find the MAC address in Ubuntu, run <code>ip addr show</code>. </p>
+<p><img alt="MAC Address in Ubuntu" src="../media/networking_data_movement/mac_address.png" width="500" /></p>
+<h3 id="exploring-lan-components-through-ubuntu">Exploring LAN Components through Ubuntu</h3>
+<p>Information about the LAN can be identified in Ubuntu through CLI commands such as <code>ifconfig</code>, <code>ping</code>, and <code>traceroute</code>. These three commands are essential for finding information about the LAN as well as troubleshooting. </p>
+<h4 id="what-each-command-does">What Each Command Does</h4>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 18%;">Command</th>
+      <th style="width: 42%;">Purpose</th>
+      <th style="width: 40%;">Example Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ifconfig</code></td>
+      <td>Shows a computer's IP address on the network</td>
+      <td>inet 192.168.1.202</td>
+    </tr>
+    <tr>
+      <td><code>ping</code></td>
+      <td>Tests if another computer or website is reachable within the LAN or over the internet</td>
+      <td>64 bytes from google.com ...</td>
+    </tr>
+    <tr>
+      <td><code>traceroute</code></td>
+      <td>Shows every step data takes to reach a destination</td>
+      <td>1 192.168.54.1 ⇒ 2 10.0.0.1 ⇒ 3 142.250.190.78, etc.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Before running any of these commands, they had to be installed on the computer with <code>sudo apt install net-tools -y</code> to install <code>ifconfig</code>, <code>sudo apt install iputils-ping -y</code> to install <code>ping</code>, and <code>sudo apt install traceroute -y</code> to install <code>traceroute</code>. </p>
+<p><code>ifconfig</code> is mainly used to display information relating how a computer connects to the LAN. It outputs information such as <strong>inet</strong>, the IP address assigned to the computer, <strong>netmask</strong>, which defines the portion of the IP address identifies the network and device, and <strong>broadcast</strong>, which is used to send messages to all devices on the same LAN. </p>
+<p><img alt="ifconfig" src="../media/networking_data_movement/ifconfig.png" width="300" /></p>
+<p>In the image above, inet, netmask, and broadcast are all outlined in red. Inet is the IP address of the computer (192.168.64.2). Netmask (255.255.255.0) defines which part of the IP address identifies the network, and which part identifies the device. When translated to binary, the netmask is 11111111.11111111.11111111.00000000. Each 1 means "network", and each 0 means "host", meaning that 192.168.64 identifies the network, and 2 identifies the device on the network. The range of valid IP addresses in the network would be anywhere from 192.168.64.1 - 192.168.64.254 (since 192.168.64.255 is the broadcast).</p>
+<p><code>ping</code> is mainly used to test internet connection and DNS. Pinging a public DNS server, such as 8.8.8.8 (Google's public DNS server) and 1.1.1.1 (Cloudflare's public DNS server), is a simple way to ensure that a computer can reach the internet. Once internet connection is verified, pinging a domain such as google.com or cloudflare.com can test the DNS. If 8.8.8.8 is reachable but google.com isn't, that means that there is an issue with the DNS. To run these commands in Ubuntu and macOS, run <code>ping -c 4 8.8.8.8</code> then <code>ping google.com</code>. In the image below, a ping was sent to google.com and other domains, but they didn't respond. So, the DNS was reset with <code>sudo resolvectl flush-caches</code>, which made google.com and cloudlfare.com reachable. After each ping, the system prints how long the data took to travel to the domain, which is a good indicator of internet speed. </p>
+<p><img alt="Ping" src="../media/networking_data_movement/ping.png" width="300" /></p>
+<p><code>traceroute</code> is used to show the route data takes to reach a destination. To test it with google.com (any domain will work), run <code>traceroute google.com</code>. This command will return a list of "hops" that show the path the data takes across routers to reach Google's server. When it was tested, the data took 23 "hops" and 55.121 ms to reach google.com. </p>
+<p><img alt="traceroute" src="../media/networking_data_movement/traceroute.png" width="300" /></p>
+<p>The data from traceroute can be confusing. Below is a table explaining what each part of the output means:</p>
+<p>|Part|What it Means|Example|
+|Hop #|The number on the left that shows how many "steps" away that device is from the computer|1, 2, 3, ...|
+|Hostname/IP Address|The name or IP of the router or device that handled the packet|10.12.16.1, 209.85.244.81, etc.|
+|ms (milliseconds)|The round-trip time (how long it took to reach that hop and come back)|209.85.244.81: 20.175 ms|
+|<em>|Stars represent a connection to a router or device that refuses to return information|</em> * *|</p>
+<p>In the example above:
+- Hop 1: *_gateway (192.168.64.1) is the local network gateway (what connects the LAN to the internet)
+- Hop 2-10: Local or ISP routers
+- Hop 11-20: Internet backbone routers (large, powerful routers moving data across regions or countries)
+- Hop 23: Google's server (64.233.176.113)</p>
+<h3 id="roadmap-representing-osi-layers">Roadmap Representing OSI Layers</h3>
+<p><img alt="Roadmap" src="../media/networking_data_movement/roadmap.png" /></p>
+<p>Reflection:
+This roadmap represents a data packet as a plane flying from an airport to another airport. It represents the different OSI layers as aspects of an airport, such as the runway being the physical layer. I think that the Transport layer is the most important since it ensures that everything arrives safely and in order. This project helped me understand how the TCP/IP model is a simplified version of the OSI model but both aim to describe how data is transferred.</p>
+<h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
+<p>Throughout the activity, many labs were performed involving many different commands. Below, a table summarizes all of the commands used and their purpose.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Concept</strong></th>
+<th><strong>Test Performed</strong></th>
+<th><strong>Verification Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Network Path Mapping</strong></td>
+<td><code>traceroute google.com</code></td>
+<td>Successfully traced the route from the local router to Google’s servers, totaling 23 hops in roughly 3 seconds.</td>
+</tr>
+<tr>
+<td><strong>Data Exchange</strong></td>
+<td><code>netcat</code> between virtual machines</td>
+<td>Verified reliable message delivery over TCP between two VMs.</td>
+</tr>
+<tr>
+<td><strong>Binary and Decimal Conversion</strong></td>
+<td><code>bc</code> command</td>
+<td>Confirmed accurate conversions between binary and decimal formats.</td>
+</tr>
+<tr>
+<td><strong>Hexadecimal Output</strong></td>
+<td><code>printf</code> command</td>
+<td>Correctly formatted and displayed IP address as hexadecimal (e.g., <code>C0A84002</code>).</td>
+</tr>
+<tr>
+<td><strong>LAN Interface Details</strong></td>
+<td><code>ifconfig</code> command</td>
+<td>Displayed <code>inet</code>, <code>netmask</code>, and <code>broadcast</code> parameters for network interfaces.</td>
+</tr>
+<tr>
+<td><strong>Address and Range Calculation</strong></td>
+<td><code>ipcalc</code></td>
+<td>Produced valid network, broadcast, and usable host address ranges.</td>
+</tr>
+<tr>
+<td><strong>Open Port Detection</strong></td>
+<td><code>netstat</code></td>
+<td>Revealed listening ports and established TCP connections between devices.</td>
+</tr>
+<tr>
+<td><strong>Internet Reachability Test</strong></td>
+<td><code>ping google.com</code> and <code>ping 8.8.8.8</code></td>
+<td>Reported full packet reception with ~22 ms average response time.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="collapsible" id="reflection">Reflection</h2>
+<p>By working through the various labs exploring data movement, I learned how exactly data is transferred between devices, both over a LAN and through the internet. Learning about the OSI and TCP/IP models helped simplify and understand how data communication works. Designing a roadmap to visualize data transfer helped me understand OSI layers even better. Additionally, converting between binary, decimal, and hexadecimal helped me understand the different number systems and showed the different advantages of each system. By using <code>ipcalc</code>, I learned how IP addresses are represented in binary. Using <code>ping</code> and <code>traceroute</code> demonstrated the path that data takes to transfer from one system to another and demonstrated a real world application of the OSI layers.</p></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;"
+            class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '../../..';</script>
+        <script src="../../../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../../../assets/js/mkdocs.js"></script>
+			<script src="../../../js/collapse-headers.js" defer></script>
+			<script src="../../../search/main.js" defer></script>
+
+</body>
+
+</html>

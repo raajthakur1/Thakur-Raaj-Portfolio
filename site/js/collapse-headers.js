@@ -39,33 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-expanded', String(!nowCollapsed));
       btn.querySelector('.chev').textContent = nowCollapsed ? '▶' : '▼';
     });
-      // Auto-expand collapsible section when navigating via anchor links
-      function expandCollapsibleFromHash() {
-        // Remove auto-expanded from all sections
-        document.querySelectorAll('.collapsible-section__wrapper.auto-expanded').forEach(function(el) {
-          el.classList.remove('auto-expanded');
-        });
-
-        const hash = window.location.hash.replace('#', '');
-        if (!hash) return;
-        // Find the header with the matching id
-        const header = document.getElementById(hash);
-        if (header && header.classList.contains('collapsible')) {
-          const section = header.nextElementSibling;
-          if (section && section.classList.contains('collapsible-section__wrapper')) {
-            section.classList.remove('collapsed');
-            section.classList.add('auto-expanded');
-            // Update toggle button state if present
-            const btn = header.querySelector('.collapse-toggle');
-            if (btn) {
-              btn.setAttribute('aria-expanded', 'true');
-              btn.querySelector('.chev').textContent = '▼';
-            }
-          }
-        }
-      }
-      window.addEventListener('hashchange', expandCollapsibleFromHash);
-      expandCollapsibleFromHash();
+      // NOTE: auto-expand on anchor navigation intentionally removed.
+      // Previous behavior auto-expanded sections when navigating to a header via hash.
+      // That functionality was removed to prevent automatic expansion. Manual toggling
+      // via the header/button still works.
 
     // Clicking the header toggles (not when clicking the button itself)
     header.style.cursor = 'pointer';
@@ -95,3 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Failsafe: remove any lingering `auto-expanded` classes that could have been
+// added by older scripts or cached files. This ensures anchor navigation
+// doesn't result in undesirable background/text contrast changes.
+function _removeAutoExpanded() {
+  document.querySelectorAll('.collapsible-section__wrapper.auto-expanded').forEach(function(el) {
+    el.classList.remove('auto-expanded');
+  });
+}
+document.addEventListener('DOMContentLoaded', _removeAutoExpanded);
+window.addEventListener('hashchange', _removeAutoExpanded);

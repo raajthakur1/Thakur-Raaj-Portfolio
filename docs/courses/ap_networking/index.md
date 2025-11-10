@@ -3,11 +3,12 @@ Welcome to my documentation for the AP Networking course for the '25 - '26 schoo
 
 ## Projects
 
-- [Component Cards & Software Slips](component-cards-and-software-slips.md)
-- [Command Line Interface](cli.md)
-- [Troubleshooting](troubleshooting.md)
-- [Determining Security Controls for Devices](security-controls.md)
-- [Implementing Security for Devices](device-security.md)
+- [**Component Cards & Software Slips**](component-cards-and-software-slips.md)
+- [**Command Line Interface**](cli.md)
+- [**Troubleshooting**](troubleshooting.md)
+- [**Determining Security Controls for Devices**](security-controls.md)
+- [**Implementing Security for Devices**](device-security.md)
+- [**Networking and Data Movement**](networking_data_movement.md)
 
 ## Course Overview
 
