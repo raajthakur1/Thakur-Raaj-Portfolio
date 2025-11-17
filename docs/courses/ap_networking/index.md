@@ -9,6 +9,7 @@ Welcome to my documentation for the AP Networking course for the '25 - '26 schoo
 - [**Determining Security Controls for Devices**](security-controls.md)
 - [**Implementing Security for Devices**](device-security.md)
 - [**Networking and Data Movement**](networking_data_movement.md)
+- [**Network Foundations**](network_foundations.md)
 
 ## Course Overview
 
