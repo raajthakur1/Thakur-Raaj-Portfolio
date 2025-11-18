@@ -565,18 +565,79 @@
 <li><a href="#network-topology-activity"><strong>Network Topology Activity</strong></a></li>
 <li><a href="#cable-constructing-and-testing"><strong>Cable Constructing and Testing</strong></a></li>
 <li><a href="#exploring-layers-1-and-2-of-the-osi-model-network-access-layer-of-tcpip-model"><strong>Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)</strong></a></li>
-<li><a href="#building-and-testing-a-small-office--home-office-soho-network"><strong>Building and Testing a Small Office / Home Office (SOHO) Network</strong></a></li>
+<li><a href="#building-and-testing-a-small-office--home-office-network-collapsible"><strong>Building and Testing a Small Office / Home Office (SOHO) Network</strong></a></li>
 <li><a href="#reflection"><strong>Reflection</strong></a></li>
 </ul>
 <h2 class="collapsible" id="exploring-ip-addresses-in-shared-and-bridged-modes-in-utm">Exploring IP Addresses in Shared and Bridged Modes in UTM</h2>
 <p>This activity explored how Shared (NAT) and Bridged network modes in UTM affect a VM's IP address and how it connects to the internet.</p>
 <h3 id="part-1-exploring-shared-nat-mode">Part 1: Exploring Shared (NAT) Mode</h3>
 <p>Before doing anything, the VM had to be set to Shared (NAT) mode. To do so, the VM's settings were edited in UTM by right clicking the VM, selecting network settings in the left sidebar, and changing the network mode to "Shared". </p>
+<p>Once the VM was set to Shared Network mode, the internal IP address was found with <code>ip a</code>, resulting in the following output:</p>
+<p><img alt="ip a in Shared Mode" src="../media/network_foundations/ip_shared.png" width="400" /></p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inet</td>
+<td>IPv4 address (192.168.64.2)</td>
+</tr>
+<tr>
+<td>/24</td>
+<td>Represents the <strong>subnet mask</strong> (255.255.255.0), which signifies that the first 24 bits (192.168.64) of the IP address designate the network and the remaining 8 bits designate the device on the network</td>
+</tr>
+<tr>
+<td>brd 192.168.64.255</td>
+<td>The <strong>broadcast address</strong> for the subnet</td>
+</tr>
+<tr>
+<td>scope global dynamic enp0s1</td>
+<td>“Global” means this IP can reach outside the VM (through NAT), and “dynamic” means it was assigned automatically (DHCP).</td>
+</tr>
+</tbody>
+</table>
+<p>Private IP addresses reveal how the device interacts with the LAN, not the internet. To see a device's IP on the internet, otherwise known as a <strong>public IP address</strong>, a website such as <a href="https://whatismyipaddress.com">https://whatismyipaddress.com</a> can be used to find it. The VM's public IP was 173.95.44.210.</p>
+<p><img alt="Public IP in Shared" src="../media/network_foundations/public_ip.png" width="400" /></p>
+<p>In Shared mode, the public and private IPs were different. 192.168.64.2 belonged to the LAN whereas 173.95.44.210 belonged to the internet. Shared mode might be used by a VM when connecting to the internet because it appears as the same device as the host machine on the LAN and is subject to the same firewall and device restrictions as the host. Shared mode also makes it easier to connect multiple VMs on a single computer since they all share an IP address, making it easier to work with than dealing with individual IPs for each VM.</p>
+<h3 id="part-2-exploring-bridged-mode">Part 2: Exploring Bridged Mode</h3>
+<p>After exploring Shared (NAT) Mode in UTM, bridged mode was explored. To switch the VM from Shared to Bridged mode, the VM was shut down, then its network settings were changed. Once this change was made, the VM was started again. Once Ubuntu was loaded, a similar procedure was followed. The IP address was again found with <code>ip a</code>. However, the results were different:</p>
+<p><img alt="ip a in Bridged Mode" src="../media/network_foundations/ip_bridged.png" width="400" /></p>
+<p>Then, the public IP was checked with <a href="https://whatismyipaddress.com">the same website</a>. While the private IP was completely different, the public IP was exactly the same (173.95.44.210). </p>
+<p><img alt="Public IP in Bridged" src="../media/network_foundations/public_ip.png" width="400" /></p>
+<p>While the private IP address changed from 192.168.64.2 to 10.1235.30, the public IP address did not change at all. This is because the IP address of the device has no impact on the router's IP address, which is what determines the public IP. In Bridged Mode, the VM appears as an entirely different computer on the LAN, which is very different to Shared Mode. This quality would lead to an organization often choosing Bridged over Shared mode in a corporate environment because corporations may use a VM to test out new software, and while testing, they would want to make sure that the software is in an environment as similar to as a real computer as possible. Shared mode simply does not provide such an environment, whereas Bridged mode is ideal for such an application. However, the fact that Bridged mode behaves like a separate computer poses a security risk, as it could provide an opportunity to bypass network or device restrictions imposed on the host machine.</p>
+<h3 id="comparison-table">Comparison Table</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Private IP</th>
+<th>Public IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shared (NAT)</td>
+<td>192.168.64.2</td>
+<td>173.95.44.210</td>
+</tr>
+<tr>
+<td>Bridged</td>
+<td>10.12.25.30</td>
+<td>173.95.44.210</td>
+</tr>
+</tbody>
+</table>
+<p>When comparing the two modes, Shared mode appears as the same device as the host on the network, whereas Bridged mode appears as a separate device. Due to this quality, Shared mode provides a safer, more controlled environment whereas Bridged mode provides an environment akin to a physical computer. </p>
+<h3 id="reflection">Reflection</h3>
 <h2 class="collapsible" id="network-topology-activity">Network Topology Activity</h2>
 <h2 class="collapsible" id="cable-constructing-and-testing">Cable Constructing and Testing</h2>
 <h2 class="collapsible" id="exploring-layers-1-and-2-of-the-osi-model-network-access-layer-of-tcpip-model">Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)</h2>
-<h2 class="collapsible" id="building-and-testing-a-small-office-home-office-soho-network">Building and Testing a Small Office / Home Office (SOHO) Network</h2>
-<h2 class="collapsible" id="reflection">Reflection</h2></p>
+<h2 class="collapsible" id="building-and-testing-a-small-office-home-office-network">Building and Testing a Small Office / Home Office Network</h2>
+<h2 class="collapsible" id="reflection_1">Reflection</h2></p>
     </article>
 </section>
             <!-- endblock -->
