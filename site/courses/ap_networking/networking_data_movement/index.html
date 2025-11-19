@@ -160,6 +160,14 @@
             Network Foundations
         </a>
     </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../why_cant_these_two_computers_talk/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Why Can't These Two Computers Talk to Each Other?
+        </a>
+    </li>
             </ul>
         </div>
     </li>
@@ -844,20 +852,49 @@
 <p><code>traceroute</code> is used to show the route data takes to reach a destination. To test it with google.com (any domain will work), run <code>traceroute google.com</code>. This command will return a list of "hops" that show the path the data takes across routers to reach Google's server. When it was tested, the data took 23 "hops" and 55.121 ms to reach google.com. </p>
 <p><img alt="traceroute" src="../media/networking_data_movement/traceroute.png" width="300" /></p>
 <p>The data from traceroute can be confusing. Below is a table explaining what each part of the output means:</p>
-<p>|Part|What it Means|Example|
-|Hop #|The number on the left that shows how many "steps" away that device is from the computer|1, 2, 3, ...|
-|Hostname/IP Address|The name or IP of the router or device that handled the packet|10.12.16.1, 209.85.244.81, etc.|
-|ms (milliseconds)|The round-trip time (how long it took to reach that hop and come back)|209.85.244.81: 20.175 ms|
-|<em>|Stars represent a connection to a router or device that refuses to return information|</em> * *|</p>
-<p>In the example above:
-- Hop 1: *_gateway (192.168.64.1) is the local network gateway (what connects the LAN to the internet)
-- Hop 2-10: Local or ISP routers
-- Hop 11-20: Internet backbone routers (large, powerful routers moving data across regions or countries)
-- Hop 23: Google's server (64.233.176.113)</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it Means</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hop #</td>
+<td>The number on the left that shows how many "steps" away that device is from the computer</td>
+<td>1, 2, 3, ...</td>
+</tr>
+<tr>
+<td>Hostname/IP Address</td>
+<td>The name or IP of the router or device that handled the packet</td>
+<td>10.12.16.1, 209.85.244.81, etc.</td>
+</tr>
+<tr>
+<td>ms (milliseconds)</td>
+<td>The round-trip time (how long it took to reach that hop and come back)</td>
+<td>209.85.244.81: 20.175 ms</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Stars represent a connection to a router or device that refuses to return information</td>
+<td>* * *</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>In the example above:</p>
+<ul>
+<li>Hop 1: *_gateway (192.168.64.1) is the local network gateway (what connects the LAN to the internet)</li>
+<li>Hop 2-10: Local or ISP routers</li>
+<li>Hop 11-20: Internet backbone routers (large, powerful routers moving data across regions or countries)</li>
+<li>Hop 23: Google's server (64.233.176.113)</li>
+</ul>
 <h3 id="roadmap-representing-osi-layers">Roadmap Representing OSI Layers</h3>
 <p><img alt="Roadmap" src="../media/networking_data_movement/roadmap.png" /></p>
-<p>Reflection:
-This roadmap represents a data packet as a plane flying from an airport to another airport. It represents the different OSI layers as aspects of an airport, such as the runway being the physical layer. I think that the Transport layer is the most important since it ensures that everything arrives safely and in order. This project helped me understand how the TCP/IP model is a simplified version of the OSI model but both aim to describe how data is transferred.  </p>
+<p><strong>Reflection:</strong></p>
+<p>This roadmap represents a data packet as a plane flying from an airport to another airport. It represents the different OSI layers as aspects of an airport, such as the runway being the physical layer. I think that the Transport layer is the most important since it ensures that everything arrives safely and in order. This project helped me understand how the TCP/IP model is a simplified version of the OSI model but both aim to describe how data is transferred.  </p>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
 <p>Throughout the activity, many labs were performed involving many different commands. Below, a table summarizes all of the commands used and their purpose.</p>
 <table>

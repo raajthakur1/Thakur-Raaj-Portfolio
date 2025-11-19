@@ -118,13 +118,13 @@ Converting between binary and decimal by hand is very difficult and tedious. Tha
 
 To convert from binary to decimal, the command `echo "obase=10; ibase=2; [Insert Binary Number]" | bc` and `echo "obase=2; 45" | bc` can be used to convert from binary to decimal and from decimal to binary, respectively. Below is a breakdown of these commands:
 
-|Part|Meaning|
-|----|-------|
-|echo|Prints text|
+|Part                       |                                                                  Meaning|
+|---------------------------|-------------------------------------------------------------------------|
+|echo                       |                                                              Prints text|
 |"obase=10; ibase=2; 101101"|The conversion formula — it tells the calculator what number base to use.|
-|obase|“Output base” — the numbering system you want the result in.|
-|ibase|“Input base” — the numbering system your starting number is in.|
-|bc|The basic calculator program built into Ubuntu — it performs the conversion.|
+|obase                      |“Output base” — the numbering system you want the result in.             |
+|ibase                      |“Input base” — the numbering system your starting number is in.          |
+|bc                         |The basic calculator program built into Ubuntu — it performs the conversion.|
 
 <br>
 
@@ -204,12 +204,16 @@ In the image above, inet, netmask, and broadcast are all outlined in red. Inet i
 The data from traceroute can be confusing. Below is a table explaining what each part of the output means:
 
 |Part|What it Means|Example|
+|----|-------------|-------|
 |Hop #|The number on the left that shows how many "steps" away that device is from the computer|1, 2, 3, ...|
 |Hostname/IP Address|The name or IP of the router or device that handled the packet|10.12.16.1, 209.85.244.81, etc.|
 |ms (milliseconds)|The round-trip time (how long it took to reach that hop and come back)|209.85.244.81: 20.175 ms|
 |*|Stars represent a connection to a router or device that refuses to return information|* * *|
 
+<br>
+
 In the example above:
+
 - Hop 1: *_gateway (192.168.64.1) is the local network gateway (what connects the LAN to the internet)
 - Hop 2-10: Local or ISP routers
 - Hop 11-20: Internet backbone routers (large, powerful routers moving data across regions or countries)
@@ -219,7 +223,8 @@ In the example above:
 
 ![Roadmap](media/networking_data_movement/roadmap.png)
 
-Reflection:
+**Reflection:**
+
 This roadmap represents a data packet as a plane flying from an airport to another airport. It represents the different OSI layers as aspects of an airport, such as the runway being the physical layer. I think that the Transport layer is the most important since it ensures that everything arrives safely and in order. This project helped me understand how the TCP/IP model is a simplified version of the OSI model but both aim to describe how data is transferred.  
 
 ## Testing and Evaluation {.collapsible}

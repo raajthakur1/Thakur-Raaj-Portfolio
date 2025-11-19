@@ -7,7 +7,6 @@ This site contains documentation for all of my assignments and projects.
 The goal of this portfolio is to:
 
 - Document my assignments and projects for this course
-- Provide resources and information to future AP Networking students
 - Share my progress with the community
 
 ## Courses
