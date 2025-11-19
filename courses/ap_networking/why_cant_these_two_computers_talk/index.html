@@ -606,7 +606,29 @@
 <p><img alt="Old VM" src="../media/why_cant_these_computers_communicate/old_vm_ip.png" width="400" /></p>
 <p>Under this configuration, despite being on the same subnet and being on the same network (since the first 20 bits are identical), UTM places each VM into is own isolated virtual network. This means that the two machines are on completely different networks and cannot see each other's ping requests. Layer 3 is impossible since ARP cannot succeed across two separate virtual switches.</p>
 <h2 class="collapsible" id="part-4">Part 4</h2>
-<h2 class="collapsible" id="part-5">Part 5</h2></p>
+<p>To verify this claim, the VMs were pinged again. The Ubuntu 25.10 machines still could not ping each other, and the Ubuntu 22.04 machines still could not ping each other. This happens because each virtualization system (Apple Virtualization for the 25.10 VM and QEMU for the 22.04 VM) places its VM into a private, host-only network that exists only within each Mac mini. These private networks are completely independent from one another, so the VMs are not sharing the same Layer 2 network—the layer where devices learn each other’s MAC addresses. Since their OSI Layer 2s are independent, they can’t discover each other, and communication fails before it even reaches the IP level (Layer 3). Surprisingly, the 25.10 VM can ping the 22.04 VM on the other computer (Apple Virtualization to QEMU or vice versa) because each Mac mini is able to route traffic between its own internal virtual networks before sending it over the Ethernet cable. This makes cross-platform pings work, while same-platform pings fail due to Layer-2 isolation.</p>
+<p><strong>Pinging 22.04 from 25.10</strong></p>
+<p><img alt="25.10 &Rightarrow; 22.04" src="../media/why_cant_these_computers_communicate/new2old.png" /></p>
+<p><br></p>
+<p>Here, pinging my partner's 22.04 VM from my 25.10 VM was successful.</p>
+<p><br></p>
+<p><strong>Pinging 25.10 from 25.10</strong></p>
+<p><img alt="25.10 &Rightarrow; 25.10" src="../media/why_cant_these_computers_communicate/new2new.png" /></p>
+<p><br></p>
+<p>Here, pinging my partner's 25.10 VM from my 25.10 VM was unsuccessful.</p>
+<p><br></p>
+<p><strong>Pinging 25.10 from 22.04</strong></p>
+<p><img alt="22.04 &Rightarrow; 25.10" src="../media/why_cant_these_computers_communicate/old2new.png" /></p>
+<p><br></p>
+<p>Here, pinging my partner's 25.10 VM from my 22.04 VM was successful.</p>
+<p><br></p>
+<p><strong>Pinging 22.04 from 22.04</strong></p>
+<p><img alt="22.04 &Rightarrow; 22.04" src="../media/why_cant_these_computers_communicate/old2old.png" /></p>
+<p><br></p>
+<p>Here, pinging my partner's 22.04 VM from my 22.04 VM was unsuccessful.</p>
+<p><br></p>
+<h2 class="collapsible" id="part-5">Part 5</h2>
+<p>Even though the two computers were connected with a working Ethernet cable, they could not communicate because each VM was in its own isolated VLAN, meaning that the VMs on different Mac minis were on different Layer 2 domains. The failure happened at OSI Layer 2 since the ARP could not find the correct MAC address associated with the IP address which prevented data from transferring. UTM prevents the VMs from connecting since it creates a virtual LAN for each Bridged VM to simulate an entire LAN and device. To allow for the VMs to easily connect, they should be placed in Shared (NAT) mode so they can piggyback off of the Mac mini's IP address and communicate with other devices on the LAN. In a real SOHO network, routers and switches prevent similar issues since they create multiple VLANs with different subnets and facilitate data transfer between the subnets to allow for many devices to be on the same LAN.</p></p>
     </article>
 </section>
             <!-- endblock -->
