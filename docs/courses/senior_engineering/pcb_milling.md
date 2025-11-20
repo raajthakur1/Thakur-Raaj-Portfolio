@@ -76,3 +76,9 @@ After doing so, I used the Carvera Controller Software to load my GCode and star
 After following these steps, the machine took ~30 minutes to mill out my board. After it was done, all I had to do was break the 3 tabs that I set, and I was done!
 
 ![Finished Board](media/pcb_milling/finished_board.png)
+
+## Reflection
+
+In this project, I learned how to use MakeraCAM to take KiCAD files and turn them into GCode for the Carvera Desktop CNC Machines. I learned about the different types of cuts and their purposes (2D Pocket for removing material off the top, 2D Contour for cutting the board out of the larger material, and 2D Drilling for drilling holes for THT components).
+
+Learning these skills will allow me to manufacture boards I custom design for my projects in house rather than having them manufactured overseas, which is super useful for rapid prototyping and cost reduction.
