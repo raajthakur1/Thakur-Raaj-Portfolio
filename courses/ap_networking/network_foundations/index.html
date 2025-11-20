@@ -641,6 +641,32 @@
 </table>
 <p>When comparing the two modes, Shared mode appears as the same device as the host on the network, whereas Bridged mode appears as a separate device. Due to this quality, Shared mode provides a safer, more controlled environment whereas Bridged mode provides an environment akin to a physical computer. </p>
 <h3 id="reflection">Reflection</h3>
+<ol>
+<li>
+<p><strong>How did your IP addresses change between Shared and Bridged mode?</strong></p>
+<ul>
+<li>My private IP address changed between Shared and Bridged mode, since it switched from being the same as the Mac’s IP address to being a completely different address on the LAN. The public IP address did not change, since that is controlled by the router, not the individual devices connected to it.</li>
+</ul>
+</li>
+<li>
+<p><strong>What did this experiment teach you about how local and public networks communicate?</strong></p>
+<ul>
+<li>This experiment taught me about how Public IP addresses are based off of the router, and the IP addresses of endpoint devices on the LAN do not affect the Public IP address. It also showed me how Bridged and Shared mode in UTM are different, since a Bridged VM has an IP separate from the host, whereas a Shared VM has the same IP as the host.</li>
+</ul>
+</li>
+<li>
+<p><strong>Why might IT professionals use different network configurations for home, business, or lab environments?</strong></p>
+<ul>
+<li>IT professionals might use different network configurations for home, business, or lab environments. In business environments, IT professionals would likely want to keep the amount of IP addresses available to a minimum, so they would use Shared mode. On the other hand, lab environments and home users may use Bridged mode since it would allow them to simulate how a full computer with the virtualized OS would work, since Bridged mode behaves like a separate computer on the network (it has its own MAC and IP address).</li>
+</ul>
+</li>
+<li>
+<p><strong>Which mode do you think is best for classroom use, and why?</strong></p>
+<ul>
+<li>Shared mode is better for classroom use since it is easier for IT to manage, and it ensures that students can’t bypass the school’s firewall or network restrictions.</li>
+</ul>
+</li>
+</ol>
 <h2 class="collapsible" id="network-topology-activity">Network Topology Activity</h2>
 <h2 class="collapsible" id="cable-constructing-and-testing">Cable Constructing and Testing</h2>
 <h2 class="collapsible" id="exploring-layers-1-and-2-of-the-osi-model-network-access-layer-of-tcpip-model">Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)</h2>
