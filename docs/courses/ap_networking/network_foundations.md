@@ -59,9 +59,51 @@ When comparing the two modes, Shared mode appears as the same device as the host
 
 ### Reflection
 
+1. **How did your IP addresses change between Shared and Bridged mode?**
+    - My private IP address changed between Shared and Bridged mode, since it switched from being the same as the Mac’s IP address to being a completely different address on the LAN. The public IP address did not change, since that is controlled by the router, not the individual devices connected to it.
+
+
+2. **What did this experiment teach you about how local and public networks communicate?**
+    - This experiment taught me about how Public IP addresses are based off of the router, and the IP addresses of endpoint devices on the LAN do not affect the Public IP address. It also showed me how Bridged and Shared mode in UTM are different, since a Bridged VM has an IP separate from the host, whereas a Shared VM has the same IP as the host.
+
+
+3. **Why might IT professionals use different network configurations for home, business, or lab environments?**
+    - IT professionals might use different network configurations for home, business, or lab environments. In business environments, IT professionals would likely want to keep the amount of IP addresses available to a minimum, so they would use Shared mode. On the other hand, lab environments and home users may use Bridged mode since it would allow them to simulate how a full computer with the virtualized OS would work, since Bridged mode behaves like a separate computer on the network (it has its own MAC and IP address).
+
+
+4. **Which mode do you think is best for classroom use, and why?**
+    - Shared mode is better for classroom use since it is easier for IT to manage, and it ensures that students can’t bypass the school’s firewall or network restrictions.
 
 
 ## Network Topology Activity {.collapsible}
+
+The next activity was the Network Topology Activity. Network topology is the way that computers, devices, and other pieces of technology are arranged and connected within a network. It’s like a map or blueprint that shows how data travels from one device to another.
+
+Every network includes devices that either send, receive, or direct data. The connect and communicate in the following way:
+- End Devices: These are the computers, smartphones, printers, and other tools people use.
+They send and receive data.
+- Networking Devices: These control or manage traffic between devices.
+    - Switch: Connects multiple devices on the same local network (like in a classroom or office).
+    - Router: Connects different networks (like your home network to the internet).
+    - Access Point: Allows wireless devices to connect using Wi-Fi.
+- Cables or Wireless Connections: The “roads” that data travels along.
+    - Examples include Ethernet cables, fiber optic cables, or radio waves (for Wi-Fi).
+
+When data travels, it moves in packets — small chunks of information that include details about where they’re coming from and where they’re going. The topology determines which path those packets take and how efficiently they reach their destination.
+
+Common network topologies include:
+
+- Star Topography
+    - Once central switch or hub in the middle
+    - All computers connect to that central point
+    - Common in office network and home Wi-Fi routers
+- Bus Topography
+    - A single straight line ("backbone cable") with all computers branching off.
+    - Common in early Ethernet networks (now outdated).
+- Ring Topography
+    - Devices form a cir
+- Mesh Topography
+- Hybrid Topography
 
 ## Cable Constructing and Testing {.collapsible}
 
