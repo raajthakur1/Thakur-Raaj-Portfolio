@@ -7,6 +7,11 @@ In this project, I used MakerCAM and the CNC machines in the Fab Lab in order to
 - [**Makera CAM**](https://www.makera.com/pages/makera-cam): Software to generate GCode from gerber and drill files
 - [**Carvera Controller**](https://www.makera.com/pages/software#MakeraController): Software to control the CNC Machine
 
+## Quick Downloads
+
+- [**GCode for Board**](media/pcb_milling/Board.nc)
+- [**KiCAD Files**](media/pcb_milling/pcb_milling_files.zip)
+
 ## Workflow for Milling a Board with the Carvera Desktop CNC Machine {.collapsible}
 
 1. Open Makera CAM and open a 3-Axis project
@@ -32,7 +37,7 @@ In this project, I used MakerCAM and the CNC machines in the Fab Lab in order to
 14. Hide everything except for the 3 toolpaths. If everything looks correct, export them by clicking Export Toolpaths in the top right of the screen and selecting the 3 toolpaths. It should save a .nc file.
 
 ## Creating GCode in Makera CAM {.collapsible}
-At the start, Mr. Dubick provided the class with [gerber files](media/pcb_milling/pcb_milling_files.zip) to create the board from.
+At the start, Mr. Dubick provided the class with [gerber files (**Download**)](media/pcb_milling/pcb_milling_files.zip) to create the board from.
 
 Once I downloaded these files, I imported them into Makera CAM with File &Rightarrow; Import PCB. Before doing anything else, I changed the material settings to 127mm x 101mm x 1.7mm (L x W x H) since the blank PCB that I milled was that size.
 
@@ -50,7 +55,7 @@ Lastly, I needed to cut out the board. To do so, I hid everything except the edg
 
 ![Step10](media/pcb_milling/step10.png){ width=300 } ![Step11](media/pcb_milling/step11.png){ width=300 } ![Step12](media/pcb_milling/step12.png){ width=300 } ![Step13](media/pcb_milling/step13.png){ width=300 }
 
-Once I created the 3 different toolpaths, I exported them to a [.nc (GCode) file](media/pcb_milling/Board.nc) so I could import it into the Carvera Controller application.
+Once I created the 3 different toolpaths, I exported them to a [.nc (GCode) file (**Download**)](media/pcb_milling/Board.nc) so I could import it into the Carvera Controller application.
 
 ![Step14](media/pcb_milling/step14.png){ width=600 }
 
@@ -71,3 +76,9 @@ After doing so, I used the Carvera Controller Software to load my GCode and star
 After following these steps, the machine took ~30 minutes to mill out my board. After it was done, all I had to do was break the 3 tabs that I set, and I was done!
 
 ![Finished Board](media/pcb_milling/finished_board.png)
+
+## Reflection
+
+In this project, I learned how to use MakeraCAM to take KiCAD files and turn them into GCode for the Carvera Desktop CNC Machines. I learned about the different types of cuts and their purposes (2D Pocket for removing material off the top, 2D Contour for cutting the board out of the larger material, and 2D Drilling for drilling holes for THT components).
+
+Learning these skills will allow me to manufacture boards I custom design for my projects in house rather than having them manufactured overseas, which is super useful for rapid prototyping and cost reduction.
