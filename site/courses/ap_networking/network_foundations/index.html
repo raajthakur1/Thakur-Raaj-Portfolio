@@ -168,6 +168,14 @@
             Why Can't These Two Computers Talk to Each Other?
         </a>
     </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../physical_logical_addressing/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Physical Addressing and Logical Addressing
+        </a>
+    </li>
             </ul>
         </div>
     </li>
@@ -679,6 +687,8 @@ They send and receive data.
 - Cables or Wireless Connections: The “roads” that data travels along.
     - Examples include Ethernet cables, fiber optic cables, or radio waves (for Wi-Fi).</p>
 <p>When data travels, it moves in packets — small chunks of information that include details about where they’re coming from and where they’re going. The topology determines which path those packets take and how efficiently they reach their destination.</p>
+<p>Example of a network with 3 computers, 1 networking device (router in this case) and 1 printer:</p>
+<p><img alt="Digital Drawing Activity" src="../media/network_foundations/digital_drawing_activity.png" width="600" /></p>
 <p>Common network topologies include:</p>
 <ul>
 <li>Star Topography<ul>
@@ -687,17 +697,40 @@ They send and receive data.
 <li>Common in office network and home Wi-Fi routers</li>
 </ul>
 </li>
+</ul>
+<p><img alt="Star" src="../media/network_foundations/star_topography.png" width="600" /></p>
+<ul>
 <li>Bus Topography<ul>
 <li>A single straight line ("backbone cable") with all computers branching off.</li>
 <li>Common in early Ethernet networks (now outdated).</li>
 </ul>
 </li>
+</ul>
+<p><img alt="Bus" src="../media/network_foundations/bus_topography.png" width="600" /></p>
+<ul>
 <li>Ring Topography<ul>
-<li>Devices form a cir</li>
+<li>Devices form a circle with connections between neighbors</li>
+<li>Data travels one way (or both in dual-ring)</li>
+<li>Common in some legacy fiber networks and token ring systems</li>
 </ul>
 </li>
-<li>Mesh Topography</li>
-<li>Hybrid Topography</li>
+</ul>
+<p><img alt="Ring" src="../media/network_foundations/ring_topography.png" width="600" /></p>
+<ul>
+<li>Mesh Topography<ul>
+<li>Every device connects to multiple others</li>
+<li>If one path breaks, another cna still carry data</li>
+<li>Common in data centers and wireless mesh networks with many IoT devices</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Mesh" src="../media/network_foundations/mesh_topography.png" width="600" /></p>
+<ul>
+<li>Hybrid Topography<ul>
+<li>Combine two or more (for example, multiple Star networks connected in a Bus layout)</li>
+<li>Common in large organizations with multiple departments or floors</li>
+</ul>
+</li>
 </ul>
 <h2 class="collapsible" id="cable-constructing-and-testing">Cable Constructing and Testing</h2>
 <h2 class="collapsible" id="exploring-layers-1-and-2-of-the-osi-model-network-access-layer-of-tcpip-model">Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)</h2>

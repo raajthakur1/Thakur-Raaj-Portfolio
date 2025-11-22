@@ -12,6 +12,7 @@ nav:
     - Networking and Data Movement: courses/ap_networking/networking_data_movement.md
     - Network Foundations: courses/ap_networking/network_foundations.md
     - Why Can't These Two Computers Talk to Each Other?: courses/ap_networking/why_cant_these_two_computers_talk.md
+    - Physical Addressing and Logical Addressing: courses/ap_networking/physical_logical_addressing.md
   - Honors Senior Engineering (2025-2026): 
     - Overview: courses/senior_engineering/index.md
     - Capstone Project: courses/senior_engineering/capstone.md
@@ -64,3 +65,4 @@ extra_css:
   - stylesheets/collapse-headers.css
 markdown_extensions:
   - attr_list
+  - pymdownx.superfences

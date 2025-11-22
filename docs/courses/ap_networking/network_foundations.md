@@ -91,19 +91,44 @@ They send and receive data.
 
 When data travels, it moves in packets — small chunks of information that include details about where they’re coming from and where they’re going. The topology determines which path those packets take and how efficiently they reach their destination.
 
+Example of a network with 3 computers, 1 networking device (router in this case) and 1 printer:
+
+![Digital Drawing Activity](media/network_foundations/digital_drawing_activity.png){ width=600 }
+
 Common network topologies include:
 
 - Star Topography
     - Once central switch or hub in the middle
     - All computers connect to that central point
     - Common in office network and home Wi-Fi routers
+
+![Star](media/network_foundations/star_topography.png){ width=600 }
+
 - Bus Topography
     - A single straight line ("backbone cable") with all computers branching off.
     - Common in early Ethernet networks (now outdated).
+
+![Bus](media/network_foundations/bus_topography.png){ width=600 }
+
 - Ring Topography
-    - Devices form a cir
+    - Devices form a circle with connections between neighbors
+    - Data travels one way (or both in dual-ring)
+    - Common in some legacy fiber networks and token ring systems
+
+![Ring](media/network_foundations/ring_topography.png){ width=600 }
+
 - Mesh Topography
+    - Every device connects to multiple others
+    - If one path breaks, another cna still carry data
+    - Common in data centers and wireless mesh networks with many IoT devices
+
+![Mesh](media/network_foundations/mesh_topography.png){ width=600 }
+
 - Hybrid Topography
+    - Combine two or more (for example, multiple Star networks connected in a Bus layout)
+    - Common in large organizations with multiple departments or floors
+
+![Hybrid](media/network_foundations/hybrid_topography.png){ width=600 }
 
 ## Cable Constructing and Testing {.collapsible}
 
