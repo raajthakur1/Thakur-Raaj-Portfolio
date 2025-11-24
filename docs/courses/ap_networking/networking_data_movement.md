@@ -223,7 +223,7 @@ In the example above:
 
 ![Roadmap](media/networking_data_movement/roadmap.png)
 
-**Reflection:**
+**Reflection:
 
 This roadmap represents a data packet as a plane flying from an airport to another airport. It represents the different OSI layers as aspects of an airport, such as the runway being the physical layer. I think that the Transport layer is the most important since it ensures that everything arrives safely and in order. This project helped me understand how the TCP/IP model is a simplified version of the OSI model but both aim to describe how data is transferred.  
 
