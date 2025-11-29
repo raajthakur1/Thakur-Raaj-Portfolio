@@ -138,8 +138,97 @@ For a small business, the star topology is the easiest to set up because it only
 
 After learning about network topography, the next activity was building and testing cables. Every network, from a classroom computer lab to a corporate data center - relies on Ethernet cables to carry data between devices. Professional technicians and network engineers often make and test their own cables instead of buying them pre-made, allowing them to create cables at precise lengths, verify quality, and save on cost.
 
-## Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model) {.collapsible}
+Building and testing cables works at the Physical Layer (Layer 1) of the OSI Model. This is where data is converted to electrical signals that travel through wires.
 
-## Building and Testing a Small Office / Home Office Network {.collapsible}
+At this layer:
 
-## Reflection {.collapsible}
+- Cable quality determines **speed** and **signal reliability**
+- Misplaced wires or bad crimps can cause communication failures
+- Proper testing ensures that the cable works before being installed in a network
+
+When constructing and testing the Ethernet cables, the following equipment was used:
+
+|Tool|Purpose|When It's Used|
+|----|-------|--------------|
+|Cable Stripper|Removes the outer jacket from the Ethernet cable without damaging the internal wires.|Used to expose the eight colored wires within the cable|
+|Cable Cutter|Cuts the cable cleanly and evenly before and after stripping|Used at the start and end for making precise cuts|
+|RJ45 Crimp Tool|Presses the metal pins inside the RJ45 connector into each wire, securing them and creating an electrical connection|Used after the wires are arranged an inserted|
+|Pass-Through RJ45 Connectors|Plastic connectors that attach to each cable end. The wires pass through the front for visibility before crimping|Used on both ends of the cable|
+|Cable Tester|Verifies that all eight wires are connected from one end to the other. Lights indicate pass or fail|Used after crimping both ends|
+|Cat5e/Cat6 Ethernet Cable|The actual networking cable containing eight copper wires twisted into pairs|Used throughout the entire process|
+
+The most common wiring standard for Ethernet cable is T568B, which is the most common in U.S. networks.
+
+e most common wiring standard for Ethernet cable is T568B, which is the most common in U.S. networks.
+
+|Pin|Wire Color|Function (T568B Standard)|
+|---|----------|--------------------------|
+|1|White/Orange|Transmit + (TX+)|
+|2|Orange|Transmit – (TX–)|
+|3|White/Green|Receive + (RX+)|
+|4|Blue|Not used in 10/100 Mbps; part of Pair 3 in Gigabit Ethernet|
+|5|White/Blue|Not used in 10/100 Mbps; part of Pair 3 in Gigabit Ethernet|
+|6|Green|Receive – (RX–)|
+|7|White/Brown|Not used in 10/100 Mbps; part of Pair 4 in Gigabit Ethernet|
+|8|Brown|Not used in 10/100 Mbps; part of Pair 4 in Gigabit Ethernet|
+
+### Steps for Constructing the Cable
+
+Step 1: Prepare the cable
+
+- Measure approximately 12 inches of cable
+- Use the cutter section of the crimp tool to make a clean, straight cut
+- Use the stripper to remove about 3 inches of the outer plastic jacket
+
+![Step 1](media/network_foundations/cable_1.JPG){ width=500 }
+
+Step 2: Untwist and arrange the wires
+
+- Untwist the four pairs without damaging the wire
+- Arrange them in the T568B order:
+    - White/Orange, Orange, White/Green, Blue, WHite/Blue, Green, White/Brown, Brown
+- Straighten the wires until they are flat and parallel
+- Trim them evenly to about 0.5 inches in length using the wire cutter
+
+![Step 2](media/network_foundations/cable_2.jpeg){ width=500 }
+
+Step 3: Insert the wires into the RJ45 connector
+
+- Hold the RJ45 connector with the clip facing down and gold pins facing up
+- Slide all eight wires carefully into the connector while maintaining the correct color order
+- Double check that the color order is correct before proceeding
+
+![Step 3](media/network_foundations/cable_3.JPG){ width=500 }
+
+Step 4: Crimp the connector
+
+- Insert the RJ45 connector into the RJ45 crimp tool
+- Squeeze the handles firmly until a click is heard
+- The crimp tool will press the metal contacts into the wires and cut off the excess ends
+- Lightly tug on the connector to confirm that it's secure
+
+![Step 4](media/network_foundations/cable_4.JPG){ width=500 }
+
+Step 5: Add 2 cable sleeves to the cable, then repeat steps 1-4 on the other end of the cable
+
+**Wire Stripping Demonstration Video**
+
+![Wire Stripping Demonstration Video](media/network_foundations/wire_stripping_demonstration.mp4){ width=700 }
+
+### Testing the Cable
+
+Once the cable was constructed, it had to be tested to ensure that it can establish a reliable physical link within a network. To do so, an Ethernet cable testing tool was used. Both ends of the cable were plugged into the device, and each wire (1-8) was tested. Successful connections were indicated by an LED. 
+
+![Testing Ethernet cable](media/network_foundations/cable_test.MOV){ width=700 }
+
+### Reflection
+
+The most challenging step in creating my Ethernet cable was feeding the small individual wires into the RJ45 connector, since keeping all eight conductors perfectly straight, aligned in the T568B order, and pushed fully into the connector without any of them slipping out was very difficult and required lots of precision. Maintaining the correct wire order is critical because Ethernet relies on twisted pairs arranged in a specific pattern to reduce interference and ensure signals travel along the proper transmit and receive paths; even a single pair swapped or misaligned can cause slow speeds, failed connections, or complete link loss. Building and testing the cable directly connects to the Physical Layer (Layer 1) of the OSI model, since that layer is responsible for transmitting electrical signals between devices. If a cable were built incorrectly but never tested, a real network could experience intermittent failures, dropped packets, or devices that appear “broken,” leading to difficult troubleshooting and wasted time. Labeling the cable and using professional tools—like crimpers, strippers, and testers—mirrors real-world industry practices because technicians need to identify cables quickly, ensure reliable terminations, and verify functionality before installation, all of which maintain network organization and uptime in professional environments.
+
+## Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)
+
+
+
+## Building and Testing a Small Office / Home Office (SOHO) Network
+
+## Reflection
