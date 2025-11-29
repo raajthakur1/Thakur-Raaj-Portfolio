@@ -732,10 +732,153 @@ They send and receive data.
 </ul>
 </li>
 </ul>
+<p><img alt="Hybrid" src="../media/network_foundations/hybrid_topography.png" width="600" /></p>
+<h3 id="reflection_1">Reflection:</h3>
+<p>For a small business, the star topology is the easiest to set up because it only requires connecting each device to a central router, making installation and troubleshooting simple. The mesh topology is the most reliable when a connection fails since it provides multiple paths for data to travel, allowing the network to keep functioning even if one link goes down. However, that same redundancy makes mesh the most expensive to implement due to the large number of cables and connections required. A school would most likely use a star or hybrid topology—star within classrooms and a hybrid structure between floors or buildings—because it offers a balance of scalability, cost-efficiency, and control. Overall, the physical layout of a network topology directly affects speed and reliability: topologies with shared paths (like bus or ring) can create bottlenecks or single points of failure, while layouts with dedicated or redundant paths (like star and mesh) provide faster performance and greater resilience due to the multiple pathways for data to travel across.</p>
 <h2 class="collapsible" id="cable-constructing-and-testing">Cable Constructing and Testing</h2>
-<h2 class="collapsible" id="exploring-layers-1-and-2-of-the-osi-model-network-access-layer-of-tcpip-model">Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)</h2>
-<h2 class="collapsible" id="building-and-testing-a-small-office-home-office-network">Building and Testing a Small Office / Home Office Network</h2>
-<h2 class="collapsible" id="reflection_1">Reflection</h2></p>
+<p>After learning about network topography, the next activity was building and testing cables. Every network, from a classroom computer lab to a corporate data center - relies on Ethernet cables to carry data between devices. Professional technicians and network engineers often make and test their own cables instead of buying them pre-made, allowing them to create cables at precise lengths, verify quality, and save on cost.</p>
+<p>Building and testing cables works at the Physical Layer (Layer 1) of the OSI Model. This is where data is converted to electrical signals that travel through wires.</p>
+<p>At this layer:</p>
+<ul>
+<li>Cable quality determines <strong>speed</strong> and <strong>signal reliability</strong></li>
+<li>Misplaced wires or bad crimps can cause communication failures</li>
+<li>Proper testing ensures that the cable works before being installed in a network</li>
+</ul>
+<p>When constructing and testing the Ethernet cables, the following equipment was used:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>When It's Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cable Stripper</td>
+<td>Removes the outer jacket from the Ethernet cable without damaging the internal wires.</td>
+<td>Used to expose the eight colored wires within the cable</td>
+</tr>
+<tr>
+<td>Cable Cutter</td>
+<td>Cuts the cable cleanly and evenly before and after stripping</td>
+<td>Used at the start and end for making precise cuts</td>
+</tr>
+<tr>
+<td>RJ45 Crimp Tool</td>
+<td>Presses the metal pins inside the RJ45 connector into each wire, securing them and creating an electrical connection</td>
+<td>Used after the wires are arranged an inserted</td>
+</tr>
+<tr>
+<td>Pass-Through RJ45 Connectors</td>
+<td>Plastic connectors that attach to each cable end. The wires pass through the front for visibility before crimping</td>
+<td>Used on both ends of the cable</td>
+</tr>
+<tr>
+<td>Cable Tester</td>
+<td>Verifies that all eight wires are connected from one end to the other. Lights indicate pass or fail</td>
+<td>Used after crimping both ends</td>
+</tr>
+<tr>
+<td>Cat5e/Cat6 Ethernet Cable</td>
+<td>The actual networking cable containing eight copper wires twisted into pairs</td>
+<td>Used throughout the entire process</td>
+</tr>
+</tbody>
+</table>
+<p>The most common wiring standard for Ethernet cable is T568B, which is the most common in U.S. networks.</p>
+<p>e most common wiring standard for Ethernet cable is T568B, which is the most common in U.S. networks.</p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Wire Color</th>
+<th>Function (T568B Standard)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>White/Orange</td>
+<td>Transmit + (TX+)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Orange</td>
+<td>Transmit – (TX–)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>White/Green</td>
+<td>Receive + (RX+)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Blue</td>
+<td>Not used in 10/100 Mbps; part of Pair 3 in Gigabit Ethernet</td>
+</tr>
+<tr>
+<td>5</td>
+<td>White/Blue</td>
+<td>Not used in 10/100 Mbps; part of Pair 3 in Gigabit Ethernet</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Green</td>
+<td>Receive – (RX–)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>White/Brown</td>
+<td>Not used in 10/100 Mbps; part of Pair 4 in Gigabit Ethernet</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Brown</td>
+<td>Not used in 10/100 Mbps; part of Pair 4 in Gigabit Ethernet</td>
+</tr>
+</tbody>
+</table>
+<h3 id="steps-for-constructing-the-cable">Steps for Constructing the Cable</h3>
+<p>Step 1: Prepare the cable</p>
+<ul>
+<li>Measure approximately 12 inches of cable</li>
+<li>Use the cutter section of the crimp tool to make a clean, straight cut</li>
+<li>Use the stripper to remove about 3 inches of the outer plastic jacket</li>
+</ul>
+<p><img alt="Step 1" src="../media/network_foundations/cable_1.JPG" width="500" /></p>
+<p>Step 2: Untwist and arrange the wires</p>
+<ul>
+<li>Untwist the four pairs without damaging the wire</li>
+<li>Arrange them in the T568B order:<ul>
+<li>White/Orange, Orange, White/Green, Blue, WHite/Blue, Green, White/Brown, Brown</li>
+</ul>
+</li>
+<li>Straighten the wires until they are flat and parallel</li>
+<li>Trim them evenly to about 0.5 inches in length using the wire cutter</li>
+</ul>
+<p><img alt="Step 2" src="../media/network_foundations/cable_2.jpeg" width="500" /></p>
+<p>Step 3: Insert the wires into the RJ45 connector</p>
+<ul>
+<li>Hold the RJ45 connector with the clip facing down and gold pins facing up</li>
+<li>Slide all eight wires carefully into the connector while maintaining the correct color order</li>
+<li>Double check that the color order is correct before proceeding</li>
+</ul>
+<p><img alt="Step 3" src="../media/network_foundations/cable_3.JPG" width="500" /></p>
+<p>Step 4: Crimp the connector</p>
+<ul>
+<li>Insert the RJ45 connector into the RJ45 crimp tool</li>
+<li>Squeeze the handles firmly until a click is heard</li>
+<li>The crimp tool will press the metal contacts into the wires and cut off the excess ends</li>
+<li>Lightly tug on the connector to confirm that it's secure</li>
+</ul>
+<p><img alt="Step 4" src="../media/network_foundations/cable_4.JPG" width="500" /></p>
+<p>Step 5: Add 2 cable sleeves to the cable, then repeat steps 1-4 on the other end of the cable</p>
+<p><strong>Wire Stripping Demonstration Video</strong></p>
+<p><img alt="Wire Stripping Demonstration Video" src="../media/network_foundations/wire_stripping_demonstration.mp4" width="700" /></p>
+<h2 id="exploring-layers-1-and-2-of-the-osi-model-network-access-layer-of-tcpip-model">Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)</h2>
+<h2 id="building-and-testing-a-small-office-home-office-soho-network">Building and Testing a Small Office / Home Office (SOHO) Network</h2>
+<h2 id="reflection_2">Reflection</h2></p>
     </article>
 </section>
             <!-- endblock -->
