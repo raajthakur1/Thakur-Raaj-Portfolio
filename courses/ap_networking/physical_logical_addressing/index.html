@@ -573,7 +573,113 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p></p>
+        <p><h1 id="physical-and-logical-addressing">Physical and Logical Addressing</h1>
+<h2 id="project-introduction">Project Introduction</h2>
+<p>This project was focused on exploring physical and logical addressing (MAC and IP addresses), such as their unique purposes, use cases, and differences. </p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li>
+<p><a href="#understanding-physical-addressing-mac-addresses"><strong>Understanding Physical Addressing (MAC Addresses)</strong></a></p>
+</li>
+<li>
+<p><a href="#understanding-logical-addressing-ipv4-and-ipv6"><strong>Understanding Logical Addressing (IPv4 and IPv6)</strong></a></p>
+</li>
+<li>
+<p><a href="#dynamic-vs-static-addressing--when-to-use-each"><strong>Dynamic vs Static Addressing &amp; When to Use Each</strong></a></p>
+</li>
+<li>
+<p><a href="#configuring-and-verifying-ip-addresses-on-a-linux-vm"><strong>Configuring and Verifying IP Addresses on a Linux VM</strong></a></p>
+</li>
+<li>
+<p><a href="#reflection"><strong>Reflection</strong></a></p>
+</li>
+</ul>
+<h2 class="collapsible" id="understanding-physical-addressing-mac-addresses">Understanding Physical Addressing (MAC Addresses)</h2>
+<h3 id="part-a-exploring-a-network-interface-card-nic">Part A: Exploring a Network Interface Card (NIC)</h3>
+<p>Every device that connects to a network—computers, phones, printers, game consoles—contains a small hardware component called a Network Interface Card (NIC). The NIC is what sends and receives data over the network. Each NIC is assigned a permanent hardware identifier when it is manufactured. This identifier is called a physical address because it is tied to the physical hardware itself.</p>
+<p>On modern Ethernet and Wi-Fi networks, this physical address is known as a MAC Address (Media Access Control Address)</p>
+<p>Key points:</p>
+<ul>
+<li>It is assigned at the factory.</li>
+<li>It does not normally change, even if you move the device to another network.</li>
+<li>It uniquely identifies your network interface among all others in the world.</li>
+</ul>
+<p>NICs can take on many form factors. In portable devices (cell phones, laptops, tablets, etc.), the NIC is usually soldered directly to the board, or exists in the M.2 form factor. In desktop computers and servers, NICs usually utilize the PCIe interface and take up a PCIe x4 slot on a motherboard. </p>
+<p><img alt="NIC A" src="../media/physical_logical_addressing/nic_a.png" width="width" /></p>
+<p><img alt="NIC B" src="../media/physical_logical_addressing/nic_b.png" width="width" /></p>
+<p>In the NICs pictured above, the Ethernet port is used to transfer and receive packets from the network (OSI Layer 1) and the PCIe connector transmits data to the rest of the system so it can be processed by the RAM and CPU. It needs a main chip to handle all of the network protocol work, such as assembling frames, and tagging packets with its MAC address, amongst many other responsibilities.</p>
+<p>Due to a MAC being permanently assigned to each NIC, a MAC address is considered the physical address for a device. It cannot be altered by the OS or any software. This is why switches use Ethernet to send packets to the right device, since they operate at OSI Level 2 along with MAC addresses.</p>
+<h3 id="part-b-interpreting-mac-addresses">Part B: Interpreting MAC Addresses</h3>
+<p>The MAC address of the Ubuntu VM used in prior lessons was 0e:d6:c7:3a:ea:8f. A MAC is composed of 2 parts: the OUI (Organizationally Unique Identifier), represented by the first half of the MAC, and the device-specific identifier, represented by the second half of the MAC. In this case, the OUI was 0e:d6:c7 and the device-specific identifier was 3a:ea:8f. The OUI was researched on <a href="https://maclookup.app">maclookup.app</a>, which stated that the MAC as a "randomized MAC." This makes sense, since the VM's NIC is virtualized, and UTM generates a random MAC during the VM configuration. </p>
+<p><img alt="MAC Lookup" src="../media/physical_logical_addressing/maclookup_ubuntu.png" width="500" /></p>
+<p>Overall, when compared to the physical NICs in Part A which get their MAC addresses permanently assigned to them upon being manufactured, the VM's virtual NIC gets a randomized NIC. Both the physical and virtual MAC addresses follow the same format (48 bit value, 6 pairs of hex numbers, etc.), and they both serve as Layer 2 identifiers. However, physical MACs contain OUIs that represent the manufacturer of the device, whereas virtual MACs have OUIs that don't represent anything - they're randomly generated. They tend to look "fake" in terms of vendor code, which is why the MAC lookup website reported the VM's MAC as randomized. </p>
+<p>Below is a comparison table that lists different MACs, their vendor, and whether they are physical or virtual MACs:</p>
+<table>
+<thead>
+<tr>
+<th>Full Address</th>
+<th>OUI</th>
+<th>Vendor</th>
+<th>Type of Vendor</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F0:18:98:AA:BB:CC</td>
+<td>F0:18:98</td>
+<td>Apple</td>
+<td>Physical</td>
+<td>Apple makes physical devices, which is why their MACs and OUIs are associated with physical MACs</td>
+</tr>
+<tr>
+<td>3C:5A:B4:11:22:33</td>
+<td>3C:5A:B4</td>
+<td>Google</td>
+<td>Physical</td>
+<td>Similarly to Apple, Google only makes physical devices</td>
+</tr>
+<tr>
+<td>60:45:BD:12:34:56</td>
+<td>60:45:BD</td>
+<td>Microsoft</td>
+<td>Physical</td>
+<td>Similarly to Apple and Google, Microsoft only makes physical devices</td>
+</tr>
+<tr>
+<td>A4:BA:DB:22:33:44</td>
+<td>A4:BA:DB</td>
+<td>Dell</td>
+<td>Physical</td>
+<td>Similarly to Microsoft, Apple, and Google, Microsoft only makes physical devices</td>
+</tr>
+<tr>
+<td>04:1A:04:55:66:77</td>
+<td>04:1A:04</td>
+<td>WaveIP</td>
+<td>Physical</td>
+<td>Similarly to Dell, Microsoft, Apple, and Google, Microsoft only makes physical devices (WaveIP makes routers)</td>
+</tr>
+<tr>
+<td>00:50:56:AA:BB:CC</td>
+<td>00:50:56</td>
+<td>VMWare</td>
+<td>Both</td>
+<td>VMWare makes both physical NICs and software which virtualize NICs (like VMWare Fusion), meaning that a VMWare NIC could be either physical or virtual</td>
+</tr>
+<tr>
+<td>52:54:00:12:34:56</td>
+<td>52:54:00</td>
+<td>None</td>
+<td>Virtual</td>
+<td>The OUI 52:52:00 is not registered to any organiztaion</td>
+</tr>
+</tbody>
+</table>
+<h2 class="collapsible" id="understanding-logical-addressing-ipv4-and-ipv6">Understanding Logical Addressing (IPv4 and IPv6)</h2>
+<h2 class="collapsible" id="dynamic-vs-static-addressing-when-to-use-each">Dynamic vs Static Addressing &amp; When to Use Each</h2>
+<h2 class="collapsible" id="configuring-and-verifying-ip-addresses-on-a-linux-vm">Configuring and Verifying IP Addresses on a Linux VM</h2>
+<h2 class="collapsible" id="reflection">Reflection</h2></p>
     </article>
 </section>
             <!-- endblock -->
