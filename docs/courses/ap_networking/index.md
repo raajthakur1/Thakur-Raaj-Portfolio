@@ -11,6 +11,7 @@ Welcome to my documentation for the AP Networking course for the '25 - '26 schoo
 - [**Networking and Data Movement**](networking_data_movement.md)
 - [**Network Foundations**](network_foundations.md)
 - [**Why Can't These Two Computers Talk to Each Other?**](why_cant_these_two_computers_talk.md)
+- [**Physical and Logical Addressing**](physical_logical_addressing.md)
 
 
 ## Course Overview

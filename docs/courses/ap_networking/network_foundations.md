@@ -8,8 +8,8 @@ This project was focused on exploring aspects of a network that make up layers 1
 - [**Network Topology Activity**](#network-topology-activity)
 - [**Cable Constructing and Testing**](#cable-constructing-and-testing)
 - [**Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)**](#exploring-layers-1-and-2-of-the-osi-model-network-access-layer-of-tcpip-model)
-- [**Building and Testing a Small Office / Home Office (SOHO) Network**](#building-and-testing-a-small-office--home-office-network-collapsible)
-- [**Reflection**](#reflection)
+- [**Building and Testing a SOHO Network**](#building-and-testing-a-soho-network)
+- [**Reflection**](#overall-reflection)
 
 ## Exploring IP Addresses in Shared and Bridged Modes in UTM {.collapsible}
 
@@ -225,10 +225,147 @@ Once the cable was constructed, it had to be tested to ensure that it can establ
 
 The most challenging step in creating my Ethernet cable was feeding the small individual wires into the RJ45 connector, since keeping all eight conductors perfectly straight, aligned in the T568B order, and pushed fully into the connector without any of them slipping out was very difficult and required lots of precision. Maintaining the correct wire order is critical because Ethernet relies on twisted pairs arranged in a specific pattern to reduce interference and ensure signals travel along the proper transmit and receive paths; even a single pair swapped or misaligned can cause slow speeds, failed connections, or complete link loss. Building and testing the cable directly connects to the Physical Layer (Layer 1) of the OSI model, since that layer is responsible for transmitting electrical signals between devices. If a cable were built incorrectly but never tested, a real network could experience intermittent failures, dropped packets, or devices that appear “broken,” leading to difficult troubleshooting and wasted time. Labeling the cable and using professional tools—like crimpers, strippers, and testers—mirrors real-world industry practices because technicians need to identify cables quickly, ensure reliable terminations, and verify functionality before installation, all of which maintain network organization and uptime in professional environments.
 
-## Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model)
+## Exploring Layers 1 and 2 of the OSI Model (Network Access Layer of TCP/IP Model) {.collapsible}
+
+In this activity, OSI Layers 1 and 2 were investigated (equivalent to Network Access Layer of the TCP/IP model). OSI Layer 1 moves bits across cables, Wi-Fi, and hardware connections, and Layer 2 uses **MAC Addresses** and **frames** to send data across a network. The Ubuntu VM was used to find the MAC address, explore the network interface, and see live network traffic.
+
+### Layer 1
+
+To reveal important information about the network interface, a core component of Layer 1, the `ethtool` command was used in Ubuntu. To install it, run `sudo apt install ethtool -y`. Once `ethtool` was installed, the network interfaces were listed with `ip link show`. In the Ubuntu VM, interface enp0s1 was in use, so to reveal its information, `sudo ethtool enp0s1` was run. It reports details such as speed, duplex mode, link detected (yes/no), and the driver version. However, in the VM, many data points were listed as "unknown" since the NIC is virtualized and don't actually communicate with the network. The virtual NICs relay data to and from the hosts's physical NIC and acts as a bridge that lets the VM send and receive network traffic through the host's real hardware. For this reason, data such as speed and duplex were listed as "unknown."
+
+![Ethtool](media/network_foundations/ethtool_enp0s1.png){ width=500 }
+
+Ethtool reports the Transceiver as "Internal" since the VM's NIC is virtual and doesn't actually have a physical transceiver. 
+
+### Layer 2
+
+OSI Layer 2 is responsible for making sure that data travels safely and accurately devices on the same local network. In this layer, data is packaged into frames, smaller packets of data. Frames include the data, the source and destination MAC addresses, and error checking information to detect damage during transmission.
+
+When one device wants to communicate with another on the same network, it uses **ARP** (**A**ddress **R**esolution **P**rotocol) to match an IP address with the correct MAC address. This information can be found in Ubuntu with the following commands:
+
+- `arp -n` &Rightarrow; lists devices and their MAC addresses known by Ubuntu
+- `ip -s link` &Rightarrow; shows how many packets have been sent or received by each interface
+
+When a message is sent from one device to another on the same network, the **physical layer** turns the data into signals and sends them through Ethernet or Wi-Fi, and the **data link layer** packages the data into **frames** and tags the frames with MAC addresses so they reach the correct device.
+
+To explore Layer 2, `ip link show` was run, which returned the following information:
+
+- Interface name: enp0s1
+- MAC address: 92:9f:78:7c:ae:77o
+- Broadcast Address: ff:ff:ff:ff:ff:ff
+
+![IP Link Show](media/network_foundations/ip_link_show.png){ width=500 }
+
+After obtaining this information, `arp -n` was run to see IP and MAC addresses of devices that the VM has communicated with on the local network. ARP connects IP Addresses (OSI Layer 3) with MAC Addresses (OSI Layer 2) so that the computer knows where to physically send data.
+
+![ARP -n](media/network_foundations/arp_n.png){ width=500 }
+
+Next, network traffic statistics were revealed with `ip -s link`, which returned the following information:
+
+- RX packets (received): 16605
+- TX packets (transmitted): 2519
+- Errors:0
+
+![IP -S Link](media/network_foundations/ip_s_link.png){ width=500 }
+
+Lastly, `tcpdump` was used to observe data packets as they move across the VM's NIC. Using the command `sudo tcpdump -c 5` captures the first five live packets travelling through the VM's NIC, and reports the source and destination MAC addresses as well as the protocols being used. 
+
+![TCPDump](media/network_foundations/tcpdump.png){ width=500 }
+
+In the `tcpdump` capture, both the source and destination MAC addresses were revealed, since they identify the physical NICs involved in the data transfer. In the capture, Firefox was opened, and the packets captured are the data that Firefox fetched and received from its servers. This information is important for network monitoring and troubleshooting since it reveals how devices are communicating at OSI Layer 2, making it possible to detect misconfigurations, unexpected traffic, and connectivity failures. 
+
+### Reflection
+
+Through the investigation of Layers 1 and 2 of the OSI Model, I learned that the Ubuntu VM uses the network interface enp0s1, and that it reveals itself on the local network using its MAC address. The MAC address can be obtained through using `ip link show`, and can be monitored using `tcpdump`. A MAC address is different from an IP address, since a MAC address is permanent and unique to each NIC, whereas an IP address is assigned by a router in Layer 3. ARP links these two addresses together, since it maps each IP address to the correct MAC address, allowing for devices to communicate with each other using IP addresses. When viewing live packets in `tcpdump`, the capture revealed information about the MAC addresses that send and receive packets. Layer 1 and 2 work together by having Layer 1 convert data into electrical (Ethernet) or radio (Wi-Fi) signals for transmission, while Layer 2 packages that data into frames, assigns MAC addresses, and ensures that the signals traveling across the medium reach the correct device on the local network. 
+
+## Building and Testing a SOHO Network {.collapsible}
+
+In this activity, a small office / home office (SOHO) networks was designed and simulated with Ubuntu VMs. A SOHO network is the most common network, as it is the kind of network setup most people use at home or in a small business. It connects multiple devices like computers, printers, and IoT devices so they can share internet access, files, and other resources. A typical SOHO network contains the following components:
+
+- Modem: Connects network to the Internet Service Provider (ISP)
+- Router: Directs (routes) traffic between local devices and the internet; assigns IP addresses
+- Switch: Expands the number of wired ports available for computers, printers, and desktop phones
+- Access Point (AP): Provides Wi-Fi to laptops, tablets, and cell phones
+- Devices: Endpoints like computers, printers, and smart TVs that use the network
+
+### Designing a SOHO Network
+
+A SOHO network was designed with the following devices:
+
+- 2 Ubuntu computers
+- 1 printer
+- 1 smartphone or tablet
+- 1 router
+- 1 switch
+- 1 access point
+- 1 cloud-connected device (NAS, smart TV, or other IoT device)
+
+Additionally, the diagram includes an IP addressing plan using 192.168.50.0/24. This means that each device has an IP of 192.168.50.x, where 0 < x < 99 and the first 24 bits represent the network (meaning the last 8 bits represent the device).
+
+![SOHO Diagram](media/network_foundations/soho.png){ width=999 }
+
+### Simulating the SOHO and Testing in Ubuntu
+
+To test the SOHO, 2 computers running Ubuntu VMs in Bridged Network mode were used (labelled Computer A and Computer B). To start, once the VMs were set to Bridged Mode, `ip a` was run on both computers. Computer A's IP was 10.12.26.1 and Computer B's IP was 10.12.26.18. 
+
+![IP A A](media/network_foundations/ip_a_a.png){ width=400 }
+*Computer A's IP*
+
+![IP A B](media/network_foundations/ip_a_b.png){ width=400 }
+*Computer B's IP*
+
+Once the IP addresses were found, the two computers pinged each other with `ping [Other Computer's IP Address]`.
+
+![Ping A to B](media/network_foundations/pingA2B.png){ width=400 }
+*Pinging Computer B from Computer A*
+
+![Ping B to A](media/network_foundations/pingB2A.png){ width=400 }
+*Pinging Computer A from Computer B*
+
+Once the computers could connect to each other, the following commands were run on each computer to explore what's happening inside the network:
+
+|Command|Purpose|
+|-------|-------|
+|`arp -a`|Lists devices and the unique MAC address of nearby devices that the computer recognizes on the local network|
+|`netstat -r`|Displays how data is being send through the network|
+|`ifconfig`|Shows the active network interfaces and IP configuration|
+|`sudo traceroute google.com`|Displays every "hop" packets take to reach Google's DNS server and helps visualize how data travels through routers across the internet|
+
+![ARP, Netstat, Ifconfig, and Traceroute](media/network_foundations/arp_netstat_ifconfig_traceroute.png){ width=999 }
+
+These commands reveal how the SOHO network handles communication over the local network, device identification, routing, and internet connectivity. The `arp -a` results show that the VM learned the MAC address of the default gateway (192.168.4.1), which reveals that all non-local communication is handled by the router. The `netstat -r` output shows that the VM's network uses a 192.168.64.0/24 networking plan, where the first 24 bits of the IP (192.168.64) designate the network, and the last 8 bits (0-99) designate the device on the network. The `ifconfig` output reveals that the VM uses the network adapter enp0s1 with an IP of 192.168.64.7 and has a MAC address of 92:9f:78:7c:ae:77. And, since the flags include "UP" and "RUNNING", it is known that there is an active network connection on enp0s1. The output from `sudo traceroute 8.8.8.8` demonstrates the path data takes from the VM to Google's public DNS server, 8.8.8.8. The first "hop" is to the local router, followed by the ISP's internal network, and then national network infrastructure before reaching Google. This demonstrates how the SOHO hands off traffic from the devices to the router, then to the ISP, and eventually national and global internet infrastructure. Overall, these tools showcase how the SOHO network resolves local devices with ARP, directs outbound traffic with a routing table (revealed with `netstat -r`), identifies interfaces and addresses (MAC and IP) with `ifconfig`, and routes packets to the internet through `traceroute`. 
+
+Once the information about the SOHO was revealed, the next step in simulating and testing the SOHO was to enable a firewall in Ubuntu. A firewall acts like a security gate at the entrance of the network, as it blocks unwanted connections and allows safe traffic. Firewalls operate at OSI Layers 3 and 4, filtering packets based on rules. To enable ufw, a common firewall used in Ubuntu, the following steps were used:
+
+1. Install ufw with `sudo apt install ufw`
+2. Check ufw's status with `sudo ufw status`
+3. If it says "inactive," turn it on with `sudo ufw enable` and re-check it with `sudo ufw status`
+
+![UFW Setup](media/network_foundations/ufw.png){ width=500 }
+
+Next, internet reachability was tested with `traceroute`. Earlier, basic reachability was tested with `traceroute 8.8.8.8`, however, testing `traceroute` with google.com instead of 8.8.8.8 tests both basic reachability and the DNS. Running `traceroute google.com` yielded the following result:
+
+![Traceroute google.com](media/network_foundations/traceroute_google.png){ width=500 }
+
+When compared to `traceroute 8.8.8.8` (**pictured below**), running `traceroute google.com` takes a lot more steps since google.com actually encompasses many different DNS servers, and there is a lot of internal routing within google's many servers once the packets reach google's public server. On the other hand, 8.8.8.8 is one specific server, which yields a relatively simple path for the data to take. 
+
+![Traceroute 8.8.8.8](media/network_foundations/traceroute_8.8.8.8.png){ width=500 }
+
+Lastly, to demonstrate OSI Layer 7 (Application Layer), a simple web server was created with python on each computer. This demonstrates the Application Layer by showing how one device can serve files to another over HTTP. The following commands were used to create the server:
+
+- `hostname -I`: Not necessary to start the server, but useful to run since it prints the hostname of the computer through which the server will be accessible
+- `cd ~`: Navigates to the home folder
+- `python3 -m http.server 8080`: Starts a simple HTTP server on port 8080 with Python 3
+
+These commands were run on Computer B. On Computer A, 10.12.24.243:8080 was entered in a web browser to access the server, where the contents of Computer B's home folder were accessible over the local network. 
 
 
+![HTTP Server](media/network_foundations/http_server.png){ width=500 }
 
-## Building and Testing a Small Office / Home Office (SOHO) Network
+### Reflection
 
-## Reflection
+The SOHO network investigation demonstrated how the VM’s network interface identifies itself on the local network through its assigned IP address and its unique MAC address, both of which were visible in `ifconfig` and `ip a`. A MAC address, which permanently identifies the physical or virtual network interface, differs from an IP address because an IP is assigned by the router and can change based on the network, while the MAC remains constant and operates at Layer 2. ARP plays a crucial role in linking these two addressing systems by mapping each known IP address to the correct MAC address, allowing data to be delivered to the correct device on the local network even when only an IP address is used. The `tcpdump` capture revealed the source and destination MAC addresses for each packet, along with the protocols in use, showing real-time communication between applications—such as a browser—and remote servers. These observations highlighted how Layers 1 and 2 work together: Layer 1 converts data into electrical or radio signals for transmission across cables or Wi-Fi, while Layer 2 wraps that data into frames, assigns MAC addresses, performs error detection, and ensures the signals reach the correct local device. Together, these layers form the foundation of a functioning SOHO network by enabling reliable physical transmission and accurate local delivery of data.
+
+## Overall Reflection {.collapsible}
+
+This project tied together OSI concepts with practical skills by demonstrating how Layer 1 physical media and Layer 2 data-link framing enable Layer 3 IP addressing and higher-layer services in a SOHO network. Building and testing Ethernet cables reinforced the importance of correct pair order (T568B), solid crimps, and cable verification at Layer 1 because physical faults immediately affect link reliability and throughput. Observations with `ip`, `arp`, and `tcpdump` showed how MAC addresses and ARP operate at Layer 2 to map IP addresses at Layer 3, and how NAT/bridged modes alter private addressing while leaving the router's public IP unchanged. Topology choices—such as star for small offices or hybrid layouts for larger deployments—were linked to resilience and troubleshooting complexity, with mesh designs offering redundancy at higher cost. Simulating a SOHO network using virtual machines highlighted real-world trade-offs: bridged VMs behave like distinct hosts on the LAN and expose distinct security considerations, whereas NAT/Shared mode simplifies management but hides device-level behavior. Key challenges included precise cable termination and ensuring virtualized NICs report meaningful Layer 1 metrics, both of which complicate fault isolation during lab exercises and field deployments. Professionally relevant skills gained include systematic testing and documentation of cables and addresses, interpreting interface and routing tables to locate faults, and designing simple IP plans and firewall rules suitable for small networks. Together, these lessons emphasize that reliable networking depends on correct physical construction, consistent addressing and topology choices, and disciplined monitoring—skills that directly transfer to network administration, troubleshooting, and infrastructure planning.
