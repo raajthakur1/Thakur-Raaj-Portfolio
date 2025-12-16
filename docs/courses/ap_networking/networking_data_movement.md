@@ -17,7 +17,7 @@ The main objectives for this project were to explore how Local Area Networks (LA
 
 |Component|Purpose|Analogy|
 |---------|-------|-------|
-|Endpoint Devices (Computers, Printers, Phones, etc.|Endpoint Devices are devices that send or receive data across a network. They are the ones that use the network.|Houses in the city who communicate with other houses|
+|Endpoint Devices (Computers, Printers, Phones, etc.)|Endpoint Devices are devices that send or receive data across a network. They are the ones that use the network.|Houses in the city who communicate with other houses|
 |Ethernet Cables and Wi-Fi|The physical (Ethernet) or wireless (Wi-Fi) connections that allow data to move between devices on a network.|Roads that interconnect everything|
 |Switch|A device that connects multiple endpoint devices within the same network and directs |Roundabout that guides traffic and ensures that everyone goes to the right location|
 |Router||Post office that decides which mail should stay local (within LAN) and should be mailed to other cities (Internet)|
