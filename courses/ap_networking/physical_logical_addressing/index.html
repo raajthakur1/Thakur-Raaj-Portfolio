@@ -685,6 +685,72 @@
 <h3 id="reflection">Reflection</h3>
 <p>MAC addresses operate at OSI Layer 2, where switches and routers use them to deliver frames within the same local network to the correct device. They never leave the local network because routers replace the endpoint device's MAC address with the router's own MAC address, since the router is what forwards packets to and from the internet. </p>
 <h2 class="collapsible" id="understanding-logical-addressing-ipv4-and-ipv6">Understanding Logical Addressing (IPv4 and IPv6)</h2>
+<p>While MAC addresses work extremely well for communication within a single network, they have one major limitation: a device cannot reach another device outside its local network with just MAC addresses. This is where <strong>logical addressing</strong> is used, as it uses <strong>IP (Internet Protocol) Addresses</strong> to communicate across the world. Logical addresses allow devices to be located anywhere on Earth, change networks and still remain reachable, and to transfer data across multiple interconnected networks.</p>
+<p>There are two different standards in logical addressing: </p>
+<ul>
+<li>IPv4: the fourth version of the Internet Protocol and the first widely deployed system for global addressing.<ul>
+<li>32 bit address, supporting ≈ 4.3 billion unique addresses</li>
+<li>Example: 192.168.1.10</li>
+</ul>
+</li>
+<li>IPv6: the sixth version of the Internet Protocol designed to solve limitations of IPv4. While IPv4 can support ≈ 4.3 billion unique addresses, IPv6 allows for virtually infinite addresses since it uses 128 bits instead of 32. In fact, there are enough IPv6 addresses for <strong>every grain of sand on Earth to each have billions of addresses</strong>.<ul>
+<li>IPv6 is written in hexadecimal with colons to make it easier to read</li>
+<li>Example: 2001:0db8:85a3::8a2e:0370:7334</li>
+</ul>
+</li>
+</ul>
+<p><strong>Comparison Table between IPv4 and IPv6:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bits</td>
+<td>32</td>
+<td>128</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>~4.3 billion</td>
+<td>Virtually unlimited</td>
+</tr>
+<tr>
+<td>Notation</td>
+<td>Dotted decimal</td>
+<td>Hexadecimal with colons</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>10.0.0.25</td>
+<td>fe80::1f4a:e3ff:fe21:bd10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="logical-addressing-lab">Logical Addressing Lab</h3>
+<p>An activity was completed that focused on the following:</p>
+<ul>
+<li>Understanding the role of logical addresses</li>
+<li>Interpreting IPv4 and IPv6 addresses</li>
+<li>Understanding why IPv6 link-local addresses always exist</li>
+<li>Connecting logical addressing to global communication</li>
+</ul>
+<h4 id="documenting-ip-addresses">Documenting IP Addresses</h4>
+<p>The Ubuntu VM's IP addresses were found using <code>ip addr show</code>, which printed the IPv4, IPv6, and MAC address, along with other information.</p>
+<p><img alt="IP Addr Show" src="../media/physical_logical_addressing/ip_addr_show.png" width="400" /></p>
+<ul>
+<li><strong>IPv4 Address:</strong> 192.168.64.7</li>
+<li><strong>IPv6 Link-Local Address:</strong> fe80::909f:78ff:fe7c:ae77**</li>
+</ul>
+<p><strong>Purpose of IPv6 Link-Local Address:</strong></p>
+<p>An IPv6 link-local address is a special type of IPv6 address that a device uses exclusively to communicate with other devices on the same subnet. Routers do not forward traffic associated with link-local addresses. They start with fe80:: since the IPv6 standard mandates that all link-local addresses begin with this prefix. These addresses are very important for local communication, such as router discovery, finding other IPv6 devices on the network, and basic connectivity without requiring advanced IP configuration. They also do not need a DHCP server (usually a router) to assign an address; IPv6 uses stateless auto configuration, meaning that a system automatically generates a link-local address for each network interface (such as en0, en1, enp0s1, etc.).</p>
+<p><strong>WHy IPv6 is Important for the Future of Networking:</strong></p>
+<p>Although IPv4 has been the backbone of networking and the internet for a very long time, it is no longer sufficient for modern use since its 32-bit address space only provides ~4.3 billion addresses, which has been exhausted due to the influx of connected devices since the turn of the century. In the 21st century, there has been exponential growth of the internet, mobile devices, cloud services, and IoT devices. IPv6 solves this problem by using a 128-bit address space, allowing for a virtually unlimited number of unique IP addresses. Along with a far higher capacity for addresses, IPv6 has many improvements in both efficiency and security when compared to IPv4. However, since IPv4 is deeply embedded in existing infrastructure, modern networks must support both IPv4 and IPv6 simultaneously, allowing for a gradual migration to IPv6 rather than a sudden change, which would almost certainly cause global infrastructure outages and a lack of support for billions of devices.</p>
+<p><strong>Reflection: Why Both Logical and Physical Addresses are Needed on a Network, and how IP Addresses Allow Communication Beyond the Local Network:</strong></p>
 <h2 class="collapsible" id="dynamic-vs-static-addressing-when-to-use-each">Dynamic vs Static Addressing &amp; When to Use Each</h2>
 <h2 class="collapsible" id="configuring-and-verifying-ip-addresses-on-a-linux-vm">Configuring and Verifying IP Addresses on a Linux VM</h2>
 <h2 class="collapsible" id="reflection_1">Reflection</h2></p>
