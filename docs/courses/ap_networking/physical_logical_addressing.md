@@ -182,6 +182,7 @@ The same command was run in VM2, which printed "dhcp4: true" **and** "dhcp6: tru
 
 ![Netplan VM2](media/physical_logical_addressing/netplan_2.png){ width=650 }
 
+When looking at both VMs together, both VMs use Netplan, the configuration layer that defines whether an interface uses DHCP in most modern Linux distributions. While VM2 uses DHCP for IPv4 and IPv6, VM1 only uses DHCP for IPv4, meaning that IPv6 has to be manually configured by the user. The output from running `cat /etc/netplan/*.yaml` was very similar between the two VMs, the only difference was that VM2 included a bit more information. The two Linux systems might configure networking differently since VM1 is running Ubuntu 22.04 while VM2 is running Ubuntu 25.10, so the newer version may have more advanced networking features, leading it to automatically configuring IPv6.
 
 ## Configuring and Verifying IP Addresses on a Linux VM {.collapsible}
 
