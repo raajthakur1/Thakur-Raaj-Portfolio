@@ -184,6 +184,51 @@ The same command was run in VM2, which printed "dhcp4: true" **and** "dhcp6: tru
 
 When looking at both VMs together, both VMs use Netplan, the configuration layer that defines whether an interface uses DHCP in most modern Linux distributions. While VM2 uses DHCP for IPv4 and IPv6, VM1 only uses DHCP for IPv4, meaning that IPv6 has to be manually configured by the user. The output from running `cat /etc/netplan/*.yaml` was very similar between the two VMs, the only difference was that VM2 included a bit more information. The two Linux systems might configure networking differently since VM1 is running Ubuntu 22.04 while VM2 is running Ubuntu 25.10, so the newer version may have more advanced networking features, leading it to automatically configuring IPv6.
 
+### Scenario Analysis
+
+In this section of the activity, a list of devices was provided and it was decided whether they should use static or dynamic addressing.
+
+1. School web server: **Static**
+    - A web server needs a consistent IP so that students and staff can reliably access it. Changing its IP could make it unreachable or harder to find on the network.
+2. A classroom printer: **Static**
+    - Printers should have fixed IPs so that multiple devices can always locate and print to them without having to search the network. Static IP prevents connection issues caused by changing addresses.
+3. Student laptops: **Dynamic**
+    - Laptops are frequently connected and disconnected, and there are many of them; using DHCP allows efficient IP allocation without manual configuration. Dynamic addressing simplifies management and avoids IP conflicts.
+4. Security cameras: **Static**
+    - Cameras need a predictable IP for monitoring systems and remote access; dynamic IPs could disrupt video feeds or recording schedules. Static IP ensures continuous access and easier maintenance.
+5. A teacher workstation: **Dynamic**
+    - Since the teacher workstation is primarily used for daily tasks like web browsing, email, and printing, it doesn’t require a fixed IP. Dynamic addressing via DHCP simplifies network management and reduces the risk of IP conflicts, especially if the teacher occasionally moves the device to different classrooms or networks.
+
 ## Configuring and Verifying IP Addresses on a Linux VM {.collapsible}
 
+In this activity, Ubuntu's network settings were manually edited to assign a static IP address. VM #2 from earlier activities was used in this activity since VM #1 uses NetworkManager, an older network manager that does not allow for direct .yaml file editing.
+
+To configure the static IP, the following steps were taken:
+
+1. Run `ip link show` to identify the active network interface. In this case, the active interface was enp0s1. 
+
+![IP Link Show](media/physical_logical_addressing/ip_link_show.png){ width=500 }
+
+2. Reveal contents of /etc/netplan with `ls /etc/netplan`. Open the file(s) located with `sudo nano /etc/netplan/<filename>.yaml`. In the case of this VM, files 00-installer-config.yaml and 01-network-manager-all.yaml were in the folder. Since the first file had "config" in the name, it was assumed that the first file was responsible for configuring the IP addresses (this ended up being correct).
+
+3. In the file, change DHCP to Static IP by changing dhcp4 from "true" to "no", then specifying the desired IP address underneath it. 
+
+![DHCP4 True](media/physical_logical_addressing/dhcp4_true.png){ width=400 } ![DHCP4 NO](media/physical_logical_addressing/dhcp4_no.png){ width=400 }
+
+4. Save the file with Ctrl + O & Ctrl + X
+
+5. Apply the changes by running `sudo netplan apply`
+
+![Netplan Apply](media/physical_logical_addressing/netplan_apply.png){ width=600 }
+
+6. Test that the IP is correct with `ip addr show`, that the traffic is routed through the correct IP with `ip route show`, and that the VM can connect to the internet with `ping -c 4 8.8.8.8`
+
+![Stuff](media/physical_logical_addressing/ip_route_show.png){ width=500 }
+
+### Reflection
+
+The most challenging part of this activity was getting the YAML file correct. It is very sensitive to minute errors in syntax, and it is very difficult to tell what is actually wrong. I learned how important precision is in editing config files such as the netplan YAML files. 
+
 ## Reflection {.collapsible}
+
+Working on this project helped me understand how physical and logical addressing work together. MAC addresses give each device a unique identity on a local network, while IP addresses let devices communicate across different networks. Learning about DHCP versus static addressing showed that dynamic IPs make managing devices like laptops easier, while static IPs are important for servers, printers, and cameras that need consistent addresses. Comparing VM #1 and VM #2 showed that different Linux versions and network managers handle IPs differently—VM #1 used DHCP for IPv4 only, while VM #2 got both IPv4 and IPv6 addresses automatically. Editing YAML files for static IPs taught me that even small mistakes in syntax or indentation can break the network. These lessons apply to real-world devices: web servers need static IPs to stay reachable, printers need fixed addresses so everyone can print, and routers use both static and dynamic addressing to keep networks running smoothly. Overall, this project showed that careful setup of addresses is essential for reliable network communication and that precision matters when configuring network settings.
