@@ -751,9 +751,113 @@
 <p><strong>WHy IPv6 is Important for the Future of Networking:</strong></p>
 <p>Although IPv4 has been the backbone of networking and the internet for a very long time, it is no longer sufficient for modern use since its 32-bit address space only provides ~4.3 billion addresses, which has been exhausted due to the influx of connected devices since the turn of the century. In the 21st century, there has been exponential growth of the internet, mobile devices, cloud services, and IoT devices. IPv6 solves this problem by using a 128-bit address space, allowing for a virtually unlimited number of unique IP addresses. Along with a far higher capacity for addresses, IPv6 has many improvements in both efficiency and security when compared to IPv4. However, since IPv4 is deeply embedded in existing infrastructure, modern networks must support both IPv4 and IPv6 simultaneously, allowing for a gradual migration to IPv6 rather than a sudden change, which would almost certainly cause global infrastructure outages and a lack of support for billions of devices.</p>
 <p><strong>Reflection: Why Both Logical and Physical Addresses are Needed on a Network, and how IP Addresses Allow Communication Beyond the Local Network:</strong></p>
+<p>Logical addresses (IP addresses) are needed in addition to MAC addresses since MAC addresses only work for communication within a local network, whereas IP addresses can work both locally and globally. Also, MAC addresses identify individual devices but are unable to identify where a device is located on the internet, which is why MAC addresses are not reachable outside the local network. IP addresses compensate for these shortcomings since they can work across multiple routers. An example of this principle is when running <code>traceroute [public IP]</code>, which showcases how data travels across many different hops (different routers). This would be impossible without IP addresses. </p>
 <h2 class="collapsible" id="dynamic-vs-static-addressing-when-to-use-each">Dynamic vs Static Addressing &amp; When to Use Each</h2>
+<p>Devices receive IP addresses in one of two ways:</p>
+<ul>
+<li>Dynamically: IP is automatically assigned by router, uses protocol called DHCP (Dynamic Host Configuration Protocol)</li>
+<li>Statically: IP is manually assigned to a device and does not change</li>
+</ul>
+<p>Dynamic and Static Addressing each have benefits and disadvantages, such as:</p>
+<ul>
+<li>Dynamic:<ul>
+<li>Automatically assigned (no need for users or admins to configure IPs manually)</li>
+<li>Lease-based (devices need to renew their IP once the "lease" is up)</li>
+<li>Ideal for end-user devices</li>
+<li>Highly scalable</li>
+</ul>
+</li>
+<li>Static:<ul>
+<li>Manually configured (gives admins more control)</li>
+<li>Never changes unless reconfigured</li>
+<li>Commonly used in servers, printers, routers, cameras, etc. Not common for user endpoint devices.</li>
+</ul>
+</li>
+</ul>
+<p>DHCP works by following a four step sequence informally referred to as "DORA":</p>
+<ol>
+<li>DHCP<strong>D</strong>ISCOVER: Device broadcasts a message across the network looking for a DHCP server to assign it an IP</li>
+<li>DHCP<strong>O</strong>FFER: A DHCP server replies with an available IP address and network settings</li>
+<li>DHCP<strong>R</strong>EQUEST: The device responds to the server agreeing to use the assigned IP</li>
+<li>DHCP<strong>A</strong>CK: The server sends a final confirmation known as "ACK." Once the confirmation is acknowledged, the device officially receives its IP and can use the network normally.</li>
+</ol>
+<h3 id="activity-dynamic-vs-static-addressing-across-two-vms">Activity: Dynamic vs Static Addressing Across Two VMs</h3>
+<p>This activity involved exploring how two differently configured Ubuntu VMs receive their IP addresses and whether each uses dynamic (DHCP) or static addressing.</p>
+<p>To start, <code>ip addr show</code> was run in both VMs to find their IPv4 and IPv6 link-local addresses.</p>
+<p><img alt="VM1 IP" src="../media/physical_logical_addressing/ip_addr_vm1.png" width="700" /> </p>
+<p><img alt="VM2 IP" src="../media/physical_logical_addressing/ip_addr_vm2.png" width="700" /></p>
+<p>VM1:</p>
+<ul>
+<li>IPv4 address: 192.168.64.2</li>
+<li>IPv6 link-local address: fe80::1863:23ff:fe39:a42c</li>
+</ul>
+<p>VM2:</p>
+<ul>
+<li>IPv4 address: 10.12.26.1</li>
+<li>IPv6 link-local address: fe80::cd6:c7ff:fe3a:ea8f</li>
+</ul>
+<p>The next step was to examine each VM's config files. This was first completed in VM1, where the command <code>cat /etc/netplan/*.yaml</code> was run in order to print out any files ending in .yaml in the directory /etc/netplan, the folder where the network config files are located. The output revealed, among other things, that the VM receives its IPv4 address dynamically since it says "dhcp4: true".</p>
+<p><img alt="Netplan VM1" src="../media/physical_logical_addressing/netplan_1.png" width="650" /></p>
+<p>The same command was run in VM2, which printed "dhcp4: true" <strong>and</strong> "dhcp6: true". This means that the VM receives <strong>both IPv4 and IPv6</strong> addresses dynamically. </p>
+<p><img alt="Netplan VM2" src="../media/physical_logical_addressing/netplan_2.png" width="650" /></p>
+<p>When looking at both VMs together, both VMs use Netplan, the configuration layer that defines whether an interface uses DHCP in most modern Linux distributions. While VM2 uses DHCP for IPv4 and IPv6, VM1 only uses DHCP for IPv4, meaning that IPv6 has to be manually configured by the user. The output from running <code>cat /etc/netplan/*.yaml</code> was very similar between the two VMs, the only difference was that VM2 included a bit more information. The two Linux systems might configure networking differently since VM1 is running Ubuntu 22.04 while VM2 is running Ubuntu 25.10, so the newer version may have more advanced networking features, leading it to automatically configuring IPv6.</p>
+<h3 id="scenario-analysis">Scenario Analysis</h3>
+<p>In this section of the activity, a list of devices was provided and it was decided whether they should use static or dynamic addressing.</p>
+<ol>
+<li>School web server: <strong>Static</strong><ul>
+<li>A web server needs a consistent IP so that students and staff can reliably access it. Changing its IP could make it unreachable or harder to find on the network.</li>
+</ul>
+</li>
+<li>A classroom printer: <strong>Static</strong><ul>
+<li>Printers should have fixed IPs so that multiple devices can always locate and print to them without having to search the network. Static IP prevents connection issues caused by changing addresses.</li>
+</ul>
+</li>
+<li>Student laptops: <strong>Dynamic</strong><ul>
+<li>Laptops are frequently connected and disconnected, and there are many of them; using DHCP allows efficient IP allocation without manual configuration. Dynamic addressing simplifies management and avoids IP conflicts.</li>
+</ul>
+</li>
+<li>Security cameras: <strong>Static</strong><ul>
+<li>Cameras need a predictable IP for monitoring systems and remote access; dynamic IPs could disrupt video feeds or recording schedules. Static IP ensures continuous access and easier maintenance.</li>
+</ul>
+</li>
+<li>A teacher workstation: <strong>Dynamic</strong><ul>
+<li>Since the teacher workstation is primarily used for daily tasks like web browsing, email, and printing, it doesn’t require a fixed IP. Dynamic addressing via DHCP simplifies network management and reduces the risk of IP conflicts, especially if the teacher occasionally moves the device to different classrooms or networks.</li>
+</ul>
+</li>
+</ol>
 <h2 class="collapsible" id="configuring-and-verifying-ip-addresses-on-a-linux-vm">Configuring and Verifying IP Addresses on a Linux VM</h2>
-<h2 class="collapsible" id="reflection_1">Reflection</h2></p>
+<p>In this activity, Ubuntu's network settings were manually edited to assign a static IP address. VM #2 from earlier activities was used in this activity since VM #1 uses NetworkManager, an older network manager that does not allow for direct .yaml file editing.</p>
+<p>To configure the static IP, the following steps were taken:</p>
+<ol>
+<li>Run <code>ip link show</code> to identify the active network interface. In this case, the active interface was enp0s1. </li>
+</ol>
+<p><img alt="IP Link Show" src="../media/physical_logical_addressing/ip_link_show.png" width="500" /></p>
+<ol>
+<li>
+<p>Reveal contents of /etc/netplan with <code>ls /etc/netplan</code>. Open the file(s) located with <code>sudo nano /etc/netplan/&lt;filename&gt;.yaml</code>. In the case of this VM, files 00-installer-config.yaml and 01-network-manager-all.yaml were in the folder. Since the first file had "config" in the name, it was assumed that the first file was responsible for configuring the IP addresses (this ended up being correct).</p>
+</li>
+<li>
+<p>In the file, change DHCP to Static IP by changing dhcp4 from "true" to "no", then specifying the desired IP address underneath it. </p>
+</li>
+</ol>
+<p><img alt="DHCP4 True" src="../media/physical_logical_addressing/dhcp4_true.png" width="400" /> <img alt="DHCP4 NO" src="../media/physical_logical_addressing/dhcp4_no.png" width="400" /></p>
+<ol>
+<li>
+<p>Save the file with Ctrl + O &amp; Ctrl + X</p>
+</li>
+<li>
+<p>Apply the changes by running <code>sudo netplan apply</code></p>
+</li>
+</ol>
+<p><img alt="Netplan Apply" src="../media/physical_logical_addressing/netplan_apply.png" width="600" /></p>
+<ol>
+<li>Test that the IP is correct with <code>ip addr show</code>, that the traffic is routed through the correct IP with <code>ip route show</code>, and that the VM can connect to the internet with <code>ping -c 4 8.8.8.8</code></li>
+</ol>
+<p><img alt="Stuff" src="../media/physical_logical_addressing/ip_route_show.png" width="500" /></p>
+<h3 id="reflection_1">Reflection</h3>
+<p>The most challenging part of this activity was getting the YAML file correct. It is very sensitive to minute errors in syntax, and it is very difficult to tell what is actually wrong. I learned how important precision is in editing config files such as the netplan YAML files. </p>
+<h2 class="collapsible" id="reflection_2">Reflection</h2>
+<p>Working on this project helped me understand how physical and logical addressing work together. MAC addresses give each device a unique identity on a local network, while IP addresses let devices communicate across different networks. Learning about DHCP versus static addressing showed that dynamic IPs make managing devices like laptops easier, while static IPs are important for servers, printers, and cameras that need consistent addresses. Comparing VM #1 and VM #2 showed that different Linux versions and network managers handle IPs differently—VM #1 used DHCP for IPv4 only, while VM #2 got both IPv4 and IPv6 addresses automatically. Editing YAML files for static IPs taught me that even small mistakes in syntax or indentation can break the network. These lessons apply to real-world devices: web servers need static IPs to stay reachable, printers need fixed addresses so everyone can print, and routers use both static and dynamic addressing to keep networks running smoothly. Overall, this project showed that careful setup of addresses is essential for reliable network communication and that precision matters when configuring network settings.</p></p>
     </article>
 </section>
             <!-- endblock -->
