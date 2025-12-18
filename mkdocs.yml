@@ -20,6 +20,7 @@ nav:
     - Owl: courses/senior_engineering/owl.md
     - Pen: courses/senior_engineering/pen.md
     - PCB Milling: courses/senior_engineering/pcb_milling.md
+    - Topography: courses/senior_engineering/topography.md
   - Honors Data Analytics (2025): 
     - Overview: courses/data_analytics/index.md
     - Excel: courses/data_analytics/excel.md
