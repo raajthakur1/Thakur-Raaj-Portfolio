@@ -4,12 +4,17 @@ In this project, I milled the topography of the Himalayan Mountains out of a blo
 
 ## Table of Contents
 
-- 
+- [**Workflow**](#workflow)
+- [**Challenges I Overcame and Lessons I Learned**](#challenges-i-overcame-and-lessons-i-learned)
 - [**File Downloads**](#downloads)
 
+## Workflow {.collapsible}
 
-## Workflow
 
-##
+
+## Challenges I Overcame and Lessons I Learned {.collapsible}
+
+
 
 ## Downloads {.collapsible}
+
