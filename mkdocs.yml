@@ -2,6 +2,19 @@ site_name: Raaj's Engineering & CS Portfolio
 nav:
 - Home: index.md
 - Courses & Projects: 
+  - Book to Box Office (2025-2026):
+    - Writer's Bio and Overview: courses/english_b2bx/projects/writer_bio.md
+    - Writer's Statement: courses/english_b2bx/projects/writer_statement.md
+    - Projects:
+      - Wiseguy/Goodfellas Essay: courses/english_b2bx/projects/wiseguy_goodfellas_essay.md
+      - The Princess Bride Essay: courses/english_b2bx/projects/princess_bride_essay.md
+      - The Princess Bride Outline: courses/english_b2bx/projects/princess_bride_outline.md
+      - Journals:
+        - The Princess Bride Journal 1: courses/english_b2bx/projects/journals/tpb_j1.md
+        - The Princess Bride Journal 2: courses/english_b2bx/projects/journals/tpb_j2.md
+        - Wiseguy/Goodfellas Journal 1: courses/english_b2bx/projects/journals/wggf_j1.md
+        - Wiseguy/Goodfellas Journal 2: courses/english_b2bx/projects/journals/wggf_j2.md
+      - Final Project: courses/english_b2bx/projects/final_project.md
   - AP Networking (2025-2026):
     - Overview: courses/ap_networking/index.md
     - Component Cards & Software Slips: courses/ap_networking/component-cards-and-software-slips.md
