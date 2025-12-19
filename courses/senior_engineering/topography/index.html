@@ -705,7 +705,7 @@
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#workflow"><strong>Workflow</strong></a></li>
-<li><a href="#challenges-i-overcame-and-lessons-i-learned"><strong>Challenges I Overcame and Lessons I Learned</strong></a></li>
+<li><a href="#challenges-i-overcame-lessons-i-learned-and-what-i-would-do-differently"><strong>Challenges I Overcame and Lessons I Learned</strong></a></li>
 <li><a href="#downloads"><strong>File Downloads</strong></a></li>
 </ul>
 <h2 class="collapsible" id="workflow">Workflow</h2>
@@ -725,13 +725,9 @@
 <li>Use the slider bar on the left of the screen to set the "Position relative to Modeling plane" to the maximum (drag the slider all the way down)</li>
 </ul>
 </li>
-<li>
-<p>Create Toolpaths</p>
-<ul>
+<li>Create Toolpaths<ul>
 <li>Switch to the "Design" tab and select "2D View". Then, center the object and draw a rectangle around the edge of the model</li>
-<li>
-<p>Switch to the "Toolpaths" tab. Start by making a 3D Roughing Toolpath by clicking the "3D Roughing Toolpath" icon. The roughing toolpath cuts away the bulk of the unused material with a large, strong bit. For the topography, use the following settings:</p>
-<ul>
+<li>Switch to the "Toolpaths" tab. Start by making a 3D Roughing Toolpath by clicking the "3D Roughing Toolpath" icon. The roughing toolpath cuts away the bulk of the unused material with a large, strong bit. For the topography, use the following settings:<ul>
 <li>Tool: 25 mm Flute End Mill (3.175 mm)</li>
 <li>Machining Limit Boundary: Model Boundary</li>
 <li>Machining Allowance: 0.024"</li>
@@ -740,9 +736,7 @@
 <li>Click "Calculate" when finished</li>
 </ul>
 </li>
-<li>
-<p>Next, create the "3D Finishing Toolpath". This uses a much more precise tool to slowly go over the entire model, creating a smooth, detailed final surface. For the topography project, use the following settings:</p>
-<ul>
+<li>Next, create the "3D Finishing Toolpath". This uses a much more precise tool to slowly go over the entire model, creating a smooth, detailed final surface. For the topography project, use the following settings:<ul>
 <li>Tool: 0.125" Ball Nose bit</li>
 <li>Machining Limit Boundary: Model Boundary</li>
 <li>Strategy: Raster (Set "Raster Angle" to 0° to go back and forth along the X-axis)</li>
@@ -750,9 +744,7 @@
 <li>Click "Calculate" when finished</li>
 </ul>
 </li>
-<li>
-<p>Finally, create a 2D Roughing Toolpath. The 2D Profile Toolpath cuts the model out of the larger block of wood. However, for this project, since the wood is thick, the cutting depth was set to 0.5" to create a guide for cutting the whole model out with a saw. For the topography project, use the following settings:</p>
-<ul>
+<li>Finally, create a 2D Roughing Toolpath. The 2D Profile Toolpath cuts the model out of the larger block of wood. However, for this project, since the wood is thick, the cutting depth was set to 0.5" to create a guide for cutting the whole model out with a saw. For the topography project, use the following settings:<ul>
 <li>Tool:25 mm Flute End Mill</li>
 <li>Machine Vectors: On</li>
 <li>Direction: Climb</li>
@@ -760,12 +752,8 @@
 <li>Click "Calculate" when finished</li>
 </ul>
 </li>
-<li>
-<p>Once all the toolpaths have been calculated, preview all of the toolpaths by clicking "Preview All Toolpaths". Check that the end product looks okay. </p>
-</li>
-<li>
-<p>Save the G-Code (toolpath files) by clicking "Close" to exit the "Preview Toolpaths" menu then clicking the "Save Toolpaths" button (looks like a floppy disk). Ensure that all 3 toolpaths are checked before clicking "Save Toolpaths", and that the right machine is selected. Once the button is clicked, either a .CNC or .GCODE file should be exported. </p>
-</li>
+<li>Once all the toolpaths have been calculated, preview all of the toolpaths by clicking "Preview All Toolpaths". Check that the end product looks okay. </li>
+<li>Save the G-Code (toolpath files) by clicking "Close" to exit the "Preview Toolpaths" menu then clicking the "Save Toolpaths" button (looks like a floppy disk). Ensure that all 3 toolpaths are checked before clicking "Save Toolpaths", and that the right machine is selected. Once the button is clicked, either a .CNC or .GCODE file should be exported. </li>
 </ul>
 </li>
 </ol>
@@ -799,8 +787,16 @@
 <p>Once all settings are verified, click “Run”</p>
 </li>
 </ol>
-<h2 class="collapsible" id="challenges-i-overcame-and-lessons-i-learned">Challenges I Overcame and Lessons I Learned</h2>
-<h2 class="collapsible" id="downloads">Downloads</h2></p>
+<h2 class="collapsible" id="challenges-i-overcame-lessons-i-learned-and-what-i-would-do-differently">Challenges I Overcame, Lessons I Learned, and What I Would Do Differently</h2>
+<p>Since I had already used Carvera Controller and the Carvera Desktop CNC Machine in the past, it was very easy for me to use them. However, until completing this project, I had not used Vectric Aspire for 2 years, so I was not very well-versed in using the software. Learning how to use the software well, such as learning where everything is located, what all the different menus do, etc., was a bit challenging, although the guides provided by Mr. Dubick were pretty helpful. Besides learning how to use Aspire, the process was very simple. </p>
+<p>If I was to do the project differently, I would choose topography that is not quite as detailed. I chose the Himalayan Mountain Range as my topography, and there are a lot of peaks and troughs in close proximity, which caused the wood to break a little bit (pictured below). I would either choose a new location, or reduce the vertical scaling when generating a model on the topography to STL website. </p>
+<h2 id="final-product">Final Product</h2>
+<p>Below is an image of the milled topography. The details came out very nicely, except for the bottom right where it is broken. I am not sure whether that comes from a hollow section of wood or if the CNC machine applied too much force and splintered the wood. Nevertheless, it overall turned out pretty well. </p>
+<p><img alt="Topography" src="../media/topography/topography.jpeg" width="999" /></p>
+<h2 class="collapsible" id="downloads">Downloads</h2>
+<ul>
+<li><a href="../media/topography/raaj_himalayas.cnc">.CNC File</a></li>
+</ul></p>
     </article>
 </section>
             <!-- endblock -->
