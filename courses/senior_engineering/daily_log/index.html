@@ -800,24 +800,26 @@
 <h3 id="10082025">10.08.2025</h3>
 <p>Today, I focused on getting the AI working on the Raspberry Pi. Up to this point, I was using the pre-existing hailo_inf_fl.json file in Raspberry Pi OS that uses 3 models: <a href="https://docs.ultralytics.com/models/yolov8/#key-features-of-yolov8">yolov8</a> (object detection/classification), <a href="https://docs.ultralytics.com/models/yolov8/#key-features-of-yolov8">yolov8 pose</a> (pose detection), and <a href="https://www.insightface.ai/research/scrfd">scrfd</a> (facial tracking). While the yolov8 models were correctly compiled for the Hailo 8 (the NPU I am using), the scrfd model was compiled for the Hailo 8L NPU, the lower performance version of the Hailo 8. This returned a warning message that I will likely experience lower performance than expected, since the model was compiled for the incorrect architecture. I wanted to get rid of this error, so I looked at the <a href="https://github.com/hailo-ai/hailo_model_zoo/tree/update-to-version-2.17">Hailo Model Zoo Github</a> and looked through the models until I found the link for scrfd compiled for the Hailo 8 NPU. </p>
 <p>Once I found the correct .hef file, I looked at the hailo_inf_fl.json file to see where the current scrfd file is located. It was located at /usr/bin/rpi-camera-assets/scrfd_2.5g.hef, so I deleted it and copied the new scrfd_2.5g.hef file to the same location to ensure that the json file would work as expected and know where to locate the model. When I re-ran <code>rpicam-hello -t 0 --rotation 180 --post-process-file /usr/share/rpi-camera-assets/hailo_inf_fl.json</code>, I no longer got the warning that the model is compiled for the wrong NPU. Although it would have previously worked fine, I wanted to ensure that everything was as optimized as possible to ensure maximum performance and the lowest power consumption possible. </p>
-<p>printed new base plate, camera is more secure and no longer any flexing issues</p>
-<p>may add ribs to reduce overall flexing/lack of structural rigidity, but will wait to use petg since it will flex less in petg w/ 67% gyroid infill</p>
-<h3 id="10092025">10.09.2025</h3>
-<p>did some refining in Onshape to finish up the back top part (added standoffs to sit flush with base plate) as well as searched for models to use.</p>
-<p>also fixed owl project by taking a fine tip solder and melting the solder of the ics and melting the excess solder paste that was likely bridging some pads on the small ic. doing this made the owl work perfectly</p>
-<h3 id="10102025">10.10.2025</h3>
-<p>printed back top part</p>
-<p>stress tested new models to test overheating/throttling/melting the chassis (it got hot, but not hot enough to cause damage) by running model the whole class (45 minutes) and periodically checking to see if it was still at 30fps or if it was dropping frames. it didn't drop frames and was able to run continuously mostly thanks to the active cooler turning on its fan and blowing out the hot air. And, when the drone is flying, the pi is at the very front and will get a lot of cool fresh air to cool it down, so even in the worst case scenario, it doesn't throttle.</p>
-<p>insert video here</p>
-<h3 id="10132025">10.13.2025</h3>
-<p>Today, I started off with refining my original chassis design even more. However, I was not very happy with the level of complexity of the parts They were too weak, complicated, and I decided to start fresh by designing a brand new chassis from the ground up. While the original chassis was a heavily modified version of the Source One open-source drone chassis, the new design was my own from the start and was designed around my specific hardware.</p>
-<p>My overall goals for the new chassis were to increase structural rigidity, reduce the amount of parts, increase </p>
-<h3 id="10162025">10.16.2025</h3>
-<p>I dedicated today to working on my portfolio and catching up on my daily log. I also created pages for the smaller projects such as the pen and owl. </p>
+<p>Additionally, I printed a new base plate. I made slight modifications to the base plate, and it flexes a lot less.</p>
+<h3 id="10092025-10162025">10.09.2025 - 10.16.2025</h3>
+<p>In this period of time, I worked on refining and iterating on my CAD designs to maximize internal volume, reduce drag and mass, and make sure everything fits. I printed out many different designs, each with very small changes.</p>
+<p>Additionally, I finished the owl project by taking a fine tip soldering iron and melting the excess solder paste on the ICs. Doing so got rid of the excess solder paste that was likely bridging some pads and made the owl work perfectly.</p>
 <h3 id="10172025">10.17.2025</h3>
-<p>Today, Mr. Dubick taught us how to use Jekyll and GitHub pages. Although I currently use MKDocs for my portfolio, it's useful to know how to use Jekyll in case I want to </p>
-<h2 id="november">November</h2>
-<h2 id="december">December</h2>
+<p>Today, Mr. Dubick taught us how to use Jekyll and GitHub pages. Although I currently use MKDocs for my portfolio, it's useful to know how to use Jekyll in case I want to use it in the future.</p>
+<h3 id="10182025">10.18.2025</h3>
+<p>Today, I started off with refining my original chassis design even more. However, I was not very happy with the level of complexity of the parts They were too weak, complicated, and I decided to start fresh by designing a brand new chassis from the ground up. While the original chassis was a heavily modified version of the Source One open-source drone chassis, the new design was my own from the start and was designed around my specific hardware and design intents.</p>
+<p>My overall goals for the new chassis were to increase structural rigidity, reduce complexity, support larger propellers, and have better mounting points for the Raspberry Pi and camera (read more details about chassis development <a href="../capstone/#chassis-design"><strong>here</strong></a>).</p>
+<h2 class="collapsible" id="november">November</h2>
+<h2 id="_1"></h2>
+<h3 id="11222025-11302025">11.22.2025 - 11.30.2025</h3>
+<p>No school - Thanksgiving break.</p>
+<h2 class="collapsible" id="december">December</h2>
+<h3 id="12112025-12152025">12.11.2025 - 12.15.2025</h3>
+<p>In this period of time, I worked on the drone's electronics. </p>
+<h3 id="12162025">12.16.2025</h3>
+<p>Today, I milled the topography out of a block of hardwood (more in this under <a href="../topography/"><strong>Topography</strong></a>). Milling the block took around 6 hours, so while it was milling, I worked on documentation.</p>
+<h3 id="12182025">12.18.2025</h3>
+<p>I spent today catching up on documentation. </p>
 <h2 id="january">January</h2>
 <h2 id="february">February</h2>
 <h2 id="march">March</h2>

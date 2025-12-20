@@ -703,14 +703,38 @@
         <p><h1 id="capstone">Capstone</h1>
 <p>For the majority of the year, I worked towards completing my capstone project: a fully custom-designed 3D printed drone with custom electronics and AI-powered object classification, pose tracking, facial recognition, and more. </p>
 <h2 id="navigation">Navigation</h2>
-<h2 id="build-goals">Build Goals</h2>
-<p>From the start, I wanted my drone to do the following:</p>
 <ul>
-<li>Have a long battery life</li>
-<li>Be able to record video in at least 1080p</li>
+<li><a href="#quick-downloads"><strong>Quick Downloads</strong></a></li>
+<li><a href="#research-collapsible"><strong>Research</strong></a></li>
+<li><a href="#part-selection"><strong>Part Selection</strong></a></li>
+<li><a href="#chassis-design"><strong>Chassis Design</strong></a></li>
+<li><a href="#pcb-design"><strong>PCB Design</strong></a></li>
+<li><a href="#electronics-architecture"><strong>Electronics Architecture</strong></a></li>
+<li><a href="#firmware"><strong>Firmware</strong></a></li>
+<li><a href="#assembly"><strong>Assembly</strong></a></li>
+<li><a href="#testing-and-calibration"><strong>Testing and Calibration</strong></a></li>
+<li><a href="#next-steps"><strong>Next Steps</strong></a></li>
+</ul>
+<h2 class="collapsible" id="quick-downloads">Quick Downloads</h2>
+<h2 class="collapsible" id="research">Research</h2>
+<p>Although I did a lot of research on parts selection, the overall idea for the AI-powered drone was entirely my idea. I wanted to create a drone that had the following qualities:</p>
+<ul>
+<li>Hardware<ul>
+<li>Long battery life</li>
+<li>Record video in at least 1080p</li>
 <li>Have high processing power for AI-powered tasks</li>
 <li>Custom design as much as possible</li>
 </ul>
+</li>
+<li>Software<ul>
+<li>Run AI/Computer Vision models locally</li>
+<li>Run ArduPilot </li>
+<li>Have autonomous functions powered by GPS, sensors, as well as the camera + AI post-processing capabilities</li>
+</ul>
+</li>
+</ul>
+<p>So, I did a lot of research online using both forums and AI chatbots to help narrow down a list of parts (specific parts are discussed under <a href="./#part-selection"><strong>part selection heading</strong></a>).</p>
+<p>Once I had a general idea of what to do and what parts to use, I completed a <a href="https://docs.google.com/document/d/1lzFiJQa1V3fqiWTZmwnQ1fd0srgvZRDVvnr2-yENk0Q/edit?tab=t.0"><strong>Design Specification Considerations worksheet</strong></a> provided by Mr. Dubick.</p>
 <h2 class="collapsible" id="part-selection">Part Selection</h2>
 <p>The first step of making the drone was to figure out what parts I wanted to use. I had to consider many questions, such as:
 - What purpose will the drone be made for (racing, cinematography, autonomous missions, etc.)?
@@ -719,19 +743,211 @@
 <p>After considering many factors, I decided that I wanted to prioritize having a long flight time and powerful computers for autonomous missions. Those two choices meant that I would have to use a very large battery (meaning I would need a large drone to match), and that I need to use ArduPilot due to its support for GPS as well as a companion computer (more on this under the <a href="#firmware">firmware</a> section). </p>
 <p>I did some more research on drones, and I knew I wanted to build a drone with 7" propellers (I ended up changing to 9"), since it would allow me to support a chassis large enough to house advanced electronics and a very large battery. For that size, I saw that 6S (6 cell) LiPo batteries were most popular in the community due to their high voltage (up to 25.2V) which allows for the drone to be more efficient. I settled on the <a href="https://us.ovonicshop.com/products/ovonic-100c-6s-4500mah-22-2v-lipo-battery-with-xt90-anti-spark-connector-for-rc-car-airplane-heli?_pos=8&amp;_fid=b3da36f5b&amp;_ss=c">Ovonic 4500 mAh 6S LiPo 100C XT90 Battery</a>, since it had a very large capacity (99.9 wh!), a very high discharge rate, a bulky XT90 connector to allow for high power draw, and it was 6S.</p>
 <p>After choosing the battery, I had to choose the motors, ESC, and electronic components. Since I chose a high-voltage battery, I went with relatively low 1050KV motors made by BrotherHobby. I saw good reviews about these online and they are made of high quality materials, which is why I chose them. The ESC is also made by BrotherHobby. It's a 4 in 1 ESC with support up to a 6S battery and can provide 65A per motor. I chose it since it had good reviews and was by far the cheapest ESC from a legitimate brand that could provide 65A per motor. </p>
-<p>For the electronic components, I needed to ensure that they could support ArduPilot, and that I chose a comprehensive suite of sensors to allow for autonomous flight. For the MCU, I chose the STM32F767ZIT6 since it is powerful and has ample I/O for all of the sensors. For the sensors, I chose the ICM 29048 (IMU), LIS2MDL (magnetometer), LPS22HB (barometer), and NEO-M9N (GPS). I found boards from Adafruit at competitive prices that featured the sensors, power management systems (capacitors, step downs, resistors, etc.), along with a STEMMA QT connector for easy I2C connectivity. Insted of soldering the extremely tiny sensors directly to the board, I decided to go with these Adafruit boards to reduce complexity and increase reliability. The NEO M9N is large enough where I can solder it myself, so I bought the bare chip and added the power management system for the NEO M9N directly to the board (more on this under the <a href="#electronics-architecture">Electronics Architecture</a> section).</p>
+<p>For the electronic components, I needed to ensure that they could support ArduPilot, and that I chose a comprehensive suite of sensors to allow for autonomous flight. For the MCU, I chose the STM32F767ZIT6 since it is powerful and has ample I/O for all of the sensors. For the sensors, I chose the ICM 29048 (IMU), LIS2MDL (magnetometer), LPS22HB (barometer), and NEO-M9N (GPS). I found boards from Adafruit at competitive prices that featured the sensors, power management systems (capacitors, step downs, resistors, etc.), along with a STEMMA QT connector for easy I2C connectivity. Insted of soldering the extremely tiny sensors directly to the board, I decided to go with these Adafruit boards to reduce complexity and increase reliability. The NEO M9N is large enough where I can solder it myself, so I bought the bare chip and added the power management system for the NEO M9N directly to the board (more on this under the <a href="#electronics-architecture"><strong>Electronics Architecture</strong></a> section).</p>
 <p>Additionally, I wanted a separate computer to drive the video recording and AI aspect. From the start, I knew that I wanted to use a Raspberry Pi 5 with the Raspberry Pi AI Hat+, capable of 26 TOPS. This combination allows for very powerful edge AI capabilities with high power efficiency, meaning that the drone can do real-time AI calculations in the air without drawing too much power. </p>
 <p>After all this consideration, I ended up with a very high end parts list that would create a drone with very powerful capabilities. The next step was to design the <a href="#chassis-design">chassis</a>.</p>
+<h3 class="collapsible" id="bill-of-materials">Bill of Materials</h3>
+<p><strong>Major Components</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Cost (USD)</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magnetometer (LIS2MDL)</td>
+<td></td>
+<td>Provides heading and magnetic field data for orientation and navigation</td>
+</tr>
+<tr>
+<td>Barometer (LPS22HB)</td>
+<td></td>
+<td>Measures atmospheric pressure for altitude estimation</td>
+</tr>
+<tr>
+<td>RC Receiver (Radiomaster RPI V1)</td>
+<td></td>
+<td>Receives pilot control inputs from the radio transmitter</td>
+</tr>
+<tr>
+<td>ESC (BrotherHobby Returner 65A 4-in-1)</td>
+<td></td>
+<td>Controls motor speed and distributes power to all four motors</td>
+</tr>
+<tr>
+<td>Motors (BrotherHobby Special Edition V4 32.5-12 1050KV)</td>
+<td></td>
+<td>Generate thrust and control the drone’s movement</td>
+</tr>
+</tbody>
+</table>
+<p>**Total: </p>
+<p><strong>Electronic Components</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Cost (USD)</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32F767ZIT6 MCU</td>
+<td>21.32</td>
+<td>Main flight-controller microcontroller running ArduPilot</td>
+</tr>
+<tr>
+<td>u-blox NEO-M9N GNSS Module</td>
+<td>27.00</td>
+<td>High-precision GPS/GNSS positioning</td>
+</tr>
+<tr>
+<td>RF Ceramic Antenna (Taoglas AGGBP.25B)</td>
+<td>19.58</td>
+<td>GNSS signal reception</td>
+</tr>
+<tr>
+<td>U.FL SMT RF Connector</td>
+<td>1.13</td>
+<td>RF connection between GNSS module and antenna</td>
+</tr>
+<tr>
+<td>12.000 MHz Crystal (ECS)</td>
+<td>0.54</td>
+<td>External clock source for MCU</td>
+</tr>
+<tr>
+<td>USB-C Receptacle (GCT USB4105)</td>
+<td>0.78</td>
+<td>USB interface for data and power</td>
+</tr>
+<tr>
+<td>USB-C Receptacle (Amphenol)</td>
+<td>0.44</td>
+<td>Alternate USB-C connector footprint</td>
+</tr>
+<tr>
+<td>JST 8-pin 1.0 mm Header</td>
+<td>0.78</td>
+<td>Board-to-wire connector for peripherals</td>
+</tr>
+<tr>
+<td>Tactile Switches (10× Alps)</td>
+<td>1.79</td>
+<td>User input / reset / boot selection</td>
+</tr>
+<tr>
+<td>Slide Power Switch</td>
+<td>1.70</td>
+<td>Main power control</td>
+</tr>
+<tr>
+<td>P-Channel MOSFET (IRF4905)</td>
+<td>2.89</td>
+<td>Reverse-polarity and power-path protection</td>
+</tr>
+<tr>
+<td>TVS Diode 33 V (5KP33CA)</td>
+<td>1.73</td>
+<td>Transient suppression on main power rail</td>
+</tr>
+<tr>
+<td>TVS Diode 6 V (SMAJ6.0A)</td>
+<td>0.16</td>
+<td>Protection on regulated voltage rails</td>
+</tr>
+<tr>
+<td>TVS Diode 5 V (SMAJ5.0A)</td>
+<td>0.27</td>
+<td>USB / logic rail protection</td>
+</tr>
+<tr>
+<td>ESD Diodes 3.3 V (2×)</td>
+<td>0.30</td>
+<td>ESD protection for IO lines</td>
+</tr>
+<tr>
+<td>Aluminum Electrolytic Capacitor 100 µF</td>
+<td>0.61</td>
+<td>Bulk decoupling for power stability</td>
+</tr>
+<tr>
+<td>Ceramic Capacitors 0.1 µF (50×)</td>
+<td>0.28</td>
+<td>Local decoupling for IC power pins</td>
+</tr>
+<tr>
+<td>Ceramic Capacitors 10 µF (10×)</td>
+<td>0.70</td>
+<td>Power rail bulk decoupling</td>
+</tr>
+<tr>
+<td>Ceramic Capacitors 27 pF (10×)</td>
+<td>0.34</td>
+<td>Crystal load capacitors</td>
+</tr>
+<tr>
+<td>Blue LED 5 mm</td>
+<td>0.24</td>
+<td>Status indication</td>
+</tr>
+<tr>
+<td>Resistors 100 Ω (10×)</td>
+<td>0.34</td>
+<td>PWM / signal line damping</td>
+</tr>
+<tr>
+<td>Resistors 4.7 kΩ (10×)</td>
+<td>0.30</td>
+<td>Pull-ups / pull-downs</td>
+</tr>
+<tr>
+<td>Resistors 5.1 kΩ (3×)</td>
+<td>0.30</td>
+<td>USB-C configuration resistors</td>
+</tr>
+<tr>
+<td>Resistors 1 kΩ (10×)</td>
+<td>0.27</td>
+<td>Current limiting / logic use</td>
+</tr>
+<tr>
+<td>Resistor 1.5 kΩ</td>
+<td>0.10</td>
+<td>LED current limiting</td>
+</tr>
+<tr>
+<td>Resistors 10 kΩ 1 W (10×)</td>
+<td>0.77</td>
+<td>Power sensing / voltage dividers</td>
+</tr>
+<tr>
+<td>Resistor 68 kΩ 2 W</td>
+<td>0.50</td>
+<td>High-side voltage measurement</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: $98.27</strong></p>
 <h2 class="collapsible" id="chassis-design">Chassis Design</h2>
 <p>The first component I designed was the chassis. Originally, I wanted to use the <a href="https://www.printables.com/model/261673-complete-tbs-source-one-v5-cad-model-step">Source One</a>, an open source drone chassis supporting up to 7" props. However, in its standard form, it had nowhere near enough space to fit my large battery, a Raspberry Pi 5, a camera, and all of the components for the flight controller (the board was not designed at this point). So, I downloaded the STEP files into Onshape and made significant changes to allow for the battery to fit. </p>
 <p><img alt="Original Source One chassis" src="../media/capstone/source1_original.jpeg" width="400" /> <img alt="Final Source One-based chassis" src="../media/capstone/source1_final.jpeg" width="400" /></p>
-<p>However, after printing it out, I realized that the drone is far too heavy and that the chassis is too complicated with too many parts. Additionally, I realized that for the weight of the components, I would need bigger propellers. I looked at the website for the motors, and it said that they support up to 9" propellers, so I decided to switch. </p>
-<p>Instead of modifying the chassis more to be stiffer and to support bigger props, I decided to start fresh with a clean sheet design. I wanted to keep the design as simple as possible and to make sure that it would support the larger propellers.</p>
+<p>However, after printing it out, I realized that the drone is far too heavy and that the chassis is too complicated with too many parts. Additionally, I realized that for the weight of the components, I would need bigger propellers. I looked at the website for the motors, and it said that they support up to 9" propellers, so I decided to switch. Although I could have continued to modify the Source One chassis, I decided to start fresh with a clean sheet design. I wanted to keep the design as simple as possible and to make sure that it would support the larger propellers.</p>
+<p>I started designing the new chassis by drawing a teardrop-esque shape, as a teardrop is the most aerodynamically efficient shape in nature. Learning from the flaws of the original chassis design, I knew that I wanted the new chassis to have as little parts as possible. For that reason, I made the chassis out of 4 components (pictured below):</p>
+<ul>
+<li></li>
+</ul>
 <h2 class="collapsible" id="pcb-design">PCB Design</h2>
 <h2 class="collapsible" id="electronics-architecture">Electronics Architecture</h2>
 <h2 class="collapsible" id="firmware">Firmware</h2>
 <h2 class="collapsible" id="assembly">Assembly</h2>
-<p>TBD</p>
+<p>Deadlines (did not meet)
+tools/files
+photos/videos</p>
 <h2 class="collapsible" id="testing-and-calibration">Testing and Calibration</h2>
 <p>TBD</p>
 <h2 class="collapsible" id="next-steps">Next Steps</h2>
