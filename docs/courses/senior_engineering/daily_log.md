@@ -137,11 +137,15 @@ My overall goals for the new chassis were to increase structural rigidity, reduc
 
 ## 10.21.2025 - 10.31.2025
 
-In this period of time, I worked on the new chassis. I made incremental changes almost every single day in order to have strong mounts in the front for the Raspberry Pi and camera module, as well as making sure that things like the power switch and power indicator LED on the bottom of the flight controller board have cutouts in the chassis so they're accessible. Throughout this period of time, I printed 9 different revisions of the chassis. 
+In this period of time, I worked on a mini-project: milling a PCB on the CNC machines in the Fab Lab (read more under the [**PCB Milling page**](pcb_milling.md)). Mr. Dubick provided gerber files, and showed us how to use MakeraCAM and Carvera Controller to create toolpaths and run them on the Carvera Desktop CNC machines.
 
 ## November {.collapsible}
 
+## 11.03.2025 - 11.07.2025
 
+In this period of time, I worked on the new chassis. I made incremental changes almost every single day in order to have strong mounts in the front for the Raspberry Pi and camera module, as well as making sure that things like the power switch and power indicator LED on the bottom of the flight controller board have cutouts in the chassis so they're accessible. Throughout this period of time, I printed 9 variations of the chassis before ending up with one that did everything correctly. 
+
+## 11.10.2025 - 11.14.2025
 
 ### 11.22.2025 - 11.30.2025
 
