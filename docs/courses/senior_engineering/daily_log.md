@@ -116,42 +116,54 @@ Today, I focused on getting the AI working on the Raspberry Pi. Up to this point
 
 Once I found the correct .hef file, I looked at the hailo_inf_fl.json file to see where the current scrfd file is located. It was located at /usr/bin/rpi-camera-assets/scrfd_2.5g.hef, so I deleted it and copied the new scrfd_2.5g.hef file to the same location to ensure that the json file would work as expected and know where to locate the model. When I re-ran `rpicam-hello -t 0 --rotation 180 --post-process-file /usr/share/rpi-camera-assets/hailo_inf_fl.json`, I no longer got the warning that the model is compiled for the wrong NPU. Although it would have previously worked fine, I wanted to ensure that everything was as optimized as possible to ensure maximum performance and the lowest power consumption possible. 
 
+Additionally, I printed a new base plate. I made slight modifications to the base plate, and it flexes a lot less.
 
-printed new base plate, camera is more secure and no longer any flexing issues
+### 10.09.2025 - 10.16.2025
 
-may add ribs to reduce overall flexing/lack of structural rigidity, but will wait to use petg since it will flex less in petg w/ 67% gyroid infill
+In this period of time, I worked on refining and iterating on my CAD designs to maximize internal volume, reduce drag and mass, and make sure everything fits. I printed out many different designs, each with very small changes.
 
-### 10.09.2025
-
-did some refining in Onshape to finish up the back top part (added standoffs to sit flush with base plate) as well as searched for models to use.
-
-also fixed owl project by taking a fine tip solder and melting the solder of the ics and melting the excess solder paste that was likely bridging some pads on the small ic. doing this made the owl work perfectly
-
-### 10.10.2025
-
-printed back top part
-
-stress tested new models to test overheating/throttling/melting the chassis (it got hot, but not hot enough to cause damage) by running model the whole class (45 minutes) and periodically checking to see if it was still at 30fps or if it was dropping frames. it didn't drop frames and was able to run continuously mostly thanks to the active cooler turning on its fan and blowing out the hot air. And, when the drone is flying, the pi is at the very front and will get a lot of cool fresh air to cool it down, so even in the worst case scenario, it doesn't throttle.
-
-insert video here
-
-### 10.13.2025
-
-Today, I started off with refining my original chassis design even more. However, I was not very happy with the level of complexity of the parts They were too weak, complicated, and I decided to start fresh by designing a brand new chassis from the ground up. While the original chassis was a heavily modified version of the Source One open-source drone chassis, the new design was my own from the start and was designed around my specific hardware.
-
-My overall goals for the new chassis were to increase structural rigidity, reduce the amount of parts, increase 
-
-### 10.16.2025
-
-I dedicated today to working on my portfolio and catching up on my daily log. I also created pages for the smaller projects such as the pen and owl. 
+Additionally, I finished the owl project by taking a fine tip soldering iron and melting the excess solder paste on the ICs. Doing so got rid of the excess solder paste that was likely bridging some pads and made the owl work perfectly.
 
 ### 10.17.2025
 
-Today, Mr. Dubick taught us how to use Jekyll and GitHub pages. Although I currently use MKDocs for my portfolio, it's useful to know how to use Jekyll in case I want to 
+Today, Mr. Dubick taught us how to use Jekyll and GitHub pages. Although I currently use MKDocs for my portfolio, it's useful to know how to use Jekyll in case I want to use it in the future.
 
-## November
+### 10.20.2025
 
-## December
+Today, I started off with refining my original chassis design even more. However, I was not very happy with the level of complexity of the parts They were too weak, complicated, and I decided to start fresh by designing a brand new chassis from the ground up. While the original chassis was a heavily modified version of the Source One open-source drone chassis, the new design was my own from the start and was designed around my specific hardware and design intents.
+
+My overall goals for the new chassis were to increase structural rigidity, reduce complexity, support larger propellers, and have better mounting points for the Raspberry Pi and camera (read more details about chassis development [**here**](capstone.md#chassis-design)).
+
+
+## 10.21.2025 - 10.31.2025
+
+In this period of time, I worked on the new chassis. I made incremental changes almost every single day in order to have strong mounts in the front for the Raspberry Pi and camera module, as well as making sure that things like the power switch and power indicator LED on the bottom of the flight controller board have cutouts in the chassis so they're accessible. Throughout this period of time, I printed 9 different revisions of the chassis. 
+
+## November {.collapsible}
+
+
+
+### 11.22.2025 - 11.30.2025
+
+No school - Thanksgiving break.
+
+## December {.collapsible}
+
+### 12.01.2025 - 12.10.2025
+
+In this period of time, Mr. Dubick taught the class about designing circuits with Arduino and programming in C. Although I was already experienced with creating the physical circuits, learning to code in C was very helpful and will likely help me understand the ArduPilot code better in the future.
+
+### 12.11.2025 - 12.15.2025
+
+In this period of time, I worked on the drone's electronics. Instead of using a soldering iron and normal solder, Angelina recommended using solder paste and hot air to solder on surface mount components. Although it was still challenging, it was a lot easier than using solder and a traditional iron.
+
+### 12.16.2025
+
+Today, I milled the topography out of a block of hardwood (more in this under [**Topography**](topography.md)). Milling the block took around 6 hours, so while it was milling, I worked on documentation.
+
+### 12.18.2025
+
+I spent today catching up on documentation. 
 
 ## January
 

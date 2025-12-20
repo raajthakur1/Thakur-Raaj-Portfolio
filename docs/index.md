@@ -16,6 +16,7 @@ The goal of this portfolio is to:
 - **[Honors Data Analytics](courses/data_analytics/index.md)**
 - **[AP Networking](courses/ap_networking/index.md)**
 - **[Honors Senior Engineering](courses/senior_engineering/index.md)**
+- **[Book to Box Office](courses/english_b2bx/projects/writer_bio.md)**
 
 ---
 

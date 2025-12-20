@@ -14,9 +14,6 @@
 
 ## About Me
 
-<br>
+![Raaj's Picture](media/picture.JPG){ width=250 }
 
-![Raaj](media/picture.JPG){ width=650 }
-
-
-Hello! My name is Raaj, and welcome to my Book to Box Office Portfolio, where I share all of the major assignments I have completed throughout the course. I am a senior in high school, and I intend to major in engineering, but at the time of writing, I do not know where I am attending university. 
+Hello! My name is Raaj, and welcome to my Book to Box Office Portfolio, where I share all of the major assignments I have completed throughout the course. I am a senior with a very strong interest in engineering. 

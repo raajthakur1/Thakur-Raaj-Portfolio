@@ -1,2 +1,5 @@
 # Writer's Statement
 
+At the start of this year, I did not have a clear approach to writing papers. I often just wrote down what I was thinking, which almost always ended up with my writing sounding incoherent and disorganized. Additionally, I often incorporated too much plot summary into my papers and did not have enough terms in my writing. These characteristics are reflected in my [*Wiseguy/Goodfellas* essay](https://docs.google.com/document/d/1J0h0qxkT-ioVwickLQOFygZjaZcpVDX4VtOstBelcDc/edit?tab=t.xqz5fdi5eggn), which had long paragraphs and lots of plot summary. As I progressed throughout the semester, I learned to approach my papers more systematically; I used outlines, and incorporated more concise wording. These changes allowed me to make more complex and complete arguments in my papers. 
+
+As well as developing my writing and analysis skills, taking this course has 
