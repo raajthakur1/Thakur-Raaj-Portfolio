@@ -80,6 +80,8 @@ All parts are linked with websites to purchase them.
 
 **Total: $578.31**
 
+Note: specific propellers have not been chosen yet, so I have not included them here. I will update the pricing and parts list when I choose them.
+
 **Electronic Components**
 
 All electronic components are available on DigiKey except the bare PCB, which was ordered from JLCPCB. A PDF with specific part numbers is available under the [**Quick Downloads** header](#quick-downloads).
@@ -119,6 +121,8 @@ All electronic components are available on DigiKey except the bare PCB, which wa
 
 #### Grand Total (not including tariffs/shipping that may apply): $711.19
 
+Note: specific propellers have not been chosen yet, so I have not included them here. I will update the pricing and parts list when I choose them.
+
 ## Chassis Design {.collapsible}
 The first component I designed was the chassis. Originally, I wanted to use the [Source One](https://www.printables.com/model/261673-complete-tbs-source-one-v5-cad-model-step), an open source drone chassis supporting up to 7" props. However, in its standard form, it had nowhere near enough space to fit my large battery, a Raspberry Pi 5, a camera, and all of the components for the flight controller (the board was not designed at this point). So, I downloaded the STEP files into Onshape and made significant changes to allow for the battery to fit. 
 
@@ -154,15 +158,24 @@ These two subsystems cover a wide bandwidth of operations. By having two distinc
 
 ### Tools Used:
 
-To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. Additionally, I used a laser cutter to try and make a stencil, but it did not work out well. 
-
-tools/files
+To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. Additionally, I used a laser cutter to try and make a stencil, but it did not work out well. To put the drone together, I will use some M4 and M3 screws to hold the drone together, and I screwed them in using a screwdriver and allen wrenches. 
 
 ## Firmware {.collapsible}
-## Assembly {.collapsible}
+TBD
 
+## Assembly {.collapsible}
+TBD
 
 ## Testing and Calibration {.collapsible}
 TBD
+
 ## Next Steps {.collapsible}
-TBD
+At this moment, I need to do the following:
+
+- Finish soldering the electronics
+- Reprint the bottom plate with an updated design
+- Upload ArduPilot to the completed flight controller board
+- Install propellers
+- Write code for the Raspberry Pi to work with the flight controller and provide it instructions based on the camera feed
+
+While I have come a long way, I still have a lot of work cut out for me, especially with the software. Making the two electronic subsystems communicate with each other will be very challenging. 

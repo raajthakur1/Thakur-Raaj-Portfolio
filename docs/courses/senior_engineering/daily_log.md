@@ -1,6 +1,6 @@
 # Honors Advanced Topics in Engineering Daily Log
 
-Welcome to my daily log for engineering! Here, I will outline what I do every day in class.
+Welcome to my daily log for Senior Engineering! Here, I will outline what I do every day in class.
 
 ## Navigation
 
@@ -104,15 +104,15 @@ Today, I started setting up my Raspberry Pi 5 with the AI Hat+. I installed the 
 
 Today, I printed out the bottom plate for my drone, which is where most of the electronics are mounted. 
 
-printed base plate v1 and front top plate, installed raspberry pi:
-- holes too big for camera not gripping screws
-- stands too weak to support camera properly
-- npu chip slightly pressing on camera --> heating up connector as well as forcing the plate to bend very slightly
-- redesigned in cad to strengthen camera plate and recess pi mounts by 0.25 mm to get rid of flexing issue
+I noticed the following problems with it:
+
+- Holes too big for camera and do not gripping screws
+- Camera mount is too weak to support the camera properly
+- The npu chip is slightly pressing on camera, causing the camera connector to heat up as well as forcing the plate to bend very slightly
 
 ### 10.08.2025
 
-Today, I focused on getting the AI working on the Raspberry Pi. Up to this point, I was using the pre-existing hailo_inf_fl.json file in Raspberry Pi OS that uses 3 models: [yolov8](https://docs.ultralytics.com/models/yolov8/#key-features-of-yolov8) (object detection/classification), [yolov8 pose](https://docs.ultralytics.com/models/yolov8/#key-features-of-yolov8) (pose detection), and [scrfd](https://www.insightface.ai/research/scrfd) (facial tracking). While the yolov8 models were correctly compiled for the Hailo 8 (the NPU I am using), the scrfd model was compiled for the Hailo 8L NPU, the lower performance version of the Hailo 8. This returned a warning message that I will likely experience lower performance than expected, since the model was compiled for the incorrect architecture. I wanted to get rid of this error, so I looked at the [Hailo Model Zoo Github](https://github.com/hailo-ai/hailo_model_zoo/tree/update-to-version-2.17) and looked through the models until I found the link for scrfd compiled for the Hailo 8 NPU. 
+Today, I focused on getting the AI working on the Raspberry Pi. Up to this point, I was using the pre-existing hailo_inf_fl.json file in Raspberry Pi OS that uses 3 models: [**yolov8**](https://docs.ultralytics.com/models/yolov8/#key-features-of-yolov8) (object detection/classification), [**yolov8 pose**](https://docs.ultralytics.com/models/yolov8/#key-features-of-yolov8) (pose detection), and [**scrfd**](https://www.insightface.ai/research/scrfd) (facial tracking). While the yolov8 models were correctly compiled for the Hailo 8 (the NPU I am using), the scrfd model was compiled for the Hailo 8L NPU, the lower performance version of the Hailo 8. This returned a warning message that I will likely experience lower performance than expected, since the model was compiled for the incorrect architecture. I wanted to get rid of this error, so I looked at the [**Hailo Model Zoo Github**](https://github.com/hailo-ai/hailo_model_zoo/tree/update-to-version-2.17) and looked through the models until I found the link for scrfd compiled for the Hailo 8 NPU. 
 
 Once I found the correct .hef file, I looked at the hailo_inf_fl.json file to see where the current scrfd file is located. It was located at /usr/bin/rpi-camera-assets/scrfd_2.5g.hef, so I deleted it and copied the new scrfd_2.5g.hef file to the same location to ensure that the json file would work as expected and know where to locate the model. When I re-ran `rpicam-hello -t 0 --rotation 180 --post-process-file /usr/share/rpi-camera-assets/hailo_inf_fl.json`, I no longer got the warning that the model is compiled for the wrong NPU. Although it would have previously worked fine, I wanted to ensure that everything was as optimized as possible to ensure maximum performance and the lowest power consumption possible. 
 
