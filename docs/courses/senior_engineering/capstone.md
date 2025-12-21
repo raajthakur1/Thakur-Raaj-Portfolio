@@ -61,20 +61,32 @@ After all this consideration, I ended up with a very high end parts list that wo
 
 **Major Components**
 
-| Part | Cost (USD) | Purpose |
-|------|------------|---------|
-| Magnetometer (LIS2MDL) |  | Provides heading and magnetic field data for orientation and navigation |
-| Barometer (LPS22HB) |  | Measures atmospheric pressure for altitude estimation |
-| RC Receiver (Radiomaster RPI V1) |  | Receives pilot control inputs from the radio transmitter |
-| ESC (BrotherHobby Returner 65A 4-in-1) |  | Controls motor speed and distributes power to all four motors |
-| Motors (BrotherHobby Special Edition V4 32.5-12 1050KV) |  | Generate thrust and control the drone’s movement |
+All parts are linked with websites to purchase them.
 
-**Total: 
+| Part                                                        | Cost (USD) | Purpose                                                                 |
+|-------------------------------------------------------------|------------|-------------------------------------------------------------------------|
+| [IMU (ICM20948)](https://www.adafruit.com/product/4554)     |$14.95| Measures acceleration, rotation, and direction                          |
+| [Magnetometer (LIS2MDL)](https://www.adafruit.com/product/4488)|$7.95| Provides heading and magnetic field data for orientation and navigation |
+| [Barometer (LPS22HB)](https://www.adafruit.com/product/4633)|$6.95| Measures atmospheric pressure for altitude estimation                   |
+| [RC Receiver (Radiomaster RPI V1)](https://radiomasterrc.com/products/rp1-expresslrs-2-4ghz-nano-receiver)|$18.99| Receives pilot control inputs from the radio transmitter                |
+| [ESC (BrotherHobby Returner 65A 4-in-1)](https://www.brotherhobbystore.com/products/returner-3-6s-32bit-am32-65a4in1-esc-v2-194)|$45.00| Controls motor speed and distributes power to all four motors|
+|[Brotherhobby Special Edition 1050KV 32.5-12 Motors](https://www.brotherhobbystore.com/products/special-edition-v4-32512-motor-166) (4)| $33.99 • 4| Generate thrust and control the drone’s movement|
+|[XT90 Splitter](https://www.amazon.com/dp/B0BMNSXCSP?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1)|$9.99|Allows XT90 power output from battery to go to both the ESC and Flight Controller Board|
+|XT90 Connectors|$11.99|Allows for a standard connector to provide power to the Flight Controller and ESC|
+|[Raspberry Pi 5 8GB](https://vilros.com/products/raspberry-pi-5?variant=40065551302750) (my project uses a 4GB model, but 8GB is ideal. I just had the 4GB lying around so I used it.)|$95.00|Powerful computer that facilitates video streaming and allows for the NPU to analyze the video feed|
+|[Raspberry Pi AI Hat+ (26 TOPS)](https://vilros.com/products/raspberry-pi-ai-hat?variant=41445060247646)|$180.99|Expansion board for Raspberry Pi that houses a very powerful NPU (processor dedicated for AI)|
+|[Raspberry Pi Camera Module 3 Wide Angle](https://vilros.com/products/raspberry-pi-camera-3?variant=39984853155934)|$46.55|Camera for the drone. The Wide Angle is ideal, but pretty much any version will work|
+|[3 pin JST-SH to DuPont Cable](https://vilros.com/products/pimoroni-pico-debug-cable)|$3.99|Cable that enables communication between flight controller and Raspberry Pi through the UART port on the Pi|
+
+**Total: $578.31**
 
 **Electronic Components**
 
+All electronic components are available on DigiKey except the bare PCB, which was ordered from JLCPCB. A PDF with specific part numbers is available under the [**Quick Downloads** header](#quick-downloads).
+
 | Part | Cost (USD) | Purpose |
 |------|------------|---------|
+| Bare PCB (5)|$34.61|Blank PCB to which all the components listed below are soldered to to create the computer|
 | STM32F767ZIT6 MCU | 21.32 | Main flight-controller microcontroller running ArduPilot |
 | u-blox NEO-M9N GNSS Module | 27.00 | High-precision GPS/GNSS positioning |
 | RF Ceramic Antenna (Taoglas AGGBP.25B) | 19.58 | GNSS signal reception |
@@ -103,7 +115,9 @@ After all this consideration, I ended up with a very high end parts list that wo
 | Resistors 10 kΩ 1 W (10×) | 0.77 | Power sensing / voltage dividers |
 | Resistor 68 kΩ 2 W | 0.50 | High-side voltage measurement |
 
-**Total: $98.27**
+**Total: $132.88**
+
+#### Grand Total (not including tariffs/shipping that may apply): $711.19
 
 ## Chassis Design {.collapsible}
 The first component I designed was the chassis. Originally, I wanted to use the [Source One](https://www.printables.com/model/261673-complete-tbs-source-one-v5-cad-model-step), an open source drone chassis supporting up to 7" props. However, in its standard form, it had nowhere near enough space to fit my large battery, a Raspberry Pi 5, a camera, and all of the components for the flight controller (the board was not designed at this point). So, I downloaded the STEP files into Onshape and made significant changes to allow for the battery to fit. 
@@ -138,16 +152,15 @@ The drone features two distinct electronic subsystems:
 
 These two subsystems cover a wide bandwidth of operations. By having two distinct systems, the flight controller can focus solely on flight and reading data from sensors while the Raspberry Pi can focus on analyzing data and giving instructions to the flight controller. 
 
+### Tools Used:
+
+To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. Additionally, I used a laser cutter to try and make a stencil, but it did not work out well. 
+
+tools/files
+
 ## Firmware {.collapsible}
 ## Assembly {.collapsible}
 
-### Tools Used:
-
-To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. 
-
-Deadlines (did not meet)
-tools/files
-photos/videos
 
 ## Testing and Calibration {.collapsible}
 TBD

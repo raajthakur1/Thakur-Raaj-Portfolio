@@ -147,6 +147,8 @@ In this period of time, I worked on the new chassis. I made incremental changes 
 
 ## 11.10.2025 - 11.14.2025
 
+In this period of time, I started work on the drone's electronics. I tried to solder small capacitors to the flight controller first with solder and a fine tip soldering iron, and it did not work at all. Even the smallest solder in the lab was far too thick for the tiny pads, so melting any solder would flood the pads with solder and would knock the capacitor off the pads. Then, I tried to use solder paste. Although it was easier to precisely apply solder paste to the pads with the paste, it was very difficult to solder with the iron. The reason for this is because the capacitors are so small that heating up end to melt the paste ends up heating up the other end, causing the capacitor to melt the solder and disconnect from the pad. My next idea was to laser cut a stencil out of mylar so I could precisely apply solder paste, but when I tried making the stencil with the laser cutter, the mylar deformed and made the holes too big.
+
 ### 11.22.2025 - 11.30.2025
 
 No school - Thanksgiving break.
