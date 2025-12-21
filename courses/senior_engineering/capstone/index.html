@@ -753,6 +753,7 @@
 <p>After all this consideration, I ended up with a very high end parts list that would create a drone with very powerful capabilities. The next step was to design the <a href="#chassis-design">chassis</a>.</p>
 <h3 class="collapsible" id="bill-of-materials">Bill of Materials</h3>
 <p><strong>Major Components</strong></p>
+<p>All parts are linked with websites to purchase them.</p>
 <table>
 <thead>
 <tr>
@@ -763,34 +764,70 @@
 </thead>
 <tbody>
 <tr>
-<td>Magnetometer (LIS2MDL)</td>
-<td></td>
+<td><a href="https://www.adafruit.com/product/4554">IMU (ICM20948)</a></td>
+<td>$14.95</td>
+<td>Measures acceleration, rotation, and direction</td>
+</tr>
+<tr>
+<td><a href="https://www.adafruit.com/product/4488">Magnetometer (LIS2MDL)</a></td>
+<td>$7.95</td>
 <td>Provides heading and magnetic field data for orientation and navigation</td>
 </tr>
 <tr>
-<td>Barometer (LPS22HB)</td>
-<td></td>
+<td><a href="https://www.adafruit.com/product/4633">Barometer (LPS22HB)</a></td>
+<td>$6.95</td>
 <td>Measures atmospheric pressure for altitude estimation</td>
 </tr>
 <tr>
-<td>RC Receiver (Radiomaster RPI V1)</td>
-<td></td>
+<td><a href="https://radiomasterrc.com/products/rp1-expresslrs-2-4ghz-nano-receiver">RC Receiver (Radiomaster RPI V1)</a></td>
+<td>$18.99</td>
 <td>Receives pilot control inputs from the radio transmitter</td>
 </tr>
 <tr>
-<td>ESC (BrotherHobby Returner 65A 4-in-1)</td>
-<td></td>
+<td><a href="https://www.brotherhobbystore.com/products/returner-3-6s-32bit-am32-65a4in1-esc-v2-194">ESC (BrotherHobby Returner 65A 4-in-1)</a></td>
+<td>$45.00</td>
 <td>Controls motor speed and distributes power to all four motors</td>
 </tr>
 <tr>
-<td>Motors (BrotherHobby Special Edition V4 32.5-12 1050KV)</td>
-<td></td>
+<td><a href="https://www.brotherhobbystore.com/products/special-edition-v4-32512-motor-166">Brotherhobby Special Edition 1050KV 32.5-12 Motors</a> (4)</td>
+<td>$33.99 • 4</td>
 <td>Generate thrust and control the drone’s movement</td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/dp/B0BMNSXCSP?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1">XT90 Splitter</a></td>
+<td>$9.99</td>
+<td>Allows XT90 power output from battery to go to both the ESC and Flight Controller Board</td>
+</tr>
+<tr>
+<td>XT90 Connectors</td>
+<td>$11.99</td>
+<td>Allows for a standard connector to provide power to the Flight Controller and ESC</td>
+</tr>
+<tr>
+<td><a href="https://vilros.com/products/raspberry-pi-5?variant=40065551302750">Raspberry Pi 5 8GB</a> (my project uses a 4GB model, but 8GB is ideal. I just had the 4GB lying around so I used it.)</td>
+<td>$95.00</td>
+<td>Powerful computer that facilitates video streaming and allows for the NPU to analyze the video feed</td>
+</tr>
+<tr>
+<td><a href="https://vilros.com/products/raspberry-pi-ai-hat?variant=41445060247646">Raspberry Pi AI Hat+ (26 TOPS)</a></td>
+<td>$180.99</td>
+<td>Expansion board for Raspberry Pi that houses a very powerful NPU (processor dedicated for AI)</td>
+</tr>
+<tr>
+<td><a href="https://vilros.com/products/raspberry-pi-camera-3?variant=39984853155934">Raspberry Pi Camera Module 3 Wide Angle</a></td>
+<td>$46.55</td>
+<td>Camera for the drone. The Wide Angle is ideal, but pretty much any version will work</td>
+</tr>
+<tr>
+<td><a href="https://vilros.com/products/pimoroni-pico-debug-cable">3 pin JST-SH to DuPont Cable</a></td>
+<td>$3.99</td>
+<td>Cable that enables communication between flight controller and Raspberry Pi through the UART port on the Pi</td>
 </tr>
 </tbody>
 </table>
-<p>**Total: </p>
+<p><strong>Total: $578.31</strong></p>
 <p><strong>Electronic Components</strong></p>
+<p>All electronic components are available on DigiKey except the bare PCB, which was ordered from JLCPCB. A PDF with specific part numbers is available under the <a href="#quick-downloads"><strong>Quick Downloads</strong> header</a>.</p>
 <table>
 <thead>
 <tr>
@@ -800,6 +837,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Bare PCB (5)</td>
+<td>$34.61</td>
+<td>Blank PCB to which all the components listed below are soldered to to create the computer</td>
+</tr>
 <tr>
 <td>STM32F767ZIT6 MCU</td>
 <td>21.32</td>
@@ -937,7 +979,8 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Total: $98.27</strong></p>
+<p><strong>Total: $132.88</strong></p>
+<h4 id="grand-total-not-including-tariffsshipping-that-may-apply-71119">Grand Total (not including tariffs/shipping that may apply): $711.19</h4>
 <h2 class="collapsible" id="chassis-design">Chassis Design</h2>
 <p>The first component I designed was the chassis. Originally, I wanted to use the <a href="https://www.printables.com/model/261673-complete-tbs-source-one-v5-cad-model-step">Source One</a>, an open source drone chassis supporting up to 7" props. However, in its standard form, it had nowhere near enough space to fit my large battery, a Raspberry Pi 5, a camera, and all of the components for the flight controller (the board was not designed at this point). So, I downloaded the STEP files into Onshape and made significant changes to allow for the battery to fit. </p>
 <p><img alt="Original Source One chassis" src="../media/capstone/chassis_old/source1_original.jpeg" width="400" /> <img alt="Final Source One-based chassis" src="../media/capstone/chassis_old/source1_final.jpeg" width="400" /></p>
@@ -973,13 +1016,11 @@
 <li>Raspberry Pi + NPU + Camera: contains a far faster computer (quad-core CPU @ 2.4 GHZ + 4GB LPDDR4X RAM @ 4267 MT/S + 64GB MicroSD), a very powerful 26 Tera Operations per Second (TOPS) NPU, and a 1080p camera for live video streaming and AI-powered post-procession to enable advanced functions such as object detection, pose tracking, facial recognition, depth estimation, and more. </li>
 </ul>
 <p>These two subsystems cover a wide bandwidth of operations. By having two distinct systems, the flight controller can focus solely on flight and reading data from sensors while the Raspberry Pi can focus on analyzing data and giving instructions to the flight controller. </p>
+<h3 id="tools-used">Tools Used:</h3>
+<p>To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. Additionally, I used a laser cutter to try and make a stencil, but it did not work out well. </p>
+<p>tools/files</p>
 <h2 class="collapsible" id="firmware">Firmware</h2>
 <h2 class="collapsible" id="assembly">Assembly</h2>
-<h3 id="tools-used">Tools Used:</h3>
-<p>To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. </p>
-<p>Deadlines (did not meet)
-tools/files
-photos/videos</p>
 <h2 class="collapsible" id="testing-and-calibration">Testing and Calibration</h2>
 <p>TBD</p>
 <h2 class="collapsible" id="next-steps">Next Steps</h2>
