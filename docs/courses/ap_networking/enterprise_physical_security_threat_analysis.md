@@ -11,6 +11,10 @@ In this activity, physical security vulnerabilities in a pharmaceutical company 
 
 ## Physical Vulnerabilities Relevant to a Pharmaceutical Research Company {.collapsible}
 
+In a facility with highly confidential information such as a pharmaceutical research company, physical security is of the upmost importance. Common vulnerabilties that companies may overlook include:
+
+- 
+
 ## Physical Security Plan {.collapsible}
 
 ### Environmental Controls
