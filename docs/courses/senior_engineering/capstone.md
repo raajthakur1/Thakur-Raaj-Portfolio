@@ -164,7 +164,13 @@ To make this project, the main tool that I used was a 3D printer. Specifically, 
 TBD
 
 ## Assembly {.collapsible}
-TBD
+
+Assembly is still in progress. So far, I have used the following tools in the Fab Lab:
+
+- 3D Printers (Bambu Lab A1 Mini and A1, and Prusa Mini+)
+- Screwdrivers and Allen Wrenches
+- Screws (M3 and M4)
+- Soldering Iron, Reflow Station, Solder, Solder Paste, and Flux
 
 ## Testing and Calibration {.collapsible}
 TBD

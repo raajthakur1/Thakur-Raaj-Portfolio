@@ -5,6 +5,7 @@ In this project, I milled the topography of the Himalayan Mountains out of a blo
 ## Table of Contents
 
 - [**Workflow**](#workflow)
+- [**3D Printing a Mini Version**](#3d-printing-a-mini-version)
 - [**Challenges I Overcame and Lessons I Learned**](#challenges-i-overcame-lessons-i-learned-and-what-i-would-do-differently)
 - [**File Downloads**](#downloads)
 
@@ -66,6 +67,10 @@ In this project, I milled the topography of the Himalayan Mountains out of a blo
 
 9. Once all settings are verified, click “Run”
 
+## 3D Printing a Mini Version {.collapsible}
+
+Before milling the full-size model out of wood, I first 3D printed a mini version of the topography to see how the final product would turn out. To do so, I imported the STL file into Bambu Studio and scaled the model down until it took less than 2 hours to print. I did so since all I wanted to see was how the detail would look, so there was no need to have a super large model. I then sliced the model and printed it out on a Bambu Lab A1 Mini printer. 
+
 ## Challenges I Overcame, Lessons I Learned, and What I Would Do Differently {.collapsible}
 
 Since I had already used Carvera Controller and the Carvera Desktop CNC Machine in the past, it was very easy for me to use them. However, until completing this project, I had not used Vectric Aspire for 2 years, so I was not very well-versed in using the software. Learning how to use the software well, such as learning where everything is located, what all the different menus do, etc., was a bit challenging, although the guides provided by Mr. Dubick were pretty helpful. Besides learning how to use Aspire, the process was very simple. 
@@ -80,4 +85,6 @@ Below is an image of the milled topography. The details came out very nicely, ex
 
 ## Downloads {.collapsible}
 
+- [.STL File](media/topography/himalayas.stl)
+- [Aspire (.crv3d) file](media/topography/raaj.crv3d)
 - [.CNC File](media/topography/raaj_himalayas.cnc)

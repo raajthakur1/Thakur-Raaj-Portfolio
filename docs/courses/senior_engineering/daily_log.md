@@ -172,6 +172,12 @@ I spent today catching up on documentation.
 
 ## January
 
+### 01.08.2026 - 01.13.2026
+
+### 01.14.2026
+
+Today, I continued work on the redesigned chassis. I designed a new part that acts as both landing gear and as a stiffener. It mounts flush under the main body with 8 mounting holes and has extruded pegs to keep the drone from sitting flat on the floor and absorb shock under landing. I will print prototypes out of PLA and print the final product using a mix of TPU and PETG; the main plate will be PETG and the extruded pegs will be TPU for better shock absorption.
+
 ## February
 
 ## March
