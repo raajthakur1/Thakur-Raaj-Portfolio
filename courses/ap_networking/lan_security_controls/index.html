@@ -719,6 +719,30 @@
 </ul>
 <h2 class="collapsible" id="common-lan-threats-and-why-switches-are-vulnerable">Common LAN Threats and Why Switches Are Vulnerable</h2>
 <h2 class="collapsible" id="appropriate-security-controls-and-common-vulnerabilities-within-a-simple-lan">Appropriate Security Controls and Common Vulnerabilities Within a Simple LAN</h2>
+<p>In this activity, a LAN was simulated to observe how easy it is to collect and manipulate ARP information when no internal security controls exist. Two Linux VMs were used: one that simulates a desktop computer running Ubuntu that sends ARP requests and one that simulates an Ubuntu-based server which listens to ARP requests. Both VMs were set to Bridged network mode to appear as separate devices from the host machine on the LAN.</p>
+<p>Steps:</p>
+<ol>
+<li>On VM2, run <code>ip addr</code> and <code>ip route</code>, and note down the interface name, VM2's IPv4 address, and the default gateway.<ul>
+<li>Interface: enp0s1</li>
+<li>IPv4 address: 192.168.64.4</li>
+<li>Default gateway: 192.168.64.1</li>
+</ul>
+</li>
+</ol>
+<p><img alt="SS1" src="../media/security_controls_in_LAN/2/ip_addr_route.png" width="500" /></p>
+<ol>
+<li>On VM2, start listening for ARP traffic with <code>sudo tcpdump -i "interface" arp</code> (replace "interface" with the interface of the computer that was found with <code>ip addr</code>). Leave this running in the terminal while running step 3.</li>
+</ol>
+<p><img alt="SS2" src="../media/security_controls_in_LAN/2/tcpdump.png" width="500" /></p>
+<ol>
+<li>On VM1, run <code>sudo arping -c 5 -I "interface" "VM2's IPv4 Address"</code> (replace "interface" and "VM2's IPv4 Address" with the values previously found on VM2 with <code>ip addr</code>). This command broadcasts ARP requests from VM1 asking "who has VM2's IP?", and VM2 responds with its MAC address.</li>
+</ol>
+<p><img alt="SS3" src="../media/security_controls_in_LAN/2/arping.png" width="500" /></p>
+<p>Analysis:</p>
+<p>ARP reveals the MAC address associated with an IP address on a LAN. When VM1 sent an ARP request asking for VM2's IP, VM2 responded with its MAC address. ARP assumes all devices on the same network segment are trustworthy and will respond honestly without verification, making it vulnerable to spoofing because any device can claim to own a random IP address and intercept traffic meant for another host. Bridged mode was required for this lab because it allowed both VMs to operate on the same network so they could see and respond to each other's ARP broadcasts. Without it, the VMs would be isolated and unable to communicate.</p>
+<p>A common vulnerability in an unsecured LAN is ARP spoofing, which is demonstrated in the diagram below:</p>
+<p><img alt="ARP Spoofing" src="../media/security_controls_in_LAN/2/arp_spoofing.png" width="600" /></p>
+<p>ARP spoofing succeeds in unprotected LANs because ARP has no authentication mechanism, meaning that any device can claim ownership of any IP address and broadcast that claim, and all devices trust ARP responses without verification. Dynamic ARP Inspection (DAI) is the security control specifically designed to stop this attack. DAI works by intercepting all ARP packets on a switch and validating IP-to-MAC bindings using a trusted database. When a malicious device attempts to send a spoofed ARP packet claiming to own the gateway's IP address, DAI detects the invalid binding and drops the packet before it can propagate, preventing the attacker from poisoning the ARP tables of legitimate hosts and intercepting their traffic.</p>
 <h2 class="collapsible" id="security-controls-to-mitigate-vulnerabilities-in-a-switched-lan">Security Controls to Mitigate Vulnerabilities in a Switched LAN</h2>
 <p>The next activity was to simulate and analyze a school's LAN with two virtual machines. Once the simulation was complete, an <a href="https://docs.google.com/document/d/1yPeEwW0Fa0ttF9qG2FwPMp9Pwbd_9-Difbsc1UxgZxY/edit?tab=t.0"><strong>assessment report</strong></a> was created to provide a summary of the experiment and its findings.</p>
 <p><strong>Evidence gathering process:</strong></p>
