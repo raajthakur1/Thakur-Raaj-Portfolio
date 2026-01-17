@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+        <title>Determining Security Controls in a LAN - Raaj's Engineering & CS Portfolio</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        
+        
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../../../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../../../assets/css/mkdocs.min.css">
+            <link href="../../../stylesheets/extra.css" rel="stylesheet">
+            <link href="../../../stylesheets/sidebar-collapse-diamond-fix.css" rel="stylesheet">
+            <link href="../../../stylesheets/collapse-headers.css" rel="stylesheet">
+
+        
+            <link  rel="icon" type="image/x-icon" href="../../../media/headshot.png">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../../../media/headshot.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">Raaj's Engineering & CS Portfolio</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider" />
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href="../../.."
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Home
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../../.."
+                    class=" active 
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#courses-&-projects-collapse" aria-expanded="false">
+                    Courses & Projects
+                </a>
+                <div class="collapse" id="courses-&-projects-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#book-to-box-office-(2025-2026)-collapse" aria-expanded="false">
+            Book to Box Office (2025-2026)
+        </a>
+
+        <div class="collapse" id="book-to-box-office-(2025-2026)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/writer_bio/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Writer's Bio and Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/writer_statement/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Writer's Statement
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="false">
+            Projects
+        </a>
+
+        <div class="collapse" id="projects-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/wiseguy_goodfellas_essay/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Wiseguy/Goodfellas Essay
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/princess_bride/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            The Princess Bride Essay
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/princess_bride_outline/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            The Princess Bride Outline
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#journals-collapse" aria-expanded="false">
+            Journals
+        </a>
+
+        <div class="collapse" id="journals-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/journals/tpb_j1/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            The Princess Bride Journal 1
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/journals/tpb_j2/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            The Princess Bride Journal 2
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/journals/wggf_j1/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Wiseguy/Goodfellas Journal 1
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/journals/wggf_j2/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Wiseguy/Goodfellas Journal 2
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../english_b2bx/projects/final_project/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Final Project
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#ap-networking-(2025-2026)-collapse" aria-expanded="false">
+            AP Networking (2025-2026)
+        </a>
+
+        <div class="collapse" id="ap-networking-(2025-2026)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../component-cards-and-software-slips/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Component Cards & Software Slips
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../cli/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Command Line Interface
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../troubleshooting/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Network Troubleshooting
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../security-controls/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Determining Security Controls for Devices
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../device-security/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Implementing Security for Devices
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../networking_data_movement/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Networking and Data Movement
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../network_foundations/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Network Foundations
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../why_cant_these_two_computers_talk/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Why Can't These Two Computers Talk to Each Other?
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../physical_logical_addressing/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Physical Addressing and Logical Addressing
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Determining Security Controls in a LAN
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#honors-senior-engineering-(2025-2026)-collapse" aria-expanded="false">
+            Honors Senior Engineering (2025-2026)
+        </a>
+
+        <div class="collapse" id="honors-senior-engineering-(2025-2026)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/capstone/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Capstone Project
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/daily_log/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Daily Log
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/owl/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Owl
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/pen/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Pen
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/pcb_milling/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            PCB Milling
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../senior_engineering/topography/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Topography
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#honors-data-analytics-(2025)-collapse" aria-expanded="false">
+            Honors Data Analytics (2025)
+        </a>
+
+        <div class="collapse" id="honors-data-analytics-(2025)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/excel/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Excel
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/python/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Python
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/data_cleaning/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Data Cleaning
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/bootstrapping/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Bootstrapping
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/anova/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            ANOVA
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../data_analytics/machine_learning/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Machine Learning
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#civil-engineering-(2024)-collapse" aria-expanded="false">
+            Civil Engineering (2024)
+        </a>
+
+        <div class="collapse" id="civil-engineering-(2024)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/bridge_building_and_testing/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Bridge Building and Testing
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/windmill_optimization/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Windmill Design and Optimization
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../civil_engineering/water_turbidity/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Water Turbidity Testing
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#engineering-i-(2022)-collapse" aria-expanded="false">
+            Engineering I (2022)
+        </a>
+
+        <div class="collapse" id="engineering-i-(2022)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/box/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Thinking Out of the Box
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/keychain/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Easily Suede
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/3d_printing/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Plane and Simple
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/ohm_depot/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            The Ohm Depot
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/cold_solder/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            A Cold Solder
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/grab_a_byte/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Grab a Byte
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_1/final_project/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Final Project
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="#" class="
+            drac-anchor-secondary btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+            data-bs-toggle="collapse" data-bs-target="#engineering-ii-(2023)-collapse" aria-expanded="false">
+            Engineering II (2023)
+        </a>
+
+        <div class="collapse" id="engineering-ii-(2023)-collapse">
+            <ul class="mb-5 drac-list drac-list-none">
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Overview
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/fusion360/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Deep Dive into Fusion 360
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/milling_about/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Milling About
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/pressing_charges/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Pressing Charges
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/cutting_board/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Board to be Wild
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../../engineering_2/final_project/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Final Project
+        </a>
+    </li>
+            </ul>
+        </div>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="../../../about/"
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    About
+                </a>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+                aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../physical_logical_addressing/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../../senior_engineering/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
+		placeholder="Search docs" title="Type search term here" />
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p><h1 id="determining-security-controls-in-a-lan">Determining Security Controls in a LAN</h1>
+<p>In this activity, physical security vulnerabilities in a pharmaceutical company were explored and patched.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#common-lan-threats-and-why-switches-are-vulnerable"><strong>Common LAN Threats &amp; Why Switches Are Vulnerable</strong></a></li>
+<li><a href="#appropriate-security-controls-and-common-vulnerabilities-within-a-simple-lan"><strong>Appropriate Security Controls and Common Vulnerabilities Within a Simple LAN</strong></a></li>
+<li><a href="#appropriate-security-controls-and-common-vulnerabilities-within-a-simple-lan"><strong>Security Controls to Mitigate Vulnerabilities Within a Simple LAN</strong></a></li>
+<li><a href="#enterprise-physical-security-threat-analysis"><strong>Enterprise Physical Security Threat Analysis</strong></a></li>
+</ul>
+<h2 class="collapsible" id="common-lan-threats-and-why-switches-are-vulnerable">Common LAN Threats and Why Switches Are Vulnerable</h2>
+<h2 class="collapsible" id="appropriate-security-controls-and-common-vulnerabilities-within-a-simple-lan">Appropriate Security Controls and Common Vulnerabilities Within a Simple LAN</h2>
+<p>In this activity, a LAN was simulated to observe how easy it is to collect and manipulate ARP information when no internal security controls exist. Two Linux VMs were used: one that simulates a desktop computer running Ubuntu that sends ARP requests and one that simulates an Ubuntu-based server which listens to ARP requests. Both VMs were set to Bridged network mode to appear as separate devices from the host machine on the LAN.</p>
+<p>Steps:</p>
+<ol>
+<li>On VM2, run <code>ip addr</code> and <code>ip route</code>, and note down the interface name, VM2's IPv4 address, and the default gateway.<ul>
+<li>Interface: enp0s1</li>
+<li>IPv4 address: 192.168.64.4</li>
+<li>Default gateway: 192.168.64.1</li>
+</ul>
+</li>
+</ol>
+<p><img alt="SS1" src="../media/security_controls_in_LAN/2/ip_addr_route.png" width="500" /></p>
+<ol>
+<li>On VM2, start listening for ARP traffic with <code>sudo tcpdump -i "interface" arp</code> (replace "interface" with the interface of the computer that was found with <code>ip addr</code>). Leave this running in the terminal while running step 3.</li>
+</ol>
+<p><img alt="SS2" src="../media/security_controls_in_LAN/2/tcpdump.png" width="500" /></p>
+<ol>
+<li>On VM1, run <code>sudo arping -c 5 -I "interface" "VM2's IPv4 Address"</code> (replace "interface" and "VM2's IPv4 Address" with the values previously found on VM2 with <code>ip addr</code>). This command broadcasts ARP requests from VM1 asking "who has VM2's IP?", and VM2 responds with its MAC address.</li>
+</ol>
+<p><img alt="SS3" src="../media/security_controls_in_LAN/2/arping.png" width="500" /></p>
+<p>Analysis:</p>
+<p>ARP reveals the MAC address associated with an IP address on a LAN. When VM1 sent an ARP request asking for VM2's IP, VM2 responded with its MAC address. ARP assumes all devices on the same network segment are trustworthy and will respond honestly without verification, making it vulnerable to spoofing because any device can claim to own a random IP address and intercept traffic meant for another host. Bridged mode was required for this lab because it allowed both VMs to operate on the same network so they could see and respond to each other's ARP broadcasts. Without it, the VMs would be isolated and unable to communicate.</p>
+<p>A common vulnerability in an unsecured LAN is ARP spoofing, which is demonstrated in the diagram below:</p>
+<p><img alt="ARP Spoofing" src="../media/security_controls_in_LAN/2/arp_spoofing.png" width="600" /></p>
+<p>ARP spoofing succeeds in unprotected LANs because ARP has no authentication mechanism, meaning that any device can claim ownership of any IP address and broadcast that claim, and all devices trust ARP responses without verification. Dynamic ARP Inspection (DAI) is the security control specifically designed to stop this attack. DAI works by intercepting all ARP packets on a switch and validating IP-to-MAC bindings using a trusted database. When a malicious device attempts to send a spoofed ARP packet claiming to own the gateway's IP address, DAI detects the invalid binding and drops the packet before it can propagate, preventing the attacker from poisoning the ARP tables of legitimate hosts and intercepting their traffic.</p>
+<h2 class="collapsible" id="security-controls-to-mitigate-vulnerabilities-in-a-switched-lan">Security Controls to Mitigate Vulnerabilities in a Switched LAN</h2>
+<p>The next activity was to simulate and analyze a school's LAN with two virtual machines. Once the simulation was complete, an <a href="https://docs.google.com/document/d/1yPeEwW0Fa0ttF9qG2FwPMp9Pwbd_9-Difbsc1UxgZxY/edit?tab=t.0"><strong>assessment report</strong></a> was created to provide a summary of the experiment and its findings.</p>
+<p><strong>Evidence gathering process:</strong></p>
+<p>Key: VM1 = Desktop Computer | VM2 = Linux Server</p>
+<ol>
+<li>On VM 2, run <code>ip addr</code> and <code>ip route</code> to establish the active network interface, IP address, and default gateway.</li>
+</ol>
+<p><img alt="SS1" src="../media/security_controls_in_LAN/3/ip_addr_route.png" width="500" /></p>
+<ol>
+<li>On VM 2, run <code>sudo tcpdump -i "interface" "arp"</code> (replace "interface" with your machine's actual network interface found with <code>ip addr</code>) to observe ARP broadcast behavior, as well as identifying flat-network visibility and IP-to-MAC discovery</li>
+</ol>
+<p><img alt="SS2" src="../media/security_controls_in_LAN/3/tcpdump.png" width="500" /></p>
+<ol>
+<li>On VM 1, run <code>sudo arping -c 5 -I "interface" "VM2's IP"</code> (replace "interface" and "VM2's IP" with the values found with <code>ip addr</code>) to demonstrate how easily hosts can discover one another and show low-effort internal reconnaissance in a flat LAN.</li>
+</ol>
+<p><img alt="SS3" src="../media/security_controls_in_LAN/3/tcpdump.png" width="500" /></p>
+<p>The results from this experiment showcase how the user desktop can easily discover and communicate with a server, which in a real school's LAN, would contain sensitive information that shouldn't be accessible to most users. To fix this issue, VLAN segmentation can be used to separate different classes of devices into virtual LANs (VLANs), and communication between VLANs can be limited. This would allow for teachers and students to be unable to access the admin and server devices. This is demonstrated in the diagram below:</p>
+<p><img alt="School LAN w/ VLANs" src="../media/security_controls_in_LAN/3/school_lan.png" width="500" /></p>
+<h3 id="acl-intent-statements">ACL Intent Statements</h3>
+<ul>
+<li>Students and teachers cannot access the admin and server VLAN</li>
+<li>The server and admins <strong>can</strong> access the students and teachers</li>
+<li>The admins and server can access each other</li>
+</ul>
+<h2 class="collapsible" id="enterprise-physical-security-threat-analysis">Enterprise Physical Security Threat Analysis</h2>
+<p>The last activity in this unit was to plan out a physical security plan for a pharmaceutical company.</p>
+<h3 id="physical-vulnerabilities-relevant-to-a-pharmaceutical-research-company">Physical Vulnerabilities Relevant to a Pharmaceutical Research Company</h3>
+<p>In a facility with highly confidential information such as a pharmaceutical research company, physical security is of the upmost importance. Common vulnerabilties that companies may overlook include:</p>
+<ul>
+<li>Unrestricted access to spaces with sensitive information (such as research or financial information)<ul>
+<li>This vulnerability would exist in confidential facilities within the campus such as research labs and the admin wing with financial documents, and presents severe risk since it allows unauthorized people to access highly confidential and valuable information even though they shouldn't be able to</li>
+</ul>
+</li>
+<li>Lack of security cameras in secure areas or in hallways leading to secure areas<ul>
+<li>This vulnerability, similarly to the previous one, would exist near confidential facilities. This vulnerability presents a risk since it does not allow the security team to know when people entered or exited the secure area or where in the building they are coming from.</li>
+</ul>
+</li>
+<li>Unsecured network closets that leave network infrastructure exposed<ul>
+<li>This vulnerability would exist in network server rooms and closets throughout the campus. This vulnerability presents a risk since it allows unauthorized people to access critical network infrastructure, potentially disrupting operations, stealing sensitive data, or installing malicious devices without detection.</li>
+</ul>
+</li>
+<li>Lack of night vision cameras to help monitor areas even when it is dark<ul>
+<li>This vulnerability would exist in exterior areas, parking lots, and loading docks around the facility. This vulnerability presents a risk since it does not allow the security team to monitor activities during nighttime hours, making it easier for intruders to conduct surveillance or attempt unauthorized access when visibility is limited.</li>
+</ul>
+</li>
+<li>Short fence that can easily be climbed<ul>
+<li>This vulnerability would exist at the perimeter of the campus. This vulnerability presents a risk since it allows unauthorized people to bypass the outer security boundary and gain physical access to the facility grounds and building entrances.</li>
+</ul>
+</li>
+<li>Lack of biometric authentication to enter the campus<ul>
+<li>This vulnerability would exist at main entrances and gateways to secure areas. This vulnerability presents a risk since traditional access methods like keycards and passwords can be stolen, duplicated, or shared with unauthorized individuals, whereas biometric authentication provides a more secure verification method that cannot be easily compromised.</li>
+</ul>
+</li>
+</ul>
+<h3 id="physical-security-plan">Physical Security Plan</h3>
+<p>In order to secure the facility, the following controls would be implemented.</p>
+<h3 id="environmental-controls">Environmental Controls</h3>
+<p>The environment of such a facility is very important. Factors such as temperature, air quality, humidity, and fire suppression systems must all be carefully implemented.</p>
+<p><strong>Temperature:</strong>
+- Due to the precise nature of pharmaceutical research, technicians and researchers must have precise control over temperature of individual rooms in order to optimize for whatever compound they are testing.
+- This would be regulated by having individual AC compressors, heaters, and thermostats for every room and connecting the thermostats to the network in order to have precise control and monitoring of the temperature in every single room of the facility.</p>
+<p><strong>Humidity:</strong>
+- Similarly to temperature, even slight variations in ambient humidity can throw off a reaction or experiment. Therefore, technicians and researchers must have precise control over the individual rooms in order to optimize for whatever compound they are testing.
+- This would be regulated by having individual humidifiers and dehumidifiers for every room and connecting them to the network in order to have precise control and monitoring of the humidity in every single room of the facility.</p>
+<p><strong>Air Quality:</strong>
+- Conducing experiments in a pharmaceutical environment can release toxic fumes into the air. Therefore, high quality, industrial-grade air filtration systems are extremely important in a pharmaceutical environment. 
+- To ensure high air quality, air filtration systems would be installed in every single research lab, and would also be spread throughout hallways and conference rooms to maintain pristine air quality. They would be connected to the LAN in order to facilitate precise control and monitoring.</p>
+<p><strong>Fire Suppression Systems:</strong>
+- Safety is of the upmost importance, and experiments can possibly lead to fires. Therefore, fire suppression systems should be installed in every single research lab and should be connected to smoke detectors, as well as the LAN in case the smoke detectors don't trigger the suppression system. Along with smoke detectors and fire suppression systems, the temperature sensors in each research lab would be able to detect a surge of heat and automatically set off the suppression system.</p>
+<h4 id="access-controls">Access Controls</h4>
+<p><strong>Badges:</strong>
+- Electronic access badges are essential for controlling who can enter restricted areas within the facility. Each employee would be issued a unique badge that grants access only to areas relevant to their job role.
+- Badges would be integrated with a centralized access control system connected to the LAN, allowing administrators to monitor entry and exit times, revoke access immediately if needed, and generate audit logs of all access attempts to sensitive areas.</p>
+<p><strong>Biometrics:</strong>
+- Biometric authentication such as fingerprint or iris scanning provides a more secure layer of access control than badges alone, as it cannot be stolen or shared.
+- Biometric readers would be installed at the entrances to the most sensitive areas such as research labs, data centers, and executive offices. All biometric data would be encrypted and stored securely on isolated systems to prevent unauthorized access.</p>
+<p><strong>Mantraps:</strong>
+- Mantraps, also known as access vestibules or airlocks, are small controlled spaces between two doors that prevent unauthorized people from following legitimate employees into restricted areas.
+- Mantraps would be installed at the main entrances to research labs, server rooms, and the executive wing. Only one person at a time would be allowed through based on badge and biometric verification, preventing tailgating.</p>
+<p><strong>Zoning:</strong>
+- Zoning divides the facility into different security levels based on the sensitivity of the information and equipment in each area. This ensures that unauthorized individuals can only access areas relevant to their role.
+- The facility would be divided into zones such as public areas (lobbies and conference rooms), employee areas (offices and break rooms), restricted areas (research labs), and highly restricted areas (executive offices and data centers). Access controls would be progressively stricter as you move to higher security zones. </p>
+<h4 id="surveillance-and-detection">Surveillance and Detection</h4>
+<p><strong>Cameras:</strong>
+- Security cameras are critical for monitoring facility access, detecting unauthorized entry, and providing evidence in case of a security incident or theft.
+- High-resolution cameras with night vision capability would be installed throughout the facility, including hallways, research labs, server rooms, loading docks, parking lots, and exterior perimeter areas. All camera feeds would be recorded continuously and stored on a secure network server for at least 90 days.</p>
+<p><strong>Monitoring Rooms:</strong>
+- A dedicated security monitoring room staffed by trained security personnel allows real-time surveillance and rapid response to security incidents.
+- A central monitoring station would be established where security staff can observe live feeds from all cameras, receive alerts from alarm systems, and communicate with facility personnel. This room would be secured with its own access controls and would have redundant communication systems.</p>
+<p><strong>Alarms:</strong>
+- Alarm systems provide immediate alerts when unauthorized access is detected or when doors to restricted areas are opened improperly.
+- Motion sensors would be installed in high-value areas such as research labs and server rooms. Door and window sensors would be placed on all exterior exits and restricted area entrances. All alarms would be connected to the central monitoring station and would trigger automatic notifications to security personnel and management.</p>
+<p><strong>Logging:</strong>
+- Comprehensive logging of all access attempts, alarms, and camera footage provides an audit trail for investigating incidents and identifying security vulnerabilities.
+- All badge swipes, biometric scans, alarm triggers, and camera recordings would be logged to a centralized, tamper-proof system. Access logs would be regularly reviewed for suspicious patterns, and reports would be generated for compliance and security audits. </p>
+<h4 id="hardware-security">Hardware Security</h4>
+<p><strong>Locked Racks:</strong>
+- Locked server racks prevent unauthorized people from physically tampering with, stealing, or disconnecting critical networking and computing hardware.
+- All servers and networking equipment would be stored in locked, climate-controlled racks within restricted server rooms. Only authorized IT personnel with proper credentials would be allowed to access these racks, and all physical access would be logged.</p>
+<p><strong>Secured Network Closets:</strong>
+- Network closets contain critical infrastructure such as switches, routers, and patch panels. Securing these spaces prevents intruders from installing rogue devices or disrupting network operations.
+- All network closets throughout the facility would be locked and accessible only to authorized IT and network personnel. These closets would have biometric access controls and surveillance cameras to monitor who enters and what modifications are made to the network infrastructure.</p>
+<p><strong>Port Protection:</strong>
+- Exposed network ports can be used to connect unauthorized devices to the network, allowing attackers to access sensitive data or inject malware.
+- All unused network ports on switches and patch panels would be disabled and physically secured. Occupied ports would be documented and monitored. Additionally, physical port locks would be used to prevent unauthorized devices from being plugged into critical network infrastructure. </p>
+<h4 id="personnel-and-procedures">Personnel and Procedures</h4>
+<p><strong>Visitor Handling:</strong>
+- Visitors can pose a significant security risk if not properly controlled, as they may be unauthorized individuals attempting to gain access to sensitive areas or gather intelligence about facility operations.
+- All visitors would be required to sign in at a main security desk and receive a temporary, time-limited badge. Visitors would be restricted to designated public areas only and would not be allowed to access research labs, server rooms, or executive offices without explicit authorization from a department head.</p>
+<p><strong>Escort Policies:</strong>
+- Escort policies ensure that visitors and contractors with legitimate access to sensitive areas are always supervised by an authorized employee.
+- Any visitor or contractor requiring access to restricted areas would be required to be accompanied by an employee with appropriate clearance for that area at all times. The escorting employee would be responsible for ensuring the visitor does not access unauthorized equipment or information and would document the visit in the access log.</p>
+<p><strong>Access Reviews:</strong>
+- Regular reviews of who has access to what areas ensure that access controls are up-to-date and that former employees or personnel whose roles have changed no longer have unnecessary access.
+- Access reviews would be conducted quarterly, with managers reviewing which employees have access to their department's restricted areas. Employees who have changed roles or left the company would have their access immediately revoked. These reviews would be documented and maintained for compliance purposes.</p>
+<p><strong>Training:</strong>
+- All employees must understand security policies and procedures to ensure they follow them consistently and recognize potential security threats.
+- All employees would receive annual security awareness training covering topics such as badge security, escort policies, recognizing suspicious individuals, reporting security concerns, and consequences of violating security policies. New employees would receive security training as part of their onboarding process. </p>
+<h3 id="diagram-of-new-security-plan">Diagram of New Security Plan</h3>
+<p>In order to visually represent the security plan listed above, a diagram was created that incorporates the following security protocols, among others:</p>
+<ul>
+<li>Armed guards to protect the entrance and secured areas</li>
+<li>Biometrically authenticated entry point for secured areas</li>
+<li>ID verification for general access</li>
+<li>Security cameras on roads leading up to various areas</li>
+<li>Precise thermostats and fire suppressant systems in research facility</li>
+<li>Trees to block onlookers </li>
+</ul>
+<p><strong>Diagram:</strong>
+<img alt="Diagram" src="../media/security_controls_in_LAN/4/diagram.jpg" width="999" /></p>
+<h3 id="risk-based-justification">Risk-Based Justification</h3>
+<p>The highest-priority physical security controls for the pharmaceutical facility are biometric access authentication, secured network infrastructure, and comprehensive surveillance systems that work together as a perimeter defense. Biometric authentication at research labs, data centers, and executive offices prevents the theft of proprietary compounds, formulas, and financial records by ensuring that only authorized personnel can physically reach sensitive areas, which is irreplaceable since badges and keycards can be stolen, copied, or shared. Equally critical are secured network closets and locked server racks with biometric controls and logging, which prevent both internal and external actors from installing malicious devices, disrupting operations, or directly accessing sensitive data. These controls directly reduce theft risk by making it logistically impossible to remove equipment; they prevent sabotage by alerting security personnel in real-time when unauthorized access is attempted; and they eliminate the most direct pathway to data compromise—physical access to network infrastructure.</p>
+<p>These physical controls form the foundation upon which technical security architecture depends. Network segmentation and access control lists (ACLs) can restrict what users can access, but only physical security ensures that only legitimate users can reach the devices in the first place. Physical security prevents malicious actors from bypassing segmentation entirely through hardware tampering or installing rogue devices. The surveillance and access logging systems gather ample data to know who accessed what and when, helping the company narrow down root causes of issues. By securing the perimeter, monitoring entry and exit, and maintaining detailed logs through biometric authentication, the company has a very thorough defense strategy where technical and physical controls reinforce each other, reducing chances of theft, sabotage, and data compromise. This integrated approach transforms the facility from a potential liability into an ultra-secure facility that protects extremely valuable intellectual property and patient data.</p></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;"
+            class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '../../..';</script>
+        <script src="../../../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../../../assets/js/mkdocs.js"></script>
+			<script src="../../../js/collapse-headers.js" defer></script>
+			<script src="../../../search/main.js" defer></script>
+
+</body>
+
+</html>

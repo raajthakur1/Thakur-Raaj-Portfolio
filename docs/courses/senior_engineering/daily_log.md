@@ -178,6 +178,10 @@ I spent today catching up on documentation.
 
 Today, I continued work on the redesigned chassis. I designed a new part that acts as both landing gear and as a stiffener. It mounts flush under the main body with 8 mounting holes and has extruded pegs to keep the drone from sitting flat on the floor and absorb shock under landing. I will print prototypes out of PLA and print the final product using a mix of TPU and PETG; the main plate will be PETG and the extruded pegs will be TPU for better shock absorption.
 
+### 01.15.2026
+
+Today, Mr. Dubick gave me soldering kits to practice soldering fine components, since I have been having trouble soldering the electronics on my board. Also, I added mounting holes to my redesigned chassis and printed out a majority of the parts.
+
 ## February
 
 ## March
