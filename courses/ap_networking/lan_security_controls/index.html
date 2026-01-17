@@ -708,16 +708,44 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="enterprise-physical-security-threat-analysis">Enterprise Physical Security Threat Analysis</h1>
+        <p><h1 id="determining-security-controls-in-a-lan">Determining Security Controls in a LAN</h1>
 <p>In this activity, physical security vulnerabilities in a pharmaceutical company were explored and patched.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#physical-vulnerabilities-relevant-to-a-pharmaceutical-research-company"><strong>Physical Vulnerabilities Relevant to a Pharmaceutical Research Company</strong></a></li>
-<li><a href="#physical-security-plan"><strong>Physical Security Plan</strong></a></li>
-<li><a href="#diagram-of-new-security-plan"><strong>Diagram of New Security Plan</strong></a></li>
-<li><a href="#risk-based-justification"><strong>Risk-Based Justification</strong></a></li>
+<li><a href="#common-lan-threats-and-why-switches-are-vulnerable"><strong>Common LAN Threats &amp; Why Switches Are Vulnerable</strong></a></li>
+<li><a href="#appropriate-security-controls-and-common-vulnerabilities-within-a-simple-lan"><strong>Appropriate Security Controls and Common Vulnerabilities Within a Simple LAN</strong></a></li>
+<li><a href="#appropriate-security-controls-and-common-vulnerabilities-within-a-simple-lan"><strong>Security Controls to Mitigate Vulnerabilities Within a Simple LAN</strong></a></li>
+<li><a href="#enterprise-physical-security-threat-analysis"><strong>Enterprise Physical Security Threat Analysis</strong></a></li>
 </ul>
-<h2 class="collapsible" id="physical-vulnerabilities-relevant-to-a-pharmaceutical-research-company">Physical Vulnerabilities Relevant to a Pharmaceutical Research Company</h2>
+<h2 class="collapsible" id="common-lan-threats-and-why-switches-are-vulnerable">Common LAN Threats and Why Switches Are Vulnerable</h2>
+<h2 class="collapsible" id="appropriate-security-controls-and-common-vulnerabilities-within-a-simple-lan">Appropriate Security Controls and Common Vulnerabilities Within a Simple LAN</h2>
+<h2 class="collapsible" id="security-controls-to-mitigate-vulnerabilities-in-a-switched-lan">Security Controls to Mitigate Vulnerabilities in a Switched LAN</h2>
+<p>The next activity was to simulate and analyze a school's LAN with two virtual machines. Once the simulation was complete, an <a href="https://docs.google.com/document/d/1yPeEwW0Fa0ttF9qG2FwPMp9Pwbd_9-Difbsc1UxgZxY/edit?tab=t.0"><strong>assessment report</strong></a> was created to provide a summary of the experiment and its findings.</p>
+<p><strong>Evidence gathering process:</strong></p>
+<p>Key: VM1 = Desktop Computer | VM2 = Linux Server</p>
+<ol>
+<li>On VM 2, run <code>ip addr</code> and <code>ip route</code> to establish the active network interface, IP address, and default gateway.</li>
+</ol>
+<p><img alt="SS1" src="../media/security_controls_in_LAN/3/ip_addr_route.png" width="500" /></p>
+<ol>
+<li>On VM 2, run <code>sudo tcpdump -i "interface" "arp"</code> (replace "interface" with your machine's actual network interface found with <code>ip addr</code>) to observe ARP broadcast behavior, as well as identifying flat-network visibility and IP-to-MAC discovery</li>
+</ol>
+<p><img alt="SS2" src="../media/security_controls_in_LAN/3/tcpdump.png" width="500" /></p>
+<ol>
+<li>On VM 1, run <code>sudo arping -c 5 -I "interface" "VM2's IP"</code> (replace "interface" and "VM2's IP" with the values found with <code>ip addr</code>) to demonstrate how easily hosts can discover one another and show low-effort internal reconnaissance in a flat LAN.</li>
+</ol>
+<p><img alt="SS3" src="../media/security_controls_in_LAN/3/tcpdump.png" width="500" /></p>
+<p>The results from this experiment showcase how the user desktop can easily discover and communicate with a server, which in a real school's LAN, would contain sensitive information that shouldn't be accessible to most users. To fix this issue, VLAN segmentation can be used to separate different classes of devices into virtual LANs (VLANs), and communication between VLANs can be limited. This would allow for teachers and students to be unable to access the admin and server devices. This is demonstrated in the diagram below:</p>
+<p><img alt="School LAN w/ VLANs" src="../media/security_controls_in_LAN/3/school_lan.png" width="500" /></p>
+<h3 id="acl-intent-statements">ACL Intent Statements</h3>
+<ul>
+<li>Students and teachers cannot access the admin and server VLAN</li>
+<li>The server and admins <strong>can</strong> access the students and teachers</li>
+<li>The admins and server can access each other</li>
+</ul>
+<h2 class="collapsible" id="enterprise-physical-security-threat-analysis">Enterprise Physical Security Threat Analysis</h2>
+<p>The last activity in this unit was to plan out a physical security plan for a pharmaceutical company.</p>
+<h3 id="physical-vulnerabilities-relevant-to-a-pharmaceutical-research-company">Physical Vulnerabilities Relevant to a Pharmaceutical Research Company</h3>
 <p>In a facility with highly confidential information such as a pharmaceutical research company, physical security is of the upmost importance. Common vulnerabilties that companies may overlook include:</p>
 <ul>
 <li>Unrestricted access to spaces with sensitive information (such as research or financial information)<ul>
@@ -745,7 +773,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="collapsible" id="physical-security-plan">Physical Security Plan</h2>
+<h3 id="physical-security-plan">Physical Security Plan</h3>
 <p>In order to secure the facility, the following controls would be implemented.</p>
 <h3 id="environmental-controls">Environmental Controls</h3>
 <p>The environment of such a facility is very important. Factors such as temperature, air quality, humidity, and fire suppression systems must all be carefully implemented.</p>
@@ -760,7 +788,7 @@
 - To ensure high air quality, air filtration systems would be installed in every single research lab, and would also be spread throughout hallways and conference rooms to maintain pristine air quality. They would be connected to the LAN in order to facilitate precise control and monitoring.</p>
 <p><strong>Fire Suppression Systems:</strong>
 - Safety is of the upmost importance, and experiments can possibly lead to fires. Therefore, fire suppression systems should be installed in every single research lab and should be connected to smoke detectors, as well as the LAN in case the smoke detectors don't trigger the suppression system. Along with smoke detectors and fire suppression systems, the temperature sensors in each research lab would be able to detect a surge of heat and automatically set off the suppression system.</p>
-<h3 id="access-controls">Access Controls</h3>
+<h4 id="access-controls">Access Controls</h4>
 <p><strong>Badges:</strong>
 - Electronic access badges are essential for controlling who can enter restricted areas within the facility. Each employee would be issued a unique badge that grants access only to areas relevant to their job role.
 - Badges would be integrated with a centralized access control system connected to the LAN, allowing administrators to monitor entry and exit times, revoke access immediately if needed, and generate audit logs of all access attempts to sensitive areas.</p>
@@ -773,7 +801,7 @@
 <p><strong>Zoning:</strong>
 - Zoning divides the facility into different security levels based on the sensitivity of the information and equipment in each area. This ensures that unauthorized individuals can only access areas relevant to their role.
 - The facility would be divided into zones such as public areas (lobbies and conference rooms), employee areas (offices and break rooms), restricted areas (research labs), and highly restricted areas (executive offices and data centers). Access controls would be progressively stricter as you move to higher security zones. </p>
-<h3 id="surveillance-and-detection">Surveillance and Detection</h3>
+<h4 id="surveillance-and-detection">Surveillance and Detection</h4>
 <p><strong>Cameras:</strong>
 - Security cameras are critical for monitoring facility access, detecting unauthorized entry, and providing evidence in case of a security incident or theft.
 - High-resolution cameras with night vision capability would be installed throughout the facility, including hallways, research labs, server rooms, loading docks, parking lots, and exterior perimeter areas. All camera feeds would be recorded continuously and stored on a secure network server for at least 90 days.</p>
@@ -786,7 +814,7 @@
 <p><strong>Logging:</strong>
 - Comprehensive logging of all access attempts, alarms, and camera footage provides an audit trail for investigating incidents and identifying security vulnerabilities.
 - All badge swipes, biometric scans, alarm triggers, and camera recordings would be logged to a centralized, tamper-proof system. Access logs would be regularly reviewed for suspicious patterns, and reports would be generated for compliance and security audits. </p>
-<h3 id="hardware-security">Hardware Security</h3>
+<h4 id="hardware-security">Hardware Security</h4>
 <p><strong>Locked Racks:</strong>
 - Locked server racks prevent unauthorized people from physically tampering with, stealing, or disconnecting critical networking and computing hardware.
 - All servers and networking equipment would be stored in locked, climate-controlled racks within restricted server rooms. Only authorized IT personnel with proper credentials would be allowed to access these racks, and all physical access would be logged.</p>
@@ -796,7 +824,7 @@
 <p><strong>Port Protection:</strong>
 - Exposed network ports can be used to connect unauthorized devices to the network, allowing attackers to access sensitive data or inject malware.
 - All unused network ports on switches and patch panels would be disabled and physically secured. Occupied ports would be documented and monitored. Additionally, physical port locks would be used to prevent unauthorized devices from being plugged into critical network infrastructure. </p>
-<h3 id="personnel-and-procedures">Personnel and Procedures</h3>
+<h4 id="personnel-and-procedures">Personnel and Procedures</h4>
 <p><strong>Visitor Handling:</strong>
 - Visitors can pose a significant security risk if not properly controlled, as they may be unauthorized individuals attempting to gain access to sensitive areas or gather intelligence about facility operations.
 - All visitors would be required to sign in at a main security desk and receive a temporary, time-limited badge. Visitors would be restricted to designated public areas only and would not be allowed to access research labs, server rooms, or executive offices without explicit authorization from a department head.</p>
@@ -809,7 +837,7 @@
 <p><strong>Training:</strong>
 - All employees must understand security policies and procedures to ensure they follow them consistently and recognize potential security threats.
 - All employees would receive annual security awareness training covering topics such as badge security, escort policies, recognizing suspicious individuals, reporting security concerns, and consequences of violating security policies. New employees would receive security training as part of their onboarding process. </p>
-<h2 class="collapsible" id="diagram-of-new-security-plan">Diagram of New Security Plan</h2>
+<h3 id="diagram-of-new-security-plan">Diagram of New Security Plan</h3>
 <p>In order to visually represent the security plan listed above, a diagram was created that incorporates the following security protocols, among others:</p>
 <ul>
 <li>Armed guards to protect the entrance and secured areas</li>
@@ -820,8 +848,8 @@
 <li>Trees to block onlookers </li>
 </ul>
 <p><strong>Diagram:</strong>
-<img alt="Diagram" src="../media/enterprise_physical_security_threat_analysis/diagram.jpg" width="999" /></p>
-<h2 class="collapsible" id="risk-based-justification">Risk-Based Justification</h2>
+<img alt="Diagram" src="../media/security_controls_in_LAN/4/diagram.jpg" width="999" /></p>
+<h3 id="risk-based-justification">Risk-Based Justification</h3>
 <p>The highest-priority physical security controls for the pharmaceutical facility are biometric access authentication, secured network infrastructure, and comprehensive surveillance systems that work together as a perimeter defense. Biometric authentication at research labs, data centers, and executive offices prevents the theft of proprietary compounds, formulas, and financial records by ensuring that only authorized personnel can physically reach sensitive areas, which is irreplaceable since badges and keycards can be stolen, copied, or shared. Equally critical are secured network closets and locked server racks with biometric controls and logging, which prevent both internal and external actors from installing malicious devices, disrupting operations, or directly accessing sensitive data. These controls directly reduce theft risk by making it logistically impossible to remove equipment; they prevent sabotage by alerting security personnel in real-time when unauthorized access is attempted; and they eliminate the most direct pathway to data compromise—physical access to network infrastructure.</p>
 <p>These physical controls form the foundation upon which technical security architecture depends. Network segmentation and access control lists (ACLs) can restrict what users can access, but only physical security ensures that only legitimate users can reach the devices in the first place. Physical security prevents malicious actors from bypassing segmentation entirely through hardware tampering or installing rogue devices. The surveillance and access logging systems gather ample data to know who accessed what and when, helping the company narrow down root causes of issues. By securing the perimeter, monitoring entry and exit, and maintaining detailed logs through biometric authentication, the company has a very thorough defense strategy where technical and physical controls reinforce each other, reducing chances of theft, sabotage, and data compromise. This integrated approach transforms the facility from a potential liability into an ultra-secure facility that protects extremely valuable intellectual property and patient data.</p></p>
     </article>
