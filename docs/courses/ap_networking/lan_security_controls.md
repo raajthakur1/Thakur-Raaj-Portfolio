@@ -11,7 +11,17 @@ In this activity, physical security vulnerabilities in a pharmaceutical company 
 
 ## Common LAN Threats and Why Switches Are Vulnerable {.collapsible}
 
+### LAN THreat Scenario Rotation Activity
 
+To start, five different scenarios were given, and with a group of four, hypotheses were created to justify the root cause of each scenario.
+
+|Scenario Letter|                           Symptoms                              |                                                           Hypothesis                                                               |                                                        Justification                                                    |
+|---------------|-----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+|A              |A device suddenly receives the wrong gateway                     |A malicious device on the network is impersonating the default gateway server, allowing it to intercept all traffic from the device.|ARP has no authentication, so any device can claim ownership of the gateway IP and respond to ARP requests               |
+|B              |The switch CPU spikes and many MACs appear on one port           |An attacker uses a MAC flooding attack to allow many MACs to be on a single port                                                    |Flooding the CAM table with spoofed MACs forces the switch to broadcast traffic, allowing the attacker to capture packets|
+|C              |Clients receive IPs from an unexpected source                    |A malicious device is on the network and impersonating the DHCP server and sending incorrect credentials to endpoint devices.       |Without DHCP snooping, any device can respond to DHCP requests faster than the legitimate server                         |
+|D              |A new unknown device appears inside the broadcast domain         |An unauthorized device is plugged into an open port on the switch                                                                   |Network access controls are not configured, allowing any device to plug into an open port and join the LAN immediately   |
+|E              |A host begins reaching other internal hosts it should never reach|The network does not have established VLANs, making all hosts reachable on the LAN                                                  |Without VLANs, all devices exist in a single broadcast domain with no network segmentation or access restrictions        |
 
 ## Appropriate Security Controls and Common Vulnerabilities Within a Simple LAN {.collapsible}
 
@@ -43,7 +53,6 @@ A common vulnerability in an unsecured LAN is ARP spoofing, which is demonstrate
 ![ARP Spoofing](media/security_controls_in_LAN/2/arp_spoofing.png){ width=600 }
 
 ARP spoofing succeeds in unprotected LANs because ARP has no authentication mechanism, meaning that any device can claim ownership of any IP address and broadcast that claim, and all devices trust ARP responses without verification. Dynamic ARP Inspection (DAI) is the security control specifically designed to stop this attack. DAI works by intercepting all ARP packets on a switch and validating IP-to-MAC bindings using a trusted database. When a malicious device attempts to send a spoofed ARP packet claiming to own the gateway's IP address, DAI detects the invalid binding and drops the packet before it can propagate, preventing the attacker from poisoning the ARP tables of legitimate hosts and intercepting their traffic.
-
 
 ## Security Controls to Mitigate Vulnerabilities in a Switched LAN {.collapsible}
 

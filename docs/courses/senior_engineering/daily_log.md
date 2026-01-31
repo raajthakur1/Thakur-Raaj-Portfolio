@@ -182,12 +182,24 @@ Today, I continued work on the redesigned chassis. I designed a new part that ac
 
 Today, Mr. Dubick gave me soldering kits to practice soldering fine components, since I have been having trouble soldering the electronics on my board. Also, I added mounting holes to my redesigned chassis and printed out a majority of the parts.
 
-## February
+### 01.16.2026
 
-## March
+### 01.19.2026
 
-## April
+### 01.20.2026
 
-## May
+### 01.21.2026
 
-## June
+### 01.22.2026
+
+### 01.23.2026
+
+## February {.collapsible}
+
+## March {.collapsible}
+
+## April {.collapsible}
+
+## May {.collapsible}
+
+## June {.collapsible}

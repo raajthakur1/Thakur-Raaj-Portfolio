@@ -303,6 +303,14 @@
             Determining Security Controls in a LAN
         </a>
     </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="../switch_security/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Switch Security
+        </a>
+    </li>
             </ul>
         </div>
     </li>
@@ -671,7 +679,7 @@
                     </a>
                 </div>
                 <div class="col">
-                    <a href="../../senior_engineering/"
+                    <a href="../switch_security/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
@@ -718,6 +726,50 @@
 <li><a href="#enterprise-physical-security-threat-analysis"><strong>Enterprise Physical Security Threat Analysis</strong></a></li>
 </ul>
 <h2 class="collapsible" id="common-lan-threats-and-why-switches-are-vulnerable">Common LAN Threats and Why Switches Are Vulnerable</h2>
+<h3 id="lan-threat-scenario-rotation-activity">LAN THreat Scenario Rotation Activity</h3>
+<p>To start, five different scenarios were given, and with a group of four, hypotheses were created to justify the root cause of each scenario.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario Letter</th>
+<th>Symptoms</th>
+<th>Hypothesis</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>A device suddenly receives the wrong gateway</td>
+<td>A malicious device on the network is impersonating the default gateway server, allowing it to intercept all traffic from the device.</td>
+<td>ARP has no authentication, so any device can claim ownership of the gateway IP and respond to ARP requests</td>
+</tr>
+<tr>
+<td>B</td>
+<td>The switch CPU spikes and many MACs appear on one port</td>
+<td>An attacker uses a MAC flooding attack to allow many MACs to be on a single port</td>
+<td>Flooding the CAM table with spoofed MACs forces the switch to broadcast traffic, allowing the attacker to capture packets</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Clients receive IPs from an unexpected source</td>
+<td>A malicious device is on the network and impersonating the DHCP server and sending incorrect credentials to endpoint devices.</td>
+<td>Without DHCP snooping, any device can respond to DHCP requests faster than the legitimate server</td>
+</tr>
+<tr>
+<td>D</td>
+<td>A new unknown device appears inside the broadcast domain</td>
+<td>An unauthorized device is plugged into an open port on the switch</td>
+<td>Network access controls are not configured, allowing any device to plug into an open port and join the LAN immediately</td>
+</tr>
+<tr>
+<td>E</td>
+<td>A host begins reaching other internal hosts it should never reach</td>
+<td>The network does not have established VLANs, making all hosts reachable on the LAN</td>
+<td>Without VLANs, all devices exist in a single broadcast domain with no network segmentation or access restrictions</td>
+</tr>
+</tbody>
+</table>
 <h2 class="collapsible" id="appropriate-security-controls-and-common-vulnerabilities-within-a-simple-lan">Appropriate Security Controls and Common Vulnerabilities Within a Simple LAN</h2>
 <p>In this activity, a LAN was simulated to observe how easy it is to collect and manipulate ARP information when no internal security controls exist. Two Linux VMs were used: one that simulates a desktop computer running Ubuntu that sends ARP requests and one that simulates an Ubuntu-based server which listens to ARP requests. Both VMs were set to Bridged network mode to appear as separate devices from the host machine on the LAN.</p>
 <p>Steps:</p>
