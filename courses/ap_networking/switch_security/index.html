@@ -719,8 +719,63 @@
         <p><h1 id="switch-security">Switch Security</h1>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li>[**]</li>
-</ul></p>
+<li><a href="#planning-and-conceptual-understanding"><strong>Planning and Conceptual Understanding</strong></a></li>
+</ul>
+<h2 class="collapsible" id="planning-and-conceptual-understanding">Planning and Conceptual Understanding</h2>
+<h3 id="initial-security-thinking">Initial Security Thinking</h3>
+<p>Within a LAN, the device that is most vulnerable to compromise is the switch. Switches almost always have unused ports which can be accessed by malicious actors, and are usually not updated to later models as often as endpoint devices (laptops, PCs, etc.). Since older switches are used more often than older endpoint devices, it is likely that the switch has the most outdated security features and is more vulnerable to attacks. In general, being "inside" a network increases risk when compared to being "outside" a network, since being inside a network means that if attackers breach one device (switch, router, endpoints, etc.), the attack has the opportunity to spread to more devices. On the other hand, if a device is "outside" a LAN, the only vulnerabilities present are solely on the device and can therefore be controlled more easily. This is because by default, a typical device can see and learn a lot about the LAN, such as IPs of other endpoints.  </p>
+<h2 class="collapsible" id="threat-scenario-analysis-and-reasoning">Threat Scenario Analysis and Reasoning</h2>
+<p><img alt="Front" src="../media/switch_security/front_page.jpeg" width="500" />
+<img alt="Back" src="../media/switch_security/back_page.jpeg" width="500" /></p>
+<table>
+<thead>
+<tr>
+<th>Scenario Letter</th>
+<th>Symptoms</th>
+<th>Hypothesis</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>A device suddenly receives the wrong gateway</td>
+<td>A malicious device on the network is impersonating the default gateway server, allowing it to intercept all traffic from the device.</td>
+<td>ARP has no authentication, so any device can claim ownership of the gateway IP and respond to ARP requests</td>
+</tr>
+<tr>
+<td>B</td>
+<td>The switch CPU spikes and many MACs appear on one port</td>
+<td>An attacker uses a MAC flooding attack to allow many MACs to be on a single port</td>
+<td>Flooding the CAM table with spoofed MACs forces the switch to broadcast traffic, allowing the attacker to capture packets</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Clients receive IPs from an unexpected source</td>
+<td>A malicious device is on the network and impersonating the DHCP server and sending incorrect credentials to endpoint devices.</td>
+<td>Without DHCP snooping, any device can respond to DHCP requests faster than the legitimate server</td>
+</tr>
+<tr>
+<td>D</td>
+<td>A new unknown device appears inside the broadcast domain</td>
+<td>An unauthorized device is plugged into an open port on the switch</td>
+<td>Network access controls are not configured, allowing any device to plug into an open port and join the LAN immediately</td>
+</tr>
+<tr>
+<td>E</td>
+<td>A host begins reaching other internal hosts it should never reach</td>
+<td>The network does not have established VLANs, making all hosts reachable on the LAN</td>
+<td>Without VLANs, all devices exist in a single broadcast domain with no network segmentation or access restrictions</td>
+</tr>
+</tbody>
+</table>
+<h2 class="collapsible" id="vm-evidence-collection-and-interpretation">VM Evidence Collection and Interpretation</h2>
+<h2 class="collapsible" id="reflection-and-synthesis">Reflection and Synthesis</h2>
+<h3 id="switch-security-controls">Switch Security Controls</h3>
+<p>In this activity, a LAN was designed in Cisco Packet Tracer then secured in order to observe how different security decisions affect network structure and communication.</p>
+<h4 id="flat-network-no-controls">Flat Network (No Controls)</h4>
+<p><img alt="Flat Network" src="../media/switch_security/flat_network.png" width="500" /></p>
+<p>At the start, a network with a switch, 3 laptops, and 1 server was created with no security controls. By default, the network allows all devices to see and communicate with </p></p>
     </article>
 </section>
             <!-- endblock -->
