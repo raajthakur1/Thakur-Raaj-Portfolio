@@ -724,7 +724,72 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p></p>
+        <p><h1 id="routing">Routing</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#design-and-planning"><strong>Design and Planning</strong></a></li>
+<li><a href="#technical-development"><strong>Techinal Development</strong></a></li>
+<li><a href="#testing-and-evaluation"><strong>Testing and Evaluation</strong></a></li>
+<li><a href="#reflection"><strong>Reflection</strong></a></li>
+</ul>
+<h2 class="collapsible" id="design-and-planning">Design and Planning</h2>
+<h3 id="investigation-1-a-machines-layer-3-identity">Investigation 1 – A Machine's Layer 3 Identity</h3>
+<p>To explore OSI Layer 3, two VMs running Ubuntu were opened. The following information was obtained:</p>
+<p>VM1: Ubuntu 22.04.03
+- IPv4: 10.12.26.143
+- Network: 10.12.26.1
+- Route: 10.0.1.38
+- Default gateway: 10.12.16.0</p>
+<p>VM2: Ubuntu 25.10
+- IPv4: 10.12.17.124
+- Network: 10.12.26.1
+- Route: 10.0.1.38
+- Default gateway: 10.12.16.0</p>
+<p>The machine already has enough information to send traffic to itself, devices on its subnet, and devices outside its subnet. It knows to do this since the router gives endpoint devices the information needed to reach the correct destination.</p>
+<h3 id="investigation-2-sending-traffic">Investigation 2 – Sending Traffic</h3>
+<p>VM sending traffic to itself:</p>
+<p><img alt="Inter-VM" src="../media/routing/loopback.png" width="500" /></p>
+<p>VM sending traffic to other VM:</p>
+<p><img alt="Other VM" src="../media/routing/inter-vm.png" width="500" /></p>
+<p>VM sending traffic outside LAN:</p>
+<p><img alt="Outside" src="../media/routing/outside_lan.png" width="500" /></p>
+<p>I predict that if I send traffic to another VM, the next hop will be direct, since the packets never leave the computer, whereas if I send traffic to 8.8.8.8, the next hop will be to the gateway since the packets have to leave the LAN to reach an external server.</p>
+<h2 class="collapsible" id="technical-development">Technical Development</h2>
+<h3 id="part-1-your-inside-identity">Part 1 – Your Inside Identity</h3>
+<p><img alt="IP Addr" src="../media/routing/ip_addr.png" width="500" /></p>
+<ul>
+<li>IPv4 Address: 10.12.27.133</li>
+<li>This address is not globally unique since IP addresses are not unique outside of a LAN and are arbitrary addresses that are randomly assigned by the DHCP server </li>
+<li>Another network in the world could use the same address because IP addresses are arbitrary and not tied to specific hardware/software</li>
+<li>Common private IPv4 ranges include <strong>10.0.0.0 - 10.255.255.255</strong>, 172.31.0.0 - 172.31.255.255, and 192.168.0.0 - 192.168.255.255. This IPv4 falls in the first range (bolded).</li>
+</ul>
+<h3 id="part-2-your-outside-identity">Part 2 – Your Outside Identity</h3>
+<p><img alt="Public IP" src="../media/routing/public_ip.png" width="500" /></p>
+<p>This was run on both VMs. Both VMs returned the same public IP.</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Private Address</th>
+<th>Public Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Are they the same?</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Why or why not?</td>
+<td>Because they appear as separate devices on the LAN</td>
+<td>Because they connect to the same router, which is what is assigned the public IP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-3-can-i-reach-you-partner-activity">Part 3 – "Can I Reach You?" Partner Activity</h3>
+<h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
+<h2 class="collapsible" id="reflection">Reflection</h2></p>
     </article>
 </section>
             <!-- endblock -->
