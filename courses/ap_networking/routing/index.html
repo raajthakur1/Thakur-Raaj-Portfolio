@@ -755,7 +755,8 @@
 <p><img alt="Outside" src="../media/routing/outside_lan.png" width="500" /></p>
 <p>I predict that if I send traffic to another VM, the next hop will be direct, since the packets never leave the computer, whereas if I send traffic to 8.8.8.8, the next hop will be to the gateway since the packets have to leave the LAN to reach an external server.</p>
 <h2 class="collapsible" id="technical-development">Technical Development</h2>
-<h3 id="part-1-your-inside-identity">Part 1 – Your Inside Identity</h3>
+<h3 id="who-can-see-you-activity">Who Can See You? – Activity</h3>
+<h4 id="part-1-your-inside-identity">Part 1 – Your Inside Identity</h4>
 <p><img alt="IP Addr" src="../media/routing/ip_addr.png" width="500" /></p>
 <ul>
 <li>IPv4 Address: 10.12.27.133</li>
@@ -763,7 +764,7 @@
 <li>Another network in the world could use the same address because IP addresses are arbitrary and not tied to specific hardware/software</li>
 <li>Common private IPv4 ranges include <strong>10.0.0.0 - 10.255.255.255</strong>, 172.31.0.0 - 172.31.255.255, and 192.168.0.0 - 192.168.255.255. This IPv4 falls in the first range (bolded).</li>
 </ul>
-<h3 id="part-2-your-outside-identity">Part 2 – Your Outside Identity</h3>
+<h4 id="part-2-your-outside-identity">Part 2 – Your Outside Identity</h4>
 <p><img alt="Public IP" src="../media/routing/public_ip.png" width="500" /></p>
 <p>This was run on both VMs. Both VMs returned the same public IP.</p>
 <table>
@@ -787,7 +788,38 @@
 </tr>
 </tbody>
 </table>
-<h3 id="part-3-can-i-reach-you-partner-activity">Part 3 – "Can I Reach You?" Partner Activity</h3>
+<h4 id="part-3-can-i-reach-you-partner-activity">Part 3 – "Can I Reach You?" Partner Activity</h4>
+<p>Step 1: Private Address Test</p>
+<p><img alt="Ping Private IP" src="../media/routing/ping_private_ip.png" width="500" /></p>
+<p>Step 2: Public Address Test</p>
+<p><img alt="Ping Public IP" src="../media/routing/ping_public_ip.png" width="500" /></p>
+<p>Reflection:</p>
+<p>In this experiment, a VM on another computer was reachable via ICMP (ping), as demonstrated by the first screenshot. However, the public IP could not be reached from the VM. This could be for a variety of reasons, but it is pretty common for ISPs to block users from pinging their public IP.</p>
+<h4 id="part-4-nat-reasoning">Part 4 - NAT Reasoning</h4>
+<ol>
+<li>Why are private IPv4 addresses reused in millions of different networks?<ul>
+<li>Since the IPv4 protocol has a limited amount of possible addresses, it is inevitable that IPv4 addresses are reused across different networks. Since they have no meaning outside the LAN/WAN, reusing the same IPv4 address across different networks does not cause conflicts</li>
+</ul>
+</li>
+<li>Why are private addresses not routed on the public internet?<ul>
+<li>If private addresses were routed on the public internet, there would be many different devices with the same IP due to IPv4 limitations. For example, if one computer with IP address 192.168.1.2 was supposed to receive packets from a server, the server and network infrastructure would have no method of distinguishing between all the other devices with an identical IP.</li>
+</ul>
+</li>
+<li>What would happen if every internal device required its on public IP?<ul>
+<li>If every device required a public IP, there would not be enough IP addresses to meet the amount of devices, again, due to the limitations of IPv4.</li>
+</ul>
+</li>
+<li>Why does a business typically have one public IP but many internal devices?<ul>
+<li>This occurs since the router is the only device that connects to other networks, meaning that it is the only device that requires a public IP. If any other device needs packets from outside the network, it simply routes its traffic through the router in order to connect to the internet.</li>
+</ul>
+</li>
+<li>How does this affect WAN design?<ul>
+<li>This affects WAN design since the engineers designing the WAN have to ensure that they don't run into IP address conflicts. They could mitigate this issue by using VLAN segmentation. </li>
+</ul>
+</li>
+</ol>
+<p>Private IPv4 addresses must exist for scalability. As previously mentioned, if every device had a public IP, there would be significantly more devices than possible IPv4 addresses, which would cause conflicts. By using private IPv4 addresses, each network only needs 1 public IP, significantly cutting down on the amount of public IPs and mitigating the risk of having IP address conflicts. Due to the roles and incorporation of public and private IP addresses, a device can appear to have two different identities: its public and its private address. Within the network, its "identity" would be its private IP address, and outside the network, its "identity" would be its public IP address, since the device transmitting data to the device would contact the public IP since it does not have any knowledge of the network's internal details.</p>
+<h3 id="following-a-packet-across-a-router-activity">Following a Packet Across a Router - Activity</h3>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
 <h2 class="collapsible" id="reflection">Reflection</h2></p>
     </article>
