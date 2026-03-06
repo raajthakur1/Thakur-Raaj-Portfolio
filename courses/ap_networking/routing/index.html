@@ -968,7 +968,45 @@
 <h4 id="part-5-ttl-experiment">Part 5 – TTL Experiment</h4>
 <p>To limit hops, <code>traceroute -m 3 8.8.8.8</code> was run. This limits the quantity of hops to the first 3. </p>
 <p><img alt="Limit Traceroute" src="../media/routing/traceroute_3_8.8.8.8.png" width="500" /></p>
-<h2 class="collapsible" id="reflection">Reflection</h2></p>
+<p>It stops at 173.95.44.209, the router's public IP.</p>
+<p>TTL (Time to Live) is a numerical value (usually 64, 128, or 255) embedded in the header of every IP packet. It measures the maximum number of hops (routers) a packet is allowed to take before it is destroyed. Every time a packet arrives at a router, that router is required by protocol to subtract 1 from the TTL value before passing it along. This serves as a vital safety mechanism for the internet. If there is a "routing loop" (where two routers accidentally keep sending a packet back and forth to each other), the TTL will eventually hit 0. When it hits zero, the router discards the packet and sends an error message back to the sender. Without TTL, these "zombie packets" would circle the globe forever, eventually clogging the entire internet. This makes Traceroute work, since to find the IP of every hop, TTL increases by 1 until it reaches the final destination, therefore allowing it to find the quantity of hops and info for each hop.</p>
+<h2 class="collapsible" id="reflection">Reflection</h2>
+<h3 id="technical-development-reflection">Technical Development Reflection</h3>
+<ol>
+<li>
+<p>Why does the switch never modify the IP address?</p>
+<ul>
+<li>A switch operates at Layer 2, meaning it only works with MAC addresses. It looks at MAC addresses to get a packet to the right physical port. Since it doesn’t even look at the IP address (which is Layer 3), it has no reason to change it. </li>
+</ul>
+</li>
+<li>
+<p>Why must the router modify the MAC address?</p>
+<ul>
+<li>MAC addresses are only relevant for a single hop of a packet. Once the packet reaches the router from the switch, it must modify the sender and destination MAC addresses so it can continue towards the other PC.</li>
+</ul>
+</li>
+<li>
+<p>Why does the source IP remain the same from PC1 to PC2?</p>
+<ul>
+<li>The source IP remains the same from PC1 to PC2 since the source IP tells the destination where the data originates from, since MAC addresses are used to specify the sender and receiver of the packets at each hop.</li>
+</ul>
+</li>
+<li>
+<p>What exactly does "next hop" mean?</p>
+<ul>
+<li>The "next hop" is the next transmission between devices that a packet must take. For example, if the packet is at Switch 1, the next hop would be to go to the router, and the hop after that would be to go to Switch 2.</li>
+</ul>
+</li>
+<li>
+<p>Why is the default gateway necessary?</p>
+<ul>
+<li>The default gateway is necessary because without it, endpoints only know how to communicate within the network. The gateway allows for data to be transmitted between networks, such as between a LAN and the Internet.</li>
+</ul>
+</li>
+</ol>
+<p>Private IPv4 addresses must exist for scalability. As previously mentioned, if every device had a public IP, there would be significantly more devices than possible IPv4 addresses, which would cause conflicts. By using private IPv4 addresses, each network only needs 1 public IP, significantly cutting down on the amount of public IPs and mitigating the risk of having IP address conflicts. Due to the roles and incorporation of public and private IP addresses, a device can appear to have two different identities: its public and its private address. Within the network, its "identity" would be its private IP address, and outside the network, its "identity" would be its public IP address, since the device transmitting data to the device would contact the public IP since it does not have any knowledge of the network's internal details.</p>
+<h3 id="testing-and-evaluation-reflection">Testing and Evaluation Reflection</h3>
+<p>TTL (Time to Live) is a numerical value (usually 64, 128, or 255) embedded in the header of every IP packet. It measures the maximum number of hops (routers) a packet is allowed to take before it is destroyed. Every time a packet arrives at a router, that router is required by protocol to subtract 1 from the TTL value before passing it along. This serves as a vital safety mechanism for the internet. If there is a "routing loop" (where two routers accidentally keep sending a packet back and forth to each other), the TTL will eventually hit 0. When it hits zero, the router discards the packet and sends an error message back to the sender. Without TTL, these "zombie packets" would circle the globe forever, eventually clogging the entire internet. This makes Traceroute work, since to find the IP of every hop, TTL increases by 1 until it reaches the final destination, therefore allowing it to find the quantity of hops and info for each hop.</p></p>
     </article>
 </section>
             <!-- endblock -->
