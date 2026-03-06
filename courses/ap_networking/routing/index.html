@@ -820,7 +820,154 @@
 </ol>
 <p>Private IPv4 addresses must exist for scalability. As previously mentioned, if every device had a public IP, there would be significantly more devices than possible IPv4 addresses, which would cause conflicts. By using private IPv4 addresses, each network only needs 1 public IP, significantly cutting down on the amount of public IPs and mitigating the risk of having IP address conflicts. Due to the roles and incorporation of public and private IP addresses, a device can appear to have two different identities: its public and its private address. Within the network, its "identity" would be its private IP address, and outside the network, its "identity" would be its public IP address, since the device transmitting data to the device would contact the public IP since it does not have any knowledge of the network's internal details.</p>
 <h3 id="following-a-packet-across-a-router-activity">Following a Packet Across a Router - Activity</h3>
+<h4 id="part-1-build-the-network">Part 1 – Build the Network</h4>
+<p>In Cisco Packet Tracer, a 2topology was built with 2 PCs, 2 switches, and 1 router. They were arranged left to right in the following order:</p>
+<p>PC 1 -–– Switch1 ––– Router ––– Switch 2 ––– PC 2</p>
+<p>Then, using a copper straight-through cable, they were connected in the following order:</p>
+<ul>
+<li>PC 1 to Switch 1 on FastEthernet 0/1</li>
+<li>Switch 1 to Router on GigabitEthernet 0/0</li>
+<li>Router to Switch 1 on GigabitEthernet 0/1</li>
+<li>Switch 1 to PC1 on FastEthernet 0/1</li>
+</ul>
+<p>Next, IP addresses for the two endpoints were configured using the IP Configuration tool. </p>
+<p>PC 1 received the following settings:</p>
+<ul>
+<li>IP Address: 192.168.1.10</li>
+<li>Subnet Mask: 255.255.255.0</li>
+<li>Default Gateway: 192.168.1.1  </li>
+</ul>
+<p>PC 2 received the following settings:</p>
+<ul>
+<li>IP Address: 192.168.2.10</li>
+<li>Subnet Mask: 255.255.255.0</li>
+<li>Default Gateway: 192.168.2.1</li>
+</ul>
+<p>After configuring the IP addresses and other relevant information, the router interfaces were assigned with the following commands in the CLI tab of the router:</p>
+<ol>
+<li>Type <code>enable</code>, then <code>conf t</code></li>
+<li>Configure the first interface with:<ul>
+<li><code>interface gig0/0</code></li>
+<li><code>ip address 192.168.1.1 255.255.255.0</code></li>
+<li><code>no shutdown</code></li>
+<li><code>exit</code></li>
+</ul>
+</li>
+<li>Configure the second interface with:<ul>
+<li><code>interface gig0/1</code></li>
+<li><code>ip address 192.168.2.1 255.255.255.0</code></li>
+<li><code>no shutdown</code></li>
+<li><code>exit</code></li>
+</ul>
+</li>
+</ol>
+<p>After everything was configured, connectivity was tested by adding a Simple PDU, which simulated packets transmitting from 192.168.1.1 (PC 1) to 192.168.2.1 (PC 2). Once it was verified that it worked, to demonstrate the significance of the router, the router was deleted, and the Simple PDU was run again. Without the router, data could not move between the two switches.</p>
+<p>Reflection:</p>
+<ol>
+<li>
+<p>Why does the switch never modify the IP address?</p>
+<ul>
+<li>A switch operates at Layer 2, meaning it only works with MAC addresses. It looks at MAC addresses to get a packet to the right physical port. Since it doesn’t even look at the IP address (which is Layer 3), it has no reason to change it. </li>
+</ul>
+</li>
+<li>
+<p>Why must the router modify the MAC address?</p>
+<ul>
+<li>MAC addresses are only relevant for a single hop of a packet. Once the packet reaches the router from the switch, it must modify the sender and destination MAC addresses so it can continue towards the other PC.</li>
+</ul>
+</li>
+<li>
+<p>Why does the source IP remain the same from PC1 to PC2?</p>
+<ul>
+<li>The source IP remains the same from PC1 to PC2 since the source IP tells the destination where the data originates from, since MAC addresses are used to specify the sender and receiver of the packets at each hop.</li>
+</ul>
+</li>
+<li>
+<p>What exactly does "next hop" mean?</p>
+<ul>
+<li>The "next hop" is the next transmission between devices that a packet must take. For example, if the packet is at Switch 1, the next hop would be to go to the router, and the hop after that would be to go to Switch 2.</li>
+</ul>
+</li>
+<li>
+<p>Why is the default gateway necessary?</p>
+<ul>
+<li>The default gateway is necessary because without it, endpoints only know how to communicate within the network. The gateway allows for data to be transmitted between networks, such as between a LAN and the Internet.</li>
+</ul>
+</li>
+</ol>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
+<h3 id="determining-the-path-of-data-using-a-routing-tool">Determining the Path of Data Using a Routing Tool</h3>
+<p>In this activity, a routing tool was used to determine the path of data.</p>
+<h4 id="part-1-predict-before-testing">Part 1 – Predict Before Testing</h4>
+<p>In Ubuntu, <code>ip route</code> was run and returned the following:</p>
+<p><img alt="IP Route" src="../media/routing/ip_route.png" width="400" /></p>
+<ul>
+<li>Directly connected network: 10.12.16.0/20</li>
+<li>Default route: 10.12.16.1</li>
+<li>Gateway IP: 10.12.16.1 – Note that this is the same as the default route!</li>
+</ul>
+<p>The specific hops taken varies significantly based on where the end destination is. </p>
+<p>Predictions: if traffic was sent to:</p>
+<ul>
+<li>Another VM on the same computer<ul>
+<li>Traffic will go directly to the other VM since traffic never leaves the computer, and will never go to a gateway</li>
+<li>There will only be one hop to the VM</li>
+</ul>
+</li>
+<li>8.8.8.8<ul>
+<li>Traffic will go through the gateway since the data leaves the LAN</li>
+<li>The first hop will be to the gateway since that's the first step of packets leaving the LAN</li>
+<li>It is expected that communicating with 8.8.8.8 will require fewer hops than communicating with google.com, since a DNS server does not have to be consulted</li>
+</ul>
+</li>
+<li>google.com<ul>
+<li>Traffic will go through the gateway since the data leaves the LAN</li>
+<li>The first hop will be to the gateway since that's the first step of packets leaving the LAN</li>
+<li>It is expected that communicating with google.com will require more hops than communicating with 8.8.8.8, since a DNS server has to be consulted </li>
+</ul>
+</li>
+</ul>
+<h4 id="part-2-run-traceroute">Part 2 - Run Traceroute</h4>
+<p>To verify these predictions, <code>traceroute</code> was run for 8.8.8.8 and google.com (traceroute was not working with the other VM):</p>
+<p><img alt="8.8.8.8" src="../media/routing/traceroute_8.8.8.8.png" width="500" />
+<img alt="google.com" src="../media/routing/traceroute_google.com.png" width="500" /></p>
+<h4 id="part-3-interpretation">Part 3 - Interpretation</h4>
+<p>In depth interpretation of <code>traceroute 8.8.8.8</code>:</p>
+<p>Hop 1: Connecting to the VLAN's gateway</p>
+<ul>
+<li>Private IP</li>
+<li>Inside LAN</li>
+</ul>
+<p>Hop 2: Moving from VLAN's gateway to main gateway</p>
+<ul>
+<li>Private IP</li>
+<li>Inside LAN</li>
+</ul>
+<p>Hop 3: Moving from main gateway to router</p>
+<ul>
+<li>Public IP</li>
+<li>Inside LAN</li>
+</ul>
+<p>Hop 4: Moving from router to ISP-specific infrastructure</p>
+<ul>
+<li>Public IP</li>
+<li>Outside LAN</li>
+</ul>
+<p>Hop 5: Moving from ISP-specific infrastructure to backbone infrastructure</p>
+<ul>
+<li>Public IP</li>
+<li>Outside LAN</li>
+</ul>
+<h4 id="part-4-validate-with-routing-table">Part 4 - Validate with Routing Table</h4>
+<p>To specifically check the first hop when communicating with 8.8.8.8, <code>ip route get 8.8.8.8</code> was run in Ubuntu, returning the following:</p>
+<p><img alt="IP Route 8.8.8.8" src="../media/routing/ip_route_get_8.8.8.8.png" width="500" /></p>
+<p>The next hop was to 10.12.27.184 using interface enp0s1. This does not match the first hop of traceroute.</p>
+<p>Next, <code>ip route get 10.12.24.59</code> (other VM's IP) was run, returning the following:</p>
+<p><img alt="IP Route 10.12.24.59" src="../media/routing/ip_route_get_10.12.24.59.png" width="500" /></p>
+<p>The next hop was to 10.12.27.184 as well. </p>
+<h4 id="part-5-ttl-experiment">Part 5 – TTL Experiment</h4>
+<p>To limit hops, <code>traceroute -m 3 8.8.8.8</code> was run. This limits the quantity of hops to the first 3. </p>
+<p><img alt="Limit Traceroute" src="../media/routing/traceroute_3_8.8.8.8.png" width="500" /></p>
 <h2 class="collapsible" id="reflection">Reflection</h2></p>
     </article>
 </section>
