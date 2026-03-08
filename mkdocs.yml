@@ -28,6 +28,7 @@ nav:
     - Physical Addressing and Logical Addressing: courses/ap_networking/physical_logical_addressing.md
     - Determining Security Controls in a LAN: courses/ap_networking/lan_security_controls.md
     - Switch Security: courses/ap_networking/switch_security.md
+    - Routing: courses/ap_networking/routing.md
   - Honors Senior Engineering (2025-2026): 
     - Overview: courses/senior_engineering/index.md
     - Capstone Project: courses/senior_engineering/capstone.md

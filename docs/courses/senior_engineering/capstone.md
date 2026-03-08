@@ -124,11 +124,18 @@ All electronic components are available on DigiKey except the bare PCB, which wa
 Note: specific propellers have not been chosen yet, so I have not included them here. I will update the pricing and parts list when I choose them.
 
 ## Chassis Design {.collapsible}
+
+So far, there have been 5 major chassis revisions. Below, each one is explained in detail. 
+
+### Version 1
+
 The first component I designed was the chassis. Originally, I wanted to use the [Source One](https://www.printables.com/model/261673-complete-tbs-source-one-v5-cad-model-step), an open source drone chassis supporting up to 7" props. However, in its standard form, it had nowhere near enough space to fit my large battery, a Raspberry Pi 5, a camera, and all of the components for the flight controller (the board was not designed at this point). So, I downloaded the STEP files into Onshape and made significant changes to allow for the battery to fit. 
 
 ![Original Source One chassis](media/capstone/chassis_old/source1_original.jpeg){ width=400 } ![Final Source One-based chassis](media/capstone/chassis_old/source1_final.jpeg){ width=400 }
 
 However, after printing it out, I realized that the drone is far too heavy and that the chassis is too complicated with too many parts. Additionally, I realized that for the weight of the components, I would need bigger propellers. I looked at the website for the motors, and it said that they support up to 9" propellers, so I decided to switch. Although I could have continued to modify the Source One chassis, I decided to start fresh with a clean sheet design. I wanted to keep the design as simple as possible and to make sure that it would support the larger propellers.
+
+### Version 2
 
 I started designing the new chassis by drawing a teardrop-esque shape, as a teardrop is the most aerodynamically efficient shape in nature. Learning from the flaws of the original chassis design, I knew that I wanted the new chassis to have as little parts as possible. For that reason, I made the chassis out of 4 components (pictured below):
 
@@ -142,12 +149,27 @@ I started designing the new chassis by drawing a teardrop-esque shape, as a tear
     - All Together:
         - ![Assembled](media/capstone/chassis/all_together.png){ width=500 }
 
+### Version 3 and Version 4
+
+### Version 5
 
 ## PCB Design {.collapsible}
+
+Along with the chassis, the PCB design has gone through significant design overhauls as development progressed.
+
+### Version 1
+
 I designed the PCB alongside the original chassis in order to make the design as optimized as possible for the constraints of the chassis (shape, size, volume, mass, mounting points, etc.).
 
+### Version 2
 
-## Electronics Architecture {.collapsible}
+Nucleo + custom FC milled at school
+
+### Interim electronics configurations to test hardware
+
+### Version 3
+
+## Zoomed Out Overview of Electronics Architecture {.collapsible}
 
 The drone features two distinct electronic subsystems:
 
@@ -155,10 +177,6 @@ The drone features two distinct electronic subsystems:
 - Raspberry Pi + NPU + Camera: contains a far faster computer (quad-core CPU @ 2.4 GHZ + 4GB LPDDR4X RAM @ 4267 MT/S + 64GB MicroSD), a very powerful 26 Tera Operations per Second (TOPS) NPU, and a 1080p camera for live video streaming and AI-powered post-procession to enable advanced functions such as object detection, pose tracking, facial recognition, depth estimation, and more. 
 
 These two subsystems cover a wide bandwidth of operations. By having two distinct systems, the flight controller can focus solely on flight and reading data from sensors while the Raspberry Pi can focus on analyzing data and giving instructions to the flight controller. 
-
-### Tools Used:
-
-To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. Additionally, I used a laser cutter to try and make a stencil, but it did not work out well. To put the drone together, I will use some M4 and M3 screws to hold the drone together, and I screwed them in using a screwdriver and allen wrenches. 
 
 ## Firmware {.collapsible}
 TBD
@@ -171,6 +189,8 @@ Assembly is still in progress. So far, I have used the following tools in the Fa
 - Screwdrivers and Allen Wrenches
 - Screws (M3 and M4)
 - Soldering Iron, Reflow Station, Solder, Solder Paste, and Flux
+
+To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. Additionally, I used a laser cutter to try and make a stencil, but it did not work out well. To put the drone together, I will use some M4 and M3 screws to hold the drone together, and I screwed them in using a screwdriver and allen wrenches. 
 
 ## Testing and Calibration {.collapsible}
 TBD
