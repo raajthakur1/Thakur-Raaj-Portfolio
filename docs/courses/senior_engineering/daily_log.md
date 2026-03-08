@@ -170,7 +170,7 @@ Today, I milled the topography out of a block of hardwood (more in this under [*
 
 I spent today catching up on documentation. 
 
-## January
+## January {.collapsible}
 
 ### 01.08.2026 - 01.13.2026
 
@@ -196,7 +196,31 @@ Today, Mr. Dubick gave me soldering kits to practice soldering fine components, 
 
 ## February {.collapsible}
 
+### 02.23.2026 - 02.27.2026
+
+In this week, I continued work on the electronics. I kept milling out boards, and I encountered many issues. The first board I milled, many of the smaller pads didn't cut properly and were all bridged. Since I had tried so hard and made no progress, and the March 5th deadline was approaching quickly, I made a decision to design a simpler board that only had a 5V step down, the radio module, and the IMU. I chose to cut out all other hardware temporarily, such as the auxiliary magnetometer, barometer, GPS module, and Raspberry Pi companion computer. Since cutting these components out significantly cut down the amperage needed, I could power this board solely by stepping down the VBAT pin from the ESC to 5V with the Pololu D36V50F6, rather than having an XT90 input and having to solder on thick power leads. 
+
+After designing the new board in KiCad, I milled it out. Originally, the design was double sided, and when I milled the other side, the front and back sides didn't line up. Rather than spending time troubleshooting this issue, which would have been very time consuming, I altered the design to fit all of the traces on the front side, eliminating the need for milling both sides. Once I finalized the design, I milled it out on a single sided PCB, and all the holes and traces rendered correctly. 
+
+However, since I had to fit many traces into a small space and was constrained to only using the front side, I set a majority of the traces to 0.25mm in thickness. While this easily passes the built-in Design Rules Checker feature in KiCad, this meant that the milled out traces on the board were very weak. When I was soldering, a few traces broke, including the main 5V line that literally powered everything from the IMU to the entire Nucleo F767ZI board itself. I then tried soldering all the wires directly to the Nucleo F767ZI board. I figured that it would look messy with many wires, but at least it would be wired together. Once I did so, I made a custom build of ArduPilot, but it didn't work properly and I knew that I would have to spend a lot of time and do a lot of research to fix the issues I encountered.
+
 ## March {.collapsible}
+
+### 03.02.2026 - 03.05-2026
+
+Since my flight controller wasn't working, I decided to temporarily pause development of the custom flight controller and decided to use a Seed Studio Xiao RP2040 board to simply send PWM signals to the ESC to get the motors spinning. I did so in order to have a demo ready by the March 5th due date. I soldered the 4 motor pins (M1-M4) from the ESC to the RP2040, soldered the VBAT and GND pins to the 5V BEC, and soldered the 5V output and GND to the RP2040 to give it power. I then used Claude Sonnet 4.6 to generate two codes: one that spins the motors at minimum speed to make sure that everything works, and one for me to try and take off. 
+
+I first ran the code that made the motors spin at minimum speed. I recorded them spinning in slow motion at 240 FPS and switched the propellers around to match the direction of the motor rotation. I then ran the code that provided enough power to take off. Unfortunately, when I ran the code, the drone did not take off properly. The right side overpowered the left and the left side propellers smashed into the floor and broke. Additionally, in this crash, the left side arm supports broke. Although I'm not certain, I suspect that this error was due to the battery placement. Since the battery is by far the heaviest component of the drone, even if the battery is slightly off center, it will cause massive instability since it makes up 35% of the entire drone's mass. In the current design, the battery is located in the front and is located 2mm to the left of the center. When I attempted to take off, the back right side lifted the most, since the front left was the heaviest and had the most downward force on it. 
+
+This test revealed both good aspects and bad aspects of the drone, such as:
+
+Good Aspects:
+
+- The motor/ESC/battery combination is more than powerful enough to lift the drone. I only ran 30% throttle, and it was taking off. Additionally, the ESC and motors ran reliably, proving that all my solder joints are very solid. 
+
+Bad Aspects:
+
+- 
 
 ## April {.collapsible}
 
