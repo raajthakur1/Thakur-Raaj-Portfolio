@@ -864,7 +864,7 @@
 <h3 id="01212026">01.21.2026</h3>
 <h3 id="01222026">01.22.2026</h3>
 <h3 id="01232026">01.23.2026</h3>
-<h2 id="february">February</h2>
+<h2 class="collapsible" id="february">February</h2>
 <h3 id="02232026-02272026">02.23.2026 - 02.27.2026</h3>
 <p>In this week, I continued work on the electronics. I kept milling out boards, and I encountered many issues. The first board I milled, many of the smaller pads didn't cut properly and were all bridged. Since I had tried so hard and made no progress, and the March 5th deadline was approaching quickly, I made a decision to design a simpler board that only had a 5V step down, the radio module, and the IMU. I chose to cut out all other hardware temporarily, such as the auxiliary magnetometer, barometer, GPS module, and Raspberry Pi companion computer. Since cutting these components out significantly cut down the amperage needed, I could power this board solely by stepping down the VBAT pin from the ESC to 5V with the Pololu D36V50F6, rather than having an XT90 input and having to solder on thick power leads. </p>
 <p>After designing the new board in KiCad, I milled it out. Originally, the design was double sided, and when I milled the other side, the front and back sides didn't line up. Rather than spending time troubleshooting this issue, which would have been very time consuming, I altered the design to fit all of the traces on the front side, eliminating the need for milling both sides. Once I finalized the design, I milled it out on a single sided PCB, and all the holes and traces rendered correctly. </p>
