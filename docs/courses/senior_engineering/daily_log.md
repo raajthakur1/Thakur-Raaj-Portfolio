@@ -184,17 +184,26 @@ Today, Mr. Dubick gave me soldering kits to practice soldering fine components, 
 
 ### 01.16.2026
 
-### 01.19.2026
+Today, I started using the soldering practice kits. The kit included a wide variety of SMD components, from larger 1210 resistors all the way down to tiny 0402. Additionally, it included various ICs with many small pins, similar to the STM32F767ZIT6 that I had trouble soldering on Version 1 of the flight controller. I think they'll be helpful for developing my soldering skills. 
 
-### 01.20.2026
+### 01.19.2026 - 01.23.2026
 
-### 01.21.2026
+### 01.26.2026 - 01.30.2026
 
-### 01.22.2026
-
-### 01.23.2026
+made good progress on practice kits, ready to solder actual board, start work on chassis v3
 
 ## February {.collapsible}
+
+### 02.02.2026 - 02.06.2026
+
+I was very sick this week and did not do any work.
+
+### 02.09.2026 - 02.12.2026
+
+I was recovering from being sick this week and spent the first two days catching up on documentation. In the rest of this week, I did some CAD work on Version 3 of my chassis. 
+
+### 02.18.2026 - 
+
 
 ### 02.23.2026 - 02.27.2026
 
@@ -217,10 +226,25 @@ This test revealed both good aspects and bad aspects of the drone, such as:
 Good Aspects:
 
 - The motor/ESC/battery combination is more than powerful enough to lift the drone. I only ran 30% throttle, and it was taking off. Additionally, the ESC and motors ran reliably, proving that all my solder joints are very solid. 
+- The arms and arm supports are strong enough to sustain the forces from the motors and propellers
 
 Bad Aspects:
 
-- 
+- The chassis's center of gravity is not in the middle and is causing imbalances. Although ArduPilot can compensate for this by using data from the IMU, it is still better to make the chassis as balanced as possible as to not have a reliance on software for balancing.
+- The custom flight controller is still not working, and I will most likely have to get it manufactured overseas since the milling machines in the lab are not precise enough to manufacture a board to my specifications. 
+
+Action items to complete before April 12th:
+
+- Modify chassis with the following aspects:
+    - Move battery to center
+    - Add fillets to strengthen arm supports
+    - Add ribs to arms to make them stronger
+    - Finalize FC design and get it manufactured
+    - Research more on building a custom ArduPilot build and build the firmware.
+
+### 03.09.2026
+
+start work on chassis v5
 
 ## April {.collapsible}
 
