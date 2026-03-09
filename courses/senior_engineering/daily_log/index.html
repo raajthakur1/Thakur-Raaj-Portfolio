@@ -860,15 +860,18 @@
 <p>Today, Mr. Dubick gave me soldering kits to practice soldering fine components, since I have been having trouble soldering the electronics on my board. Also, I added mounting holes to my redesigned chassis and printed out a majority of the parts.</p>
 <h3 id="01162026">01.16.2026</h3>
 <p>Today, I started using the soldering practice kits. The kit included a wide variety of SMD components, from larger 1210 resistors all the way down to tiny 0402. Additionally, it included various ICs with many small pins, similar to the STM32F767ZIT6 that I had trouble soldering on Version 1 of the flight controller. I think they'll be helpful for developing my soldering skills. </p>
-<h3 id="01192026-01232026">01.19.2026 - 01.23.2026</h3>
-<h3 id="01262026-01302026">01.26.2026 - 01.30.2026</h3>
-<p>made good progress on practice kits, ready to solder actual board, start work on chassis v3</p>
+<h3 id="01192026-01272026">01.19.2026 - 01.27.2026</h3>
+<p>In this period of time, I continued work on the soldering kits. I worked my way down from big components to small components; I started with 1210 resistors and worked my way down to a 44 pin SMD chip. The first time I soldered the chip, I had a lot of bridges between pins, and Dr. Taylor recommended that I use solder wick to remove excess solder. When I used the wick, it removed all the bridges and left the chip cleanly soldered.</p>
+<h3 id="01282026-01302026">01.28.2026 - 01.30.2026</h3>
+<p>Since I had been soldering for over a week straight, I decided to take a short break and continue chassis development. 
+made good progress on practice kits, ready to solder actual board, start work on chassis v3</p>
 <h2 class="collapsible" id="february">February</h2>
 <h3 id="02022026-02062026">02.02.2026 - 02.06.2026</h3>
 <p>I was very sick this week and did not do any work.</p>
 <h3 id="02092026-02122026">02.09.2026 - 02.12.2026</h3>
 <p>I was recovering from being sick this week and spent the first two days catching up on documentation. In the rest of this week, I did some CAD work on Version 3 of my chassis. </p>
-<h3 id="02182026-">02.18.2026 -</h3>
+<h3 id="02182026-02202026">02.18.2026 - 02.20.2026</h3>
+<p>This week, I made significant progress on </p>
 <h3 id="02232026-02272026">02.23.2026 - 02.27.2026</h3>
 <p>In this week, I continued work on the electronics. I kept milling out boards, and I encountered many issues. The first board I milled, many of the smaller pads didn't cut properly and were all bridged. Since I had tried so hard and made no progress, and the March 5th deadline was approaching quickly, I made a decision to design a simpler board that only had a 5V step down, the radio module, and the IMU. I chose to cut out all other hardware temporarily, such as the auxiliary magnetometer, barometer, GPS module, and Raspberry Pi companion computer. Since cutting these components out significantly cut down the amperage needed, I could power this board solely by stepping down the VBAT pin from the ESC to 5V with the Pololu D36V50F6, rather than having an XT90 input and having to solder on thick power leads. </p>
 <p>After designing the new board in KiCad, I milled it out. Originally, the design was double sided, and when I milled the other side, the front and back sides didn't line up. Rather than spending time troubleshooting this issue, which would have been very time consuming, I altered the design to fit all of the traces on the front side, eliminating the need for milling both sides. Once I finalized the design, I milled it out on a single sided PCB, and all the holes and traces rendered correctly. </p>
@@ -877,6 +880,7 @@
 <h3 id="03022026-0305-2026">03.02.2026 - 03.05-2026</h3>
 <p>Since my flight controller wasn't working, I decided to temporarily pause development of the custom flight controller and decided to use a Seed Studio Xiao RP2040 board to simply send PWM signals to the ESC to get the motors spinning. I did so in order to have a demo ready by the March 5th due date. I soldered the 4 motor pins (M1-M4) from the ESC to the RP2040, soldered the VBAT and GND pins to the 5V BEC, and soldered the 5V output and GND to the RP2040 to give it power. I then used Claude Sonnet 4.6 to generate two codes: one that spins the motors at minimum speed to make sure that everything works, and one for me to try and take off. </p>
 <p>I first ran the code that made the motors spin at minimum speed. I recorded them spinning in slow motion at 240 FPS and switched the propellers around to match the direction of the motor rotation. I then ran the code that provided enough power to take off. Unfortunately, when I ran the code, the drone did not take off properly. The right side overpowered the left and the left side propellers smashed into the floor and broke. Additionally, in this crash, the left side arm supports broke. Although I'm not certain, I suspect that this error was due to the battery placement. Since the battery is by far the heaviest component of the drone, even if the battery is slightly off center, it will cause massive instability since it makes up 35% of the entire drone's mass. In the current design, the battery is located in the front and is located 2mm to the left of the center. When I attempted to take off, the back right side lifted the most, since the front left was the heaviest and had the most downward force on it. </p>
+<p><img alt="Fail" src="../media/capstone/drone_test_1_fail.mov" width="1000" /></p>
 <p>This test revealed both good aspects and bad aspects of the drone, such as:</p>
 <p>Good Aspects:</p>
 <ul>
