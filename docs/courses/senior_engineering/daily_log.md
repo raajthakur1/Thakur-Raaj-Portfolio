@@ -172,8 +172,6 @@ I spent today catching up on documentation.
 
 ## January {.collapsible}
 
-### 01.08.2026 - 01.13.2026
-
 ### 01.14.2026
 
 Today, I continued work on the redesigned chassis. I designed a new part that acts as both landing gear and as a stiffener. It mounts flush under the main body with 8 mounting holes and has extruded pegs to keep the drone from sitting flat on the floor and absorb shock under landing. I will print prototypes out of PLA and print the final product using a mix of TPU and PETG; the main plate will be PETG and the extruded pegs will be TPU for better shock absorption.
@@ -186,11 +184,13 @@ Today, Mr. Dubick gave me soldering kits to practice soldering fine components, 
 
 Today, I started using the soldering practice kits. The kit included a wide variety of SMD components, from larger 1210 resistors all the way down to tiny 0402. Additionally, it included various ICs with many small pins, similar to the STM32F767ZIT6 that I had trouble soldering on Version 1 of the flight controller. I think they'll be helpful for developing my soldering skills. 
 
-### 01.19.2026 - 01.23.2026
+### 01.19.2026 - 01.27.2026
 
-### 01.26.2026 - 01.30.2026
+In this period of time, I continued work on the soldering kits. I worked my way down from big components to small components; I started with 1210 resistors and worked my way down to a 44 pin SMD chip. The first time I soldered the chip, I had a lot of bridges between pins, and Dr. Taylor recommended that I use solder wick to remove excess solder. When I used the wick, it removed all the bridges and left the chip cleanly soldered.
 
-made good progress on practice kits, ready to solder actual board, start work on chassis v3
+### 01.28.2026 - 01.30.2026
+
+Since I had been soldering for over a week straight, I decided to take a short break and continue chassis development. I continued work on Version 3 of the chassis, which had much more internal volume so I could keep the thick battery wires internal, as well as more room for electronics. I did this since I am considering switching to a new electronics design based on the Nucleo F767ZI, which is a pretty large board.
 
 ## February {.collapsible}
 
@@ -202,7 +202,19 @@ I was very sick this week and did not do any work.
 
 I was recovering from being sick this week and spent the first two days catching up on documentation. In the rest of this week, I did some CAD work on Version 3 of my chassis. 
 
-### 02.18.2026 - 
+### 02.18.2026 - 02.20.2026
+
+This week, I made significant progress on the redesigned flight controller. I received the Nucleo F767ZI board, and worked on a hat that sits on top of the Nucleo board's female headers. The new board contains the following:
+
+- XT90 input
+- 5V BEC
+- 3.3V BEC
+- I2C ports for barometer and magnetometer
+- Serial port for radio
+- SPI port for IMU
+- Pads for NEO-M9N GPS module
+
+By the end of the week, I finished the design and made the toolpath in MakeraCam so I could mill it out first thing next week.
 
 
 ### 02.23.2026 - 02.27.2026
@@ -220,6 +232,8 @@ However, since I had to fit many traces into a small space and was constrained t
 Since my flight controller wasn't working, I decided to temporarily pause development of the custom flight controller and decided to use a Seed Studio Xiao RP2040 board to simply send PWM signals to the ESC to get the motors spinning. I did so in order to have a demo ready by the March 5th due date. I soldered the 4 motor pins (M1-M4) from the ESC to the RP2040, soldered the VBAT and GND pins to the 5V BEC, and soldered the 5V output and GND to the RP2040 to give it power. I then used Claude Sonnet 4.6 to generate two codes: one that spins the motors at minimum speed to make sure that everything works, and one for me to try and take off. 
 
 I first ran the code that made the motors spin at minimum speed. I recorded them spinning in slow motion at 240 FPS and switched the propellers around to match the direction of the motor rotation. I then ran the code that provided enough power to take off. Unfortunately, when I ran the code, the drone did not take off properly. The right side overpowered the left and the left side propellers smashed into the floor and broke. Additionally, in this crash, the left side arm supports broke. Although I'm not certain, I suspect that this error was due to the battery placement. Since the battery is by far the heaviest component of the drone, even if the battery is slightly off center, it will cause massive instability since it makes up 35% of the entire drone's mass. In the current design, the battery is located in the front and is located 2mm to the left of the center. When I attempted to take off, the back right side lifted the most, since the front left was the heaviest and had the most downward force on it. 
+
+![Fail](media/capstone/drone_test_1_fail.mov){ width=1000 }
 
 This test revealed both good aspects and bad aspects of the drone, such as:
 

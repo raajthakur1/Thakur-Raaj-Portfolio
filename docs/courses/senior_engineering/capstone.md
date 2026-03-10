@@ -8,10 +8,7 @@ For the majority of the year, I worked towards completing my capstone project: a
 - [**Part Selection**](#part-selection)
 - [**Chassis Design**](#chassis-design)
 - [**PCB Design**](#pcb-design)
-- [**Electronics Architecture**](#electronics-architecture)
-- [**Firmware**](#firmware)
 - [**Assembly**](#assembly)
-- [**Testing and Calibration**](#testing-and-calibration)
 - [**Next Steps**](#next-steps)
 
 ## Quick Downloads {.collapsible}
@@ -131,7 +128,7 @@ So far, there have been 5 major chassis revisions. Below, each one is explained 
 
 The first component I designed was the chassis. Originally, I wanted to use the [Source One](https://www.printables.com/model/261673-complete-tbs-source-one-v5-cad-model-step), an open source drone chassis supporting up to 7" props. However, in its standard form, it had nowhere near enough space to fit my large battery, a Raspberry Pi 5, a camera, and all of the components for the flight controller (the board was not designed at this point). So, I downloaded the STEP files into Onshape and made significant changes to allow for the battery to fit. 
 
-![Original Source One chassis](media/capstone/chassis_old/source1_original.jpeg){ width=400 } ![Final Source One-based chassis](media/capstone/chassis_old/source1_final.jpeg){ width=400 }
+![Original Source One chassis](media/capstone/chassis_v1/source1_original.jpeg){ width=400 } ![Final Source One-based chassis](media/capstone/chassis_v1/source1_final.jpeg){ width=400 }
 
 However, after printing it out, I realized that the drone is far too heavy and that the chassis is too complicated with too many parts. Additionally, I realized that for the weight of the components, I would need bigger propellers. I looked at the website for the motors, and it said that they support up to 9" propellers, so I decided to switch. Although I could have continued to modify the Source One chassis, I decided to start fresh with a clean sheet design. I wanted to keep the design as simple as possible and to make sure that it would support the larger propellers.
 
@@ -141,17 +138,48 @@ I started designing the new chassis by drawing a teardrop-esque shape, as a tear
 
 - Main Body: the main body is composed of 2 parts. The earlier revisions of this new design had the main body as one solid piece, but I later split it into two pieces since I often reprinted the whole part just to make slight modifications to the front. Splitting the part allowed for less wastage.
     - Main Body: 
-        - ![Body Top](media/capstone/chassis/body_top.png){ width=300 } ![Body Front](media/capstone/chassis/body_front.png){ width=300 } ![Body Bottom](media/capstone/chassis/body_bottom.png){ width=300 }
+        - ![Body Top](media/capstone/chassis_v2/body_top.png){ width=300 } ![Body Front](media/capstone/chassis_v2/body_front.png){ width=300 } ![Body Bottom](media/capstone/chassis_v2/body_bottom.png){ width=300 }
     - Top Plate: 
-        - ![Plate Top](media/capstone/chassis/plate_top.png){ width=300 } ![Plate Bottom](media/capstone/chassis/plate_bottom.png){ width=300 }
+        - ![Plate Top](media/capstone/chassis_v2/plate_top.png){ width=300 } ![Plate Bottom](media/capstone/chassis_v2/plate_bottom.png){ width=300 }
     - Bottom Plate/Feet: 
-        - ![Feet Top](media/capstone/chassis/feet_top.png){ width=300 } ![Feet Bottom](media/capstone/chassis/feet_bottom.png){ width=300 }
+        - ![Feet Top](media/capstone/chassis_v2/feet_top.png){ width=300 } ![Feet Bottom](media/capstone/chassis_v2/feet_bottom.png){ width=300 }
     - All Together:
-        - ![Assembled](media/capstone/chassis/all_together.png){ width=500 }
+        - ![Assembled](media/capstone/chassis_v2/all_together.png){ width=500 }
 
 ### Version 3 and Version 4
 
+Although Version 2 was a significant improvement over Version 1, there were still quite a few problems. A major issue was the lack of internal space for routing the thick power cables. Additionally, I did not like the front mounted Raspberry Pi location and top mounted ESC since that would make them vulnerable in the event of a collision. On top of those issues, I wanted to include more room in case I pivoted electronics platforms and used the Nucleo F767ZI instead of the custom FC I designed alongside V1 of the chassis. 
+
+When designing the new chassis, I started with the main body. For structural rigidity, I made the majority of it one solid piece, rather than two pieces that screwed together in the previous design. Although this design increased printing time, it reduced complexity, weight, and increased strength, volume, and aerodynamics.
+
+Overall, these revisions are lighter, thinner, stronger, and more optimized than Version 2 of the chassis.
+
+#### Version 3
+
+- Main Body: The main body is very large. It houses the battery in the center, an electronics plate that stiffens the chassis and acts as a mount for the ESC and Raspberry Pi, two cutouts on the side that house the flight controller and space for cable management, and a camera mount in the front
+
+- Arms: Another major change in this chassis is the inclusion of arm supports to supplement the arms. They mount on the bottom of the chassis and provide extra support against flexing
+
+#### Version 4
+
+Although I had channels for the cables in Version 3, they were very small, and the geometry was very complicated in general. So, I started a blank document for Version 4, where I replicated the shape but made significant changes to the wire channels and tweaked around the placements of different components to further optimize internal volume and structural rigidity.
+
+
+Version 4 Overall:
+
+![V4](media/capstone/chassis_v3_v4/v4.png){ width=500 }
+
+Version 3 Inside:
+
+![V3 Inside](media/capstone/chassis_v3_v4/v3_inside.png){ width=500 }
+
+Version 4 Inside:
+
+![V4 Inside](media/capstone/chassis_v3_v4/v4_inside.png){ width=500 }
+
 ### Version 5
+
+In development currently.
 
 ## PCB Design {.collapsible}
 
@@ -159,15 +187,27 @@ Along with the chassis, the PCB design has gone through significant design overh
 
 ### Version 1
 
-I designed the PCB alongside the original chassis in order to make the design as optimized as possible for the constraints of the chassis (shape, size, volume, mass, mounting points, etc.).
+I designed the PCB alongside the original chassis in order to make the design as optimized as possible for the constraints of the chassis (shape, size, volume, mass, mounting points, etc.). When I first designed it, it was alongside version 1 of the chassis, so the shape of it follows the shape of the chassis. Additionally, this board features everything on board, such as the MCU itself, an 8 mHz crystal, capacitors, an NPN transistor, TVS diodes, and much more supporting circuitry. However, there were a few things I didn't like/problems with the board, including:
+
+- The chips were extremely difficult to solder and I was not confident that I could solder chips with such small pins
+- The board was not as open to expansion as I would like. For example, since the drone is still under development, if I wanted to use different pins or different hardware, I was out of luck since most of the pins of the STM32 were not exposed
+- The shape was not optimized for later chassis revisions
+
+So, to mitigate all these issues, I pivoted to using a Nucleo F767ZI board, which has the STM32 and all the supporting circuitry along with 144 pins for me to use. To connect to all the sensors, I wanted to make an add-on hat for it that slots into the female headers.
+
+![Kicad](media/capstone/pcb_v1/kicad.png){ width=500 }
 
 ### Version 2
 
-Nucleo + custom FC milled at school
+For version 2 of the flight controller, I pivoted away from making everything from the ground up and decided to build upon the Nucleo F767ZI from STMicroelectronics, which houses the same MCU that I was originally using. All the custom accessories mount via a hat that slots into the pins. By doing so, I could cut down on complexity significantly, since all the board houses is the GPS chip + its supporting circuitry, SPI connections for the IMU, I2C connections for the barometer and magnetometer, serial ports for the Raspberry Pi and radio receiver, and the BECs.
+
+I milled this board out at school, but I had lots of trouble getting both sides lined up, and when the boards came out fine, the traces were often broken. So, for the next board, I will get it made professionally and solder it at school and will add more mounting holes to secure it better.
+
+![Kicad](media/capstone/pcb_v2/kicad.png){ width=500 }
 
 ### Interim electronics configurations to test hardware
 
-### Version 3
+Since I couldn't get the flight controller working in time for the demo on March 5th, to get the motors to spin, I used a Seed Studio Xiao RP2040 and soldered the PWM pins to 4 different pins. I then ran basic C code to give PWM values to the motors, but this caused my drone to take off then immediately crash and break 🙁.
 
 ## Zoomed Out Overview of Electronics Architecture {.collapsible}
 
@@ -177,9 +217,6 @@ The drone features two distinct electronic subsystems:
 - Raspberry Pi + NPU + Camera: contains a far faster computer (quad-core CPU @ 2.4 GHZ + 4GB LPDDR4X RAM @ 4267 MT/S + 64GB MicroSD), a very powerful 26 Tera Operations per Second (TOPS) NPU, and a 1080p camera for live video streaming and AI-powered post-procession to enable advanced functions such as object detection, pose tracking, facial recognition, depth estimation, and more. 
 
 These two subsystems cover a wide bandwidth of operations. By having two distinct systems, the flight controller can focus solely on flight and reading data from sensors while the Raspberry Pi can focus on analyzing data and giving instructions to the flight controller. 
-
-## Firmware {.collapsible}
-TBD
 
 ## Assembly {.collapsible}
 
@@ -192,16 +229,9 @@ Assembly is still in progress. So far, I have used the following tools in the Fa
 
 To make this project, the main tool that I used was a 3D printer. Specifically, I mainly used a Bambu Lab A1 and X1 Carbon. I used a Prusa Mini+ and Bambu Lab A1 Mini for smaller parts, but the major components don't fit on the 180mm • 180mm bed. Additionally, I used a laser cutter to try and make a stencil, but it did not work out well. To put the drone together, I will use some M4 and M3 screws to hold the drone together, and I screwed them in using a screwdriver and allen wrenches. 
 
-## Testing and Calibration {.collapsible}
-TBD
-
 ## Next Steps {.collapsible}
 At this moment, I need to do the following:
 
-- Finish soldering the electronics
-- Reprint the bottom plate with an updated design
-- Upload ArduPilot to the completed flight controller board
-- Install propellers
+- Design new board
+- Update ArduPilot build and troubleshoot boot loop issues
 - Write code for the Raspberry Pi to work with the flight controller and provide it instructions based on the camera feed
-
-While I have come a long way, I still have a lot of work cut out for me, especially with the software. Making the two electronic subsystems communicate with each other will be very challenging. 
