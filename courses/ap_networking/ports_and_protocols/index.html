@@ -726,9 +726,42 @@
 </ul>
 <p>After handling the Level 2 connections, the IP addresses were manually assigned on both endpoints. Both devices operated on subnet mask 255.255.255.0. PC1's IP was assigned to 192.168.10.10 and PC2's IP was assigned to 192.168.10.20. To verify connectivity, PC2 was pinged from PC1.</p>
 <p><img alt="Ping" src="../media/ports_and_protocols/ping.png" width="500" /></p>
+<p>This ping was handled by OSI Layer 3 using ICMP, not TCP or UDP. This means that ping is not sufficient evidence to prove TCP reliability, since the TCP protocol is not involved at all when pinging a device on a LAN. </p>
+<p>In order to test TCP connectivity, Packet Tracer was switched to Simulation Mode, and an http request was sent to PC2 by using PC1's web browser to navigate to http://192.168.10.20 (PC2's IP address). To only show TCP traffic, a filter was applied in Packet Tracer's simulation settings to filter for TCP. </p>
+<p><img alt="TCP1" src="../media/ports_and_protocols/tcp1.png" width="400" /></p>
+<ul>
+<li>Flag: 0b00000010</li>
+<li>Sequence Number: 0</li>
+<li>Acknowledgement Number: 0</li>
+</ul>
+<p><img alt="TCP2" src="../media/ports_and_protocols/tcp4.png" width="400" /></p>
+<ul>
+<li>Flag: 0b00010100</li>
+<li>Sequence Number: 0</li>
+<li>Acknowledgement Number: 1</li>
+</ul>
+<p>After the TCP packets were captured, the same test was repeated, except the traffic was filtered for <strong>UDP</strong>. </p>
+<p>NOT DONE YET</p>
 <h2 class="collapsible" id="technical-development">Technical Development</h2>
+<p>In the previous activity, Packet Tracer was used to observe how TCP detects loss, confirms delivery, and retransmits missing segments, and how UDP does not have any of these traits. In this activity, this behavior was observed in the real world using an Ubuntu VM. </p>
+<p>Prediction before testing:</p>
+<ol>
+<li>
+<p>TCP is connection oriented because both parties need to establish a shared state before data flows and break it down after data flows. Both the transmitting and receiving device must communicate and synchronize prior to any data transfer occurring. </p>
+</li>
+<li>
+<p>UDP lacks the handshake that TCP mandates and requires no coordination between sender and receiver. UDP simply looks at the destination IP and port to transfer data. This means that UDP's speed is much greater than that of TCP, but it lacks its reliability.</p>
+</li>
+<li>
+<p>If data is sent via UDP and it never arrives, nothing happens. UDP has no measures of confirming packet delivery or even knowing in the first place if data was received. If a packet is dropped, then UDP just moves on to the next packet and acts like nothing happened.</p>
+</li>
+<li>
+<p>TCP requires more overhead since TCP needs to establish a link with the receiving device prior to any data being transferred. This requires extra bandwidth, processing power, and takes more time. </p>
+</li>
+</ol>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
-<h2 class="collapsible" id="reflection">Reflection</h2></p>
+<h2 class="collapsible" id="reflection">Reflection</h2>
+<h3 id="tcp-udp-and-icmp-reflection">TCP, UDP, and ICMP Reflection</h3></p>
     </article>
 </section>
             <!-- endblock -->
