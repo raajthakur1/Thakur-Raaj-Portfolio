@@ -79,7 +79,7 @@
             </li>
             <li class="drac-box">
                 <a href="../../.."
-                    class="
+                    class=" active 
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#courses-&-projects-collapse" aria-expanded="false">
                     Courses & Projects
@@ -317,6 +317,14 @@
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Routing
+        </a>
+    </li>
+                    
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Ports and Protocols
         </a>
     </li>
             </ul>
@@ -678,6 +686,22 @@
                     <!-- block preview -->
                     <li class="nav-item">
                             
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../routing/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../../senior_engineering/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
                     </li>
                     <!--  endblock -->
 
@@ -741,10 +765,9 @@
 <li>Acknowledgement Number: 1</li>
 </ul>
 <p>After the TCP packets were captured, the same test was repeated, except the traffic was filtered for <strong>UDP</strong>. </p>
-<p>NOT DONE YET</p>
 <h2 class="collapsible" id="technical-development">Technical Development</h2>
 <p>In the previous activity, Packet Tracer was used to observe how TCP detects loss, confirms delivery, and retransmits missing segments, and how UDP does not have any of these traits. In this activity, this behavior was observed in the real world using an Ubuntu VM. </p>
-<p>Prediction before testing:</p>
+<h3 id="part-1-prediction-before-testing">Part 1: Prediction before testing:</h3>
 <ol>
 <li>
 <p>TCP is connection oriented because both parties need to establish a shared state before data flows and break it down after data flows. Both the transmitting and receiving device must communicate and synchronize prior to any data transfer occurring. </p>
@@ -759,9 +782,117 @@
 <p>TCP requires more overhead since TCP needs to establish a link with the receiving device prior to any data being transferred. This requires extra bandwidth, processing power, and takes more time. </p>
 </li>
 </ol>
+<h3 id="part-2-observing-listening-sockets">Part 2: Observing Listening Sockets</h3>
+<p>In this section, the services Ubuntu is ready to accept and how TCP and UDP sockets appear before communication begins was observed. Computers can have listening sockets, which wait for incoming traffic, and established connections which actively communicate.</p>
+<p>To view listening TCP ports, <code>ss -tln</code> was run. </p>
+<p><img alt="SS -TLN" src="../media/ports_and_protocols/ss_tln.png" width="300" /></p>
+<p>Next, to identify a specific process using a port, <code>ss -tlpn</code> was run. </p>
+<p><img alt="SS -TLPN" src="../media/ports_and_protocols/ss_tlpn.png" width="300" /></p>
+<p>At the time of documenting, no process was using port 22, which suggests that it is closed. While the port exists, it is not listening. </p>
+<p>Next, to view listening UDP ports, <code>ss -uln</code> was run. </p>
+<p><img alt="SS -ULN" src="../media/ports_and_protocols/ss_uln.png" width="300" /></p>
+<p>Compared to TCP, UDP sockets show "UNCONN" (unconnected) instead of "LISTEN". This means that instead of listening like TCP ports, inactive UDP ports are disconnected. </p>
+<p>Now that the fundamentals of TCP and UDP were established, an experiment where TCP and UDP traffic was created and observed to visualize how Ubuntu represents them.</p>
+<p>3 terminal sessions were used:</p>
+<ul>
+<li>Terminal A &rarr; Listener</li>
+<li>Terminal B &rarr; Sender</li>
+<li>Terminal C &rarr; Inspection (<code>ss</code>)</li>
+</ul>
+<h3 id="tcp-experiment">TCP Experiment</h3>
+<p>To begin, the installation of <code>nc</code> was confirmed with <code>which nc</code>. It was located at /usr/bin/nc.</p>
+<p>Next, in Terminal A, <code>nc -l 5000</code> was run to start a TCP listener on port 5000. </p>
+<p>To confirm this, in Terminal C, <code>ss -tln</code> was run. Among other things, it returned LISTEN 0 0 0.0.0.0:5000 0.0.0.0:*, confirming that port 5000 is listening for TCP traffic. </p>
+<p><img alt="TCP Experiment" src="../media/ports_and_protocols/tcp_experiment_1.png" width="600" /></p>
+<p>In terminal B, <code>nc 127.0.0.1 5000</code> was run to establish a TCP connection. When a message was typed, it appeared in Terminal A, proving that a TCP connection was established. While the TCP connection was established, <code>ss -tn</code> was run in Terminal C. It returned ESTAB 0 0 127.0.0.1:5000 127.0.0.1:xxxxx.</p>
+<p><img alt="TCP Experiment" src="../media/ports_and_protocols/tcp_experiment_2.png" width="600" /></p>
+<p>When the TCP session was stopped and <code>ss -tn</code> was run again, ESTAB dissappeared, proving that TCP port 5000 changed from having an established connection to being in a listening state.</p>
+<h3 id="udp-experiment">UDP Experiment</h3>
+<p>TO start a UDP listener in Terminal A, <code>nc -u -l 6000</code> was run. At this point, no handshake has occurred. To complete the handshake, in Terminal B, <code>nc -u 127.0.0.1 6000</code> was run. After doing so, messages typed in Terminal B showed up in Terminal A, proving that a handshake was completed. This was verified by running <code>ss -uln</code> in Terminal C, which returned UNCONN 0 0 0.0.0.0:6000 0.0.0.0:*.</p>
+<p><img alt="UDP Experiment" src="../media/ports_and_protocols/udp_experiment.png" width="600" /></p>
+<p>UDP sockets never show ESTAB because that state only exists in TCP, which actually forms a connection. UDP shows UNCONN instead, meaning the socket is bound to a port but has no specific device it connects to. This is because UDP doesn't create any persistent connection state. Every packet is self-contained and sent independently, so the operating system does not actively monitor whether the communication succeeds or fails.</p>
+<p>In the previous two experiments, it was observed how data finds its destination, survives packet loss, and reaches the correct application via port numbers. Next, post-transfer protocols were explored in Ubuntu.</p>
+<p>To inspect an HTTP transaction, <code>curl -I http://example.com</code> was run. </p>
+<p><img alt="HTTP Curl" src="../media/ports_and_protocols/http_curl.png" width="500" /></p>
+<p>Here, the protocol HTTP (hyper text transfer protocol) was used.</p>
+<p>To compare with HTTP, an HTTPS transaction was inspected with <code>curl -I https://example.com</code>.</p>
+<p><img alt="HTTPS Curl" src="../media/ports_and_protocols/https_curl.png" width="500" /></p>
+<p>Here, the protocol HTTPS (hyper text transfer protocol secure) was used. HTTPS employs encryption, while HTTP does not.</p>
+<p>To further explore encryption behavior directly, <code>openssl s_client -connect example.com:443</code> was run. </p>
+<h3 id="presentation-layer-layer-6-investigation">Presentation Layer (Layer 6) Investigation</h3>
+<p><img alt="TLS Handshake" src="../media/ports_and_protocols/openssl_handshake.png" width="800" /></p>
+<p>When the command is run, before data transfer starts, a TLS handshake is happening. The client and server establish communication speed, encryption protocols, and other data pertaining to specific methods of communication. This is not Layer 4 behavior, since TLS operates on Layer 6 (Presentation). TLS is used to add privacy and encryption to data transfer, and must occur before application data is sent so the server can decipher encrypted data properly. Even though TLS encrypts data, it does not replace TCP. Instead, it operates on top of it and they work together to provide encrypted, reliable data communication. </p>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Layer</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP</td>
+<td>4</td>
+<td>Breaks data into packets, ensures they arrive, and arranges them in order</td>
+</tr>
+<tr>
+<td>TLS</td>
+<td>6</td>
+<td>Encrypts connections and handles authentication via certificates</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>7</td>
+<td>Facilitates communication between browsers and servers, but is unencrypted and communicates in plain text</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>7</td>
+<td>Encrypted version of HTTPS used for secure communication between browsers and servers</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>7</td>
+<td>Converts host names into IP addresses; akin to a phone book</td>
+</tr>
+</tbody>
+</table>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
-<h2 class="collapsible" id="reflection">Reflection</h2>
-<h3 id="tcp-udp-and-icmp-reflection">TCP, UDP, and ICMP Reflection</h3></p>
+<p>After analyzing each OSI layer, the entire stack was analyzed as one cohesive system. </p>
+<h3 id="part-1-http-vs-https">Part 1: HTTP vs HTTPS</h3>
+<p>Curl with HTTP and output monitored with <code>ss -tn</code>:</p>
+<p><img alt="HTTP Curl" src="../media/ports_and_protocols/http_curl.png" width="500" /></p>
+<p><img alt="SS TN HTTP" src="../media/ports_and_protocols/ss_tn_http.png" width="500" /></p>
+<p>Curl with HTTPS and output monitored with <code>ss -tn</code>:</p>
+<p><img alt="HTTPS Curl" src="../media/ports_and_protocols/https_curl.png" width="500" /></p>
+<p><img alt="SS TN HTTPS" src="../media/ports_and_protocols/ss_tn_https.png" width="500" /></p>
+<p>While HTTP runs on port 80, HTTPS runs on port 443. The difference in states was only due to HTTPS's connection details being screenshotted as the connection was closing. When moving from HTTP to HTTPS, nothing changed at the application and transport layers. The only difference (besides port) was that in an HTTPS connection, TLS is introduced between HTTP and TCP. When TCP Opens the connection, TLS steps in and negotiates encryption and a shared session key. Once TLS does what it needs to do, HTTP (now HTTPS) communicates the data.</p>
+<h3 id="part-2-dns-as-a-supporting-application-protocol">Part 2: DNS as a Supporting Application Protocol</h3>
+<p>To explore DNS, <code>nslookup example.com</code> was run, returning the public IPv4 and IPv6 addresses associated with the domain example.com. </p>
+<p><img alt="NSLookup" src="../media/ports_and_protocols/nslookup.png" width="500" /></p>
+<p>DNS typically uses port 53 for both TCP and UDP. However, a majority of the time, DNS uses UDP since DNS queries are very tiny and consist solely of one packet transmitted and one packet received. Establishing a TCP connection just to send and receive one packet is complete overkill, which is why UDP is almost always used for DNS queries. While it mostly uses UDP, DNS switches to TCP when the queries are very complex and are cryptographically encrypted. However, this only happens in ultra-high security environments.</p>
+<h3 id="part-3-remote-access-via-ssh">Part 3: Remote Access Via SSH</h3>
+<p>SSH is a very common tool used in server environments since it allows for administrators to access the terminal of a remote endpoint on a LAN. To test SSH connectivity and inspect its properties, the following steps were taken:</p>
+<ol>
+<li>Run <code>ip addr</code> to find the device's IPv4 address</li>
+<li>Connect to the local machine via SSH with <code>ssh [username]@[ip address]</code>. The VM's username was "Ubuntu" and its IP was 10.12.27.184, so the command was <code>ssh ubuntu@10.12.27.184</code></li>
+</ol>
+<p><img alt="SSH" src="../media/ports_and_protocols/ssh.png" width="600" /></p>
+<ol>
+<li>In another terminal window, run <code>ss -tn</code> to inspect TCP ports.</li>
+</ol>
+<p><img alt="SS -TN w/ SSH" src="../media/ports_and_protocols/ss_tn_ssh.png" width="500" /></p>
+<ol>
+<li>Exit SSH with <code>exit</code> or Ctrl + D</li>
+</ol>
+<h3 id="part-4-secure-file-transfer">Part 4: Secure File Transfer</h3>
+<p>To securely transfer files over the LAN, <code>scp</code> can be used by specifying the file/directory to be transferred, the destination user &amp; hostname, and the directory to which the file should be transferred on the recipient device.</p>
+<p>To create a new file to test this out, the command <code>echo "Layered Networking Test" &gt; stacktest.txt</code> was run to create a file named stacktest.txt which contains the text "Layered Networking Test".</p>
+<p>To transfer it with SCP, the command <code>scp stacktest.txt ubuntu@ubuntu.local:/home/ubuntu/</code> was run (username and hostname were both "ubuntu"). </p>
+<p><img alt="SCP" src="../media/ports_and_protocols/scp.png" width="500" /></p>
+<p>SCP piggybacks off of SSH, as it's just SSH with a file transfer instruction added on. Therefore, like SSH, SCP uses TCP since SSH demands a reliable, ordered stream of data to function. Missing/unorganized packets would ruin the connection. Also, since SCP is based on SSH, it has TLS-based encryption, making sure that the file is sent securely and safely. In SCP, Layers 3, 4, 5, 6, and 7 are all used. </p>
+<h2 class="collapsible" id="reflection">Reflection</h2></p>
     </article>
 </section>
             <!-- endblock -->
