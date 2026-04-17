@@ -749,6 +749,40 @@
 <li><a href="#reflection"><strong>Reflection</strong></a></li>
 </ul>
 <h2 class="collapsible" id="design-and-planning">Design and Planning</h2>
+<h3 id="determining-networks-using-ipv4-addresses-and-subnet-masks-in-packet-tracer">Determining Networks Using IPv4 Addresses and Subnet Masks in Packet Tracer</h3>
+<p>In this activity, Cisco Packet Tracer was used to construct a LAN in order to determine how devices communicate based on their IP address and subnet mask.</p>
+<p><strong>Part 1: Build the Network</strong></p>
+<p>A network was created with 3 PCs (labeled PC0, PC1, and PC2) and one switch. All the PCs were connected directly to the switch via copper straight-through cables. Then, the following IP configuration was set for the devices:</p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>IP Address</th>
+<th>Subnet Mask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC0</td>
+<td>192.168.1.10</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>PC1</td>
+<td>192.168.1.25</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td>192.168.2.10</td>
+<td>255.255.255.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Part 2: Investigate Communication:</strong></p>
+<p>On each PC, <code>ping</code> commands were used for the following tests:</p>
+<p>PC0 (192.168.1.10) &rarr; PC1 (192.168.1.25)
+PC0 (192.168.1.10) &rarr; PC2 (192.168.2.10)</p>
 <h2 class="collapsible" id="technical-development">Technical Development</h2>
 <h2 class="collapsible" id="testing-and-evaluation">Testing and Evaluation</h2>
 <h2 class="collapsible" id="reflection">Reflection</h2></p>
